@@ -15,6 +15,11 @@ class AgeCheck
      */
     public function handle(Request $request, Closure $next): Response
     {
+        // print_r($request['age']);
+        
+        if($request->age <= 18){
+            die("your age is not valid.");
+        }
         return $next($request);
     }
 }

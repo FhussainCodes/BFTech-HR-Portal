@@ -23,17 +23,16 @@ class RegisterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'first_name' => 'required|min:3|max:20|regex:/^[a-zA-Z0-9\s-_]+$/u',
-            'last_name' => 'min:3|max:35|regex:/^[a-zA-Z0-9\s-_]+$/u',
-            'email' => 'required|email|unique:users',
+            'first_name' => 'required|min:3|max:20',
+            'last_name' => 'min:3|max:35',
+            'email' => 'required|email|unique:register',
             'age' => 'required',
-            'designation' => 'required|min:2|max30',
-            'phone_number' => 'required|phone:PK',
-            'city' => 'required|min:3|max:20|regex:/^[a-zA-Z0-9\s-_]+$/u',
-            'country' => 'required|min:3|max:25|regex:/^[a-zA-Z0-9\s-_]+$/u',
-            'password' => 'required|min:12|max:64|regex:/^[a-zA-Z0-9\s-_]+$/u',
-            'confirm_password' => 'required|confirmed',
-
+            'designation' => 'required|min:2|max:30',
+            'phone_number' => 'required|',
+            'city' => 'min:3|max:20|',
+            'country' => 'required|min:3|max:25',
+            'password' => 'required|min:6|max:64',
+            'confirm_password' => 'required|same:password',
         ];
     }
 
@@ -83,7 +82,7 @@ class RegisterRequest extends FormRequest
 
             // Password Messages
             'password.required'    => 'A password is required.',
-            'password.min'         => 'Your password must be at least 12 characters long.',
+            'password.min'         => 'Your password must be at least 6 characters long.',
             'password.max'         => 'Your password cannot exceed 64 characters.',
             'password.regex'       => 'Password can only contain letters, numbers, spaces, hyphens, and underscores.',
 

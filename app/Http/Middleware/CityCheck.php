@@ -15,6 +15,14 @@ class CityCheck
      */
     public function handle(Request $request, Closure $next): Response
     {
+        // print_r($request['city']);
+        // dd("show message");
+        // if($request->city != 'lahore' && $request->city != 'islamabad' ){
+        //     die('your city is not valid. ');
+        // }
+        if (!in_array(strtolower($request->city), ['lahore', 'islamabad'])) {
+    die('your city is not valid.');
+}
         return $next($request);
     }
 }

@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('city');
             $table->string('country');
             $table->string('password');
-            $table->string('confrim_password');
+            $table->string('confirm_password');
             $table->timestamps();
         });
     }

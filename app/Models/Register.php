@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Register extends Model
 {
+    protected $table = 'register';
     protected $fillable = [
         'first_name',
         'last_name',
@@ -16,7 +17,7 @@ class Register extends Model
         'city', 
         'country', 
         'password', 
-        'confrim_password', 
+        'confirm_password', 
     ];
 
 
