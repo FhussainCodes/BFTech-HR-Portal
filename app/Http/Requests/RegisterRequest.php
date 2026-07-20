@@ -26,11 +26,11 @@ class RegisterRequest extends FormRequest
             'first_name' => 'required|min:3|max:20',
             'last_name' => 'min:3|max:35',
             'email' => 'required|email|unique:register',
-            'age' => 'required|between:15,70',
+            'age' => 'required',
             'designation' => 'required|min:2|max:30',
-            'phone_number' => 'required',
+            'phone_number' => 'required|min:4',
             'city' => 'required|min:3|max:20',
-            'country' => 'required|min:3|max:25',
+            'country' => 'required|min:2|max:25',
             'password' => 'required|min:6|max:64',
             'confirm_password' => 'required|same:password',
         ];
@@ -54,7 +54,7 @@ class RegisterRequest extends FormRequest
 
             // Age Messages
             'age.required'         => 'Your age is required.',
-            'age.between' => 'The age must be a valid number between 0 and 15 years old.',
+            'age.between' => 'The age must be a valid number between 15 and 70 years old.',
 
             // Designation Messages
             'designation.required' => 'A job designation is required.',
@@ -63,7 +63,7 @@ class RegisterRequest extends FormRequest
 
             // Phone Number Messages
             'phone_number.required'=> 'Please provide your phone number.',
-            'phone_number.phone'   => 'Please enter a valid Pakistani phone number format.',
+            'phone_number.min'=> 'Please enter at least 4 digit phone number.',
 
             // City Messages
             'city.required'        => 'The city field is required.',

@@ -1,4 +1,4 @@
-<h1>Register Page</h1>
+<!-- <h1>Register Page</h1>
 
 @if($errors->any())
 
@@ -34,4 +34,4 @@
     <input type="text" name="confirm_password" ><br>
     <label for="">Already have an account</label>
     <button type="submit" >Click here to Register</button>
-</form>
+</form> -->

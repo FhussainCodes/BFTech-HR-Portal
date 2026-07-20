@@ -11,7 +11,7 @@ use App\Models\Register;
 class RegisterController extends Controller
 {
     public function create(){
-        return view('create');
+        return view('auth.registerUser');
     }
 
     public function store(RegisterRequest $request){
