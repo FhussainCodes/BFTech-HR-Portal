@@ -17,12 +17,12 @@ return new class extends Migration
             $table->string('last_name');
             $table->string('email');
             $table->string('age');
+            $table->string('designation');
             $table->string('phone_number',20);
-            $table->string('password');
-            $table->string('confrim_password');
             $table->string('city');
             $table->string('country');
-            $table->string('designation');
+            $table->string('password');
+            $table->string('confrim_password');
             $table->timestamps();
         });
     }
