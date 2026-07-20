@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('first_name');
             $table->string('last_name');
+            $table->string('email');
+            $table->string('age');
             $table->string('phone_number',20);
             $table->string('password');
             $table->string('confrim_password');
