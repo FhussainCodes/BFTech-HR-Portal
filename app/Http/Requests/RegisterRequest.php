@@ -26,10 +26,10 @@ class RegisterRequest extends FormRequest
             'first_name' => 'required|min:3|max:20',
             'last_name' => 'min:3|max:35',
             'email' => 'required|email|unique:register',
-            'age' => 'required',
+            'age' => 'required|between:15,70',
             'designation' => 'required|min:2|max:30',
-            'phone_number' => 'required|',
-            'city' => 'min:3|max:20|',
+            'phone_number' => 'required',
+            'city' => 'required|min:3|max:20',
             'country' => 'required|min:3|max:25',
             'password' => 'required|min:6|max:64',
             'confirm_password' => 'required|same:password',
@@ -45,9 +45,7 @@ class RegisterRequest extends FormRequest
             'first_name.regex'    => 'Special characters are not allowed in the name.',
 
              // Last Name  Messages
-            // 'last_name.min'             => 'Last name must be at least 3 characters.',
-            // 'last_name.max'             => 'Last name cannot exceed 35 characters.',
-            // 'last_name.regex'           => 'Last name can only contain letters, numbers, spaces, hyphens, and underscores.',
+            'confirm_password.same' => 'The password confirmation does not match.',
 
             // Email Messages
             'email.required'       => 'An email address is required.',
@@ -56,8 +54,7 @@ class RegisterRequest extends FormRequest
 
             // Age Messages
             'age.required'         => 'Your age is required.',
-            'age.integer'          => 'Age must be a valid number.',
-            'age.min'              => 'Age must be a realistic number greater than 0.',
+            'age.between' => 'The age must be a valid number between 0 and 15 years old.',
 
             // Designation Messages
             'designation.required' => 'A job designation is required.',
