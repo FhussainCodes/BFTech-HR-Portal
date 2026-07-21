@@ -7,13 +7,7 @@
                 Register Page
         </h2>
 
-<!-- @if($errors->any())
-    @foreach($errors->all() as $error)
-        {{ $error }}
-    @endforeach
-@endif -->
-
-        <form action="{{route('registerUser')}}" method="POST">
+        <form action="{{route('registerUser')}}" method="POST" >
             @csrf
           
              <div class="mb-3" >
@@ -46,7 +40,7 @@
                 type="text"
                 name="last_name"
                 placeholder="e.g. Jane"
-                class="form-control w-100 @error('first_name') is-invalid @enderror"
+                class="form-control w-100 @error('last_name') is-invalid @enderror"
                 >
 
                  @error('last_name')
@@ -67,7 +61,7 @@
                 type="email"
                 name="email"
                 placeholder="name@example.com" 
-                class="form-control @error('first_name') is-invalid @enderror"
+                class="form-control @error('email') is-invalid @enderror"
                 required
                 >
 
@@ -88,7 +82,7 @@
                 type="text"
                 name="age"
                 placeholder="e.g., 20"
-                class="form-control @error('first_name') is-invalid @enderror"
+                class="form-control @error('age') is-invalid @enderror"
                 >
 
                 @error('age')
@@ -108,7 +102,7 @@
                 type="text"
                 name="designation"
                 placeholder="e.g., Senior Software Engineer"
-                class="form-control"
+                class="form-control @error('designation') is-invalid @enderror"
                 required
                 >
 
@@ -129,7 +123,7 @@
                 type="text"
                 name="phone_number"
                 placeholder="03001234567"
-                class="form-control"
+                class="form-control @error('phone_number') is-invalid @enderror"
                 required
                 >
 
@@ -150,7 +144,7 @@
                 type="text"
                 name="city"
                 placeholder="Enter your city"
-                class="form-control"
+                class="form-control @error('city') is-invalid @enderror"
                 required
                 >
 
@@ -171,7 +165,7 @@
                 type="text"
                 name="country"
                 placeholder="Enter you country"
-                class="form-control"
+                class="form-control @error('country') is-invalid @enderror"
                 required
                 >
 
@@ -192,7 +186,8 @@
                 type="password"
                 name="password"
                 placeholder="Enter your password"
-                class="form-control"
+                class="form-control @error('password') is-invalid @enderror"
+                autocomplete="new-password"
                 required
                 >
 
@@ -212,7 +207,7 @@
                 type="password"
                 name="confirm_password"
                 placeholder="Re-enter your password"
-                class="form-control"
+                class="form-control @error('password') is-invalid @enderror"
                 >
 
                 @error('confirm_password')

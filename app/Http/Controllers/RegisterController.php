@@ -15,14 +15,14 @@ class RegisterController extends Controller
     }
 
     public function store(RegisterRequest $request){
-        // dd("error");
+        // dd($request->all());
         $validatedData = $request->validated();
 
         $validatedData['password'] = Hash::make($validatedData['password']);
         $validatedData['confirm_password'] = Hash::make($validatedData['confirm_password']);
 
         Register::create($validatedData);
-        return redirect('/login');
+        return redirect()->route('loginUser');
     }
 }
 
