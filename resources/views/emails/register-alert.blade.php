@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register Alert</title>
-</head>
-<body>
+@extends('layouts.email')
+@section('content')
 
      <h2>Welcome to BFTech HR Portal</h2>
 
@@ -40,5 +34,4 @@
 
     <p>BFTech HR Portal Team</p>
     
-</body>
-</html>
+@endsection('content')

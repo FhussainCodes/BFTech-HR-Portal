@@ -1,9 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Login Alert</title>
-</head>
-<body>
+@extends('layouts.email')
+@section('content')
 
     <h2>Login Successful</h2>
 
@@ -24,5 +20,4 @@
 
     <p><strong>BFTech HR Portal Team</strong></p>
 
-</body>
-</html>
+@endsection('content')
