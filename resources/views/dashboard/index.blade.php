@@ -1,1 +1,6 @@
-<h1>hello this is dashboard</h1>
+@extends('layouts.app')
+
+@section('content')
+
+
+@endsection

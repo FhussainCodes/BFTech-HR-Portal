@@ -20,4 +20,4 @@
 
     <p><strong>BFTech HR Portal Team</strong></p>
 
-@endsection('content')
+@endsection

@@ -236,4 +236,4 @@
 
 </div>
 
-@endsection('content')
+@endsection
