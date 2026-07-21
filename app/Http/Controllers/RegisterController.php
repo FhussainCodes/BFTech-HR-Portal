@@ -22,7 +22,7 @@ class RegisterController extends Controller
         $validatedData['confirm_password'] = Hash::make($validatedData['confirm_password']);
 
         Register::create($validatedData);
-        return("data created successfully");
+        return redirect('/login');
     }
 }
 

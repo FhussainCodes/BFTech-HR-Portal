@@ -1,20 +1,21 @@
 @extends('layouts.app')
 @section('content')
 
- <div class="contanier vh-70 d-flex justify-content-center align-items-center ">
-    <div class="card shadow-lg p-4 rounded-4 w-75" >
-        <h2 class="text-center mb-4" >
+ <div class="container d-flex justify-content-center align-items-center py-5">
+    <div class="card shadow-lg rounded-4 p-5 w-50" >
+        <h2 class="text-center mb-3" >
                 Register Page
         </h2>
 
-@if($errors->any())
+<!-- @if($errors->any())
     @foreach($errors->all() as $error)
         {{ $error }}
     @endforeach
-@endif
+@endif -->
 
-        <form action="{{route('registerUser')}}" method="POST" >
-            <!-- First Name -->
+        <form action="{{route('registerUser')}}" method="POST">
+            @csrf
+          
              <div class="mb-3" >
                 <label for="" class="form-label fw-semibold" >
                     First Name
@@ -25,7 +26,7 @@
                 type="text"
                 name="first_name"
                 placeholder="e.g. Austin"
-                class="form-control"
+                class="form-control w-100 @error('first_name') is-invalid @enderror "
                 required
                 >
 
@@ -39,14 +40,13 @@
               <div class="mb-3" >
                 <label for="" class="form-label fw-semibold" >
                     Last Name
-                    <!-- <span class="text-danger">*</span> -->
                 </label>
 
                 <input 
                 type="text"
                 name="last_name"
                 placeholder="e.g. Jane"
-                class="form-control"
+                class="form-control w-100 @error('first_name') is-invalid @enderror"
                 >
 
                  @error('last_name')
@@ -56,6 +56,7 @@
                 @enderror
              </div>
 
+            
               <div class="mb-3" >
                 <label for="" class="form-label fw-semibold" >
                     Email
@@ -66,7 +67,7 @@
                 type="email"
                 name="email"
                 placeholder="name@example.com" 
-                class="form-control"
+                class="form-control @error('first_name') is-invalid @enderror"
                 required
                 >
 
@@ -87,7 +88,7 @@
                 type="text"
                 name="age"
                 placeholder="e.g., 20"
-                class="form-control"
+                class="form-control @error('first_name') is-invalid @enderror"
                 >
 
                 @error('age')
@@ -188,7 +189,7 @@
                 </label>
 
                 <input 
-                type="text"
+                type="password"
                 name="password"
                 placeholder="Enter your password"
                 class="form-control"
@@ -205,11 +206,10 @@
              <div class="mb-3" >
                 <label for="" class="form-label fw-semibold" >
                     Confirm Password
-                    <!-- <span class="text-danger">*</span> -->
                 </label>
 
                 <input 
-                type="text"
+                type="password"
                 name="confirm_password"
                 placeholder="Re-enter your password"
                 class="form-control"

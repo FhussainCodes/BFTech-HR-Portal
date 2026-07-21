@@ -9,6 +9,7 @@ Route::get('/', function () {
 });
 
 Route::get("/register",[RegisterController::class,'create']);
-Route::post("/register",[RegisterController::class,'store'])->name('registerUser')->middleware('registercheck');
+Route::post("/register",[RegisterController::class,'store'])->name('registerUser');
+// Route::post("/register",[RegisterController::class,'store'])->name('registerUser')->middleware('registercheck');
 
 Route::get('/login',[LoginController::class,'create']);
