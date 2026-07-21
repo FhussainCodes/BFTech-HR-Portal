@@ -11,4 +11,9 @@ Route::get('/', function () {
 Route::get("/register",[RegisterController::class,'create']);
 Route::post("/register",[RegisterController::class,'store'])->name('registerUser')->middleware('registercheck');
 
-Route::get('/login',[LoginController::class,'create'])->name('loginUser');
+Route::get('/login',[LoginController::class,'create'])->name('loginPage');
+Route::post('/login',[LoginController::class,'checkLogin'])->name('loginUser');
+
+Route::get('/dashboard',function(){
+    return view('dashboard.index');
+})->name('dashboardPage');

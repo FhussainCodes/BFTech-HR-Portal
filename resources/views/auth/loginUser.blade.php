@@ -7,13 +7,7 @@
                 Login Page
         </h2>
 
-@if($errors->any())
-    @foreach($errors->all() as $error)
-        {{ $error }}
-    @endforeach
-@endif
-
-        <form action="{{route('registerUser')}}" method="POST">
+        <form action="{{route('loginUser')}}" method="POST">
                         @csrf   
               <div class="mb-3" >
                 <label for="" class="form-label fw-semibold" >
@@ -25,7 +19,7 @@
                 type="email"
                 name="email"
                 placeholder="name@example.com" 
-                class="form-control"
+                class="form-control @error('email') is-invalid @enderror"
                 required
                 >
 
@@ -43,10 +37,10 @@
                 </label>
 
                 <input 
-                type="text"
+                type="password"
                 name="password"
                 placeholder="Enter your password"
-                class="form-control"
+                class="form-control @error('password') is-invalid @enderror"
                 required
                 >
 

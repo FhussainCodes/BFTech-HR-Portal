@@ -42,7 +42,7 @@ class RegisterRequest extends FormRequest
             'first_name.required' => 'You forgot to type your first name.',
             'first_name.min'      => 'Names must be 3 or more characters.',
             'first_name.max'      => 'Names must be 20 or fewer characters.',
-            'first_name.regex'    => 'Special characters are not allowed in the name.',
+            
 
              // Last Name  Messages
             'confirm_password.same' => 'The password confirmation does not match.',
