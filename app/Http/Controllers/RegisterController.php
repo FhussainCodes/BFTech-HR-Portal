@@ -23,7 +23,8 @@ class RegisterController extends Controller
         $validatedData['password'] = Hash::make($validatedData['password']);
 
         $user = Register::create($validatedData);
-        Mail::to($user->email)->send(new RegisterMail($user));
+        // Mail::to($user->email)->send(new RegisterMail($user));
+        Mail::to($user->email)->queue(new RegisterMail($user));
         return redirect()->route('loginPage');
     }
 }
