@@ -1,12 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Register;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Hash;
 
 use App\Http\Requests\LoginRequest;
+use App\Models\Register;
+use App\Mail\LoginMail;
 
 class LoginController extends Controller
 {
@@ -31,6 +33,8 @@ class LoginController extends Controller
                 ->withErrors(['password' => 'Incorrect password.'])
                 ->withInput();
         }
+        
+        Mail::to($user->email)->queue(new LoginMail($user));
 
         session([
             'user' => $user

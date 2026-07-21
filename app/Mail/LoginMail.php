@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Models\Register;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -10,16 +11,16 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class LoginMail extends Mailable
+class LoginMail extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
-
+    public $user;
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct(Register $user)
     {
-        //
+        $this->user = $user;
     }
 
     /**
@@ -28,7 +29,7 @@ class LoginMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Login Mail',
+            subject: 'New Login Detected - BFTech HR Portal',
         );
     }
 
@@ -38,7 +39,7 @@ class LoginMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'emails.login-alert',
         );
     }
 
