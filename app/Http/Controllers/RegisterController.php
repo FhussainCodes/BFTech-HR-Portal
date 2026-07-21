@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 use App\Http\Requests\RegisterRequest;
 use App\Models\Register;
+use App\Mail\RegisterMail;
 
 class RegisterController extends Controller
 {
@@ -21,6 +23,7 @@ class RegisterController extends Controller
         $validatedData['password'] = Hash::make($validatedData['password']);
 
         $user = Register::create($validatedData);
+        Mail::to($user->email)->send(new RegisterMail($user));
         return redirect()->route('loginPage');
     }
 }
