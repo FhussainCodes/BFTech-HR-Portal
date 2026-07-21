@@ -11,11 +11,18 @@
     crossorigin="anonymous"
     >
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
 
     @include('partials.navbar')
-    @include('partials.sidebar')
-    @yield('content')
+
+    <div class="flex-grow-1">
+        @include('partials.sidebar')
+
+        <main>
+            @yield('content')
+        </main>
+    </div>
+
     @include('partials.footer')
 
     <script 
