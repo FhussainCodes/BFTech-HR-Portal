@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.auth')
 @section('content')
 
  <div class="container d-flex justify-content-center align-items-center py-5">
@@ -50,7 +50,6 @@
                 @enderror
              </div>
 
-            
               <div class="mb-3" >
                 <label for="" class="form-label fw-semibold" >
                     Email
