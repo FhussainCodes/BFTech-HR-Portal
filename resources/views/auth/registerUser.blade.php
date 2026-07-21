@@ -6,15 +6,13 @@
         <h2 class="text-center mb-4" >
                 Register Page
         </h2>
+
 @if($errors->any())
-
     @foreach($errors->all() as $error)
-
         {{ $error }}
-
     @endforeach
-
 @endif
+
         <form action="{{route('registerUser')}}" method="POST" >
             <!-- First Name -->
              <div class="mb-3" >
@@ -230,6 +228,13 @@
              >
                 Register
              </button>
+
+             <div class="text-center mt-3">
+                <p class="text-muted">
+                    Already have an account? 
+                <a href="/login" class="text-decoration-none fw-bold">Login here</a>
+                </p>
+            </div>
 
         </form>
 
