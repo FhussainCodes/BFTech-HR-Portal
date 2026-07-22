@@ -55,5 +55,17 @@ class AttendanceController extends Controller
         return response()->json(['message' => 'No active check-in found'], 404);
     }
 
+    public function index(){
+        
+    $todayAttendance = Attendance::where('user_id', Auth::id())
+                                 ->where('date', Carbon::today())
+                                 ->first();
+
+    $attendanceLogs = Attendance::where('user_id', Auth::id())
+                                ->orderBy('date', 'desc')
+                                ->get();
+
+    return view('employee.dashboard', compact('todayAttendance', 'attendanceLogs'));
+    }
 
 }
