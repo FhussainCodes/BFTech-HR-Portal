@@ -16,7 +16,7 @@
     </div>
 
     <!-- Summary Cards -->
-    <div class="row g-3">
+    <div class="row g-3 mb-3">
 
         <!-- Attendance -->
         <div class="col-md-4">
@@ -66,6 +66,54 @@
             </div>
         </div>
 
+    </div>
+
+    <!-- Attendance Details Table -->
+    <div class="card shadow-sm border-0">
+        <div class="card-header bg-white py-3 border-0">
+            <h6 class="fw-bold mb-0">Attendance Log</h6>
+        </div>
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0 text-nowrap small">
+                    <thead class="table-light text-muted">
+                        <tr>
+                            <th class="ps-4" scope="col">Name</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Check In Time</th>
+                            <th scope="col">Check Out Time</th>
+                            <th scope="col">Duration</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{-- Loop through your records here --}}
+                        @forelse($attendanceLogs ?? [] as $log)
+                            <tr>
+                                <td class="ps-4 fw-semibold">{{ $log->user_name }}</td>
+                                <td>{{ $log->date }}</td>
+                                <td>
+                                    <span class="badge bg-success-subtle text-success border border-success-subtle">
+                                        {{ $log->check_in }}
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="badge bg-danger-subtle text-danger border border-danger-subtle">
+                                        {{ $log->check_out ?? '--:--' }}
+                                    </span>
+                                </td>
+                                <td>{{ $log->duration ?? 'N/A' }}</td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="5" class="text-center text-muted py-4 ps-4">
+                                    No attendance logs found.
+                                </td>
+                            </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 
 </div>
