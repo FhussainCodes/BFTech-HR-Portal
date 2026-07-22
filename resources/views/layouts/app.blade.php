@@ -15,12 +15,14 @@
 
     @include('partials.navbar')
 
-    <div class="flex-grow-1">
+    <div class="d-flex flex-grow-1">
+
         @include('partials.sidebar')
 
-        <main>
+        <main class="flex-grow-1 p-4">
             @yield('content')
         </main>
+
     </div>
 
     @include('partials.footer')
@@ -30,6 +32,6 @@
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" 
     crossorigin="anonymous">
     </script>
-    
+
 </body>
 </html>
