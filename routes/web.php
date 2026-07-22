@@ -4,9 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 
-Route::get('/', function () {
-    return view('auth.loginUser');
-});
+// Route::get('/', function () {
+//     return view('auth.loginUser');
+// });
 
 Route::get('/dashboard',function(){
     return view('dashboard.index');
@@ -18,3 +18,4 @@ Route::post("/register",[RegisterController::class,'store'])->name('registerUser
 Route::get('/login',[LoginController::class,'create'])->name('loginPage');
 Route::post('/login',[LoginController::class,'checkLogin'])->name('loginUser');
 
+Route::post('/logout',[LoginController::class,'logout'])->name('logoutPage');

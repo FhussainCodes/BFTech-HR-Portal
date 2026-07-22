@@ -17,14 +17,14 @@ class RegisterController extends Controller
     }
 
     public function store(RegisterRequest $request){
-        // dd($request->all());
+
         $validatedData = $request->validated();
 
         $validatedData['password'] = Hash::make($validatedData['password']);
 
         $user = Register::create($validatedData);
-        // Mail::to($user->email)->send(new RegisterMail($user));
         Mail::to($user->email)->queue(new RegisterMail($user));
+
         return redirect()->route('loginPage');
     }
 }

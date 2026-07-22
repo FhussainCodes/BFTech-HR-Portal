@@ -21,16 +21,12 @@
 
         </ul>
 
-
-        <!-- Logout Button -->
         <div class="mt-auto">
-            <form action="/logout" method="POST">
+            <form action="{{route('logoutPage')}}" method="POST">
                 @csrf
-
                 <button type="submit" class="btn btn-danger w-100">
                     🚪 Logout
                 </button>
-
             </form>
         </div>
 

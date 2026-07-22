@@ -18,17 +18,15 @@ class LoginController extends Controller
 
     public function checkLogin(LoginRequest $request){
 
-        $validatedData = $request->validated();
+        $user = Register::where('email',$request['email'])->first();
 
-        $user = Register::where('email',$validatedData['email'])->first();
-  
          if (!$user) {
             return back()
                 ->withErrors(['email' => 'Email does not exist.'])
                 ->withInput();
         }
 
-         if (!Hash::check($validatedData['password'], $user->password)) {
+         if (!Hash::check($request['password'], $user->password)) {
             return back()
                 ->withErrors(['password' => 'Incorrect password.'])
                 ->withInput();
@@ -41,7 +39,14 @@ class LoginController extends Controller
         ]);
 
         return redirect()->route('dashboardPage');
+    }
 
+    public function logout(Request $request){
+
+        $request->session()->flush();
+        $request->session()->regenerateToken();
+         return redirect()->route('loginPage');
+         
     }
 }
 

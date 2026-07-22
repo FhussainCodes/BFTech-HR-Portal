@@ -11,22 +11,25 @@
     crossorigin="anonymous"
     >
 </head>
-<body class="d-flex flex-column min-vh-100">
+<body">
+<div class="d-flex min-vh-100">
 
-    @include('partials.navbar')
+    @include('partials.sidebar')
 
-    <div class="d-flex flex-grow-1">
+    <div class="flex-grow-1 d-flex flex-column">
 
-        @include('partials.sidebar')
+        @include('partials.navbar')
 
         <main class="flex-grow-1 p-4">
             @yield('content')
         </main>
 
+        @include('partials.footer')
+
     </div>
 
-    @include('partials.footer')
-
+</div>
+    
     <script 
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" 
