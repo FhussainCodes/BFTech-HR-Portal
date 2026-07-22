@@ -10,9 +10,11 @@ Route::get('/', function () {
 });
 
 // For Dashboard
-Route::get('/dashboard',function(){
-    return view('employee.dashboard');
-})->name('dashboardPage');
+// Route::get('/dashboard',function(){
+//     return view('employee.dashboard');
+// })->name('dashboardPage');
+
+Route::get('/dashboard', [AttendanceController::class, 'index'])->name('dashboardPage');
 
 // For Register Page
 Route::get("/register",[RegisterController::class,'create']);
