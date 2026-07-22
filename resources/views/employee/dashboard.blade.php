@@ -38,15 +38,24 @@
         <div class="col-md-4">
             <div class="card shadow-sm border-0 h-100">
                 <div class="card-body p-3">
-                    <span class="text-muted small fw-medium d-block mb-1">Time</span>
+                    <span class="text-muted small fw-medium d-block mb-1">
+                        @if(session('attendanceStatus') == 'checkIn')
+                            Check-In Time
+                        @elseif(session('attendanceStatus') == 'checkOut')
+                            Check-Out Time
+                        @else
+                            Time
+                        @endif
+                    </span>
                     <h5 class="mb-0 fw-bold">
                         @if(session('attendanceStatus') == 'checkIn')
-                            {{ \Carbon\Carbon::parse(session('checkInTime'))->format('h:i A') }}
+                            {{ \Carbon\Carbon::parse(session('checkInTime'))->timezone('Asia/Karachi')->format('h:i A') }}
                         @elseif(session('attendanceStatus') == 'checkOut')
-                            {{ \Carbon\Carbon::parse(session('checkOutTime'))->format('h:i A') }}
+                            {{ \Carbon\Carbon::parse(session('checkOutTime'))->timezone('Asia/Karachi')->format('h:i A') }}
                         @else
                             --:--
                         @endif
+
                     </h5>
                 </div>
             </div>
@@ -58,9 +67,12 @@
                 <div class="card-body p-3">
                     <span class="text-muted small fw-medium d-block mb-1">Current Status</span>
                     @if(session('attendanceStatus') == 'checkIn')
-                        <h5 class="text-success mb-0 fw-bold">Present</h5>
+                        <h5 class="text-success mb-0 fw-bold">Available</h5>
+                    @elseif(session('attendanceStatus') == 'checkOut')
+                        <h5 class="text-danger mb-0 fw-bold">Unavailable</h5>
                     @else
-                        <h5 class="text-danger mb-0 fw-bold">Absent</h5>
+                        <h5 class="text-danger mb-0 fw-bold">--:--</h5>
+
                     @endif
                 </div>
             </div>
@@ -86,7 +98,6 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {{-- Loop through your records here --}}
                         @forelse($attendanceLogs ?? [] as $log)
                             <tr>
                                 <td class="ps-4 fw-semibold">{{ $log->user_name }}</td>
