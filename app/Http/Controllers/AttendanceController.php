@@ -39,4 +39,21 @@ class AttendanceController extends Controller
      return response()->json(['message' => 'Checked in successfully', 'data' => $attendance]);
     }
 
+    public function checkOut()
+    {
+        $attendance = Attendance::where('user_id', Auth::id())
+            ->where('date', Carbon::today())
+            ->whereNotNull('check_in')
+            ->whereNull('check_out')
+            ->first();
+
+        if ($attendance) {
+            $attendance->update(['check_out' => Carbon::now()]);
+            return response()->json(['message' => 'Checked out successfully', 'data' => $attendance]);
+        }
+
+        return response()->json(['message' => 'No active check-in found'], 404);
+    }
+
+
 }
