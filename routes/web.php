@@ -10,9 +10,9 @@ Route::get('/', function () {
 });
 
 // For Dashboard
-// Route::get('/dashboard',function(){
-//     return view('employee.dashboard');
-// })->name('dashboardPage');
+Route::get('/dashboard',function(){
+    return view('employee.dashboard');
+})->name('dashboardPage');
 
 Route::get('/dashboard', [AttendanceController::class, 'index'])->name('dashboardPage');
 
@@ -27,6 +27,11 @@ Route::post('/login',[LoginController::class,'checkLogin'])->name('loginUser');
 // For Logout 
 Route::post('/logout',[LoginController::class,'logout'])->name('logoutPage');
 
-// For Attendance Page
+// For Attendance Mark Page
 Route::post('/check-in',[AttendanceController::class,'checkIn'])->name('checkInPage');
 Route::post('/check-out',[AttendanceController::class,'checkOut'])->name('checkOutPage');
+
+// For Get Attendance and Attendance Histroy Page
+Route::get('/attendance', [AttendanceController::class, 'attendance'])->name('attendancePage');
+
+Route::get('/attendance-history', [AttendanceController::class, 'history'])->name('attendanceHistoryPage');

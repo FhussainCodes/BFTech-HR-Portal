@@ -1,156 +1,258 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container-fluid px-3">
 
     <!-- Welcome Card -->
     <div class="card shadow-sm border-0 mb-3">
         <div class="card-body py-3 px-4">
             <h5 class="fw-bold mb-1">
-                Welcome, {{ session('user')['first_name'] ?? Auth::user()->first_name ?? 'Employee' }} 👋
+                Welcome,
+                {{ session('user')['first_name'] }} 👋
             </h5>
+
             <p class="text-muted mb-0 small">
                 {{ now()->format('l, d F Y') }}
             </p>
         </div>
     </div>
 
-    <div class="row g-3 mb-3">
+    <div class="row g-3 mb-4">
 
-        <!-- 1. Attendance Action Button Card -->
+        <!-- Attendance Action -->
         <div class="col-md-4">
             <div class="card shadow-sm border-0 h-100">
-                <div class="card-body p-3">
-                    <span class="text-muted small fw-medium d-block mb-1">Attendance Action</span>
+
+                <div class="card-body">
+
+                    <small class="text-muted d-block mb-2">
+                        Attendance Action
+                    </small>
 
                     @if(!$todayAttendance)
+
                         <form action="{{ route('checkInPage') }}" method="POST">
                             @csrf
-                            <button type="submit" class="btn btn-success btn-lg w-100">Check In</button>
+                            <button class="btn btn-success w-100">
+                                Check In
+                            </button>
                         </form>
 
-                    @elseif($todayAttendance && !$todayAttendance->check_out)
+                    @elseif(!$todayAttendance->check_out)
+
                         <form action="{{ route('checkOutPage') }}" method="POST">
                             @csrf
-                            <button type="submit" class="btn btn-danger btn-lg w-100">Check Out</button>
+                            <button class="btn btn-danger w-100">
+                                Check Out
+                            </button>
                         </form>
 
                     @else
-                        <div class="alert alert-info mb-0 text-center py-2 fw-medium">
-                            Shift Complete Today 🎉
+
+                        <div class="alert alert-success text-center mb-0">
+                            Shift Completed ✅
                         </div>
+
                     @endif
+
                 </div>
+
             </div>
         </div>
 
-        <!-- 2. Time Card (Database Dynamic) -->
+        <!-- Time -->
         <div class="col-md-4">
             <div class="card shadow-sm border-0 h-100">
-                <div class="card-body p-3">
-                    <span class="text-muted small fw-medium d-block mb-1">
+
+                <div class="card-body">
+
+                    <small class="text-muted d-block mb-2">
+
                         @if($todayAttendance && $todayAttendance->check_out)
-                            Check-Out Time
+
+                            Check Out Time
+
                         @elseif($todayAttendance)
-                            Check-In Time
+
+                            Check In Time
+
                         @else
+
                             Time
+
                         @endif
-                    </span>
-                    <h5 class="mb-0 fw-bold">
+
+                    </small>
+
+                    <h5 class="fw-bold mb-0">
+
                         @if($todayAttendance && $todayAttendance->check_out)
+
                             {{ \Carbon\Carbon::parse($todayAttendance->check_out)->format('h:i A') }}
+
                         @elseif($todayAttendance)
+
                             {{ \Carbon\Carbon::parse($todayAttendance->check_in)->format('h:i A') }}
+
                         @else
+
                             --:--
+
                         @endif
+
                     </h5>
+
                 </div>
+
             </div>
         </div>
 
-        <!-- 3. Current Status Card (Database Dynamic) -->
+        <!-- Status -->
         <div class="col-md-4">
             <div class="card shadow-sm border-0 h-100">
-                <div class="card-body p-3">
-                    <span class="text-muted small fw-medium d-block mb-1">Current Status</span>
+
+                <div class="card-body">
+
+                    <small class="text-muted d-block mb-2">
+                        Current Status
+                    </small>
+
                     @if($todayAttendance && !$todayAttendance->check_out)
-                        <h5 class="text-success mb-0 fw-bold">Available (Checked In)</h5>
+
+                        <h5 class="text-success fw-bold">
+                            Checked In
+                        </h5>
+
                     @elseif($todayAttendance && $todayAttendance->check_out)
-                        <h5 class="text-secondary mb-0 fw-bold">Shift Ended</h5>
+
+                        <h5 class="text-secondary fw-bold">
+                            Checked Out
+                        </h5>
+
                     @else
-                        <h5 class="text-danger mb-0 fw-bold">Unavailable</h5>
+
+                        <h5 class="text-danger fw-bold">
+                            Not Checked In
+                        </h5>
+
                     @endif
+
                 </div>
+
             </div>
         </div>
 
     </div>
 
-    <!-- Attendance Details Table -->
+    <!-- Attendance History -->
+
     <div class="card shadow-sm border-0">
-        <div class="card-header bg-white py-3 border-0">
-            <h6 class="fw-bold mb-0">Attendance Log</h6>
+
+        <div class="card-header bg-white">
+
+            <h5 class="mb-0">
+                Attendance History
+            </h5>
+
         </div>
+
         <div class="card-body p-0">
+
             <div class="table-responsive">
-                <table class="table table-hover align-middle mb-0 text-nowrap small">
-                    <thead class="table-light text-muted">
+
+                <table class="table table-bordered table-hover mb-0">
+
+                    <thead class="table-light">
+
                         <tr>
-                            <th class="ps-4" scope="col">Name</th>
-                            <th scope="col">Date</th>
-                            <th scope="col">Check In Time</th>
-                            <th scope="col">Check Out Time</th>
-                            <th scope="col">Total Duration</th> <!-- 1. New Column Header -->
+
+                            <th>Name</th>
+                            <th>Date</th>
+                            <th>Check In</th>
+                            <th>Check Out</th>
+                            <th>Duration</th>
+
                         </tr>
+
                     </thead>
+
                     <tbody>
-                        @forelse($attendanceLogs ?? [] as $log)
-                            <tr>
-                                <td class="ps-4 fw-semibold">{{ $log->user_name }}</td>
-                                <td>{{ \Carbon\Carbon::parse($log->date)->format('d M, Y') }}</td>
-                                <td>
-                                    <span class="badge bg-success-subtle text-success border border-success-subtle">
-                                        {{ \Carbon\Carbon::parse($log->check_in)->format('h:i A') }}
+
+                        @forelse($attendanceLogs as $log)
+
+                        <tr>
+
+                            <td>{{ $log->user_name }}</td>
+
+                            <td>
+                                {{ \Carbon\Carbon::parse($log->date)->format('d M Y') }}
+                            </td>
+
+                            <td>
+
+                                {{ \Carbon\Carbon::parse($log->check_in)->format('h:i A') }}
+
+                            </td>
+
+                            <td>
+
+                                @if($log->check_out)
+
+                                    {{ \Carbon\Carbon::parse($log->check_out)->format('h:i A') }}
+
+                                @else
+
+                                    <span class="text-warning">
+                                        Pending
                                     </span>
-                                </td>
-                                <td>
-                                    @if($log->check_out)
-                                        <span class="badge bg-danger-subtle text-danger border border-danger-subtle">
-                                            {{ \Carbon\Carbon::parse($log->check_out)->format('h:i A') }}
-                                        </span>
-                                    @else
-                                        <span class="badge bg-warning-subtle text-warning border border-warning-subtle">
-                                            Pending
-                                        </span>
-                                    @endif
-                                </td>
-                                <!-- 2. Display Duration -->
-                    <td>
-    @if($log->check_out)
-        <span class="fw-semibold text-dark">
-            {{ $log->duration ?? '0 hrs 0 mins' }}
-        </span>
-    @else
-        <span class="badge bg-info-subtle text-info border border-info-subtle">
-            In Progress
-        </span>
-    @endif
-</td>
-                            </tr>
+
+                                @endif
+
+                            </td>
+
+                            <td>
+
+                                @if($log->duration)
+
+                                    {{ $log->duration }}
+
+                                @else
+
+                                    <span class="text-info">
+                                        In Progress
+                                    </span>
+
+                                @endif
+
+                            </td>
+
+                        </tr>
+
                         @empty
-                            <tr>
-                                <td colspan="4" class="text-center text-muted py-4 ps-4">
-                                    No attendance logs found.
-                                </td>
-                            </tr>
+
+                        <tr>
+
+                            <td colspan="5" class="text-center py-4">
+
+                                No Attendance Record Found
+
+                            </td>
+
+                        </tr>
+
                         @endforelse
+
                     </tbody>
+
                 </table>
+
             </div>
+
         </div>
+
     </div>
 
 </div>
+
 @endsection
