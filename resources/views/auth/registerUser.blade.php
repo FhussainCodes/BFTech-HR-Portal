@@ -21,6 +21,7 @@
                     <input 
                         type="text"
                         name="first_name"
+                        value="{{old('first_name')}}"
                         placeholder="e.g. Austin"
                         class="form-control form-control-sm @error('first_name') is-invalid @enderror"
                         required
@@ -38,6 +39,7 @@
                     <input 
                         type="text"
                         name="last_name"
+                        value="{{old('last_name')}}"
                         placeholder="e.g. Jane"
                         class="form-control form-control-sm @error('last_name') is-invalid @enderror"
                     >
@@ -54,6 +56,7 @@
                     <input 
                         type="email"
                         name="email"
+                        value="{{old('email')}}"
                         placeholder="name@example.com" 
                         class="form-control form-control-sm @error('email') is-invalid @enderror"
                         required
@@ -71,6 +74,7 @@
                     <input 
                         type="text"
                         name="age"
+                        value="{{old('age')}}"
                         placeholder="e.g. 20"
                         class="form-control form-control-sm @error('age') is-invalid @enderror"
                     >
@@ -87,6 +91,7 @@
                     <input 
                         type="text"
                         name="designation"
+                        value="{{old('designation')}}"
                         placeholder="e.g. Software Engineer"
                         class="form-control form-control-sm @error('designation') is-invalid @enderror"
                         required
@@ -104,6 +109,7 @@
                     <input 
                         type="text"
                         name="phone_number"
+                        value="{{old('phone_number')}}"
                         placeholder="03001234567"
                         class="form-control form-control-sm @error('phone_number') is-invalid @enderror"
                         required
@@ -121,6 +127,7 @@
                     <input 
                         type="text"
                         name="city"
+                        value="{{old('city')}}"
                         placeholder="Enter your city"
                         class="form-control form-control-sm @error('city') is-invalid @enderror"
                         required
@@ -138,6 +145,7 @@
                     <input 
                         type="text"
                         name="country"
+                        value="{{old('country')}}"
                         placeholder="Enter your country"
                         class="form-control form-control-sm @error('country') is-invalid @enderror"
                         required
@@ -155,6 +163,7 @@
                     <input 
                         type="password"
                         name="password"
+                        value="{{old('password')}}"
                         placeholder="Enter your password"
                         class="form-control form-control-sm @error('password') is-invalid @enderror"
                         autocomplete="new-password"
@@ -173,6 +182,7 @@
                     <input 
                         type="password"
                         name="confirm_password"
+                        value="{{old('confirm_password')}}"
                         placeholder="Re-enter password"
                         class="form-control form-control-sm @error('confirm_password') is-invalid @enderror"
                     >
