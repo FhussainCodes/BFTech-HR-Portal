@@ -9,7 +9,7 @@
         </div>
 
         <!-- Center -->
-        <div class="mx-auto">
+        <!-- <div class="mx-auto">
             @if(session('attendanceStatus') == 'checkIn')
                 <form action="{{ route('checkOutPage') }}" method="POST">
                     @csrf
@@ -25,7 +25,7 @@
                     </button>
                 </form>
             @endif
-        </div>
+        </div> -->
 
         <!-- Right Side -->
         <div class="d-flex align-items-center gap-2">

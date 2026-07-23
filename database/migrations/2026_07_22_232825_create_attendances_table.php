@@ -17,7 +17,8 @@ return new class extends Migration
             $table->string('user_name');
             $table->date('date');                  
             $table->time('check_in');              
-            $table->time('check_out')->nullable(); 
+            $table->time('check_out')->nullable();
+            $table->string('duration'); 
             $table->timestamps();
         });
     }
