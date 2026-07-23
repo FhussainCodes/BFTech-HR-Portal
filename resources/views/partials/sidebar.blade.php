@@ -24,12 +24,12 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link text-dark rounded small active py-2">
+                <a href="{{route('attendancePage')}}" class="nav-link text-dark rounded small active py-2">
                      <i class="bi bi-person-check me-2"></i>  Attendace
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link text-dark rounded small active py-2">
+                <a href="{{route('attendanceHistoryPage')}}" class="nav-link text-dark rounded small active py-2">
                     <i class="bi bi-clock-history me-2"></i> Attendance History
                 </a>
             </li>

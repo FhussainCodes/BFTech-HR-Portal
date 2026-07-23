@@ -78,11 +78,17 @@ public function checkOut()
 
 public function attendance()
 {
+    $user = session('user');
 
+    $todayAttendance = Attendance::where('user_id', $user['id'])
+                        ->whereDate('date', Carbon::today())
+                        ->first();
+
+    return view('employee.attendance', compact('todayAttendance'));
 }
 
 public function history()
 {
-
+    return view('employee.attendance-history');
 }
 }
