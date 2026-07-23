@@ -68,8 +68,8 @@ public function checkOut()
     $attendance->check_out = Carbon::now();
 
     $attendance->duration = Carbon::parse($attendance->check_in)
-                            ->diff(Carbon::now())
-                            ->format('%h Hours %i Minutes');
+                        ->diff(Carbon::now())
+                        ->format('%h Hours %i Minutes %s Seconds');
 
     $attendance->save();
 
@@ -89,6 +89,12 @@ public function attendance()
 
 public function history()
 {
-    return view('employee.attendance-history');
+    $user = session('user');
+
+    $attendanceLogs = Attendance::where('user_id', $user['id'])
+                        ->latest()
+                        ->get();
+
+    return view('employee.attendance-history', compact('attendanceLogs'));
 }
 }
