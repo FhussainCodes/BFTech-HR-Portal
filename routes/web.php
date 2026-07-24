@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AttendanceController;
+use App\Http\Controllers\ProfileController;
 
 Route::get('/', function () {
     return view('auth.loginUser');
@@ -11,7 +12,7 @@ Route::get('/', function () {
 
 // For Dashboard
 Route::get('/dashboard',function(){
-    return view('employee.dashboard');
+    return view('employee.dashboard.index');
 })->name('dashboardPage');
 
 Route::get('/dashboard', [AttendanceController::class, 'index'])->name('dashboardPage');
@@ -33,5 +34,6 @@ Route::post('/check-out',[AttendanceController::class,'checkOut'])->name('checkO
 
 // For Get Attendance and Attendance Histroy Page
 Route::get('/attendance', [AttendanceController::class, 'attendance'])->name('attendancePage');
-
 Route::get('/attendance-history', [AttendanceController::class, 'history'])->name('attendanceHistoryPage');
+
+Route::get('/emp-profile',[ProfileController::class,'show'])->name('emp-profile-index');

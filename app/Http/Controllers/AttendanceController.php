@@ -21,7 +21,7 @@ public function index()
                         ->latest()
                         ->get();
 
-    return view('employee.dashboard', compact(
+    return view('employee.dashboard.index', compact(
         'todayAttendance',
         'attendanceLogs'
     ));
@@ -84,7 +84,7 @@ public function attendance()
                         ->whereDate('date', Carbon::today())
                         ->first();
 
-    return view('employee.attendance', compact('todayAttendance'));
+    return view('employee.attendance.index', compact('todayAttendance'));
 }
 
 public function history()
@@ -95,6 +95,6 @@ public function history()
                         ->latest()
                         ->get();
 
-    return view('employee.attendance-history', compact('attendanceLogs'));
+    return view('employee.attendance.history', compact('attendanceLogs'));
 }
 }
