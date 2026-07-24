@@ -36,4 +36,6 @@ Route::post('/check-out',[AttendanceController::class,'checkOut'])->name('checkO
 Route::get('/attendance', [AttendanceController::class, 'attendance'])->name('attendancePage');
 Route::get('/attendance-history', [AttendanceController::class, 'history'])->name('attendanceHistoryPage');
 
+// For Employee Profile Index Page
 Route::get('/emp-profile',[ProfileController::class,'show'])->name('emp-profile-index');
+Route::post('/upl-image',[ProfileController::class,'uploadImage'])->name('profileImage');

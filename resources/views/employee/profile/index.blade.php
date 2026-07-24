@@ -23,6 +23,7 @@
                     height="150"
                     style="object-fit:cover;"
                 >
+                <!-- {{ $user->profile_image }} -->
 
             @else
 
@@ -36,7 +37,7 @@
 
             @endif
 
-            <form action="{{ route('profile.image') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('profileImage') }}" method="POST" enctype="multipart/form-data">
 
                 @csrf
 
@@ -45,6 +46,9 @@
                     name="profile_image"
                     class="form-control mb-3"
                 >
+                @error('profile_image')
+                <div class="text-danger">{{ $message }}</div>
+                @enderror
 
                 <button class="btn btn-primary">
                     Upload Image
@@ -67,7 +71,7 @@
             </strong>
 
             <a
-                href="{{ route('profile.personal.edit') }}"
+                href="#"
                 class="btn btn-sm btn-warning"
             >
                 Edit
@@ -96,7 +100,7 @@
             </strong>
 
             <a
-                href="{{ route('profile.contact.edit') }}"
+                href="#"
                 class="btn btn-sm btn-warning"
             >
                 Edit
@@ -125,7 +129,7 @@
             </strong>
 
             <a
-                href="{{ route('profile.other.edit') }}"
+                href="#"
                 class="btn btn-sm btn-warning"
             >
                 Edit
