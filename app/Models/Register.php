@@ -16,7 +16,8 @@ class Register extends Model
         'phone_number', 
         'city', 
         'country', 
-        'password', 
+        'password',
+        'profile_image', 
         'confirm_password', 
     ];
 
