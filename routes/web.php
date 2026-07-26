@@ -26,13 +26,12 @@ Route::post("/register",[RegisterController::class,'store'])->name('registerUser
 Route::get('/login',[LoginController::class,'create'])->name('loginPage');
 Route::post('/login',[LoginController::class,'checkLogin'])->name('loginUser');
 
-// For Logout 
-Route::post('/logout',[LoginController::class,'logout'])->name('logoutPage');
-
 // For Forget Password
 Route::get('/forgot',[ForgotPasswordController::class,'create'])->name('forgotPage');
+Route::post('/forgot',[ForgotPasswordController::class,'sendOtp'])->name('sendOtpEmail');
 
-
+// For Logout 
+Route::post('/logout',[LoginController::class,'logout'])->name('logoutPage');
 
 // For Attendance Mark Page
 Route::post('/check-in',[AttendanceController::class,'checkIn'])->name('checkInPage');
@@ -45,10 +44,6 @@ Route::get('/attendance-history', [AttendanceController::class, 'history'])->nam
 // For Employee Profile Index Page
 Route::get('/emp-profile',[ProfileController::class,'show'])->name('emp-profile-index');
 Route::post('/upl-image',[ProfileController::class,'uploadImage'])->name('profileImage');
-
-
-
-
 
 // Employee Profile Edit Routes
 Route::prefix('profile')->group(function(){
@@ -67,5 +62,4 @@ Route::put('/designation/update',[ProfileController::class,'updateDesignation'])
     // For Employee Profile Other Info Edit Page
 Route::get('/other/edit',[ProfileController::class,'editOther'])->name('profile.other.edit');
 Route::put('/other/update',[ProfileController::class,'updateOther'])->name('profile.other.update');
-    
 });
