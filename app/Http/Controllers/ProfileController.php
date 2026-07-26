@@ -30,4 +30,13 @@ class ProfileController extends Controller
             }
         return back()->with('success', 'Profile image updated successfully.');
     }    
+
+    public function editPersonal(){}
+    public function updatePersonal(){}
+    public function editContact(){}
+    public function updateContact(){}
+    public function editDesignation(){}
+    public function updateDesignation(){}
+    public function editOther(){}
+    public function updateOther(){}
 }
