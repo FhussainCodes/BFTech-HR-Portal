@@ -11,7 +11,7 @@
 
             <h4 class="mb-0">
                 <i class="bi bi-person-lines-fill me-2"></i>
-                Edit Personal Information
+                Edit Contact Information
             </h4>
 
             <a href="{{ route('emp-profile-index') }}"

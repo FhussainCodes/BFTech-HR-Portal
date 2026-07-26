@@ -77,17 +77,26 @@ class ProfileController extends Controller
 
     // For Designation
     public function editDesignation(){
-        // $user = Register::find(session('user')['id']);
-        // return view('employee.profile.editDesignationPersonal', compact('user'));
+        $user = Register::find(session('user')['id']);
+        return view('employee.profile.editDesignation', compact('user'));
     }
 
-    public function updateDesignation(){
+    public function updateDesignation(DesignationInfoRequest $request){
 
+    $user = Register::find(session('user')['id']);
+    $user->update($request->validated());
+    $user->save();
+
+    session([
+        'user' => $user
+    ]);
+
+    return redirect()->route('emp-profile-index')->with('success', 'Personal information updated successfully.');   
     }
 
     public function editOther(){
-                $user = Register::find(session('user')['id']);
-        return view('employee.profile.editOtherPersonal', compact('user'));
+        //         $user = Register::find(session('user')['id']);
+        // return view('employee.profile.editOther', compact('user'));
     }
 
     public function updateOther(){
