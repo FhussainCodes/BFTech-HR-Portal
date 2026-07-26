@@ -31,7 +31,12 @@ class ProfileController extends Controller
         return back()->with('success', 'Profile image updated successfully.');
     }    
 
-    public function editPersonal(){}
+    public function editPersonal(){
+
+        $user = Register::find(session('user')['id']);
+        return view('employee.profile.editPersonal', compact('user'));
+    }
+    
     public function updatePersonal(){}
     public function editContact(){}
     public function updateContact(){}
