@@ -6,7 +6,11 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Models\Register;
 use App\Http\Requests\ImageRequest;
+
 use App\Http\Requests\PersonalInfoRequest;
+use App\Http\Requests\ContactInfoRequest;
+use App\Http\Requests\DesignationInfoRequest;
+use App\Http\Requests\OtherInfoRequest;
 
 class ProfileController extends Controller
 {
@@ -38,7 +42,7 @@ class ProfileController extends Controller
         return view('employee.profile.editPersonal', compact('user'));
     }
     
-public function updatePersonal(PersonalInfoRequest $request)
+    public function updatePersonal(PersonalInfoRequest $request)
 {
     $user = Register::find(session('user')['id']);
     $user->update($request->validated());
@@ -51,18 +55,30 @@ public function updatePersonal(PersonalInfoRequest $request)
     return redirect()->route('emp-profile-index')->with('success', 'Personal information updated successfully.');
 }
 
+// For Contact
+
     public function editContact(){
-                $user = Register::find(session('user')['id']);
-        return view('employee.profile.editContactPersonal', compact('user'));
+        $user = Register::find(session('user')['id']);
+        return view('employee.profile.editContact', compact('user'));
     }
 
-    public function updateContact(){
+    public function updateContact(ContactInfoRequest $request){
 
+    $user = Register::find(session('user')['id']);
+    $user->update($request->validated());
+    $user->save();
+
+    session([
+        'user' => $user
+    ]);
+
+    return redirect()->route('emp-profile-index')->with('success', 'Personal information updated successfully.');    
     }
 
+    // For Designation
     public function editDesignation(){
-                $user = Register::find(session('user')['id']);
-        return view('employee.profile.editDesignationPersonal', compact('user'));
+        // $user = Register::find(session('user')['id']);
+        // return view('employee.profile.editDesignationPersonal', compact('user'));
     }
 
     public function updateDesignation(){
