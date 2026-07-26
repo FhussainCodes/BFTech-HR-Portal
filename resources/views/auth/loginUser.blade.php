@@ -58,7 +58,7 @@
             <div class="text-center mt-3">
                 <p class="text-muted small mb-1">
                     Forgot password? 
-                    <a href="#" class="text-decoration-none fw-semibold">Click here</a>
+                    <a href="{{route('forgotPage')}}" class="text-decoration-none fw-semibold">Click here</a>
                 </p>
                 <p class="text-muted small mb-0">
                     Don't have an account? 
