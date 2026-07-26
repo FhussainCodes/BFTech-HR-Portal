@@ -38,7 +38,7 @@ class RegisterRequest extends FormRequest
 
     public function messages(): array{
         return [
-            
+
              // First Name Rules Messages
             'first_name.required'   => 'You forgot to type your first name.',
             'first_name.min'        => 'Names must be 3 or more characters.',
@@ -58,7 +58,6 @@ class RegisterRequest extends FormRequest
             // Age Messages
             'age.required'          => 'Your age is required.',
             'age.integer'           => 'Age must be a number.',
-            'age.digits_between'    => 'Age must be one or two digits.',
             'age.between'           => 'Age must be between 15 and 70 years.',
 
             // Designation Messages
@@ -75,7 +74,6 @@ class RegisterRequest extends FormRequest
             'city.required'        => 'The city field is required.',
             'city.min'             => 'City name must be at least 3 characters.',
             'city.max'             => 'City name cannot exceed 20 characters.',
-            'city.regex'           => 'City can only contain letters, numbers, spaces, hyphens, and underscores.',
             'city.regex'           => 'City can contain only letters and spaces.',
             
 
@@ -94,8 +92,7 @@ class RegisterRequest extends FormRequest
 
             // Confirm Password Messages
             'confirm_password.required' => 'Please confirm your password.',
-            'confirm_password.same'     => 'The confirmation password does not match the chosen password.',
-            
+            'confirm_password.same'     => 'The confirmation password does not match the chosen password.',       
         ];
     }
 }
