@@ -24,7 +24,7 @@ class PersonalInfoRequest extends FormRequest
     {
         return [
             'first_name' => 'required|string|min:3|max:20|regex:/^[A-Za-z\s]+$/',
-            'last_name' => 'nullable|string|min:2|max:35|regex:/^[A-Za-z\s]+$/',
+            'last_name' => 'required|string|min:3|max:35|regex:/^[A-Za-z\s]+$/',
             'age' => 'required|integer|between:15,70',
         ];
     }
@@ -43,6 +43,7 @@ class PersonalInfoRequest extends FormRequest
         'last_name.min'       => 'Last name must be at least 2 characters.',
         'last_name.max'       => 'Last name cannot exceed 35 characters.',
         'last_name.regex'     => 'Last name can contain only letters and spaces.',
+        'last_name.required'  => 'Last name is required.',
 
         // Age
         'age.required'        => 'Your age is required.',

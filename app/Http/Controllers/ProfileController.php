@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Models\Register;
 use App\Http\Requests\ImageRequest;
+use App\Http\Requests\PersonalInfoRequest;
 
 class ProfileController extends Controller
 {
@@ -37,11 +38,43 @@ class ProfileController extends Controller
         return view('employee.profile.editPersonal', compact('user'));
     }
     
-    public function updatePersonal(){}
-    public function editContact(){}
-    public function updateContact(){}
-    public function editDesignation(){}
-    public function updateDesignation(){}
-    public function editOther(){}
-    public function updateOther(){}
+public function updatePersonal(PersonalInfoRequest $request)
+{
+    $user = Register::find(session('user')['id']);
+    $user->update($request->validated());
+    $user->save();
+
+    session([
+        'user' => $user
+    ]);
+
+    return redirect()->route('emp-profile-index')->with('success', 'Personal information updated successfully.');
+}
+
+    public function editContact(){
+                $user = Register::find(session('user')['id']);
+        return view('employee.profile.editContactPersonal', compact('user'));
+    }
+
+    public function updateContact(){
+
+    }
+
+    public function editDesignation(){
+                $user = Register::find(session('user')['id']);
+        return view('employee.profile.editDesignationPersonal', compact('user'));
+    }
+
+    public function updateDesignation(){
+
+    }
+
+    public function editOther(){
+                $user = Register::find(session('user')['id']);
+        return view('employee.profile.editOtherPersonal', compact('user'));
+    }
+
+    public function updateOther(){
+
+    }
 }

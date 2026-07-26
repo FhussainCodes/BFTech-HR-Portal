@@ -52,7 +52,7 @@
     <div class="card shadow-sm mb-3">
         <div class="card-header d-flex justify-content-between align-items-center">
             <strong>Personal Information</strong>
-            <a href="#" class="btn btn-sm btn-warning">Edit</a>
+            <a href="{{route('profile.personal.edit')}}" class="btn btn-sm btn-warning">Edit</a>
         </div>
         <div class="card-body">
             <p class="mb-1"><strong>First Name:</strong> {{ $user->first_name }}</p>
@@ -65,7 +65,7 @@
     <div class="card shadow-sm mb-3">
         <div class="card-header d-flex justify-content-between align-items-center">
             <strong>Contact Information</strong>
-            <a href="#" class="btn btn-sm btn-warning">Edit</a>
+            <a href="{{route('profile.contact.edit')}}" class="btn btn-sm btn-warning">Edit</a>
         </div>
         <div class="card-body">
             <p class="mb-1"><strong>Email:</strong> {{ $user->email }}</p>
@@ -77,7 +77,7 @@
     <div class="card shadow-sm mb-3">
         <div class="card-header d-flex justify-content-between align-items-center">
             <strong>Designation</strong>
-            <a href="#" class="btn btn-sm btn-warning">Edit</a>
+            <a href="{{route('profile.designation.edit')}}" class="btn btn-sm btn-warning">Edit</a>
         </div>
         <div class="card-body">
             <p class="mb-0"><strong>Designation:</strong> {{ $user->designation }}</p>
@@ -88,7 +88,7 @@
     <div class="card shadow-sm mb-3">
         <div class="card-header d-flex justify-content-between align-items-center">
             <strong>Other Information</strong>
-            <a href="#" class="btn btn-sm btn-warning">Edit</a>
+            <a href="{{route('profile.other.edit')}}" class="btn btn-sm btn-warning">Edit</a>
         </div>
         <div class="card-body">
             <p class="mb-1"><strong>City:</strong> {{ $user->city }}</p>

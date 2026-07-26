@@ -24,7 +24,7 @@ class RegisterRequest extends FormRequest
     return [
 
         'first_name' => 'required|string|min:3|max:20|regex:/^[A-Za-z\s]+$/',
-        'last_name' => 'nullable|string|min:3|max:35|regex:/^[A-Za-z\s]+$/',
+        'last_name' => 'required|string|min:3|max:35|regex:/^[A-Za-z\s]+$/',
         'email' => 'required|email|unique:register',
         'age' => 'required|integer|between:15,70',
         'designation' => 'required|string|min:2|max:30|regex:/^[A-Za-z\s]+$/',
@@ -49,6 +49,7 @@ class RegisterRequest extends FormRequest
             'last_name.min'         => 'Last name must be at least 2 characters.',
             'last_name.max'         => 'Last name cannot exceed 35 characters.',
             'last_name.regex'       => 'Last name can contain only letters and spaces.',
+            'last_name.required' => 'Last name is required.',
 
             // Email Messages
             'email.required'       => 'An email address is required.',
