@@ -39,3 +39,23 @@ Route::get('/attendance-history', [AttendanceController::class, 'history'])->nam
 // For Employee Profile Index Page
 Route::get('/emp-profile',[ProfileController::class,'show'])->name('emp-profile-index');
 Route::post('/upl-image',[ProfileController::class,'uploadImage'])->name('profileImage');
+
+// Employee Profile Edit Routes
+Rout::prefix('profile')->group(function(){
+    // For Employee Profile Personal Info Edit Page
+Route::get('/profile/personal/edit',[ProfileController::class,'editPersonal'])->name('');
+Route::put('/profile/personal/update',[ProfileController::class,'updatePersonal'])->name('');
+
+    // For Employee Profile Contact Info Edit Page
+Route::put('/profile/contact/edit',[ProfileController::class,'editContact'])->name('');
+Route::put('/profile/contact/update',[ProfileController::class,'updateContact'])->name('');
+    
+    // For Employee Profile Designation Info Edit Page
+Route::put('/profile/designation/edit',[ProfileController::class,'editDesignation'])->name('');
+Route::put('/profile/designation/update',[ProfileController::class,'updateDesignation'])->name('');
+    
+    // For Employee Profile Other Info Edit Page
+Route::put('/profile/other/edit',[ProfileController::class,'editOther'])->name('');
+Route::put('/profile/other/update',[ProfileController::class,'updateOther'])->name('');
+    
+});
