@@ -46,7 +46,6 @@ class ProfileController extends Controller
 {
     $user = Register::find(session('user')['id']);
     $user->update($request->validated());
-    $user->save();
 
     session([
         'user' => $user
@@ -66,13 +65,12 @@ class ProfileController extends Controller
 
     $user = Register::find(session('user')['id']);
     $user->update($request->validated());
-    $user->save();
 
     session([
         'user' => $user
     ]);
 
-    return redirect()->route('emp-profile-index')->with('success', 'Personal information updated successfully.');    
+    return redirect()->route('emp-profile-index')->with('success', 'Contact information updated successfully.');    
     }
 
     // For Designation
@@ -85,21 +83,28 @@ class ProfileController extends Controller
 
     $user = Register::find(session('user')['id']);
     $user->update($request->validated());
-    $user->save();
 
     session([
         'user' => $user
     ]);
 
-    return redirect()->route('emp-profile-index')->with('success', 'Personal information updated successfully.');   
+    return redirect()->route('emp-profile-index')->with('success', 'Designation information updated successfully.');   
     }
 
     public function editOther(){
-        //         $user = Register::find(session('user')['id']);
-        // return view('employee.profile.editOther', compact('user'));
+        $user = Register::find(session('user')['id']);
+        return view('employee.profile.editOther', compact('user'));
     }
 
-    public function updateOther(){
+    public function updateOther(OtherInfoRequest $request){
 
+    $user = Register::find(session('user')['id']);
+    $user->update($request->validated());
+
+    session([
+        'user' => $user
+    ]);
+
+    return redirect()->route('emp-profile-index')->with('success', 'Other information updated successfully.'); 
     }
 }

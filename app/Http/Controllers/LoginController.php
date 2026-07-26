@@ -45,7 +45,7 @@ class LoginController extends Controller
 
         $request->session()->flush();
         $request->session()->regenerateToken();
-         return redirect()->route('loginPage');
+        return redirect()->route('loginPage');
          
     }
 }
