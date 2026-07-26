@@ -24,9 +24,9 @@ class RegisterRequest extends FormRequest
     return [
 
         'first_name' => 'required|string|min:3|max:20|regex:/^[A-Za-z\s]+$/',
-        'last_name' => 'required|string|min:3|max:35|regex:/^[A-Za-z\s]+$/',
+        'last_name' => 'nullable|string|min:3|max:35|regex:/^[A-Za-z\s]+$/',
         'email' => 'required|email|unique:register',
-        'age' => 'required|integer|digits_between:1,2|between:15,70',
+        'age' => 'required|integer|between:15,70',
         'designation' => 'required|string|min:2|max:30|regex:/^[A-Za-z\s]+$/',
         'phone_number' => 'required|regex:/^(03[0-9]{2}[0-9]{7})$/',
         'city' => 'required|string|min:3|max:20|regex:/^[A-Za-z\s]+$/',
@@ -38,6 +38,7 @@ class RegisterRequest extends FormRequest
 
     public function messages(): array{
         return [
+            
              // First Name Rules Messages
             'first_name.required'   => 'You forgot to type your first name.',
             'first_name.min'        => 'Names must be 3 or more characters.',

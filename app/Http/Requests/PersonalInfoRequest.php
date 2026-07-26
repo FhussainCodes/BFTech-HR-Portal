@@ -23,7 +23,9 @@ class PersonalInfoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'first_name' => 'required|string|min:3|max:20|regex:/^[A-Za-z\s]+$/',
+            'last_name' => 'nullable|string|min:3|max:35|regex:/^[A-Za-z\s]+$/',
+            'age' => 'required|integer|between:15,70',
         ];
     }
 }
