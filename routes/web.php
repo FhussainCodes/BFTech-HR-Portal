@@ -28,6 +28,10 @@ Route::post('/login',[LoginController::class,'checkLogin'])->name('loginUser');
 // For Logout 
 Route::post('/logout',[LoginController::class,'logout'])->name('logoutPage');
 
+
+
+
+
 // For Attendance Mark Page
 Route::post('/check-in',[AttendanceController::class,'checkIn'])->name('checkInPage');
 Route::post('/check-out',[AttendanceController::class,'checkOut'])->name('checkOutPage');
@@ -40,22 +44,26 @@ Route::get('/attendance-history', [AttendanceController::class, 'history'])->nam
 Route::get('/emp-profile',[ProfileController::class,'show'])->name('emp-profile-index');
 Route::post('/upl-image',[ProfileController::class,'uploadImage'])->name('profileImage');
 
+
+
+
+
 // Employee Profile Edit Routes
-Rout::prefix('profile')->group(function(){
+Route::prefix('profile')->group(function(){
     // For Employee Profile Personal Info Edit Page
-Route::get('/profile/personal/edit',[ProfileController::class,'editPersonal'])->name('');
-Route::put('/profile/personal/update',[ProfileController::class,'updatePersonal'])->name('');
+Route::get('/personal/edit',[ProfileController::class,'editPersonal'])->name('profile.personal.edit');
+Route::put('/personal/update',[ProfileController::class,'updatePersonal'])->name('profile.personal.update');
 
     // For Employee Profile Contact Info Edit Page
-Route::put('/profile/contact/edit',[ProfileController::class,'editContact'])->name('');
-Route::put('/profile/contact/update',[ProfileController::class,'updateContact'])->name('');
+Route::get('/contact/edit',[ProfileController::class,'editContact'])->name('profile.contact.edit');
+Route::put('/contact/update',[ProfileController::class,'updateContact'])->name('profile.contact.update');
     
     // For Employee Profile Designation Info Edit Page
-Route::put('/profile/designation/edit',[ProfileController::class,'editDesignation'])->name('');
-Route::put('/profile/designation/update',[ProfileController::class,'updateDesignation'])->name('');
+Route::get('/designation/edit',[ProfileController::class,'editDesignation'])->name('profile.designation.edit');
+Route::put('/designation/update',[ProfileController::class,'updateDesignation'])->name('profile.designation.update');
     
     // For Employee Profile Other Info Edit Page
-Route::put('/profile/other/edit',[ProfileController::class,'editOther'])->name('');
-Route::put('/profile/other/update',[ProfileController::class,'updateOther'])->name('');
+Route::get('/other/edit',[ProfileController::class,'editOther'])->name('profile.other.edit');
+Route::put('/other/update',[ProfileController::class,'updateOther'])->name('profile.other.update');
     
 });
