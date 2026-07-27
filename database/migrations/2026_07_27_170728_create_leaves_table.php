@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('leaves', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('employee_id')->constrained('register');
+            $table->string('leave_type');
+            $table->date('from_date');
+            $table->date('to_date');
+            $table->text('reason')->nullable();
+            $table->string('status')->default('Pending');
             $table->timestamps();
         });
     }
