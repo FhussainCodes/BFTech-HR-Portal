@@ -14,7 +14,7 @@
             We have sent a 6-digit OTP to your email.
         </p>
 
-        <form action="{{ route('verifyOtp') }}" method="POST">
+        <form action="{{ route('verifyotp') }}" method="POST">
 
             @csrf
 

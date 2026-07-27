@@ -34,6 +34,10 @@ Route::post('/forgot',[ForgotPasswordController::class,'sendOtp'])->name('sendOt
 Route::get('/verifyOTP',[ForgotPasswordController::class,'showVerifyOtp'])->name('VerifyOtpPage');
 Route::post('/verifyOTP',[ForgotPasswordController::class,'verifyOtp'])->name('verifyotp');
 
+// For Verify OTP
+Route::get('/resetPassword',[ForgotPasswordController::class,'showResetPassword'])->name('ResetPasswordPage');
+Route::post('/resetPassword',[ForgotPasswordController::class,'resetPassword'])->name('ResetPassword');
+
 // For Logout 
 Route::post('/logout',[LoginController::class,'logout'])->name('logoutPage');
 

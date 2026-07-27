@@ -1,12 +1,17 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Hash;
+use App\Mail\OtpMail;
 
 use Illuminate\Http\Request;
 use App\Models\Register;
+use App\Models\PasswordResetOtp;
 use App\Http\Requests\ForgotPasswordRequest;
 use App\Http\Requests\ResetPasswordRequest;
-use App\Models\PasswordResetOtp;
+use App\Http\Requests\VerifyOtpRequest;
+
 
 class ForgotPasswordController extends Controller
 {
@@ -38,19 +43,19 @@ class ForgotPasswordController extends Controller
             // $passwordReset->otp = $otp;
             // $passwordReset->expires_at = now()->addMinutes(5);
             // $passwordReset->save();
-            PasswordResetOtp::update([
+            $passwordReset->update([
                     'otp' => $otp,
                     'expires_at' => now()->addMinutes(5),
             ]);
         }
 
-        Mail::to($email)->queue(new OptMail($otp));
+        Mail::to($email)->queue(new OtpMail($otp));
         
         session([
             'reset_email' => $email
         ]);        
 
-        return redirect()->route('verifyOtpPage')->with('success', 'OTP has been sent to your email.');
+        return redirect()->route('VerifyOtpPage')->with('success', 'OTP has been sent to your email.');
     }
 
     public function showVerifyOtp(){
@@ -66,25 +71,53 @@ class ForgotPasswordController extends Controller
             return redirect()->route('forgotPasswordPage')->withErrors(['email' => 'Please request a new OTP.']);
         }
 
-        if($request->otp !=$passwordReset->otp ){
+        if($request->otp != $passwordReset->otp ){
             return back()->withErrors(['otp' => 'The OTP you entered is incorrect.']);
         }
 
-        if(now->hasGreaterThan($passwordReset->expires_at)){
+        if(now()->isAfter($passwordReset->expires_at)){
             return back()->withErrors(['otp' => 'The OTP you entered is expired.']);
         }
 
         session([
             'reset_email' => $email,
-            'otp_vrified' => true,
+            'otp_verified' => true,
         ]);
 
-        return redirect()->route('resetPasswordPage');
+        return redirect()->route('ResetPasswordPage');
 
     }
 
     public function showResetPassword(){
-        
+
+        if(!session('reset_email') || !session('otp_verified') ){
+            return redirect()->route('forgotPage')->withErrors(['email' => 'please enter your otp first']);
+            }
+
+        return view('auth.resetPassword');
     }
-    public function resetPassword(){}
+
+    public function resetPassword(ResetPasswordRequest $request){
+
+        if(!session('reset_email') || !session('otp_verified')){
+            return redirect()->route('forgotPage')->with([
+                'errors' => 'please enter your otp first'
+            ]);
+        }
+
+        $email = session('reset_email');
+        $user = Register::where('email',$email)->first();
+
+        $user->password = Hash::make($request->password);
+        $user->save();
+
+        PasswordResetOtp::where('email',$email)->delete();
+        session()->forget([
+            'reset_email',
+            'otp_verified'
+        ]);
+
+        return redirect()->route('loginPage')->with('success','Password reset successfully. Please login.');
+
+    }
 }
