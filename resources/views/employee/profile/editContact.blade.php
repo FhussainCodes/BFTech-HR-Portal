@@ -39,7 +39,7 @@
                         </label>
 
                         <input
-                            type="text"
+                            type="email"
                             name="email"
                             value="{{ old('email', $user->email) }}"
                             class="form-control @error('email') is-invalid @enderror"

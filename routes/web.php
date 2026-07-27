@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ForgotPasswordController;
+use App\Middleware\CityCheck;
 
 Route::get('/', function () {
     return view('auth.loginUser');
@@ -69,5 +70,5 @@ Route::put('/designation/update',[ProfileController::class,'updateDesignation'])
     
     // For Employee Profile Other Info Edit Page
 Route::get('/other/edit',[ProfileController::class,'editOther'])->name('profile.other.edit');
-Route::put('/other/update',[ProfileController::class,'updateOther'])->name('profile.other.update');
+Route::put('/other/update',[ProfileController::class,'updateOther'])->name('profile.other.update')->middleware('registercheck');
 });

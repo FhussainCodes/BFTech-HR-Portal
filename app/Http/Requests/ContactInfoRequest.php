@@ -22,8 +22,9 @@ class ContactInfoRequest extends FormRequest
      */
     public function rules(): array
     {
+        // dd('request working');
         return [
-            'email'        => 'required|email|unique:register,email,' . session('user')['id'],
+            'email'        => 'required|email|ends_with:@gmail.com|unique:register,email,' . session('user')['id'],
             'phone_number' => 'required|regex:/^(03[0-9]{2}[0-9]{7})$/',
         ];
     }
