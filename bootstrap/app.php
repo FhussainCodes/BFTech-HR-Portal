@@ -14,10 +14,14 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        $middleware->appendToGroup('registercheck',[
-            AgeCheck::class,
-            CityCheck::class,
-        ]);
+        // $middleware->appendToGroup('registercheck',[
+        //     AgeCheck::class,
+        //     CityCheck::class,
+        // ]);
+        $middleware->alias([
+        'age.check' => \App\Http\Middleware\AgeCheck::class,
+        'city.check' => \App\Http\Middleware\CityCheck::class,
+    ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->shouldRenderJsonWhen(

@@ -6,7 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ForgotPasswordController;
-use App\Middleware\CityCheck;
+
 
 Route::get('/', function () {
     return view('auth.loginUser');
@@ -21,7 +21,7 @@ Route::get('/dashboard', [AttendanceController::class, 'index'])->name('dashboar
 
 // For Register Page
 Route::get("/register",[RegisterController::class,'create']);
-Route::post("/register",[RegisterController::class,'store'])->name('registerUser')->middleware('registercheck');
+Route::post("/register",[RegisterController::class,'store'])->name('registerUser')->middleware(['age.check','city.check']);
 
 // For Login Page
 Route::get('/login',[LoginController::class,'create'])->name('loginPage');
@@ -58,7 +58,7 @@ Route::post('/upl-image',[ProfileController::class,'uploadImage'])->name('profil
 Route::prefix('profile')->group(function(){
     // For Employee Profile Personal Info Edit Page
 Route::get('/personal/edit',[ProfileController::class,'editPersonal'])->name('profile.personal.edit');
-Route::put('/personal/update',[ProfileController::class,'updatePersonal'])->name('profile.personal.update');
+Route::put('/personal/update',[ProfileController::class,'updatePersonal'])->name('profile.personal.update')->middleware('age.check');
 
     // For Employee Profile Contact Info Edit Page
 Route::get('/contact/edit',[ProfileController::class,'editContact'])->name('profile.contact.edit');
@@ -70,5 +70,5 @@ Route::put('/designation/update',[ProfileController::class,'updateDesignation'])
     
     // For Employee Profile Other Info Edit Page
 Route::get('/other/edit',[ProfileController::class,'editOther'])->name('profile.other.edit');
-Route::put('/other/update',[ProfileController::class,'updateOther'])->name('profile.other.update')->middleware('registercheck');
+Route::put('/other/update',[ProfileController::class,'updateOther'])->name('profile.other.update')->middleware('city.check');
 });
