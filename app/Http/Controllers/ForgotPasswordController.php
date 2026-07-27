@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\ForgotPasswordRequest;
 use App\Models\Register;
+use App\Http\Requests\ForgotPasswordRequest;
+use App\Http\Requests\ResetPasswordRequest;
 use App\Models\PasswordResetOtp;
 
 class ForgotPasswordController extends Controller
@@ -37,7 +38,7 @@ class ForgotPasswordController extends Controller
             // $passwordReset->otp = $otp;
             // $passwordReset->expires_at = now()->addMinutes(5);
             // $passwordReset->save();
-            $PasswordResetOtp::update([
+            PasswordResetOtp::update([
                     'otp' => $otp,
                     'expires_at' => now()->addMinutes(5),
             ]);
@@ -51,4 +52,39 @@ class ForgotPasswordController extends Controller
 
         return redirect()->route('verifyOtpPage')->with('success', 'OTP has been sent to your email.');
     }
+
+    public function showVerifyOtp(){
+        return view('auth.verifyOtp');
+    }
+
+    public function verifyOtp(VerifyOtpRequest $request){
+
+        $email = session('reset_email');
+        $passwordReset = PasswordResetOtp::where('email',$email)->first();
+        
+        if(!$passwordReset){
+            return redirect()->route('forgotPasswordPage')->withErrors(['email' => 'Please request a new OTP.']);
+        }
+
+        if($request->otp !=$passwordReset->otp ){
+            return back()->withErrors(['otp' => 'The OTP you entered is incorrect.']);
+        }
+
+        if(now->hasGreaterThan($passwordReset->expires_at)){
+            return back()->withErrors(['otp' => 'The OTP you entered is expired.']);
+        }
+
+        session([
+            'reset_email' => $email,
+            'otp_vrified' => true,
+        ]);
+
+        return redirect()->route('resetPasswordPage');
+
+    }
+
+    public function showResetPassword(){
+        
+    }
+    public function resetPassword(){}
 }

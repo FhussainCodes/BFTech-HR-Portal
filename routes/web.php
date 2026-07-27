@@ -30,10 +30,14 @@ Route::post('/login',[LoginController::class,'checkLogin'])->name('loginUser');
 Route::get('/forgot',[ForgotPasswordController::class,'create'])->name('forgotPage');
 Route::post('/forgot',[ForgotPasswordController::class,'sendOtp'])->name('sendOtpEmail');
 
+// For Verify OTP
+Route::get('/verifyOTP',[ForgotPasswordController::class,'showVerifyOtp'])->name('VerifyOtpPage');
+Route::post('/verifyOTP',[ForgotPasswordController::class,'verifyOtp'])->name('verifyotp');
+
 // For Logout 
 Route::post('/logout',[LoginController::class,'logout'])->name('logoutPage');
 
-// For Attendance Mark Page
+// For Attendance Check In & Check Out Page
 Route::post('/check-in',[AttendanceController::class,'checkIn'])->name('checkInPage');
 Route::post('/check-out',[AttendanceController::class,'checkOut'])->name('checkOutPage');
 
