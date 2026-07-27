@@ -44,7 +44,11 @@ class ForgotPasswordController extends Controller
         }
 
         Mail::to($email)->queue(new OptMail($otp));
+        
+        session([
+            'reset_email' => $email
+        ]);        
 
-
+        return redirect()->route('verifyOtpPage')->with('success', 'OTP has been sent to your email.');
     }
 }
