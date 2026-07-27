@@ -44,7 +44,6 @@ class LeaveRequest extends FormRequest
         'to_date.date' => 'Please enter a valid end date.',
         'to_date.after_or_equal' => 'The end date must be the same as or after the start date.',
 
-        'reason.string' => 'Reason must be valid text.',
     ];
 }
 }
