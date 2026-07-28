@@ -4,7 +4,7 @@
 
 <div class="container-fluid">
 
-    <h3 class="mb-4">My Profile</h3>
+    <h3 class="mb-4">{{ __('profile.my_profile') }}</h3>
 
     <!-- Profile Image Card -->
     <div class="card shadow-sm mb-3">
@@ -31,17 +31,31 @@
             <form action="{{ route('profileImage') }}" method="POST" enctype="multipart/form-data">
                 @csrf
 
-                <input
-                    type="file"
-                    name="profile_image"
-                    class="form-control mb-3"
-                >
+                <!-- Custom Localized File Input -->
+                <div class="mb-3">
+                    <div class="input-group {{ app()->getLocale() == 'ur' ? 'flex-row-reverse' : '' }}">
+                        <label class="btn btn-outline-secondary" for="profile_image_input">
+                            {{ __('profile.choose_file') }}
+                        </label>
+                        <span class="form-control text-muted d-flex align-items-center" id="file-name-display">
+                            {{ __('profile.no_file') }}
+                        </span>
+                        <input 
+                            type="file" 
+                            name="profile_image" 
+                            id="profile_image_input" 
+                            class="d-none" 
+                            onchange="document.getElementById('file-name-display').innerText = this.files[0] ? this.files[0].name : '{{ __('profile.no_file') }}'"
+                        >
+                    </div>
+                </div>
+
                 @error('profile_image')
                 <div class="text-danger mb-2">{{ $message }}</div>
                 @enderror
 
                 <button class="btn btn-primary">
-                    Upload Image
+                    {{ __('profile.upload_image') }}
                 </button>
             </form>
 
@@ -50,49 +64,49 @@
 
     <!-- Personal Information -->
     <div class="card shadow-sm mb-3">
-        <div class="card-header d-flex justify-content-between align-items-center">
-            <strong>Personal Information</strong>
-            <a href="{{route('profile.personal.edit')}}" class="btn btn-sm btn-warning">Edit</a>
+        <div class="card-header d-flex {{ app()->getLocale() == 'ur' ? 'flex-row-reverse' : '' }} justify-content-between align-items-center">
+            <strong>{{ __('profile.personal_info') }}</strong>
+            <a href="{{route('profile.personal.edit')}}" class="btn btn-sm btn-warning">{{ __('profile.edit') }}</a>
         </div>
-        <div class="card-body">
-            <p class="mb-1"><strong>First Name:</strong> {{ $user->first_name }}</p>
-            <p class="mb-1"><strong>Last Name:</strong> {{ $user->last_name }}</p>
-            <p class="mb-0"><strong>Age:</strong> {{ $user->age }}</p>
+        <div class="card-body {{ app()->getLocale() == 'ur' ? 'text-end' : '' }}" {{ app()->getLocale() == 'ur' ? 'dir=rtl' : '' }}>
+            <p class="mb-1"><strong>{{ __('profile.first_name') }}:</strong> {{ $user->first_name }}</p>
+            <p class="mb-1"><strong>{{ __('profile.last_name') }}:</strong> {{ $user->last_name }}</p>
+            <p class="mb-0"><strong>{{ __('profile.age') }}:</strong> {{ $user->age }}</p>
         </div>
     </div>
 
     <!-- Contact Information -->
     <div class="card shadow-sm mb-3">
-        <div class="card-header d-flex justify-content-between align-items-center">
-            <strong>Contact Information</strong>
-            <a href="{{route('profile.contact.edit')}}" class="btn btn-sm btn-warning">Edit</a>
+        <div class="card-header d-flex {{ app()->getLocale() == 'ur' ? 'flex-row-reverse' : '' }} justify-content-between align-items-center">
+            <strong>{{ __('profile.contact_info') }}</strong>
+            <a href="{{route('profile.contact.edit')}}" class="btn btn-sm btn-warning">{{ __('profile.edit') }}</a>
         </div>
-        <div class="card-body">
-            <p class="mb-1"><strong>Email:</strong> {{ $user->email }}</p>
-            <p class="mb-0"><strong>Phone:</strong> {{ $user->phone_number }}</p>
+        <div class="card-body {{ app()->getLocale() == 'ur' ? 'text-end' : '' }}" {{ app()->getLocale() == 'ur' ? 'dir=rtl' : '' }}>
+            <p class="mb-1"><strong>{{ __('profile.email') }}:</strong> {{ $user->email }}</p>
+            <p class="mb-0"><strong>{{ __('profile.phone') }}:</strong> {{ $user->phone_number }}</p>
         </div>
     </div>
 
     <!-- Designation Information -->
     <div class="card shadow-sm mb-3">
-        <div class="card-header d-flex justify-content-between align-items-center">
-            <strong>Designation</strong>
-            <a href="{{route('profile.designation.edit')}}" class="btn btn-sm btn-warning">Edit</a>
+        <div class="card-header d-flex {{ app()->getLocale() == 'ur' ? 'flex-row-reverse' : '' }} justify-content-between align-items-center">
+            <strong>{{ __('profile.designation') }}</strong>
+            <a href="{{route('profile.designation.edit')}}" class="btn btn-sm btn-warning">{{ __('profile.edit') }}</a>
         </div>
-        <div class="card-body">
-            <p class="mb-0"><strong>Designation:</strong> {{ $user->designation }}</p>
+        <div class="card-body {{ app()->getLocale() == 'ur' ? 'text-end' : '' }}" {{ app()->getLocale() == 'ur' ? 'dir=rtl' : '' }}>
+            <p class="mb-0"><strong>{{ __('profile.designation') }}:</strong> {{ $user->designation }}</p>
         </div>
     </div>
 
     <!-- Other Information -->
     <div class="card shadow-sm mb-3">
-        <div class="card-header d-flex justify-content-between align-items-center">
-            <strong>Other Information</strong>
-            <a href="{{route('profile.other.edit')}}" class="btn btn-sm btn-warning">Edit</a>
+        <div class="card-header d-flex {{ app()->getLocale() == 'ur' ? 'flex-row-reverse' : '' }} justify-content-between align-items-center">
+            <strong>{{ __('profile.other_info') }}</strong>
+            <a href="{{route('profile.other.edit')}}" class="btn btn-sm btn-warning">{{ __('profile.edit') }}</a>
         </div>
-        <div class="card-body">
-            <p class="mb-1"><strong>City:</strong> {{ $user->city }}</p>
-            <p class="mb-0"><strong>Country:</strong> {{ $user->country }}</p>
+        <div class="card-body {{ app()->getLocale() == 'ur' ? 'text-end' : '' }}" {{ app()->getLocale() == 'ur' ? 'dir=rtl' : '' }}>
+            <p class="mb-1"><strong>{{ __('profile.city') }}:</strong> {{ $user->city }}</p>
+            <p class="mb-0"><strong>{{ __('profile.country') }}:</strong> {{ $user->country }}</p>
         </div>
     </div>
 

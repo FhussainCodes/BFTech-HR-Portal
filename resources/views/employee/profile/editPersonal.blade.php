@@ -7,23 +7,23 @@
     <div class="card shadow-sm">
 
         <!-- Card Header -->
-        <div class="card-header d-flex justify-content-between align-items-center">
+        <div class="card-header d-flex {{ app()->getLocale() == 'ur' ? 'flex-row-reverse' : '' }} justify-content-between align-items-center">
 
             <h4 class="mb-0">
                 <i class="bi bi-person-lines-fill me-2"></i>
-                Edit Personal Information
+                {{ __('profile.edit_personal_info') }}
             </h4>
 
             <a href="{{ route('emp-profile-index') }}"
                 class="btn btn-outline-secondary btn-sm">
                 <i class="bi bi-x-circle me-1"></i>
-                Close
+                {{ __('profile.close') }}
             </a>
 
         </div>
 
         <!-- Card Body -->
-        <div class="card-body">
+        <div class="card-body {{ app()->getLocale() == 'ur' ? 'text-end' : '' }}" {{ app()->getLocale() == 'ur' ? 'dir=rtl' : '' }}>
 
             <form action="{{ route('profile.personal.update') }}" method="POST">
 
@@ -35,7 +35,7 @@
                     <!-- First Name -->
                     <div class="col-md-6 mb-3">
                         <label class="form-label fw-semibold">
-                            First Name
+                            {{ __('profile.first_name') }}
                         </label>
 
                         <input
@@ -43,7 +43,7 @@
                             name="first_name"
                             value="{{ old('first_name', $user->first_name) }}"
                             class="form-control @error('first_name') is-invalid @enderror"
-                            placeholder="e.g. Farrukh">
+                            placeholder="{{ __('profile.placeholder_first_name') }}">
 
                         @error('first_name')
                             <div class="invalid-feedback">
@@ -55,7 +55,7 @@
                     <!-- Last Name -->
                     <div class="col-md-6 mb-3">
                         <label class="form-label fw-semibold">
-                            Last Name
+                            {{ __('profile.last_name') }}
                         </label>
 
                         <input
@@ -63,7 +63,7 @@
                             name="last_name"
                             value="{{ old('last_name', $user->last_name) }}"
                             class="form-control @error('last_name') is-invalid @enderror"
-                            placeholder="e.g. Hussain">
+                            placeholder="{{ __('profile.placeholder_last_name') }}">
 
                         @error('last_name')
                             <div class="invalid-feedback">
@@ -75,7 +75,7 @@
                     <!-- Age -->
                     <div class="col-md-6 mb-3">
                         <label class="form-label fw-semibold">
-                            Age
+                            {{ __('profile.age') }}
                         </label>
 
                         <input
@@ -83,7 +83,7 @@
                             name="age"
                             value="{{ old('age', $user->age) }}"
                             class="form-control @error('age') is-invalid @enderror"
-                            placeholder="e.g. 25">
+                            placeholder="{{ __('profile.placeholder_age') }}">
 
                         @error('age')
                             <div class="invalid-feedback">
@@ -94,7 +94,7 @@
 
                 </div>
 
-                <div class="text-end">
+                <div class="{{ app()->getLocale() == 'ur' ? 'text-start' : 'text-end' }}">
 
                     <button
                         type="submit"
@@ -102,7 +102,7 @@
 
                         <i class="bi bi-check-circle me-1"></i>
 
-                        Save Changes
+                        {{ __('profile.save_changes') }}
 
                     </button>
 
