@@ -103,4 +103,22 @@ return [
     'send_otp' => 'Send OTP',
     'back_to_login' => 'Back to Login',
 
+    /*
+    |--------------------------------------------------------------------------
+    | Verify OTP & Reset Password
+    |--------------------------------------------------------------------------
+    */
+    'verify_otp_heading'        => 'Verify OTP',
+    'verify_otp_description'    => 'We have sent a 6-digit OTP to your email.',
+    'enter_otp_label'           => 'Enter OTP',
+    'enter_6_digit_otp'         => 'Enter 6-digit OTP',
+    'verify_otp_btn'            => 'Verify OTP',
+
+    'reset_password_heading'    => 'Reset Password',
+    'new_password_label'        => 'New Password',
+    'enter_new_password'        => 'Enter New Password',
+    'confirm_password_label'    => 'Confirm Password',
+    'confirm_password_placeholder' => 'Confirm Password',
+    'reset_password_btn'        => 'Reset Password',
+
 ];

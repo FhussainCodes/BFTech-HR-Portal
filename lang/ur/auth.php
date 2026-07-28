@@ -92,4 +92,22 @@ return [
     'enter_country'         => 'اپنا ملک درج کریں',
     'enter_password'        => 'اپنا پاس ورڈ درج کریں',
     're_enter_password'     => 'دوبارہ پاس ورڈ درج کریں',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Verify OTP & Reset Password
+    |--------------------------------------------------------------------------
+    */
+    'verify_otp_heading'        => 'او ٹی پی کی تصدیق کریں',
+    'verify_otp_description'    => 'ہم نے آپ کے ای میل پر 6 ہندسوں کا او ٹی پی بھیجا ہے۔',
+    'enter_otp_label'           => 'او ٹی پی درج کریں',
+    'enter_6_digit_otp'         => '6 ہندسوں کا او ٹی پی درج کریں',
+    'verify_otp_btn'            => 'او ٹی پی کی تصدیق کریں',
+
+    'reset_password_heading'    => 'پاس ورڈ ری سیٹ کریں',
+    'new_password_label'        => 'نیا پاس ورڈ',
+    'enter_new_password'        => 'نیا پاس ورڈ درج کریں',
+    'confirm_password_label'    => 'پاس ورڈ کی تصدیق کریں',
+    'confirm_password_placeholder' => 'پاس ورڈ کی تصدیق کریں',
+    'reset_password_btn'        => 'پاس ورڈ ری سیٹ کریں',
 ];
