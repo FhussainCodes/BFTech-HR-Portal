@@ -25,4 +25,7 @@ return [
 'placeholder_first_name' => 'e.g. Farrukh',
 'placeholder_last_name' => 'e.g. Hussain',
 'placeholder_age' => 'e.g. 25',
+'edit_other_info' => 'Edit Other Information',
+'placeholder_city' => 'e.g. Lahore',
+'placeholder_country' => 'e.g. Pakistan',
 ];

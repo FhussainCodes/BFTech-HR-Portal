@@ -25,4 +25,7 @@ return [
 'placeholder_first_name' => 'مثلاً: فرخ',
 'placeholder_last_name' => 'مثلاً: حسین',
 'placeholder_age' => 'مثلاً: 25',
+'edit_other_info' => 'دیگر معلومات میں ترمیم کریں',
+'placeholder_city' => 'مثلاً: لاہور',
+'placeholder_country' => 'مثلاً: پاکستان',
 ];

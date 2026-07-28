@@ -7,23 +7,23 @@
     <div class="card shadow-sm">
 
         <!-- Card Header -->
-        <div class="card-header d-flex justify-content-between align-items-center">
+        <div class="card-header d-flex {{ app()->getLocale() == 'ur' ? 'flex-row-reverse' : '' }} justify-content-between align-items-center">
 
             <h4 class="mb-0">
                 <i class="bi bi-person-lines-fill me-2"></i>
-                Edit Other Information
+                {{ __('profile.edit_other_info') }}
             </h4>
 
             <a href="{{ route('emp-profile-index') }}"
                 class="btn btn-outline-secondary btn-sm">
                 <i class="bi bi-x-circle me-1"></i>
-                Close
+                {{ __('profile.close') }}
             </a>
 
         </div>
 
         <!-- Card Body -->
-        <div class="card-body">
+        <div class="card-body {{ app()->getLocale() == 'ur' ? 'text-end' : '' }}" {{ app()->getLocale() == 'ur' ? 'dir=rtl' : '' }}>
 
             <form action="{{ route('profile.other.update') }}" method="POST">
 
@@ -32,10 +32,10 @@
 
                 <div class="row">
 
-                    <!-- First Name -->
+                    <!-- City -->
                     <div class="col-md-6 mb-3">
                         <label class="form-label fw-semibold">
-                            City
+                            {{ __('profile.city') }}
                         </label>
 
                         <input
@@ -43,7 +43,7 @@
                             name="city"
                             value="{{ old('city', $user->city) }}"
                             class="form-control @error('city') is-invalid @enderror"
-                            placeholder="name@example.com">
+                            placeholder="{{ __('profile.placeholder_city') }}">
 
                         @error('city')
                             <div class="invalid-feedback">
@@ -52,10 +52,10 @@
                         @enderror
                     </div>
 
-                    <!-- Last Name -->
+                    <!-- Country -->
                     <div class="col-md-6 mb-3">
                         <label class="form-label fw-semibold">
-                            Country
+                            {{ __('profile.country') }}
                         </label>
 
                         <input
@@ -63,7 +63,7 @@
                             name="country"
                             value="{{ old('country', $user->country) }}"
                             class="form-control @error('country') is-invalid @enderror"
-                            placeholder="e.g.03004300000 ">
+                            placeholder="{{ __('profile.placeholder_country') }}">
 
                         @error('country')
                             <div class="invalid-feedback">
@@ -74,7 +74,7 @@
 
                 </div>
 
-                <div class="text-end">
+                <div class="{{ app()->getLocale() == 'ur' ? 'text-start' : 'text-end' }}">
 
                     <button
                         type="submit"
@@ -82,7 +82,7 @@
 
                         <i class="bi bi-check-circle me-1"></i>
 
-                        Save Changes
+                        {{ __('profile.save_changes') }}
 
                     </button>
 
