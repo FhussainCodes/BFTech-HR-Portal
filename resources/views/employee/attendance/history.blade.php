@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="container-fluid p-0">
+<div class="container-fluid p-0 leave-content-scroll">
 
     <div class="card shadow-sm border-0">
 
@@ -127,5 +127,14 @@
     </div>
 
 </div>
+
+<style>
+
+    .leave-content-scroll {
+        max-height: calc(100vh - 120px); /* Top navbar ke hisab se height adjust karta hai */
+        overflow-y: auto;
+        padding-right: 5px;
+    }
+</style>
 
 @endsection

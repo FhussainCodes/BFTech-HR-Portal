@@ -14,3 +14,4 @@ return [
     'checked_out' => 'چیک آؤٹ ہیں',
     'not_checked_in' => 'چیک ان نہیں ہیں',
 ];
+

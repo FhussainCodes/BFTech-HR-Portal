@@ -1,96 +1,94 @@
 @extends('layouts.leave')
 
-@section('leave-content')
+@section('content')
 
-@if(session('success'))
-    <div class="alert alert-success alert-dismissible fade show small" role="alert">
-        {{ session('success') }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+<div class="container-fluid p-0">
+
+    <div class="card shadow-sm border-0 mb-3">
+        <div class="card-header bg-white py-3">
+            <h5 class="mb-0 fw-bold">{{ __('leave.leave_system') }}</h5>
+        </div>
+
+        <div class="card-body">
+            <!-- Action Buttons aligned according to locale -->
+            <div class="d-flex gap-2 {{ app()->getLocale() == 'ur' ? 'flex-row-reverse' : '' }}">
+                <a href="{{route('leave.index.show')}}" class="btn btn-primary">
+                    {{ __('leave.show_leaves') }}
+                </a>
+                <a href="{{route('leave.apply.create')}}" class="btn btn-outline-primary">
+                    {{ __('leave.apply_leave') }}
+                </a>
+            </div>
+        </div>
     </div>
-@endif
 
-<div class="card shadow-sm border-0">
+    <!-- History Table Card -->
+    <div class="card shadow-sm border-0">
+        <div class="card-header bg-white py-3">
+            <h5 class="mb-0 fw-bold">{{ __('leave.my_leave_history') }}</h5>
+        </div>
 
-    <div class="card-header bg-white py-3">
-        <h5 class="mb-0 fw-bold">{{ __('leave.history_heading') }}</h5>
-    </div>
-
-    <div class="card-body">
-
-        @if($leaves->count())
-
+        <div class="card-body p-0">
             <div class="table-responsive">
                 <table class="table table-hover align-middle mb-0">
-
                     <thead class="table-light small">
                         <tr>
-                            <th>#</th>
-                            <th>{{ __('leave.leave_type') }}</th>
-                            <th>{{ __('leave.from_date') }}</th>
-                            <th>{{ __('leave.to_date') }}</th>
-                            <th>{{ __('leave.reason') }}</th>
-                            <th>{{ __('leave.status') }}</th>
-                            <th>{{ __('leave.applied_on') }}</th>
+                            @if(app()->getLocale() == 'ur')
+                                <th>{{ __('leave.apply_date') }}</th>
+                                <th>{{ __('leave.status') }}</th>
+                                <th>{{ __('leave.reason') }}</th>
+                                <th>{{ __('leave.to_date') }}</th>
+                                <th>{{ __('leave.from_date') }}</th>
+                                <th>{{ __('leave.leave_type') }}</th>
+                                <th>#</th>
+                            @else
+                                <th>#</th>
+                                <th>{{ __('leave.leave_type') }}</th>
+                                <th>{{ __('leave.from_date') }}</th>
+                                <th>{{ __('leave.to_date') }}</th>
+                                <th>{{ __('leave.reason') }}</th>
+                                <th>{{ __('leave.status') }}</th>
+                                <th>{{ __('leave.apply_date') }}</th>
+                            @endif
                         </tr>
                     </thead>
 
                     <tbody class="small">
-                        @foreach($leaves as $leave)
-                            <tr>
-                                <td>{{ $loop->iteration }}</td>
-
+                        @forelse($leaves ?? [] as $index => $leave)
+                        <tr>
+                            @if(app()->getLocale() == 'ur')
+                                <td>{{ \Carbon\Carbon::parse($leave->created_at)->format('d M Y') }}</td>
                                 <td>
-                                    {{ __('leave.type_' . strtolower($leave->leave_type)) }}
+                                    <span class="badge bg-warning text-dark">{{ $leave->status }}</span>
                                 </td>
-
-                                <td>{{ $leave->from_date }}</td>
-
+                                <td>{{ $leave->reason ?? __('leave.no_reason') }}</td>
                                 <td>{{ $leave->to_date }}</td>
-
+                                <td>{{ $leave->from_date }}</td>
+                                <td>{{ $leave->leave_type }}</td>
+                                <td>{{ $index + 1 }}</td>
+                            @else
+                                <td>{{ $index + 1 }}</td>
+                                <td>{{ $leave->leave_type }}</td>
+                                <td>{{ $leave->from_date }}</td>
+                                <td>{{ $leave->to_date }}</td>
+                                <td>{{ $leave->reason ?? __('leave.no_reason') }}</td>
                                 <td>
-                                    {{ $leave->reason ?? __('leave.not_available') }}
+                                    <span class="badge bg-warning text-dark">{{ $leave->status }}</span>
                                 </td>
-
-                                <td>
-                                    @if($leave->status == 'Pending')
-                                        <span class="badge bg-warning text-dark">
-                                            {{ __('leave.status_pending') }}
-                                        </span>
-                                    @elseif($leave->status == 'Approved')
-                                        <span class="badge bg-success">
-                                            {{ __('leave.status_approved') }}
-                                        </span>
-                                    @else
-                                        <span class="badge bg-danger">
-                                            {{ __('leave.status_rejected') }}
-                                        </span>
-                                    @endif
-                                </td>
-
-                                <td>
-                                    {{ $leave->created_at->format('d M Y') }}
-                                </td>
-                            </tr>
-                        @endforeach
+                                <td>{{ \Carbon\Carbon::parse($leave->created_at)->format('d M Y') }}</td>
+                            @endif
+                        </tr>
+                        @empty
+                        <tr>
+                            <td colspan="7" class="text-center text-muted py-4">
+                                {{ __('leave.no_history') }}
+                            </td>
+                        </tr>
+                        @endforelse
                     </tbody>
-
                 </table>
             </div>
-
-        @else
-
-            <div class="alert alert-light border text-center my-3 py-4">
-                <i class="bi bi-calendar-x fs-2 text-muted d-block mb-2"></i>
-                <h6 class="fw-bold mb-1">
-                    {{ __('leave.no_records_title') }}
-                </h6>
-                <small class="text-muted">
-                    {{ __('leave.no_records_subtitle') }}
-                </small>
-            </div>
-
-        @endif
-
+        </div>
     </div>
 
 </div>

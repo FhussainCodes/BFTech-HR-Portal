@@ -24,4 +24,6 @@ return [
     'show_leaves' => 'Show Leaves',
     'apply_leave' => 'Apply Leave',
     'leave_management' => 'Leave Management',
+    'leave_system' => 'Leave System',
+    'view_leaves' => 'Show Leaves',
 ];

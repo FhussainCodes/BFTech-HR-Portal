@@ -8,4 +8,5 @@ return [
     'attendance_history' => 'حاضری کی ہسٹری',
     'leave' => 'رخصت',
     'logout' => 'لاگ آؤٹ',
+    
 ];

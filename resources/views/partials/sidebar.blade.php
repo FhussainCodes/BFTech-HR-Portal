@@ -75,7 +75,7 @@
         <form action="{{ route('logoutPage') }}" method="POST">
             @csrf
 
-            <button type="submit" class="btn btn-outline-danger btn-sm w-100 d-flex align-items-center justify-content-center">
+            <button type="submit" class="btn btn-outline-danger btn-sm w-100 d-flex align-items-center justify-content-center fixed">
                 <i class="bi bi-box-arrow-right me-2"></i>
                 <span>{{ __('sidebar.logout') }}</span>
             </button>

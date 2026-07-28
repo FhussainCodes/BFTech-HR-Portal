@@ -12,11 +12,11 @@
 
         <div class="card-body">
 
-            <div class="d-flex gap-2 mb-4">
+            <div class="d-flex gap-2 mb-4 {{ app()->getLocale() == 'ur' ? 'flex-row-reverse justify-content-start' : '' }}">
 
                 <a href="{{ route('leave.index.show') }}"
                    class="btn leave-btn {{ request()->routeIs('leave.index.show') ? 'btn-primary' : 'btn-outline-primary' }}">
-                    {{ __('leave.show_leaves') }}
+                    {{__('leave.show_leaves')}}
                 </a>
 
                 <a href="{{ route('leave.apply.create') }}"

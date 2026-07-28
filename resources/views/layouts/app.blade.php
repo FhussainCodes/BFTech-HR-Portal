@@ -45,6 +45,10 @@
     body.rtl-mode label {
         text-align: right !important;
     }
+    .main-content-scroll {
+    max-height: calc(100vh - 120px); /* Screen ki height ke hisab se scroll set karega */
+    overflow-y: auto;
+}
 </style>
 </head>
 
@@ -58,7 +62,7 @@
         <div class="flex-grow-1 d-flex flex-column bg-light">
             @include('partials.navbar')
 
-            <main class="flex-grow-1 p-3">
+            <main class="flex-grow-1 p-3 main-content-scroll">
                 @yield('content')
             </main>
 
@@ -78,7 +82,7 @@
         <div class="flex-grow-1 d-flex flex-column bg-light">
             @include('partials.navbar')
 
-            <main class="flex-grow-1 p-3">
+            <main class="flex-grow-1 p-3 main-content-scroll">
                 @yield('content')
             </main>
 

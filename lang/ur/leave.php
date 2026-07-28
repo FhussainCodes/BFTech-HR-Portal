@@ -24,4 +24,8 @@ return [
     'show_leaves' => 'رخصت دیکھیں',
     'apply_leave' => 'رخصت کی درخواست دیں',
     'leave_management' => 'رخصت کا نظام',
+    'leave_system' => 'نظام سے اخراج',
+    'my_leave_history' => 'میری رخصت کی ہسٹری',
+    'apply_date' => 'درخواست کی تاریخ',
+    'no_history' => 'کوئی ہسٹری موجود نہیں ہے',
 ];
