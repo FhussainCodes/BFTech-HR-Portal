@@ -57,7 +57,6 @@
 
 <div class="d-flex min-vh-100 w-100 overflow-hidden">
 
-    {{-- Urdu me Sidebar Right par, English me Left par --}}
     @if(app()->getLocale() == 'ur')
 
         <div class="flex-grow-1 d-flex flex-column bg-light">

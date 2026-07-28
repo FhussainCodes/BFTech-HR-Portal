@@ -23,7 +23,7 @@
         </div>
 
         <!-- Card Body -->
-        <div class="card-body {{ app()->getLocale() == 'ur' ? 'text-end' : '' }}" {{ app()->getLocale() == 'ur' ? 'dir=rtl' : '' }}>
+        <div class="card-body {{ app()->getLocale() == 'ur' ? 'text-end' : '' }}" >
 
             <form action="{{ route('profile.contact.update') }}" method="POST">
 
