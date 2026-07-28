@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ForgotPasswordController;
+use App\Http\Controllers\LeaveController;
 
 
 Route::get('/', function () {
@@ -71,4 +72,15 @@ Route::put('/designation/update',[ProfileController::class,'updateDesignation'])
     // For Employee Profile Other Info Edit Page
 Route::get('/other/edit',[ProfileController::class,'editOther'])->name('profile.other.edit');
 Route::put('/other/update',[ProfileController::class,'updateOther'])->name('profile.other.update')->middleware('city.check');
+});
+
+// For Leave
+Route::prefix('leave')->group(function(){
+
+    // For Employee Profile Leave Index Page
+Route::get('/index/show',[LeaveController::class,'index'])->name('leave.index.show');
+
+    // For Employee Profile Leave Create Page and Store Method 
+Route::get('/apply/create',[LeaveController::class,'create'])->name('leave.apply.create');
+Route::post('/apply/store',[LeaveController::class,'store'])->name('leave.apply.store');
 });
