@@ -30,4 +30,9 @@ return [
 'placeholder_country' => 'e.g. Pakistan',
 'edit_designation_info' => 'Edit Designation Information',
 'placeholder_designation' => 'e.g. Software Engineer',
+'edit_contact_info' => 'Edit Contact Information',
+'email' => 'Email',
+'phone_number' => 'Phone Number',
+'placeholder_email' => 'name@example.com',
+'placeholder_phone' => 'e.g. 03004300000',
 ];

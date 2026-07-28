@@ -30,4 +30,9 @@ return [
 'placeholder_country' => 'مثلاً: پاکستان',
 'edit_designation_info' => 'عہدے کی معلومات میں ترمیم کریں',
 'placeholder_designation' => 'مثلاً: سافٹ ویئر انجینئر',
+'edit_contact_info' => 'رابطے کی معلومات میں ترمیم کریں',
+'email' => 'ای میل',
+'phone_number' => 'فون نمبر',
+'placeholder_email' => 'name@example.com',
+'placeholder_phone' => 'مثلاً: 03004300000',
 ];
