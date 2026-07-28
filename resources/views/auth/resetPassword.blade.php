@@ -1,4 +1,4 @@
-@extends('layouts.auth')
+@extends('layouts.')
 
 @section('title', __('auth.reset_password_heading'))
 

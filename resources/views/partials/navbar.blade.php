@@ -25,14 +25,14 @@
                 <ul class="dropdown-menu {{ app()->getLocale() == 'ur' ? 'dropdown-menu-start' : 'dropdown-menu-end' }} shadow-sm">
                     <li>
                         <a class="dropdown-item small d-flex align-items-center justify-content-between {{ app()->getLocale() == 'en' ? 'active fw-bold' : '' }}" 
-                           href="{{ route('lang.switch', 'en') }}">
+                           href="{{ route('change.lang', 'en') }}">
                             <span>🇬🇧 English</span>
                             @if(app()->getLocale() == 'en') <i class="bi bi-check2"></i> @endif
                         </a>
                     </li>
                     <li>
                         <a class="dropdown-item small d-flex align-items-center justify-content-between {{ app()->getLocale() == 'ur' ? 'active fw-bold' : '' }}" 
-                           href="{{ route('lang.switch', 'ur') }}">
+                           href="{{ route('change.lang', 'ur') }}">
                             <span>🇵🇰 اردو</span>
                             @if(app()->getLocale() == 'ur') <i class="bi bi-check2"></i> @endif
                         </a>

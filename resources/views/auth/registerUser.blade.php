@@ -4,6 +4,16 @@
 
 @section('content')
 
+<style>
+    /* Input aur placeholders ko Urdu me Right align karne ke liye */
+    body.rtl-mode input.form-control {
+        text-align: right;
+    }
+    body.rtl-mode input.form-control::placeholder {
+        text-align: right;
+    }
+</style>
+
 <div class="container d-flex justify-content-center align-items-center min-vh-100 py-4">
     <div class="card shadow-sm border-0 rounded-3 p-4 w-100" style="max-width: 650px;">
         
@@ -26,6 +36,7 @@
                         name="first_name"
                         value="{{ old('first_name') }}"
                         placeholder="{{ __('auth.enter_first_name') }}"
+                        dir="{{ app()->getLocale() == 'ur' ? 'rtl' : 'ltr' }}"
                         class="form-control form-control-sm @error('first_name') is-invalid @enderror"
                         required
                     >
@@ -44,6 +55,7 @@
                         name="last_name"
                         value="{{ old('last_name') }}"
                         placeholder="{{ __('auth.enter_last_name') }}"
+                        dir="{{ app()->getLocale() == 'ur' ? 'rtl' : 'ltr' }}"
                         class="form-control form-control-sm @error('last_name') is-invalid @enderror"
                     >
                     @error('last_name')
@@ -61,6 +73,7 @@
                         name="email"
                         value="{{ old('email') }}"
                         placeholder="{{ __('auth.enter_email') }}" 
+                        dir="{{ app()->getLocale() == 'ur' ? 'rtl' : 'ltr' }}"
                         class="form-control form-control-sm @error('email') is-invalid @enderror"
                         required
                     >
@@ -79,6 +92,7 @@
                         name="age"
                         value="{{ old('age') }}"
                         placeholder="{{ __('auth.enter_age') }}"
+                        dir="{{ app()->getLocale() == 'ur' ? 'rtl' : 'ltr' }}"
                         class="form-control form-control-sm @error('age') is-invalid @enderror"
                     >
                     @error('age')
@@ -96,6 +110,7 @@
                         name="designation"
                         value="{{ old('designation') }}"
                         placeholder="{{ __('auth.enter_designation') }}"
+                        dir="{{ app()->getLocale() == 'ur' ? 'rtl' : 'ltr' }}"
                         class="form-control form-control-sm @error('designation') is-invalid @enderror"
                         required
                     >
@@ -114,6 +129,7 @@
                         name="phone_number"
                         value="{{ old('phone_number') }}"
                         placeholder="{{ __('auth.enter_phone') }}"
+                        dir="{{ app()->getLocale() == 'ur' ? 'rtl' : 'ltr' }}"
                         class="form-control form-control-sm @error('phone_number') is-invalid @enderror"
                         required
                     >
@@ -132,6 +148,7 @@
                         name="city"
                         value="{{ old('city') }}"
                         placeholder="{{ __('auth.enter_city') }}"
+                        dir="{{ app()->getLocale() == 'ur' ? 'rtl' : 'ltr' }}"
                         class="form-control form-control-sm @error('city') is-invalid @enderror"
                         required
                     >
@@ -150,6 +167,7 @@
                         name="country"
                         value="{{ old('country') }}"
                         placeholder="{{ __('auth.enter_country') }}"
+                        dir="{{ app()->getLocale() == 'ur' ? 'rtl' : 'ltr' }}"
                         class="form-control form-control-sm @error('country') is-invalid @enderror"
                         required
                     >
@@ -168,6 +186,7 @@
                         name="password"
                         value="{{ old('password') }}"
                         placeholder="{{ __('auth.enter_password') }}"
+                        dir="{{ app()->getLocale() == 'ur' ? 'rtl' : 'ltr' }}"
                         class="form-control form-control-sm @error('password') is-invalid @enderror"
                         autocomplete="new-password"
                         required
@@ -187,6 +206,7 @@
                         name="confirm_password"
                         value="{{ old('confirm_password') }}"
                         placeholder="{{ __('auth.re_enter_password') }}"
+                        dir="{{ app()->getLocale() == 'ur' ? 'rtl' : 'ltr' }}"
                         class="form-control form-control-sm @error('confirm_password') is-invalid @enderror"
                     >
                     @error('confirm_password')
