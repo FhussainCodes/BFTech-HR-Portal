@@ -1,17 +1,19 @@
 @extends('layouts.auth')
 
+@section('title', __('auth.verify_otp_heading'))
+
 @section('content')
 
 <div class="card shadow">
 
-    <div class="card-header">
-        <h4>Verify OTP</h4>
+    <div class="card-header text-start">
+        <h4 class="mb-0">{{ __('auth.verify_otp_heading') }}</h4>
     </div>
 
     <div class="card-body">
 
-        <p>
-            We have sent a 6-digit OTP to your email.
+        <p class="text-start">
+            {{ __('auth.verify_otp_description') }}
         </p>
 
         <form action="{{ route('verifyotp') }}" method="POST">
@@ -20,20 +22,20 @@
 
             <div class="mb-3">
 
-                <label class="form-label">
-                    Enter OTP
+                <label class="form-label text-start d-block">
+                    {{ __('auth.enter_otp_label') }}
                 </label>
 
                 <input
                     type="text"
                     name="otp"
                     class="form-control @error('otp') is-invalid @enderror"
-                    placeholder="Enter 6-digit OTP"
+                    placeholder="{{ __('auth.enter_6_digit_otp') }}"
                     value="{{ old('otp') }}"
                 >
 
                 @error('otp')
-                    <div class="invalid-feedback">
+                    <div class="invalid-feedback text-start">
                         {{ $message }}
                     </div>
                 @enderror
@@ -44,7 +46,7 @@
                 type="submit"
                 class="btn btn-primary w-100">
 
-                Verify OTP
+                {{ __('auth.verify_otp_btn') }}
 
             </button>
 
