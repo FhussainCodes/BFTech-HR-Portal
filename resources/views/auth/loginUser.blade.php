@@ -2,9 +2,14 @@
 
 @section('content')
 
+@php
+    $isRtl = app()->getLocale() == 'ur';
+    $textAlign = $isRtl ? 'text-end' : 'text-start';
+@endphp
+
 <div class="container d-flex justify-content-center align-items-center min-vh-100 py-4">
 
-    <div class="card shadow-sm border-0 rounded-3 p-4 w-100" style="max-width:400px;">
+    <div class="card shadow-sm border-0 rounded-3 p-4 w-100" style="max-width:400px;" dir="{{ $isRtl ? 'rtl' : 'ltr' }}">
 
         <h4 class="text-center fw-bold mb-4">
             {{ __('auth.login_heading') }}
@@ -17,7 +22,7 @@
             {{-- Email --}}
             <div class="mb-3">
 
-                <label class="form-label fw-semibold small">
+                <label class="form-label fw-semibold small d-block {{ $textAlign }}">
                     {{ __('auth.email') }}
                     <span class="text-danger">*</span>
                 </label>
@@ -26,12 +31,12 @@
                     type="email"
                     name="email"
                     value="{{ old('email') }}"
-                    class="form-control form-control-sm @error('email') is-invalid @enderror"
+                    class="form-control form-control-sm {{ $textAlign }} @error('email') is-invalid @enderror"
                     placeholder="{{ __('auth.enter_email') }}"
                 >
 
                 @error('email')
-                    <div class="invalid-feedback small">
+                    <div class="invalid-feedback small {{ $textAlign }}">
                         {{ $message }}
                     </div>
                 @enderror
@@ -41,7 +46,7 @@
             {{-- Password --}}
             <div class="mb-3">
 
-                <label class="form-label fw-semibold small">
+                <label class="form-label fw-semibold small d-block {{ $textAlign }}">
                     {{ __('auth.password') }}
                     <span class="text-danger">*</span>
                 </label>
@@ -49,12 +54,12 @@
                 <input
                     type="password"
                     name="password"
-                    class="form-control form-control-sm @error('password') is-invalid @enderror"
+                    class="form-control form-control-sm {{ $textAlign }} @error('password') is-invalid @enderror"
                     placeholder="{{ __('auth.enter_password') }}"
                 >
 
                 @error('password')
-                    <div class="invalid-feedback small">
+                    <div class="invalid-feedback small {{ $textAlign }}">
                         {{ $message }}
                     </div>
                 @enderror
