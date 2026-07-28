@@ -2,12 +2,12 @@
 
 @section('content')
 
-<div class="container-fluid">
+<div class="container-fluid p-0">
 
-    <div class="card shadow-sm">
+    <div class="card shadow-sm border-0">
 
-        <div class="card-header">
-            <h4>Today's Attendance</h4>
+        <div class="card-header bg-white py-3">
+            <h5 class="mb-0 fw-bold">{{ __('attendance.title') }}</h5>
         </div>
 
         <div class="card-body">
@@ -15,14 +15,13 @@
             @if(!$todayAttendance)
 
                 <div class="alert alert-warning">
-                    You have not checked in today.
+                    {{ __('attendance.not_checked_in') }}
                 </div>
 
                 <form action="{{ route('checkInPage') }}" method="POST">
                     @csrf
-
                     <button class="btn btn-success">
-                        Check In
+                        <i class="bi bi-box-arrow-in-right me-1"></i> {{ __('attendance.check_in') }}
                     </button>
                 </form>
 
@@ -30,38 +29,37 @@
 
                 <div class="mb-3">
 
-                    <p>
-                        <strong>Name:</strong>
-                        {{ $todayAttendance->user_name }}
+                    <p class="mb-2">
+                        <strong>{{ __('attendance.name') }}:</strong>
+                        <span>{{ $todayAttendance->user_name }}</span>
                     </p>
 
-                    <p>
-                        <strong>Date:</strong>
-                        {{ \Carbon\Carbon::parse($todayAttendance->date)->format('d M Y') }}
+                    <p class="mb-2">
+                        <strong>{{ __('attendance.date') }}:</strong>
+                        <span>{{ \Carbon\Carbon::parse($todayAttendance->date)->format('d M Y') }}</span>
                     </p>
 
-                    <p>
-                        <strong>Check In Time:</strong>
-                        {{ \Carbon\Carbon::parse($todayAttendance->check_in)->format('h:i:s A') }}
+                    <p class="mb-2">
+                        <strong>{{ __('attendance.check_in_time') }}:</strong>
+                        <span>{{ \Carbon\Carbon::parse($todayAttendance->check_in)->format('h:i:s A') }}</span>
                     </p>
 
-                    <p>
-                        <strong>Check Out Time:</strong>
-                        Pending
+                    <p class="mb-2">
+                        <strong>{{ __('attendance.check_out_time') }}:</strong>
+                        <span class="text-warning fw-bold">{{ __('attendance.pending') }}</span>
                     </p>
 
-                    <p>
-                        <strong>Duration:</strong>
-                        In Progress
+                    <p class="mb-2">
+                        <strong>{{ __('attendance.duration') }}:</strong>
+                        <span class="text-info fw-bold">{{ __('attendance.in_progress') }}</span>
                     </p>
 
                 </div>
 
                 <form action="{{ route('checkOutPage') }}" method="POST">
                     @csrf
-
                     <button class="btn btn-danger">
-                        Check Out
+                        <i class="bi bi-box-arrow-left me-1"></i> {{ __('attendance.check_out') }}
                     </button>
                 </form>
 
@@ -69,35 +67,35 @@
 
                 <div class="mb-3">
 
-                    <p>
-                        <strong>Name:</strong>
-                        {{ $todayAttendance->user_name }}
+                    <p class="mb-2">
+                        <strong>{{ __('attendance.name') }}:</strong>
+                        <span>{{ $todayAttendance->user_name }}</span>
                     </p>
 
-                    <p>
-                        <strong>Date:</strong>
-                        {{ \Carbon\Carbon::parse($todayAttendance->date)->format('d M Y') }}
+                    <p class="mb-2">
+                        <strong>{{ __('attendance.date') }}:</strong>
+                        <span>{{ \Carbon\Carbon::parse($todayAttendance->date)->format('d M Y') }}</span>
                     </p>
 
-                    <p>
-                        <strong>Check In Time:</strong>
-                        {{ \Carbon\Carbon::parse($todayAttendance->check_in)->format('h:i:s A') }}
+                    <p class="mb-2">
+                        <strong>{{ __('attendance.check_in_time') }}:</strong>
+                        <span>{{ \Carbon\Carbon::parse($todayAttendance->check_in)->format('h:i:s A') }}</span>
                     </p>
 
-                    <p>
-                        <strong>Check Out Time:</strong>
-                        {{ \Carbon\Carbon::parse($todayAttendance->check_out)->format('h:i:s A') }}
+                    <p class="mb-2">
+                        <strong>{{ __('attendance.check_out_time') }}:</strong>
+                        <span>{{ \Carbon\Carbon::parse($todayAttendance->check_out)->format('h:i:s A') }}</span>
                     </p>
 
-                    <p>
-                        <strong>Duration:</strong>
-                        {{ $todayAttendance->duration }}
+                    <p class="mb-2">
+                        <strong>{{ __('attendance.duration') }}:</strong>
+                        <span>{{ $todayAttendance->duration }}</span>
                     </p>
 
                 </div>
 
                 <button class="btn btn-secondary" disabled>
-                    Shift Completed
+                    <i class="bi bi-check-circle me-1"></i> {{ __('attendance.shift_completed') }}
                 </button>
 
             @endif

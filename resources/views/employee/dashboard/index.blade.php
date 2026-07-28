@@ -8,7 +8,7 @@
     <div class="card shadow-sm border-0 mb-3">
         <div class="card-body py-3 px-4">
             <h5 class="fw-bold mb-1">
-                Welcome,
+                {{ __('dashboard.welcome') }},
                 {{ session('user')['first_name'] }} 👋
             </h5>
 
@@ -18,41 +18,36 @@
         </div>
     </div>
 
-    <div class="row g-3 mb-4">
+    <!-- Stats Cards Row (Reversed for Urdu RTL) -->
+    <div class="row g-3 mb-4 {{ app()->getLocale() == 'ur' ? 'flex-row-reverse' : '' }}">
 
-        <!-- Attendance Action -->
+        <!-- Status Card -->
         <div class="col-md-4">
             <div class="card shadow-sm border-0 h-100">
 
                 <div class="card-body">
 
                     <small class="text-muted d-block mb-2">
-                        Attendance Action
+                        {{ __('dashboard.current_status') }}
                     </small>
 
-                    @if(!$todayAttendance)
+                    @if($todayAttendance && !$todayAttendance->check_out)
 
-                        <form action="{{ route('checkInPage') }}" method="POST">
-                            @csrf
-                            <button class="btn btn-success w-100">
-                                Check In
-                            </button>
-                        </form>
+                        <h5 class="text-success fw-bold mb-0">
+                            {{ __('dashboard.checked_in') }}
+                        </h5>
 
-                    @elseif(!$todayAttendance->check_out)
+                    @elseif($todayAttendance && $todayAttendance->check_out)
 
-                        <form action="{{ route('checkOutPage') }}" method="POST">
-                            @csrf
-                            <button class="btn btn-danger w-100">
-                                Check Out
-                            </button>
-                        </form>
+                        <h5 class="text-secondary fw-bold mb-0">
+                            {{ __('dashboard.checked_out') }}
+                        </h5>
 
                     @else
 
-                        <div class="alert alert-success text-center mb-0">
-                            Shift Completed ✅
-                        </div>
+                        <h5 class="text-danger fw-bold mb-0">
+                            {{ __('dashboard.not_checked_in') }}
+                        </h5>
 
                     @endif
 
@@ -61,7 +56,7 @@
             </div>
         </div>
 
-        <!-- Time -->
+        <!-- Time Card -->
         <div class="col-md-4">
             <div class="card shadow-sm border-0 h-100">
 
@@ -71,15 +66,15 @@
 
                         @if($todayAttendance && $todayAttendance->check_out)
 
-                            Check Out Time
+                            {{ __('dashboard.check_out_time') }}
 
                         @elseif($todayAttendance)
 
-                            Check In Time
+                            {{ __('dashboard.check_in_time') }}
 
                         @else
 
-                            Time
+                            {{ __('dashboard.time') }}
 
                         @endif
 
@@ -108,33 +103,39 @@
             </div>
         </div>
 
-        <!-- Status -->
+        <!-- Attendance Action Card -->
         <div class="col-md-4">
             <div class="card shadow-sm border-0 h-100">
 
                 <div class="card-body">
 
                     <small class="text-muted d-block mb-2">
-                        Current Status
+                        {{ __('dashboard.attendance_action') }}
                     </small>
 
-                    @if($todayAttendance && !$todayAttendance->check_out)
+                    @if(!$todayAttendance)
 
-                        <h5 class="text-success fw-bold">
-                            Checked In
-                        </h5>
+                        <form action="{{ route('checkInPage') }}" method="POST">
+                            @csrf
+                            <button class="btn btn-success w-100">
+                                {{ __('dashboard.check_in') }}
+                            </button>
+                        </form>
 
-                    @elseif($todayAttendance && $todayAttendance->check_out)
+                    @elseif(!$todayAttendance->check_out)
 
-                        <h5 class="text-secondary fw-bold">
-                            Checked Out
-                        </h5>
+                        <form action="{{ route('checkOutPage') }}" method="POST">
+                            @csrf
+                            <button class="btn btn-danger w-100">
+                                {{ __('dashboard.check_out') }}
+                            </button>
+                        </form>
 
                     @else
 
-                        <h5 class="text-danger fw-bold">
-                            Not Checked In
-                        </h5>
+                        <div class="alert alert-success text-center mb-0 py-2 small">
+                            {{ __('dashboard.shift_completed') }}
+                        </div>
 
                     @endif
 
@@ -144,10 +145,6 @@
         </div>
 
     </div>
-
-    <!-- Attendance History -->
-
-    <div class="card shadow-sm border-0">
 
 </div>
 
