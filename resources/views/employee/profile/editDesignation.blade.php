@@ -7,23 +7,23 @@
     <div class="card shadow-sm">
 
         <!-- Card Header -->
-        <div class="card-header d-flex justify-content-between align-items-center">
+        <div class="card-header d-flex {{ app()->getLocale() == 'ur' ? 'flex-row-reverse' : '' }} justify-content-between align-items-center">
 
-            <h4 class="mb-0">
+            <h4 class="mb-0 d-flex align-items-center">
                 <i class="bi bi-person-lines-fill me-2"></i>
-                Edit Designation Information
+                {{ __('profile.edit_designation_info') }}
             </h4>
 
             <a href="{{ route('emp-profile-index') }}"
                 class="btn btn-outline-secondary btn-sm">
                 <i class="bi bi-x-circle me-1"></i>
-                Close
+                {{ __('profile.close') }}
             </a>
 
         </div>
 
         <!-- Card Body -->
-        <div class="card-body">
+        <div class="card-body {{ app()->getLocale() == 'ur' ? 'text-end' : '' }}" {{ app()->getLocale() == 'ur' ? 'dir=rtl' : '' }}>
 
             <form action="{{ route('profile.designation.update') }}" method="POST">
 
@@ -32,10 +32,10 @@
 
                 <div class="row">
 
-                    <!-- First Name -->
+                    <!-- Designation -->
                     <div class="col-md-6 mb-3">
                         <label class="form-label fw-semibold">
-                            Designation
+                            {{ __('profile.designation') }}
                         </label>
 
                         <input
@@ -43,7 +43,7 @@
                             name="designation"
                             value="{{ old('designation', $user->designation) }}"
                             class="form-control @error('designation') is-invalid @enderror"
-                            placeholder="e.g. Software Engineer">
+                            placeholder="{{ __('profile.placeholder_designation') }}">
 
                         @error('designation')
                             <div class="invalid-feedback">
@@ -52,13 +52,9 @@
                         @enderror
                     </div>
 
-
-
-
-
                 </div>
 
-                <div class="text-end">
+                <div class="{{ app()->getLocale() == 'ur' ? 'text-start' : 'text-end' }}">
 
                     <button
                         type="submit"
@@ -66,7 +62,7 @@
 
                         <i class="bi bi-check-circle me-1"></i>
 
-                        Save Changes
+                        {{ __('profile.save_changes') }}
 
                     </button>
 

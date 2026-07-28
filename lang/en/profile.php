@@ -28,4 +28,6 @@ return [
 'edit_other_info' => 'Edit Other Information',
 'placeholder_city' => 'e.g. Lahore',
 'placeholder_country' => 'e.g. Pakistan',
+'edit_designation_info' => 'Edit Designation Information',
+'placeholder_designation' => 'e.g. Software Engineer',
 ];

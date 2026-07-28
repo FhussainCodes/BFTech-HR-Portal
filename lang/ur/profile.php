@@ -28,4 +28,6 @@ return [
 'edit_other_info' => 'دیگر معلومات میں ترمیم کریں',
 'placeholder_city' => 'مثلاً: لاہور',
 'placeholder_country' => 'مثلاً: پاکستان',
+'edit_designation_info' => 'عہدے کی معلومات میں ترمیم کریں',
+'placeholder_designation' => 'مثلاً: سافٹ ویئر انجینئر',
 ];
