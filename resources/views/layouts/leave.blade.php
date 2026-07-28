@@ -24,8 +24,6 @@
                     Apply Leave
                 </a>
 
-
-
             </div>
 
             @yield('leave-content')
