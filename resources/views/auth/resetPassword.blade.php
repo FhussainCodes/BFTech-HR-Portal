@@ -40,7 +40,6 @@
 
             </div>
 
-            {{-- Confirm Password --}}
             <div class="mb-3">
 
                 <label class="form-label fw-semibold small d-block">
