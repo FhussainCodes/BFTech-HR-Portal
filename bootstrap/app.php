@@ -6,6 +6,7 @@ use Illuminate\Foundation\Configuration\Middleware;
 use Illuminate\Http\Request;
 use App\Http\Middleware\AgeCheck;
 use App\Http\Middleware\CityCheck;
+use App\Http\Middleware\SetLocale;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -18,9 +19,11 @@ return Application::configure(basePath: dirname(__DIR__))
         //     AgeCheck::class,
         //     CityCheck::class,
         // ]);
+        $middleware->web(append: [\App\Http\Middleware\SetLocale::class,]);
         $middleware->alias([
         'age.check' => \App\Http\Middleware\AgeCheck::class,
         'city.check' => \App\Http\Middleware\CityCheck::class,
+        
     ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

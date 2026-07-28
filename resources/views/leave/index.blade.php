@@ -3,55 +3,55 @@
 @section('leave-content')
 
 @if(session('success'))
-    <div class="alert alert-success alert-dismissible fade show small text-start" role="alert">
+    <div class="alert alert-success alert-dismissible fade show small" role="alert">
         {{ session('success') }}
         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     </div>
 @endif
 
-<div class="card shadow-sm border-0 text-start">
+<div class="card shadow-sm border-0">
 
-    <div class="card-header bg-white py-3 text-start">
-        <h5 class="mb-0 fw-bold text-start">{{ __('leave.history_heading') }}</h5>
+    <div class="card-header bg-white py-3">
+        <h5 class="mb-0 fw-bold">{{ __('leave.history_heading') }}</h5>
     </div>
 
-    <div class="card-body text-start">
+    <div class="card-body">
 
         @if($leaves->count())
 
             <div class="table-responsive">
-                <table class="table table-hover align-middle mb-0 text-start">
+                <table class="table table-hover align-middle mb-0">
 
-                    <thead class="table-light small text-start">
+                    <thead class="table-light small">
                         <tr>
-                            <th class="text-start">#</th>
-                            <th class="text-start">{{ __('leave.leave_type') }}</th>
-                            <th class="text-start">{{ __('leave.from_date') }}</th>
-                            <th class="text-start">{{ __('leave.to_date') }}</th>
-                            <th class="text-start">{{ __('leave.reason') }}</th>
-                            <th class="text-start">{{ __('leave.status') }}</th>
-                            <th class="text-start">{{ __('leave.applied_on') }}</th>
+                            <th>#</th>
+                            <th>{{ __('leave.leave_type') }}</th>
+                            <th>{{ __('leave.from_date') }}</th>
+                            <th>{{ __('leave.to_date') }}</th>
+                            <th>{{ __('leave.reason') }}</th>
+                            <th>{{ __('leave.status') }}</th>
+                            <th>{{ __('leave.applied_on') }}</th>
                         </tr>
                     </thead>
 
-                    <tbody class="small text-start">
+                    <tbody class="small">
                         @foreach($leaves as $leave)
                             <tr>
-                                <td class="text-start">{{ $loop->iteration }}</td>
+                                <td>{{ $loop->iteration }}</td>
 
-                                <td class="text-start">
+                                <td>
                                     {{ __('leave.type_' . strtolower($leave->leave_type)) }}
                                 </td>
 
-                                <td class="text-start">{{ $leave->from_date }}</td>
+                                <td>{{ $leave->from_date }}</td>
 
-                                <td class="text-start">{{ $leave->to_date }}</td>
+                                <td>{{ $leave->to_date }}</td>
 
-                                <td class="text-start">
+                                <td>
                                     {{ $leave->reason ?? __('leave.not_available') }}
                                 </td>
 
-                                <td class="text-start">
+                                <td>
                                     @if($leave->status == 'Pending')
                                         <span class="badge bg-warning text-dark">
                                             {{ __('leave.status_pending') }}
@@ -67,7 +67,7 @@
                                     @endif
                                 </td>
 
-                                <td class="text-start">
+                                <td>
                                     {{ $leave->created_at->format('d M Y') }}
                                 </td>
                             </tr>

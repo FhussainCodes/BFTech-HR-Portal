@@ -13,6 +13,14 @@ Route::get('/', function () {
     return view('auth.loginUser');
 });
 
+// For Localization Switch Button
+Route::get('/lang/{locale}', function ($locale) {
+    if (in_array($locale, ['en', 'ur'])) {
+        session(['locale' => $locale]);
+    }
+    return redirect()->back();
+})->name('lang.switch');
+
 // For Dashboard
 Route::get('/dashboard',function(){
     return view('employee.dashboard.index');
@@ -84,3 +92,4 @@ Route::get('/index/show',[LeaveController::class,'index'])->name('leave.index.sh
 Route::get('/apply/create',[LeaveController::class,'create'])->name('leave.apply.create');
 Route::post('/apply/store',[LeaveController::class,'store'])->name('leave.apply.store');
 });
+
