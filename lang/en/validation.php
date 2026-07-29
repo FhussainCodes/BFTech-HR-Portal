@@ -288,6 +288,12 @@ return [
     'same'     => 'The confirmation password does not match the chosen password.',
 
 ],
+'otp' => [
+
+    'required' => 'OTP is required to reset your password.',
+    'digits'   => 'OTP must be exactly 6 digits.',
+
+],
     ],
 
     /*

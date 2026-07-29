@@ -27,13 +27,13 @@ class VerifyOtpRequest extends FormRequest
         ];
     }
 
-        public function messages(): array
-    {
-        return [
-            
-            'otp.required' => 'OTP is required for reset Password',
-            'otp.digits' => 'OTP should maximum of 6 digits'
+public function messages(): array
+{
+    return [
 
-        ];
-    }
+        'otp.required' => __('validation.custom.otp.required'),
+        'otp.digits'   => __('validation.custom.otp.digits'),
+
+    ];
+}
 }
