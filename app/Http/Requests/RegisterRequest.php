@@ -36,64 +36,64 @@ class RegisterRequest extends FormRequest
        ];
     }
 
-    public function messages(): array{
-        return [
+   public function messages(): array
+{
+    return [
 
-             // First Name Rules Messages
-            'first_name.required'   => 'You forgot to type your first name.',
-            'first_name.min'        => 'Names must be 3 or more characters.',
-            'first_name.max'        => 'Names must be 20 or fewer characters.',
-            'first_name.regex'      => 'First name can contain only letters and spaces.',
+        // First Name
+        'first_name.required' => __('validation.custom.first_name.required'),
+        'first_name.min'      => __('validation.custom.first_name.min'),
+        'first_name.max'      => __('validation.custom.first_name.max'),
+        'first_name.regex'    => __('validation.custom.first_name.regex'),
 
-            // 'last_name.required' => 'Last name is required.',
-            'last_name.min'         => 'Last name must be at least 2 characters.',
-            'last_name.max'         => 'Last name cannot exceed 35 characters.',
-            'last_name.regex'       => 'Last name can contain only letters and spaces.',
-            'last_name.required' => 'Last name is required.',
+        // Last Name
+        'last_name.required'  => __('validation.custom.last_name.required'),
+        'last_name.min'       => __('validation.custom.last_name.min'),
+        'last_name.max'       => __('validation.custom.last_name.max'),
+        'last_name.regex'     => __('validation.custom.last_name.regex'),
 
-            // Email Messages
-            'email.required'       => 'An email address is required.',
-            'email.email'          => 'Please provide a valid email format.',
-            'email.unique'         => 'This email address is already taken.',
+        // Email
+        'email.required'      => __('validation.custom.email.required'),
+        'email.email'         => __('validation.custom.email.email'),
+        'email.unique'        => __('validation.custom.email.unique'),
 
-            // Age Messages
-            'age.required'          => 'Your age is required.',
-            'age.integer'           => 'Age must be a number.',
-            'age.between'           => 'Age must be between 15 and 70 years.',
+        // Age
+        'age.required'        => __('validation.custom.age.required'),
+        'age.integer'         => __('validation.custom.age.integer'),
+        'age.between'         => __('validation.custom.age.between'),
 
-            // Designation Messages
-            'designation.required' => 'A job designation is required.',
-            'designation.min'      => 'Designation must be at least 2 characters.',
-            'designation.max'      => 'Designation cannot exceed 30 characters.',
-            'designation.regex'    => 'Designation can contain only letters and spaces.',
+        // Designation
+        'designation.required' => __('validation.custom.designation.required'),
+        'designation.min'      => __('validation.custom.designation.min'),
+        'designation.max'      => __('validation.custom.designation.max'),
+        'designation.regex'    => __('validation.custom.designation.regex'),
 
-            // Phone Number Messages
-            'phone_number.required' => 'Please provide your phone number.',
-            'phone_number.regex'    => 'Please enter a valid Pakistani mobile number (e.g. 03001234567).',
+        // Phone
+        'phone_number.required' => __('validation.custom.phone_number.required'),
+        'phone_number.regex'    => __('validation.custom.phone_number.regex'),
 
-            // City Messages
-            'city.required'        => 'The city field is required.',
-            'city.min'             => 'City name must be at least 3 characters.',
-            'city.max'             => 'City name cannot exceed 20 characters.',
-            'city.regex'           => 'City can contain only letters and spaces.',
-            
+        // City
+        'city.required'       => __('validation.custom.city.required'),
+        'city.min'            => __('validation.custom.city.min'),
+        'city.max'            => __('validation.custom.city.max'),
+        'city.regex'          => __('validation.custom.city.regex'),
 
-            // Country Messages
-            'country.required'     => 'The country field is required.',
-            'country.min'          => 'Country name must be at least 3 characters.',
-            'country.max'          => 'Country name cannot exceed 25 characters.',
-            'country.regex'        => 'Country can contain only letters and spaces.',
-            
+        // Country
+        'country.required'    => __('validation.custom.country.required'),
+        'country.min'         => __('validation.custom.country.min'),
+        'country.max'         => __('validation.custom.country.max'),
+        'country.regex'       => __('validation.custom.country.regex'),
 
-            // Password Messages
-            'password.required'    => 'A password is required.',
-            'password.min'         => 'Your password must be at least 6 characters long.',
-            'password.max'         => 'Your password cannot exceed 64 characters.',
-            'password.regex'       => 'Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character (@$!%*?&).',
+        // Password
+        'password.required'   => __('validation.custom.password.required'),
+        'password.min'        => __('validation.custom.password.min'),
+        'password.max'        => __('validation.custom.password.max'),
+        'password.regex'      => __('validation.custom.password.regex'),
 
-            // Confirm Password Messages
-            'confirm_password.required' => 'Please confirm your password.',
-            'confirm_password.same'     => 'The confirmation password does not match the chosen password.',       
-        ];
-    }
+        // Confirm Password
+        'confirm_password.required' => __('validation.custom.confirm_password.required'),
+        'confirm_password.same'     => __('validation.custom.confirm_password.same'),
+
+    ];
+}
 }
