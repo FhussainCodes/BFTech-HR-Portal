@@ -251,6 +251,31 @@ return [
     'regex'    => 'Country can contain only letters and spaces.',
 
 ],
+'first_name' => [
+
+    'required' => 'You forgot to type your first name.',
+    'min'      => 'First name must be at least 3 characters.',
+    'max'      => 'First name cannot exceed 20 characters.',
+    'regex'    => 'First name can contain only letters and spaces.',
+
+],
+
+'last_name' => [
+
+    'required' => 'Last name is required.',
+    'min'      => 'Last name must be at least 2 characters.',
+    'max'      => 'Last name cannot exceed 35 characters.',
+    'regex'    => 'Last name can contain only letters and spaces.',
+
+],
+
+'age' => [
+
+    'required' => 'Your age is required.',
+    'integer'  => 'Age must be a valid number.',
+    'between'  => 'Age must be between 15 and 70 years.',
+
+],
     ],
 
     /*

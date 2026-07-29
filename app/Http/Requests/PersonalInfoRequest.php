@@ -29,26 +29,27 @@ class PersonalInfoRequest extends FormRequest
         ];
     }
 
-    public function messages(): array
+public function messages(): array
 {
     return [
 
         // First Name
-        'first_name.required' => 'You forgot to type your first name.',
-        'first_name.min'      => 'First name must be at least 3 characters.',
-        'first_name.max'      => 'First name cannot exceed 20 characters.',
-        'first_name.regex'    => 'First name can contain only letters and spaces.',
+        'first_name.required' => __('validation.custom.first_name.required'),
+        'first_name.min'      => __('validation.custom.first_name.min'),
+        'first_name.max'      => __('validation.custom.first_name.max'),
+        'first_name.regex'    => __('validation.custom.first_name.regex'),
 
         // Last Name
-        'last_name.min'       => 'Last name must be at least 2 characters.',
-        'last_name.max'       => 'Last name cannot exceed 35 characters.',
-        'last_name.regex'     => 'Last name can contain only letters and spaces.',
-        'last_name.required'  => 'Last name is required.',
+        'last_name.required'  => __('validation.custom.last_name.required'),
+        'last_name.min'       => __('validation.custom.last_name.min'),
+        'last_name.max'       => __('validation.custom.last_name.max'),
+        'last_name.regex'     => __('validation.custom.last_name.regex'),
 
         // Age
-        'age.required'        => 'Your age is required.',
-        'age.integer'         => 'Age must be a valid number.',
-        'age.between'         => 'Age must be between 15 and 70 years.',
+        'age.required'        => __('validation.custom.age.required'),
+        'age.integer'         => __('validation.custom.age.integer'),
+        'age.between'         => __('validation.custom.age.between'),
+
     ];
 }
 }
