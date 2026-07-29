@@ -21,13 +21,6 @@ Route::get('/lang/{locale}', function ($locale) {
     return redirect()->back();
 })->name('change.lang');
 
-// For Dashboard
-Route::get('/dashboard',function(){
-    return view('employee.dashboard.index');
-})->name('dashboardPage');
-
-Route::get('/dashboard', [AttendanceController::class, 'index'])->name('dashboardPage');
-
 // For Register Page
 Route::get("/register",[RegisterController::class,'create']);
 Route::post("/register",[RegisterController::class,'store'])->name('registerUser')->middleware(['age.check','city.check']);
@@ -50,6 +43,15 @@ Route::post('/resetPassword',[ForgotPasswordController::class,'resetPassword'])-
 
 // For Logout 
 Route::post('/logout',[LoginController::class,'logout'])->name('logoutPage');
+
+Route::middleware('user.auth')->group(function(){
+
+// For Dashboard
+Route::get('/dashboard',function(){
+    return view('employee.dashboard.index');
+})->name('dashboardPage');
+
+Route::get('/dashboard', [AttendanceController::class, 'index'])->name('dashboardPage');
 
 // For Attendance Check In & Check Out Page
 Route::post('/check-in',[AttendanceController::class,'checkIn'])->name('checkInPage');
@@ -93,3 +95,4 @@ Route::get('/apply/create',[LeaveController::class,'create'])->name('leave.apply
 Route::post('/apply/store',[LeaveController::class,'store'])->name('leave.apply.store');
 });
 
+});

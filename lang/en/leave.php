@@ -26,4 +26,5 @@ return [
     'leave_management' => 'Leave Management',
     'leave_system' => 'Leave System',
     'view_leaves' => 'Show Leaves',
+    'applied_on' => 'Apply Date'
 ];

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Middleware\AgeCheck;
 use App\Http\Middleware\CityCheck;
 use App\Http\Middleware\SetLocale;
+use App\Http\Middleware\CheckUserSession;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -23,7 +24,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
         'age.check' => \App\Http\Middleware\AgeCheck::class,
         'city.check' => \App\Http\Middleware\CityCheck::class,
-        
+        'user.auth' => \App\Http\Middleware\CheckUserSession::class,
     ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

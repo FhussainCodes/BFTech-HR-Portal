@@ -15,8 +15,6 @@ use App\Http\Requests\OtherInfoRequest;
 class ProfileController extends Controller
 {
     public function show(){
-        // $user = session('user');
-        // $record = Register::find($user['id']);
         $user = Register::find(session('user')['id']);
         return view('employee.profile.index',compact('user'));
     }
