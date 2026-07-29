@@ -234,6 +234,23 @@ return [
     'max'      => 'Your password cannot exceed 64 characters.',
 
 ],
+'city' => [
+
+    'required' => 'The city field is required.',
+    'min'      => 'City name must be at least 3 characters.',
+    'max'      => 'City name cannot exceed 20 characters.',
+    'regex'    => 'City can contain only letters and spaces.',
+
+],
+
+'country' => [
+
+    'required' => 'The country field is required.',
+    'min'      => 'Country name must be at least 2 characters.',
+    'max'      => 'Country name cannot exceed 25 characters.',
+    'regex'    => 'Country can contain only letters and spaces.',
+
+],
     ],
 
     /*

@@ -34,16 +34,16 @@ public function messages(): array
     return [
 
         // City
-        'city.required' => 'The city field is required.',
-        'city.min'      => 'City name must be at least 3 characters.',
-        'city.max'      => 'City name cannot exceed 20 characters.',
-        'city.regex'    => 'City can contain only letters and spaces.',
+        'city.required' => __('validation.custom.city.required'),
+        'city.min'      => __('validation.custom.city.min'),
+        'city.max'      => __('validation.custom.city.max'),
+        'city.regex'    => __('validation.custom.city.regex'),
 
         // Country
-        'country.required' => 'The country field is required.',
-        'country.min'      => 'Country name must be at least 2 characters.',
-        'country.max'      => 'Country name cannot exceed 25 characters.',
-        'country.regex'    => 'Country can contain only letters and spaces.',
+        'country.required' => __('validation.custom.country.required'),
+        'country.min'      => __('validation.custom.country.min'),
+        'country.max'      => __('validation.custom.country.max'),
+        'country.regex'    => __('validation.custom.country.regex'),
 
     ];
 }
