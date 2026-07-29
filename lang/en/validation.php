@@ -198,7 +198,12 @@ return [
     'max'      => 'Designation cannot exceed 30 characters.',
     'regex'    => 'Designation can contain only letters and spaces.',
 ],
-
+'forgot_password' => [
+    'email' => [
+        'required' => 'Please enter your registered email address.',
+        'email'    => 'Please enter a valid email address.',
+    ],
+],
     ],
 
     /*
