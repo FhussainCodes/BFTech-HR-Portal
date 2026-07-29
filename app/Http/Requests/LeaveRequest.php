@@ -30,19 +30,19 @@ class LeaveRequest extends FormRequest
         ];
     }
 
-    public function messages(): array
+public function messages(): array
 {
     return [
 
-        'leave_type.required' => 'Please select a leave type.',
+        'leave_type.required' => __('validation.custom.leave_type.required'),
 
-        'from_date.required' => 'Please select the leave start date.',
-        'from_date.date' => 'Please enter a valid start date.',
-        'from_date.after_or_equal' => 'Leave cannot be applied for a past date.',
+        'from_date.required' => __('validation.custom.from_date.required'),
+        'from_date.date' => __('validation.custom.from_date.date'),
+        'from_date.after_or_equal' => __('validation.custom.from_date.after_or_equal'),
 
-        'to_date.required' => 'Please select the leave end date.',
-        'to_date.date' => 'Please enter a valid end date.',
-        'to_date.after_or_equal' => 'The end date must be the same as or after the start date.',
+        'to_date.required' => __('validation.custom.to_date.required'),
+        'to_date.date' => __('validation.custom.to_date.date'),
+        'to_date.after_or_equal' => __('validation.custom.to_date.after_or_equal'),
 
     ];
 }

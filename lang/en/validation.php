@@ -212,6 +212,21 @@ return [
     'max'      => 'The profile image size must not exceed 2 MB.',
 
 ],
+'leave_type' => [
+    'required' => 'Please select a leave type.',
+],
+
+'from_date' => [
+    'required'         => 'Please select the leave start date.',
+    'date'             => 'Please enter a valid start date.',
+    'after_or_equal'   => 'Leave cannot be applied for a past date.',
+],
+
+'to_date' => [
+    'required'         => 'Please select the leave end date.',
+    'date'             => 'Please enter a valid end date.',
+    'after_or_equal'   => 'The end date must be the same as or after the start date.',
+],
     ],
 
     /*
