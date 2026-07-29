@@ -29,18 +29,17 @@ class ContactInfoRequest extends FormRequest
         ];
     }
 
-    public function messages(): array
+public function messages(): array
 {
     return [
 
-        // Email
-        'email.required' => 'An email address is required.',
-        'email.email'    => 'Please provide a valid email address.',
-        'email.unique'   => 'This email address is already in use.',
+        'email.required' => __('validation.custom.email.required'),
+        'email.email'    => __('validation.custom.email.email'),
+        'email.unique'   => __('validation.custom.email.unique'),
 
-        // Phone
-        'phone_number.required' => 'Please provide your phone number.',
-        'phone_number.regex'    => 'Please enter a valid Pakistani mobile number (e.g. 03001234567).',
+        'phone_number.required' => __('validation.custom.phone_number.required'),
+        'phone_number.regex'    => __('validation.custom.phone_number.regex'),
+
     ];
 }
 }

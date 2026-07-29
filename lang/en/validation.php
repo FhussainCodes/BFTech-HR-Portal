@@ -182,6 +182,16 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'email' => [
+    'required' => 'An email address is required.',
+    'email'    => 'Please provide a valid email address.',
+    'unique'   => 'This email address is already in use.',
+],
+
+'phone_number' => [
+    'required' => 'Please provide your phone number.',
+    'regex'    => 'Please enter a valid Pakistani mobile number (e.g. 03001234567).',
+],
     ],
 
     /*

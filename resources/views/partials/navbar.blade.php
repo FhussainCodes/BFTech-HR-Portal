@@ -8,8 +8,33 @@
             </h6>
         </div>
 
-        <!-- Controls (Language, Bell, Settings) -->
+        <!-- Controls (Check-in/out, Language, Bell, Settings) -->
         <div class="d-flex align-items-center gap-2 {{ app()->getLocale() == 'ur' ? 'flex-row-reverse' : '' }}">
+
+            <!-- Check In / Check Out Buttons -->
+            <div class="me-2">
+                @if(!$todayAttendance)
+                    <form action="{{ route('checkInPage') }}" method="POST" class="d-inline">
+                        @csrf
+                        <button type="submit" class="btn btn-sm btn-success fw-semibold d-flex align-items-center gap-1">
+                            <i class="bi bi-box-arrow-in-right"></i>
+                            <span>{{ Lang::has('navbar.check_in') ? __('navbar.check_in') : 'چیک ان' }}</span>
+                        </button>
+                    </form>
+                @elseif(!$todayAttendance->check_out)
+                    <form action="{{ route('checkOutPage') }}" method="POST" class="d-inline">
+                        @csrf
+                        <button type="submit" class="btn btn-sm btn-danger fw-semibold d-flex align-items-center gap-1">
+                            <i class="bi bi-box-arrow-right"></i>
+                            <span>{{ Lang::has('navbar.check_out') ? __('navbar.check_out') : 'چیک آؤٹ' }}</span>
+                        </button>
+                    </form>
+                @else
+                    <span class="badge bg-secondary px-2 py-2 fw-semibold">
+                        <i class="bi bi-check-circle me-1"></i> {{ Lang::has('navbar.shift_completed') ? __('navbar.shift_completed') : 'شفٹ مکمل' }}
+                    </span>
+                @endif
+            </div>
 
             <!-- Language Switcher Dropdown -->
             <div class="dropdown me-1">
