@@ -192,6 +192,13 @@ return [
     'required' => 'Please provide your phone number.',
     'regex'    => 'Please enter a valid Pakistani mobile number (e.g. 03001234567).',
 ],
+'designation' => [
+    'required' => 'A job designation is required.',
+    'min'      => 'Designation must be at least 2 characters.',
+    'max'      => 'Designation cannot exceed 30 characters.',
+    'regex'    => 'Designation can contain only letters and spaces.',
+],
+
     ],
 
     /*

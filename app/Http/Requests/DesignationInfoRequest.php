@@ -32,10 +32,10 @@ public function messages(): array
 {
     return [
 
-        'designation.required' => 'A job designation is required.',
-        'designation.min'      => 'Designation must be at least 2 characters.',
-        'designation.max'      => 'Designation cannot exceed 30 characters.',
-        'designation.regex'    => 'Designation can contain only letters and spaces.',
+        'designation.required' => __('validation.custom.designation.required'),
+        'designation.min'      => __('validation.custom.designation.min'),
+        'designation.max'      => __('validation.custom.designation.max'),
+        'designation.regex'    => __('validation.custom.designation.regex'),
 
     ];
 }
