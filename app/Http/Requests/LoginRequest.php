@@ -28,15 +28,17 @@ class LoginRequest extends FormRequest
         ];
     }
 
-    public function messages(): array{
-        return [
+public function messages(): array
+{
+    return [
 
-            'email.required' => 'Email is required.',
-            'email.email' => 'Please enter a valid email address.',
+        'email.required' => __('validation.custom.email.required'),
+        'email.email'    => __('validation.custom.email.email'),
 
-            'password.required'    => 'A password is required.',
-            'password.min'         => 'Your password must be at least 6 characters long.',
-            'password.max'         => 'Your password cannot exceed 64 characters.',
-        ];
+        'password.required' => __('validation.custom.password.required'),
+        'password.min'      => __('validation.custom.password.min'),
+        'password.max'      => __('validation.custom.password.max'),
+
+    ];
 }
 }

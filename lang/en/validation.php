@@ -227,6 +227,13 @@ return [
     'date'             => 'Please enter a valid end date.',
     'after_or_equal'   => 'The end date must be the same as or after the start date.',
 ],
+'password' => [
+
+    'required' => 'A password is required.',
+    'min'      => 'Your password must be at least 6 characters long.',
+    'max'      => 'Your password cannot exceed 64 characters.',
+
+],
     ],
 
     /*
