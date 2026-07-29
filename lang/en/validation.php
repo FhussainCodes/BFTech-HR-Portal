@@ -204,6 +204,14 @@ return [
         'email'    => 'Please enter a valid email address.',
     ],
 ],
+'profile_image' => [
+
+    'required' => 'Please upload a profile image.',
+    'image'    => 'The profile image must be a valid image file.',
+    'mimes'    => 'Allowed image formats are: JPG, JPEG, PNG, and WEBP.',
+    'max'      => 'The profile image size must not exceed 2 MB.',
+
+],
     ],
 
     /*

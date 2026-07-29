@@ -27,12 +27,15 @@ class ImageRequest extends FormRequest
         ];
     }
 
-    public function messages(): array{
-        return [
-            'profile_image.required' => 'Please upload a profile image.',
-            'profile_image.image'    => 'The profile image must be a valid image file.',
-            'profile_image.mimes'    => 'Allowed image formats are: JPG, JPEG, or PNG,WEBP.',
-            'profile_image.max'      => 'The profile image size must not exceed 2 MB.',
-        ];
+public function messages(): array
+{
+    return [
+
+        'profile_image.required' => __('validation.custom.profile_image.required'),
+        'profile_image.image'    => __('validation.custom.profile_image.image'),
+        'profile_image.mimes'    => __('validation.custom.profile_image.mimes'),
+        'profile_image.max'      => __('validation.custom.profile_image.max'),
+
+    ];
 }
 }
