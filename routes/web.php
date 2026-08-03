@@ -99,4 +99,13 @@ Route::post('/apply/store',[LeaveController::class,'store'])->name('leave.apply.
 
 // ----------------------------- For HR --------------------------------------//
 
+Route::prefix('hr')->group(function(){
+    Route::get('/dashboard/index',[])->name('hr.dashboard.index');
+    Route::get('/employees/index',[])->name('hr.employee.index');
+    Route::get('/employees/create',[])->name('hr.employee.create');
+    Route::get('/employees/{id}/edit',[])->name('hr.employee.edit');
+    Route::get('/employees/{id}',[])->name('hr.employee.show');
+});
+
+
 
