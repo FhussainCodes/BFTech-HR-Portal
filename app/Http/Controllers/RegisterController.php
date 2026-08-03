@@ -21,6 +21,7 @@ class RegisterController extends Controller
         $validatedData = $request->validated();
 
         $validatedData['password'] = Hash::make($validatedData['password']);
+        $validatedData['role'] = 'employee';
 
         $user = Register::create($validatedData);
         Mail::to($user->email)->queue(new RegisterMail($user));

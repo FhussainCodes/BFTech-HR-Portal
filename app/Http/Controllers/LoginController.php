@@ -20,11 +20,13 @@ class LoginController extends Controller
 
         $user = Register::where('email',$request['email'])->first();
 
-         if (!$user) {
+        if (!$user) {
             return back()
                 ->withErrors(['email' => 'Email does not exist.'])
                 ->withInput();
         }
+
+
 
          if (!Hash::check($request['password'], $user->password)) {
             return back()
@@ -37,6 +39,10 @@ class LoginController extends Controller
         session([
             'user' => $user
         ]);
+
+        if ($user->role == 'hr'){
+            return redirect()->route('hr.dashboard.index');
+        }
 
         return redirect()->route('dashboardPage');
     }

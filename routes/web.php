@@ -45,6 +45,7 @@ Route::post('/resetPassword',[ForgotPasswordController::class,'resetPassword'])-
 // For Logout 
 Route::post('/logout',[LoginController::class,'logout'])->name('logoutPage');
 
+// For Cheking that User has Login or not
 Route::middleware('user.auth')->group(function(){
 
 // For Dashboard
@@ -100,12 +101,12 @@ Route::post('/apply/store',[LeaveController::class,'store'])->name('leave.apply.
 
 // ----------------------------- For HR --------------------------------------//
 
-Route::prefix('hr')->group(function(){
+Route::prefix('hr')->middleware('hr.auth')->group(function(){
     Route::get('/dashboard/index',[DashboardController::class,'index'])->name('hr.dashboard.index');
-    Route::get('/employees/index',[])->name('hr.employee.index');
-    Route::get('/employees/create',[])->name('hr.employee.create');
-    Route::get('/employees/{id}/edit',[])->name('hr.employee.edit');
-    Route::get('/employees/{id}',[])->name('hr.employee.show');
+    // Route::get('/employees/index',[])->name('hr.employee.index');
+    // Route::get('/employees/create',[])->name('hr.employee.create');
+    // Route::get('/employees/{id}/edit',[])->name('hr.employee.edit');
+    // Route::get('/employees/{id}',[])->name('hr.employee.show');
 });
 
 

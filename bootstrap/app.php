@@ -8,6 +8,7 @@ use App\Http\Middleware\AgeCheck;
 use App\Http\Middleware\CityCheck;
 use App\Http\Middleware\SetLocale;
 use App\Http\Middleware\CheckUserSession;
+use App\Http\Middleware\HrAuth;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -25,6 +26,7 @@ return Application::configure(basePath: dirname(__DIR__))
         'age.check' => \App\Http\Middleware\AgeCheck::class,
         'city.check' => \App\Http\Middleware\CityCheck::class,
         'user.auth' => \App\Http\Middleware\CheckUserSession::class,
+        'hr.auth' => \App\Http\Middleware\HrAuth::class,
     ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
