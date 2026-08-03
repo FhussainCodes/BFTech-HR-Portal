@@ -7,6 +7,7 @@ use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\LeaveController;
+use App\Http\Controllers\HR\DashboardController;
 
 
 Route::get('/', function () {
@@ -100,7 +101,7 @@ Route::post('/apply/store',[LeaveController::class,'store'])->name('leave.apply.
 // ----------------------------- For HR --------------------------------------//
 
 Route::prefix('hr')->group(function(){
-    Route::get('/dashboard/index',[])->name('hr.dashboard.index');
+    Route::get('/dashboard/index',[DashboardController::class,'index'])->name('hr.dashboard.index');
     Route::get('/employees/index',[])->name('hr.employee.index');
     Route::get('/employees/create',[])->name('hr.employee.create');
     Route::get('/employees/{id}/edit',[])->name('hr.employee.edit');
