@@ -18,7 +18,8 @@ class Register extends Model
         'country', 
         'password',
         'profile_image', 
-        'confirm_password', 
+        'confirm_password',
+        'role', 
     ];
 
 
