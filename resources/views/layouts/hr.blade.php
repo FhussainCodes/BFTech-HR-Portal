@@ -15,10 +15,8 @@
 <body>
 
     <div class="app-layout">
-        {{-- Sidebar spans full height on the left --}}
         @include('partials.hr-sidebar')
 
-        {{-- Right section containing Navbar, Page Content, and Footer --}}
         <div class="app-right-wrapper">
             @include('partials.hr-navbar')
 

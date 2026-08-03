@@ -31,12 +31,12 @@
             <div class="collapse show" id="employeeMenu">
                 <ul class="nav flex-column submenu">
                     <li class="nav-item">
-                        <a href="{{ route('hr.employee.index') }}" class="nav-link">
+                        <a href="#" class="nav-link">
                             Employee List
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('hr.employee.create') }}" class="nav-link">
+                        <a href="#" class="nav-link">
                             Add Employee
                         </a>
                     </li>
