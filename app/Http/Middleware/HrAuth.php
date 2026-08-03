@@ -15,14 +15,13 @@ class HrAuth
      */
     public function handle(Request $request, Closure $next): Response
     {
-        dd(session()->all());
-        // if(!session()->has('user')){
-        //     return redirect()->route('loginPage');
-        // }
+        if(!session()->has('user')){
+            return redirect()->route('loginPage');
+        }
 
-        // if(session('user')['role'] != 'hr'){
-        //     abort(403);
-        // }
+        if(session('user')['role'] != 'hr'){
+            abort(403);
+        }
         return $next($request);
     }
 }
