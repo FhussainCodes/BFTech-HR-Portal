@@ -96,3 +96,7 @@ Route::post('/apply/store',[LeaveController::class,'store'])->name('leave.apply.
 });
 
 });
+
+// ----------------------------- For HR --------------------------------------//
+
+
