@@ -121,7 +121,7 @@ The project follows Laravel's MVC architecture and uses Form Requests, Localizat
 # Installation
 
 ```bash
-git clone https://github.com/username/BFTech_HR_Portal.git
+git clone https://github.com/FhussainCodes/BFTech_HR_Portal.git
 ```
 
 ```bash
@@ -166,17 +166,29 @@ storage/
 ```
 
 ---
+# Recent Updates
+
+- Added the `role` column to the `register` table.
+- Implemented role-based login redirection (Employee / HR).
+- Created a dedicated development branch (`hr-portal`) for HR module development.
+- Implemented custom `HrAuth` middleware for HR route protection.
+- Designed the initial HR Portal layout:
+  - HR Navbar
+  - HR Sidebar
+  - HR Footer
+  - HR Dashboard UI
+- Organized the HR module folder structure.
+- Started development of the HR Dashboard.
 
 # Future Improvements
 
-- HR Dashboard
-- Admin Panel
+- Employee Management Module
+- Attendance Management
+- Leave Approval Workflow
+- Reports Module
+- Import Employees using Excel
 - Notification System
 - Role & Permission Management
-- Email Notifications
-- Attendance Reports
-- Leave Approval Workflow
-
 ---
 
 # Learning Outcomes
