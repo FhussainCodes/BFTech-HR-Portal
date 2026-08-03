@@ -2,6 +2,10 @@
 
 @section('content')
 
-<h3>HR Dashboard</h3>
+<h2>
+
+    HR Dashboard
+
+</h2>
 
 @endsection
