@@ -10,10 +10,35 @@ use App\Http\Requests\Hr\UpdateEmployeeRequest;
 
 class EmployeeController extends Controller
 {
-    public function index(){
-        $employees = Register::where('role','employee')->paginate(5);
-        return view('hr.employees.index', compact('employees'));
+    // public function index(){
+    //     $employees = Register::where('role','employee')->paginate(5);
+    //     return view('hr.employees.index', compact('employees'));
+    // }
+    public function index(Request $request)
+{
+    $search = $request->search;
+
+    if ($search) {
+
+        $employees = Register::where('role', 'employee')
+                    ->where(function ($query) use ($search) {
+
+                        $query->where('first_name', 'LIKE', "%{$search}%")
+                              ->orWhere('id', 'LIKE', "%{$search}%")
+                              ->orWhere('designation', 'LIKE', "%{$search}%");
+                    })
+                    ->paginate(5)
+                    ->withQueryString();
+
+    } else {
+
+        $employees = Register::where('role', 'employee')
+                    ->paginate(5);
+
     }
+
+    return view('hr.employees.index', compact('employees'));
+}
 
     public function create(){
         return view('hr.employees.create');
@@ -28,7 +53,7 @@ class EmployeeController extends Controller
         return view('hr.employees.edit',compact('employee'));
     }
 
-        public function update(UpdateEmployeeRequest $request, $id)
+    public function update(UpdateEmployeeRequest $request, $id)
 {
     $employee = Register::findOrFail($id);
 
@@ -50,9 +75,9 @@ class EmployeeController extends Controller
     return redirect()->route('hr.employees.index')->with('success', 'Employee updated successfully.');
 }
 
-        public function destroy($id){
+    public function destroy($id){
             $employee = Register::findOrFail($id);
             $employee->delete();
             return redirect()->route('hr.employees.index')->with('success','Employee deleted successfully');
-        }
+    }
 }

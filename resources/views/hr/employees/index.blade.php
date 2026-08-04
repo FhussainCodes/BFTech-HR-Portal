@@ -14,14 +14,25 @@
 <div class="card shadow-sm border-0">
     <div class="card-body">
         <div class="row mb-4">
-            <div class="col-md-5">
-                <input type="text" class="form-control" placeholder="Search employee by name">
-            </div>
-            <div class="col-md-2">
-                <button class="btn btn-primary w-100">
-                    Search
-                </button>
-            </div>
+<form action="{{ route('hr.employees.index') }}" method="GET">
+
+    <div class="input-group">
+
+        <input type="text"
+               name="search"
+               class="form-control"
+               placeholder="Search employee..."
+               value="{{ request('search') }}">
+
+        <button class="btn btn-primary">
+
+            <i class="bi bi-search"></i>
+
+        </button>
+
+    </div>
+
+</form>
         </div>
 
         <div class="table-responsive">
