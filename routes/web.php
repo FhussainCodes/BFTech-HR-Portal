@@ -117,7 +117,17 @@ Route::prefix('hr')->middleware('hr.auth')->group(function(){
     Route::delete('/employees/{id}',[EmployeeController::class,'destroy'])->name('hr.employees.destroy');
 
     // For Hr Personal Profile 
-    Route::get('/profile/index', )->name('hr.profile.index');
+    Route::get('/profile/index',EmployeeController::class,'index' )->name('hr.profile.index');
+    Route::get('/profile/editpersonal',EmployeeController::class,'editPersonal' )->name('hr.profile.editPersonal');
+    Route::put('/profile/updatepersonal',EmployeeController::class,'updatePersonal' )->name('hr.profile.updatePersonal');
+    Route::get('/profile/editcontact',EmployeeController::class,'editContact' )->name('hr.profile.editContact');
+    Route::put('/profile/updatecontact',EmployeeController::class,'updateContact' )->name('hr.profile.updateContact');
+    Route::get('/profile/editdesignation',EmployeeController::class,'editDesignation' )->name('hr.profile.editDesignation');
+    Route::put('/profile/updatedesignation',EmployeeController::class,'updateDesignation' )->name('hr.profile.updateDesignation');
+    Route::get('/profile/editother',EmployeeController::class,'editOther' )->name('hr.profile.editOther');
+    Route::put('/profile/updateother',EmployeeController::class,'updateOther' )->name('hr.profile.updateOther');
+    Route::get('/profile/editpassword',EmployeeController::class,'editPassword' )->name('hr.profile.editPassword');
+    Route::put('/profile/updatepassword',EmployeeController::class,'updatePassword' )->name('hr.profile.updatePassword');
 
 });
 
