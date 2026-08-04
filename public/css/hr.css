@@ -253,3 +253,17 @@ body {
     font-size:30px;
     font-weight:600;
 }
+
+/* For Edit  Page*/
+.form-label{
+    font-weight:600;
+    font-size:14px;
+}
+
+.card{
+    border-radius:12px;
+}
+
+.form-control{
+    height:45px;
+}

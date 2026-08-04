@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AttendanceController;
@@ -103,6 +104,7 @@ Route::post('/apply/store',[LeaveController::class,'store'])->name('leave.apply.
 // ----------------------------- For HR --------------------------------------//
 
 Route::prefix('hr')->middleware('hr.auth')->group(function(){
+
     // For HR Dashboard Page
     Route::get('/dashboard/index',[DashboardController::class,'index'])->name('hr.dashboard.index');
 
@@ -110,6 +112,8 @@ Route::prefix('hr')->middleware('hr.auth')->group(function(){
     Route::get('/employees/index',[EmployeeController::class,'index'])->name('hr.employees.index');
     Route::get('/employees/create',[EmployeeController::class,'create'])->name('hr.employees.create');
     Route::post('/employees/store',[EmployeeController::class,'store'])->name('hr.employees.store');
+    Route::get('/employees/{id}/edit',[EmployeeController::class,'edit'])->name('hr.employees.edit');
+    Route::put('/employees/{id}',[EmployeeController::class,'store'])->name('hr.employees.update');
 
 });
 

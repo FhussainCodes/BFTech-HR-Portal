@@ -64,7 +64,7 @@
                                 </span>
                             </td>
                             <td>
-                                <a href="#" class="btn btn-warning btn-sm">
+                                <a href="{{route('hr.employees.edit',$employee->id)}}" class="btn btn-warning btn-sm">
                                     <i class="bi bi-pencil-square"></i>
                                 </a>
                                 <button class="btn btn-danger btn-sm">

@@ -18,4 +18,9 @@ class EmployeeController extends Controller
     }
 
     public function store(){}
+
+    public function edit($id){
+        $employees = Register::findOrFail($id);
+        return view('hr.employees.edit',compact('employees'));
+    }
 }
