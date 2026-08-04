@@ -115,7 +115,6 @@ Route::prefix('hr')->middleware('hr.auth')->group(function(){
     Route::get('/employees/{id}/edit',[EmployeeController::class,'edit'])->name('hr.employees.edit');
     Route::put('/employees/{id}',[EmployeeController::class,'update'])->name('hr.employees.update');
     Route::delete('/employees/{id}',[EmployeeController::class,'destroy'])->name('hr.employees.destroy');
-    
 
 });
 

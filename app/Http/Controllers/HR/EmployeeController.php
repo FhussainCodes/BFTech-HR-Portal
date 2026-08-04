@@ -7,46 +7,62 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Register;
 use App\Http\Requests\Hr\UpdateEmployeeRequest;
+use App\Http\Requests\Hr\StoreEmployeeRequest;
 
 class EmployeeController extends Controller
 {
-    // public function index(){
-    //     $employees = Register::where('role','employee')->paginate(5);
-    //     return view('hr.employees.index', compact('employees'));
-    // }
-    public function index(Request $request)
-{
-    $search = $request->search;
-
-    if ($search) {
-
-        $employees = Register::where('role', 'employee')
-                    ->where(function ($query) use ($search) {
-
-                        $query->where('first_name', 'LIKE', "%{$search}%")
-                              ->orWhere('id', 'LIKE', "%{$search}%")
-                              ->orWhere('designation', 'LIKE', "%{$search}%");
-                    })
-                    ->paginate(5)
-                    ->withQueryString();
-
-    } else {
-
-        $employees = Register::where('role', 'employee')
-                    ->paginate(5);
-
+    public function index(){
+        $employees = Register::where('role','employee')->paginate(5);
+        return view('hr.employees.index', compact('employees'));
     }
+//     public function index(Request $request)
+// {
+//     $search = $request->search;
 
-    return view('hr.employees.index', compact('employees'));
-}
+//     if ($search) {
+
+//         $employees = Register::where('role', 'employee')
+//                     ->where(function ($query) use ($search) {
+
+//                         $query->where('first_name', 'LIKE', "%{$search}%")
+//                               ->orWhere('id', 'LIKE', "%{$search}%")
+//                               ->orWhere('designation', 'LIKE', "%{$search}%");
+//                     })
+//                     ->paginate(5)
+//                     ->withQueryString();
+
+//     } else {
+
+//         $employees = Register::where('role', 'employee')
+//                     ->paginate(5);
+
+//     }
+
+//     return view('hr.employees.index', compact('employees'));
+// }
 
     public function create(){
         return view('hr.employees.create');
     }
 
-    public function store(){
-        
-    }
+    public function store(StoreEmployeeRequest $request)
+{
+    $validatedData = $request->validated();
+
+    $validatedData['password'] = Hash::make($validatedData['password']);
+
+    $validatedData['confirm_password'] = $validatedData['password'];
+
+    $validatedData['role'] = 'employee';
+
+    $validatedData['profile_image'] = null;
+
+    Register::create($validatedData);
+
+    return redirect()
+            ->route('hr.employees.index')
+            ->with('success', 'Employee added successfully.');
+}
 
     public function edit($id){
         $employee = Register::findOrFail($id);

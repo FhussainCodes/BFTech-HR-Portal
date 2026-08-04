@@ -84,7 +84,7 @@
 
     <a href="{{ route('hr.employees.edit', $employee->id) }}"
        class="btn btn-sm btn-warning">
-
+        Edit
         <i class="bi bi-pencil-square"></i>
 
     </a>
@@ -98,7 +98,7 @@
         <button type="submit"
                 class="btn btn-sm btn-danger"
                 onclick="return confirm('Are you sure you want to delete this employee?')">
-
+                Delete
             <i class="bi bi-trash"></i>
 
         </button>
