@@ -101,7 +101,7 @@ Route::post('/apply/store',[LeaveController::class,'store'])->name('leave.apply.
 
 });
 
-// ----------------------------- For HR --------------------------------------//
+// ----------------------=========------- For HR =========================================//
 
 Route::prefix('hr')->middleware('hr.auth')->group(function(){
 
@@ -117,7 +117,7 @@ Route::prefix('hr')->middleware('hr.auth')->group(function(){
     Route::delete('/employees/{id}',[EmployeeController::class,'destroy'])->name('hr.employees.destroy');
 
     // For Hr Personal Profile 
-    // Route::get('/hr/profile', ...)->name('hr.profile.index');
+    Route::get('/profile/index', )->name('hr.profile.index');
 
 });
 
