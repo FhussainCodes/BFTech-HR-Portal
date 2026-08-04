@@ -12,7 +12,7 @@ class UpdatePersonalInfoRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -20,10 +20,36 @@ class UpdatePersonalInfoRequest extends FormRequest
      *
      * @return array<string, ValidationRule|array<mixed>|string>
      */
-    public function rules(): array
+ public function rules(): array
     {
         return [
-            //
+
+            'first_name' => 'required|min:3|max:20',
+
+            'last_name' => 'required|min:3|max:20',
+
+            'age' => 'required|integer|min:18|max:60',
+
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+
+            'first_name.required' => 'First name is required.',
+            'first_name.min' => 'First name must be at least 3 characters.',
+            'first_name.max' => 'First name may not be greater than 20 characters.',
+
+            'last_name.required' => 'Last name is required.',
+            'last_name.min' => 'Last name must be at least 3 characters.',
+            'last_name.max' => 'Last name may not be greater than 20 characters.',
+
+            'age.required' => 'Age is required.',
+            'age.integer' => 'Age must be a number.',
+            'age.min' => 'Minimum age is 18.',
+            'age.max' => 'Maximum age is 60.',
+
         ];
     }
 }
