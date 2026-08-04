@@ -1,4 +1,4 @@
-<aside class="hr-sidebar">
+<aside class="hr-sidebar d-flex flex-column">
     <div class="text-center mt-4">
         <img src="{{ asset('images/default-profile.png') }}" class="rounded-circle profile-image" alt="Profile">
         <h5 class="text-white mt-3 profile-name">Farrukh Hussain</h5>
@@ -7,7 +7,7 @@
 
     <hr class="sidebar-divider">
 
-    <ul class="nav flex-column">
+    <ul class="nav flex-column flex-grow-1">
         <li class="nav-item">
             <a href="{{ route('hr.dashboard.index') }}" class="nav-link {{ request()->routeIs('hr.dashboard.index') ? 'active' : '' }}">
                 <i class="bi bi-speedometer2"></i>
@@ -63,11 +63,23 @@
             </a>
         </li>
 
-        <li class="nav-item">
-            <a href="#" class="nav-link">
-                <i class="bi bi-gear"></i>
-                <span>Settings</span>
-            </a>
-        </li>
+
     </ul>
+    <div class="mt-auto p-3">
+
+    <form action="{{ route('logoutPage') }}" method="POST">
+
+        @csrf
+
+        <button type="submit" class="btn btn-danger w-100">
+
+            <i class="bi bi-box-arrow-right me-2"></i>
+
+            Logout
+
+        </button>
+
+    </form>
+
+</div>
 </aside>

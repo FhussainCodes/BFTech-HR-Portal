@@ -116,6 +116,9 @@ Route::prefix('hr')->middleware('hr.auth')->group(function(){
     Route::put('/employees/{id}',[EmployeeController::class,'update'])->name('hr.employees.update');
     Route::delete('/employees/{id}',[EmployeeController::class,'destroy'])->name('hr.employees.destroy');
 
+    // For Hr Personal Profile 
+    // Route::get('/hr/profile', ...)->name('hr.profile.index');
+
 });
 
 

@@ -85,11 +85,18 @@
 
                     <li>
 
-                        <a class="dropdown-item text-danger" href="#">
+<form action="{{ route('logoutPage') }}" method="POST">
 
-                            Logout
+    @csrf
 
-                        </a>
+    <button type="submit"
+            class="dropdown-item text-danger">
+
+        Logout
+
+    </button>
+
+</form>
 
                     </li>
 
