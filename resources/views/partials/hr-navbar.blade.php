@@ -63,7 +63,7 @@
 
                     <li>
 
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="{{route('hr.profile.index')}}">
 
                             Profile
 

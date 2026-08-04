@@ -4,10 +4,14 @@ namespace App\Http\Controllers\HR;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Register;
 
 class HrProfileController extends Controller
 {
-    public function index(){}
+    public function index(){
+        $user = Register::findOrFail(session('user')['id']);
+        return view('hr.profile.index',compact('user'));
+    }
 
     public function editPersonal(){}
     public function updatePersonal(){}
