@@ -8,17 +8,12 @@
         Edit Employee
     </h2>
 
-    <a href="{{ route('hr.employees.index') }}"
-       class="btn btn-secondary">
-
+    <a href="{{ route('hr.employees.index') }}" class="btn btn-secondary">
         <i class="bi bi-arrow-left me-2"></i>
-
         Back
-
     </a>
 
 </div>
-
 
 <div class="card shadow-sm border-0">
 
@@ -37,16 +32,19 @@
 
                 <div class="col-md-6 mb-3">
 
-                    <label class="form-label">
-
-                        First Name
-
-                    </label>
+                    <label class="form-label">First Name</label>
 
                     <input type="text"
                            name="first_name"
-                           class="form-control"
+                           class="form-control @error('first_name') is-invalid @enderror"
+                           placeholder="Please enter first name"
                            value="{{ old('first_name', $employee->first_name) }}">
+
+                    @error('first_name')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
 
                 </div>
 
@@ -54,16 +52,19 @@
 
                 <div class="col-md-6 mb-3">
 
-                    <label class="form-label">
-
-                        Last Name
-
-                    </label>
+                    <label class="form-label">Last Name</label>
 
                     <input type="text"
                            name="last_name"
-                           class="form-control"
+                           class="form-control @error('last_name') is-invalid @enderror"
+                           placeholder="Please enter last name"
                            value="{{ old('last_name', $employee->last_name) }}">
+
+                    @error('last_name')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
 
                 </div>
 
@@ -71,16 +72,19 @@
 
                 <div class="col-md-6 mb-3">
 
-                    <label class="form-label">
-
-                        Email
-
-                    </label>
+                    <label class="form-label">Email</label>
 
                     <input type="email"
                            name="email"
-                           class="form-control"
+                           class="form-control @error('email') is-invalid @enderror"
+                           placeholder="Please enter email"
                            value="{{ old('email', $employee->email) }}">
+
+                    @error('email')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
 
                 </div>
 
@@ -88,16 +92,19 @@
 
                 <div class="col-md-6 mb-3">
 
-                    <label class="form-label">
-
-                        Age
-
-                    </label>
+                    <label class="form-label">Age</label>
 
                     <input type="number"
                            name="age"
-                           class="form-control"
+                           class="form-control @error('age') is-invalid @enderror"
+                           placeholder="Please enter age"
                            value="{{ old('age', $employee->age) }}">
+
+                    @error('age')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
 
                 </div>
 
@@ -105,33 +112,39 @@
 
                 <div class="col-md-6 mb-3">
 
-                    <label class="form-label">
-
-                        Designation
-
-                    </label>
+                    <label class="form-label">Designation</label>
 
                     <input type="text"
                            name="designation"
-                           class="form-control"
+                           class="form-control @error('designation') is-invalid @enderror"
+                           placeholder="Please enter designation"
                            value="{{ old('designation', $employee->designation) }}">
+
+                    @error('designation')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
 
                 </div>
 
-                {{-- Phone --}}
+                {{-- Phone Number --}}
 
                 <div class="col-md-6 mb-3">
 
-                    <label class="form-label">
-
-                        Phone Number
-
-                    </label>
+                    <label class="form-label">Phone Number</label>
 
                     <input type="text"
                            name="phone_number"
-                           class="form-control"
+                           class="form-control @error('phone_number') is-invalid @enderror"
+                           placeholder="Please enter phone number"
                            value="{{ old('phone_number', $employee->phone_number) }}">
+
+                    @error('phone_number')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
 
                 </div>
 
@@ -139,16 +152,19 @@
 
                 <div class="col-md-6 mb-3">
 
-                    <label class="form-label">
-
-                        City
-
-                    </label>
+                    <label class="form-label">City</label>
 
                     <input type="text"
                            name="city"
-                           class="form-control"
+                           class="form-control @error('city') is-invalid @enderror"
+                           placeholder="Please enter city"
                            value="{{ old('city', $employee->city) }}">
+
+                    @error('city')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
 
                 </div>
 
@@ -156,38 +172,73 @@
 
                 <div class="col-md-6 mb-3">
 
-                    <label class="form-label">
-
-                        Country
-
-                    </label>
+                    <label class="form-label">Country</label>
 
                     <input type="text"
                            name="country"
-                           class="form-control"
+                           class="form-control @error('country') is-invalid @enderror"
+                           placeholder="Please enter country"
                            value="{{ old('country', $employee->country) }}">
+
+                    @error('country')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
 
                 </div>
 
-                {{-- Profile Image --}}
+                {{-- Password --}}
 
-                <div class="col-md-12 mb-4">
+                <div class="col-md-6 mb-3">
 
-                    <label class="form-label">
+                    <label class="form-label">Password</label>
 
-                        Profile Image
+                    <input type="password"
+                           name="password"
+                           autocomplete="new-password"
+                           class="form-control @error('password') is-invalid @enderror"
+                           placeholder="Leave blank to keep current password">
 
-                    </label>
+                    @error('password')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
 
-                    <input type="file"
-                           name="profile_image"
-                           class="form-control">
+                </div>
+
+                {{-- Confirm Password --}}
+
+                <div class="col-md-6 mb-3">
+
+                    <label class="form-label">Confirm Password</label>
+
+                    <input type="password"
+                           name="confirm_password"
+                           autocomplete="new-password"
+                           class="form-control @error('confirm_password') is-invalid @enderror"
+                           placeholder="Re-enter new password">
+
+                    @error('confirm_password')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
+
+                </div>
+
+                <div class="col-12 mb-3">
+
+                    <small class="text-muted">
+                        Leave the password fields empty if you don't want to change the employee's password.
+                    </small>
 
                 </div>
 
             </div>
 
-            <button class="btn btn-primary">
+            <button type="submit" class="btn btn-primary">
 
                 <i class="bi bi-check-circle me-2"></i>
 

@@ -113,7 +113,7 @@ Route::prefix('hr')->middleware('hr.auth')->group(function(){
     Route::get('/employees/create',[EmployeeController::class,'create'])->name('hr.employees.create');
     Route::post('/employees/store',[EmployeeController::class,'store'])->name('hr.employees.store');
     Route::get('/employees/{id}/edit',[EmployeeController::class,'edit'])->name('hr.employees.edit');
-    Route::put('/employees/{id}',[EmployeeController::class,'store'])->name('hr.employees.update');
+    Route::put('/employees/{id}',[EmployeeController::class,'update'])->name('hr.employees.update');
 
 });
 
