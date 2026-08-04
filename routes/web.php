@@ -8,6 +8,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\LeaveController;
 use App\Http\Controllers\HR\DashboardController;
+use App\Http\Controllers\HR\EmployeeController;
 
 
 Route::get('/', function () {
@@ -102,11 +103,14 @@ Route::post('/apply/store',[LeaveController::class,'store'])->name('leave.apply.
 // ----------------------------- For HR --------------------------------------//
 
 Route::prefix('hr')->middleware('hr.auth')->group(function(){
+    // For HR Dashboard Page
     Route::get('/dashboard/index',[DashboardController::class,'index'])->name('hr.dashboard.index');
-    // Route::get('/employees/index',[])->name('hr.employee.index');
-    // Route::get('/employees/create',[])->name('hr.employee.create');
-    // Route::get('/employees/{id}/edit',[])->name('hr.employee.edit');
-    // Route::get('/employees/{id}',[])->name('hr.employee.show');
+
+    // For Employee Details 
+    Route::get('/employees/index',[EmployeeController::class,'index'])->name('hr.employees.index');
+    Route::get('/employees/create',[EmployeeController::class,'create'])->name('hr.employees.create');
+    Route::post('/employees/store',[EmployeeController::class,'store'])->name('hr.employees.store');
+
 });
 
 
