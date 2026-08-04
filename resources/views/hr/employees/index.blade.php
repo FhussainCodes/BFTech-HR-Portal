@@ -32,6 +32,7 @@
                         <th>Profile</th>
                         <th>Name</th>
                         <th>Email</th>
+                        <th>Age</th>
                         <th>Designation</th>
                         <th>Status</th>
                         <th width="180">Actions</th>
@@ -55,21 +56,45 @@
                             <td>
                                 {{ $employee->email }}
                             </td>
+                                                        <td>
+                                {{ $employee->age }}
+                            </td>
                             <td>
                                 {{ $employee->designation }}
                             </td>
+
                             <td>
                                 <span class="badge bg-success">
                                     Active
                                 </span>
                             </td>
                             <td>
-                                <a href="{{route('hr.employees.edit',$employee->id)}}" class="btn btn-warning btn-sm">
-                                    <i class="bi bi-pencil-square"></i>
-                                </a>
-                                <button class="btn btn-danger btn-sm">
-                                    <i class="bi bi-trash"></i>
-                                </button>
+<div class="d-flex gap-2">
+
+    <a href="{{ route('hr.employees.edit', $employee->id) }}"
+       class="btn btn-sm btn-warning">
+
+        <i class="bi bi-pencil-square"></i>
+
+    </a>
+
+    <form action="{{ route('hr.employees.destroy', $employee->id) }}"
+          method="POST">
+
+        @csrf
+        @method('DELETE')
+
+        <button type="submit"
+                class="btn btn-sm btn-danger"
+                onclick="return confirm('Are you sure you want to delete this employee?')">
+
+            <i class="bi bi-trash"></i>
+
+        </button>
+
+    </form>
+
+</div>
                             </td>
                         </tr>
                     @empty
