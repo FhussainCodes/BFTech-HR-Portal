@@ -102,7 +102,7 @@ Route::post('/apply/store',[LeaveController::class,'store'])->name('leave.apply.
 
 });
 
-// ----------------------=========------- For HR =========================================//
+// -------------------------------------- For HR -------------------------------------- //
 
 Route::prefix('hr')->middleware('hr.auth')->group(function(){
 

@@ -4,10 +4,12 @@ namespace App\Http\Controllers\HR;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\Hr\UpdatePersonalInfoRequest;
 use App\Http\Requests\Hr\UpdateContactInfoRequest;
 use App\Http\Requests\Hr\UpdateDesignationRequest;
 use App\Http\Requests\Hr\UpdateOtherInfoRequest;
+use App\Http\Requests\Hr\UpdatePasswordRequest;
 use App\Models\Register;
 
 class HrProfileController extends Controller
@@ -71,11 +73,19 @@ class HrProfileController extends Controller
     }
 
     public function editPassword(){
-
+        $user = Register::findOrFail(session('user')['id']);
+        return view('hr.profile.password-edit', compact('user'));
     }
-    public function updatePassword(){
-        
+    public function updatePassword(UpdatePasswordRequest $request){
+        $user  = Register::findOrFail(session('user')['id']);
+        $user->update([
+        'password' => Hash::make($request->password),
+        'confirm_password' => Hash::make($request->confirm_password)
+        ]);
+        session([
+            'user' => $user
+        ]);
+        return redirect()->route('hr.profile.index')->with('success','Other Information updated successfully');
     }
-
 
 }

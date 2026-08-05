@@ -169,6 +169,8 @@
             <p class="mb-0 text-muted">
 
                 For security reasons, your password is hidden.
+            <!-- <p class="mb-0"><strong>Country :</strong> {{ $user->password }}</p> -->
+
 
             </p>
 
