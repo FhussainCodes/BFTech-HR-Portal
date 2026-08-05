@@ -46,18 +46,30 @@
 
             <li class="nav-item dropdown">
 
-                <a class="nav-link dropdown-toggle d-flex align-items-center"
+                                @php
+    $user = \App\Models\Register::find(session('user')['id']);
+@endphp
 
-                    data-bs-toggle="dropdown">
+<a class="nav-link dropdown-toggle d-flex align-items-center"
+    href="#"
+    data-bs-toggle="dropdown">
 
-                    <img src="{{ asset('images/default-profile.png') }}"
-                        width="35"
-                        height="35"
-                        class="rounded-circle me-2">
+    @if($user && $user->profile_image)
+        <img src="{{ asset('storage/'.$user->profile_image) }}"
+             width="35"
+             height="35"
+             class="rounded-circle me-2"
+             style="object-fit:cover;">
+    @else
+        <img src="{{ asset('images/default-profile.png') }}"
+             width="35"
+             height="35"
+             class="rounded-circle me-2">
+    @endif
 
-                    HR
+    {{ $user->first_name }}
 
-                </a>
+</a>
 
                 <ul class="dropdown-menu dropdown-menu-end">
 

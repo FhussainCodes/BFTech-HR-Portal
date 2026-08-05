@@ -7,39 +7,74 @@
     <h3 class="mb-4">My Profile</h3>
 
     {{-- Profile Card --}}
-    <div class="card shadow-sm mb-3">
+<div class="card shadow-sm mb-3">
+    <div class="card-body text-center">
 
-        <div class="card-body text-center">
+        @if($user->profile_image)
+            <img src="{{ asset('storage/'.$user->profile_image) }}"
+                 class="rounded-circle mb-3"
+                 width="150"
+                 height="150"
+                 style="object-fit:cover;">
+        @else
+            <img src="{{ asset('images/default-profile.png') }}"
+                 class="rounded-circle mb-3"
+                 width="150"
+                 height="150"
+                 style="object-fit:cover;">
+        @endif
 
-            @if($user->profile_image)
+        <h4 class="mb-1">
+            {{ $user->first_name }} {{ $user->last_name }}
+        </h4>
 
-                <img src="{{ asset('storage/'.$user->profile_image) }}"
-                     class="rounded-circle mb-3"
-                     width="150"
-                     height="150"
-                     style="object-fit:cover;">
+        <p class="text-muted mb-3">
+            {{ $user->role }}
+        </p>
 
-            @else
+        <form action="{{ route('hr.profile.uploadImage') }}"
+              method="POST"
+              enctype="multipart/form-data">
 
-                <img src="{{ asset('images/default-profile.png') }}"
-                     class="rounded-circle mb-3"
-                     width="150"
-                     height="150"
-                     style="object-fit:cover;">
+            @csrf
 
-            @endif
+            <div class="mb-3">
+                <input type="file"
+                       name="profile_image"
+                       class="form-control @error('profile_image') is-invalid @enderror">
+            </div>
 
-            <h4 class="mb-1">
-                {{ $user->first_name }} {{ $user->last_name }}
-            </h4>
+            @error('profile_image')
+                <div class="text-danger mb-3">
+                    {{ $message }}
+                </div>
+            @enderror
 
-            <p class="text-muted mb-0">
-                {{ ucfirst($user->role) }}
-            </p>
+            <button type="submit" class="btn btn-primary">
+                Upload Image
+            </button>
+        </form>
+                    @if($user->profile_image)
 
-        </div>
+<form action="{{route('hr.profile.deleteImage')}}"
+      method="POST"
+      class="mt-2">
+
+    @csrf
+    @method('DELETE')
+
+    <button type="submit"
+            class="btn btn-danger"
+            onclick = "return confirm('Are you want to delete this') " >
+        Delete Image
+    </button>
+
+</form>
+
+@endif
 
     </div>
+</div>
 
     {{-- Personal Information --}}
     <div class="card shadow-sm mb-3">

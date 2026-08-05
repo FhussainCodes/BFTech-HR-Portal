@@ -1,4 +1,4 @@
-<footer class="hr-footer">
+<footer class="hr-footer ">
 
     <p class="mb-0">
 

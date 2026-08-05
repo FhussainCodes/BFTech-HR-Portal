@@ -12,7 +12,6 @@ use App\Http\Controllers\HR\DashboardController;
 use App\Http\Controllers\HR\EmployeeController;
 use App\Http\Controllers\HR\HrProfileController;
 
-
 Route::get('/', function () {
     return view('auth.loginUser');
 });
@@ -56,6 +55,7 @@ Route::get('/dashboard',function(){
     return view('employee.dashboard.index');
 })->name('dashboardPage');
 
+// For Get Attendance Index Page
 Route::get('/dashboard', [AttendanceController::class, 'index'])->name('dashboardPage');
 
 // For Attendance Check In & Check Out Page
@@ -70,7 +70,8 @@ Route::get('/attendance-history', [AttendanceController::class, 'history'])->nam
 Route::get('/emp-profile',[ProfileController::class,'show'])->name('emp-profile-index');
 Route::post('/upl-image',[ProfileController::class,'uploadImage'])->name('profileImage');
 
-// Employee Profile Edit Routes
+// -------------------------------------- For Employee Profile Edit Routes -------------------------------------- //
+
 Route::prefix('profile')->group(function(){
     // For Employee Profile Personal Info Edit Page
 Route::get('/personal/edit',[ProfileController::class,'editPersonal'])->name('profile.personal.edit');
@@ -89,7 +90,8 @@ Route::get('/other/edit',[ProfileController::class,'editOther'])->name('profile.
 Route::put('/other/update',[ProfileController::class,'updateOther'])->name('profile.other.update')->middleware('city.check');
 });
 
-// For Leave
+// -------------------------------------- For Employee Leave -------------------------------------- //
+
 Route::prefix('leave')->group(function(){
 
     // For Employee Profile Leave Index Page
@@ -100,7 +102,7 @@ Route::get('/apply/create',[LeaveController::class,'create'])->name('leave.apply
 Route::post('/apply/store',[LeaveController::class,'store'])->name('leave.apply.store');
 });
 
-});
+}); // End of Employee Middleware for check that login or not
 
 // -------------------------------------- For HR -------------------------------------- //
 
@@ -129,6 +131,8 @@ Route::prefix('hr')->middleware('hr.auth')->group(function(){
     Route::put('/profile/updateother',[HrProfileController::class,'updateOther' ])->name('hr.profile.updateOther');
     Route::get('/profile/editpassword',[HrProfileController::class,'editPassword' ])->name('hr.profile.editPassword');
     Route::put('/profile/updatepassword',[HrProfileController::class,'updatePassword' ])->name('hr.profile.updatePassword');
+    Route::post('/profile/uploadimage',[HrProfileController::class,'uploadImage' ])->name('hr.profile.uploadImage');
+    Route::delete('/profile/deleteimage',[HrProfileController::class,'deleteImage' ])->name('hr.profile.deleteImage');
 
 });
 

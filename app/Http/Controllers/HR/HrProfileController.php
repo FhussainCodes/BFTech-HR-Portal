@@ -5,11 +5,13 @@ namespace App\Http\Controllers\HR;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\Hr\UpdatePersonalInfoRequest;
 use App\Http\Requests\Hr\UpdateContactInfoRequest;
 use App\Http\Requests\Hr\UpdateDesignationRequest;
 use App\Http\Requests\Hr\UpdateOtherInfoRequest;
 use App\Http\Requests\Hr\UpdatePasswordRequest;
+use App\Http\Requests\Hr\UpdateProfileImageRequest;
 use App\Models\Register;
 
 class HrProfileController extends Controller
@@ -86,6 +88,37 @@ class HrProfileController extends Controller
             'user' => $user
         ]);
         return redirect()->route('hr.profile.index')->with('success','Other Information updated successfully');
+    }
+
+        public function uploadImage(UpdateProfileImageRequest $request){
+        $user = Register::find(session('user')['id']);
+        $image = $request->file('profile_image');
+        $fileName = $user->id . '_' . time() . '.' . $image->getClientOriginalExtension();
+        $path = $image->storeAs('profile_images',$fileName,'public');
+        $old_image = $user->profile_image;
+        $user->profile_image = $path;
+        $user->save();
+        if($old_image){
+            Storage::disk('public')->delete($old_image);
+            }
+        return back()->with('success', 'Profile image updated successfully.');
+    }
+
+    public function deleteImage() {
+
+        $user = Register::findOrFail(session('user')['id']);
+        if($user->profile_image){
+            Storage::disk('public')->delete($user->profile_image);
+            $user->profile_image = null;
+            $user->save();
+
+            session([
+                'user'=>$user
+            ]);
+            
+            return back()->with('success','profile image deleted successfully');
+        }
+
     }
 
 }

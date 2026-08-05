@@ -1,9 +1,28 @@
 <aside class="hr-sidebar d-flex flex-column">
-    <div class="text-center mt-4">
-        <img src="{{ asset('images/default-profile.png') }}" class="rounded-circle profile-image" alt="Profile">
-        <h5 class="text-white mt-3 profile-name">Farrukh Hussain</h5>
-        <span class="badge bg-primary profile-role">HR</span>
-    </div>
+<div class="text-center mt-4">
+
+@php
+    $user = \App\Models\Register::find(session('user')['id']);
+@endphp
+    @if($user->profile_image)
+        <img src="{{ asset('storage/'.$user->profile_image) }}"
+             class="rounded-circle profile-image"
+             alt="Profile">
+    @else
+        <img src="{{ asset('images/default-profile.png') }}"
+             class="rounded-circle profile-image"
+             alt="Profile">
+    @endif
+
+    <h5 class="text-white mt-3 profile-name">
+        {{ $user->first_name }} {{ $user->last_name }}
+    </h5>
+
+    <span class="badge bg-primary profile-role">
+        {{ $user->role }}
+    </span>
+
+</div>
 
     <hr class="sidebar-divider">
 
@@ -32,16 +51,19 @@
                 <ul class="nav flex-column submenu">
                     <li class="nav-item">
                         <a href="{{ route('hr.employees.index') }}" class="nav-link">
+                            <i class="bi bi-list-ul me-2"></i>
                             Employee List
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="{{ route('hr.employees.create') }}" class="nav-link">
+                            <i class="bi bi-person-plus me-2"></i>
                             Add Employee
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
+                            <i class="bi bi-file-earmark-arrow-up me-2"></i>
                             Import Employees
                         </a>
                     </li>
@@ -71,13 +93,10 @@
 
         @csrf
 
-        <button type="submit" class="btn btn-danger w-100">
-
-            <i class="bi bi-box-arrow-right me-2"></i>
-
-            Logout
-
-        </button>
+            <button type="submit" class="btn btn-outline-danger btn-sm w-100 d-flex align-items-center justify-content-center fixed">
+                <i class="bi bi-box-arrow-right me-2"></i>
+                Logout
+            </button>
 
     </form>
 
