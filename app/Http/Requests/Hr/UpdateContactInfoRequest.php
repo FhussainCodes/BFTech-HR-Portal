@@ -12,7 +12,7 @@ class UpdateContactInfoRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,7 +23,27 @@ class UpdateContactInfoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'email'        => 'required|email|ends_with:@gmail.com|unique:register,email,' . session('user')['id'],
+            'phone_number' => 'required|regex:/^(03[0-9]{2}[0-9]{7})$/',
         ];
     }
+
+    public function messages(): array
+{
+    return [
+
+        'email.required' => 'Email is required.',
+
+        'email.email' => 'Please enter a valid email address.',
+
+        'email.ends_with' => 'Only Gmail addresses are allowed.',
+
+        'email.unique' => 'This email already exists.',
+
+        'phone_number.required' => 'Phone number is required.',
+
+        'phone_number.regex' => 'Please enter a valid Pakistani phone number.',
+
+    ];
+}
 }
