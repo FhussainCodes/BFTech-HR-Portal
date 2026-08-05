@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\Hr\UpdatePersonalInfoRequest;
 use App\Http\Requests\Hr\UpdateContactInfoRequest;
+use App\Http\Requests\Hr\UpdateDesignationRequest;
 use App\Models\Register;
 
 class HrProfileController extends Controller
@@ -42,8 +43,18 @@ class HrProfileController extends Controller
         return redirect()->route('hr.profile.index')->with('success','Personal information edited successfully');
     }
 
-    public function editDesignation(){}
-    public function updateDesignation(){}
+    public function editDesignation(){
+        $user = Register::findOrFail(session('user')['id']);
+        return view('hr.profile.designation-edit', compact('user'));
+    }
+    public function updateDesignation(UpdateDesignationRequest $request){
+        $user  = Register::findOrFail(session('user')['id']);
+        $user->update($request->validated());
+        session([
+            'user' => $user
+        ]);
+        return redirect()->route('hr.profile.index')->with('success','Personal information edited successfully');
+    }
 
     public function editOther(){}
     public function updateOther(){}
