@@ -11,6 +11,8 @@ use App\Http\Controllers\LeaveController;
 use App\Http\Controllers\HR\DashboardController;
 use App\Http\Controllers\HR\EmployeeController;
 use App\Http\Controllers\HR\HrProfileController;
+use App\Http\Controllers\HR\AttendanceController as HrAttendanceController;;
+
 
 Route::get('/', function () {
     return view('auth.loginUser');
@@ -133,7 +135,9 @@ Route::prefix('hr')->middleware('hr.auth')->group(function(){
     Route::put('/profile/updatepassword',[HrProfileController::class,'updatePassword' ])->name('hr.profile.updatePassword');
     Route::post('/profile/uploadimage',[HrProfileController::class,'uploadImage' ])->name('hr.profile.uploadImage');
     Route::delete('/profile/deleteimage',[HrProfileController::class,'deleteImage' ])->name('hr.profile.deleteImage');
-
+    
+    // For Attendance Details
+    Route::get('/attendance/index',[HrAttendanceController::class,'index'])->name('hr.attendance.index');
 });
 
 
