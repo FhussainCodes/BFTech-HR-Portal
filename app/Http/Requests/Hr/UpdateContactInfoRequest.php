@@ -33,15 +33,10 @@ class UpdateContactInfoRequest extends FormRequest
     return [
 
         'email.required' => 'Email is required.',
-
         'email.email' => 'Please enter a valid email address.',
-
         'email.ends_with' => 'Only Gmail addresses are allowed.',
-
         'email.unique' => 'This email already exists.',
-
         'phone_number.required' => 'Phone number is required.',
-
         'phone_number.regex' => 'Please enter a valid Pakistani phone number.',
 
     ];
