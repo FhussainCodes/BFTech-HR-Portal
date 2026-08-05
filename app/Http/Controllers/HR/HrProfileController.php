@@ -4,8 +4,7 @@ namespace App\Http\Controllers\HR;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Requests\Hr;
-use App\Models\Register\UpdatePersonalInfoRequest;
+use App\Http\Requests\Hr\UpdatePersonalInfoRequest;
 use App\Models\Register;
 
 class HrProfileController extends Controller
@@ -19,8 +18,14 @@ class HrProfileController extends Controller
         $user = Register::findOrFail(session('user')['id']);
         return view('hr.profile.personal-info-edit', compact('user'));
     }
-    public function updatePersonal(){
 
+    public function updatePersonal(UpdatePersonalInfoRequest $request){
+        $user  = Register::findOrFail(session('user')['id']);
+        $user->update($request->validated());
+        session([
+            'user' => $user
+        ]);
+        return redirect()->route('hr.profile.index')->with('success','Personal information edited successfully');
     }
 
     public function editContact(){}

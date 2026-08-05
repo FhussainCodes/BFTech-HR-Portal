@@ -1,6 +1,7 @@
 @extends('layouts.hr')
 
 @section('content')
+@include('partials.alerts')
 
 <div class="d-flex justify-content-between align-items-center mb-4">
 

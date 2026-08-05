@@ -21,6 +21,7 @@
             @include('partials.hr-navbar')
 
             <main class="main-content">
+                @include('partials.alerts')
                 @yield('content')
             </main>
 

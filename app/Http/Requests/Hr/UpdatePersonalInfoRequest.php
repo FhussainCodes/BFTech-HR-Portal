@@ -24,9 +24,9 @@ class UpdatePersonalInfoRequest extends FormRequest
     {
         return [
 
-            'first_name' => 'required|min:3|max:20',
+            'first_name' => 'required|min:2|max:20|string|regex:/^[A-Za-z\s]+$/',
 
-            'last_name' => 'required|min:3|max:20',
+            'last_name' => 'required|min:3|max:20|string|regex:/^[A-Za-z\s]+$/',
 
             'age' => 'required|integer|min:18|max:60',
 
@@ -38,7 +38,7 @@ class UpdatePersonalInfoRequest extends FormRequest
         return [
 
             'first_name.required' => 'First name is required.',
-            'first_name.min' => 'First name must be at least 3 characters.',
+            'first_name.min' => 'First name must be at least 2 characters.',
             'first_name.max' => 'First name may not be greater than 20 characters.',
 
             'last_name.required' => 'Last name is required.',
