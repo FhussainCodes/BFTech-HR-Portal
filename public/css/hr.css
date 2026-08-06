@@ -21,7 +21,8 @@ body {
     width: 240px; /* Reduced from 280px */
     background: #1f2937;
     color: #fff;
-    min-height: 100vh;
+    /* min-height: 100vh; */
+    height: 100vh;
     position: fixed;
     top: 0;
     left: 0;
@@ -31,6 +32,30 @@ body {
     z-index: 1000;
 }
 
+/* .hr-sidebar .overflow-auto{
+    overflow-y:auto;
+} */
+
+.hr-sidebar .overflow-auto::-webkit-scrollbar{
+    width:6px;
+}
+
+.hr-sidebar .overflow-auto::-webkit-scrollbar-track{
+    background:#1f2b3d;
+}
+
+.hr-sidebar .overflow-auto::-webkit-scrollbar-thumb{
+    background:#4b5563;
+    border-radius:20px;
+}
+
+.hr-sidebar .overflow-auto::-webkit-scrollbar-thumb:hover{
+    background:#6b7280;
+}
+.hr-sidebar .overflow-auto{
+    scrollbar-width:thin;
+    scrollbar-color:#4b5563 #1f2b3d;
+}
 /* Right Wrapper (Navbar + Content + Footer) */
 .app-right-wrapper {
     margin-left:240px;
