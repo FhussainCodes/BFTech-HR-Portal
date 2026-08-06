@@ -11,11 +11,25 @@ use App\Http\Requests\Hr\StoreEmployeeRequest;
 
 class EmployeeController extends Controller
 {
-    public function index(){
-        $employees = Register::where('role','employee')->paginate(5);
-        return view('hr.employees.index', compact('employees'));
-    }
+    // public function index(){
+    //     $employees = Register::where('role','employee')->paginate(5);
+    //     return view('hr.employees.index', compact('employees'));
+    // }
+public function index(Request $request)
+{
+    $employees = Register::query()->where('role', 'employee')
+        ->when($request->search, function ($query) use ($request) {
+            $query->where(function ($q) use ($request) {
+                $q->where('first_name', 'LIKE', "%{$request->search}%")
+                  ->orWhere('id', 'LIKE', "%{$request->search}%")
+                  ->orWhere('designation', 'LIKE', "%{$request->search}%");
+            });
+        })
+        ->paginate(5)
+        ->withQueryString();
 
+    return view('hr.employees.index', compact('employees'));
+}
 
     public function create(){
         return view('hr.employees.create');
