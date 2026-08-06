@@ -20,17 +20,21 @@
 
         <input type="text"
                name="search"
-               class="form-control"
-               placeholder="Search employee..."
+               class="form-control @error('search') is-invalid @enderror"
+               placeholder="Search employee by Name, Id, Designation"
                value="{{ request('search') }}">
+
 
         <button class="btn btn-primary">
 
             <i class="bi bi-search"></i>
 
         </button>
-
+        
     </div>
+            @error('search')
+                        <div class="text-danger mt-1">{{ $message }}</div>
+            @enderror
 
 </form>
         </div>
@@ -39,7 +43,7 @@
             <table class="table table-hover align-middle">
                 <thead class="table-light">
                     <tr>
-                        <th>#</th>
+                        <th>id</th>
                         <th>Profile</th>
                         <th>Name</th>
                         <th>Email</th>
@@ -80,32 +84,32 @@
                                 </span>
                             </td>
                             <td>
-<div class="d-flex gap-2">
+            <div class="d-flex gap-2">
 
-    <a href="{{ route('hr.employees.edit', $employee->id) }}"
-       class="btn btn-sm btn-warning">
-        Edit
-        <i class="bi bi-pencil-square"></i>
+                <a href="{{ route('hr.employees.edit', $employee->id) }}"
+                class="btn btn-sm btn-warning">
+                    Edit
+                    <i class="bi bi-pencil-square"></i>
 
-    </a>
+                </a>
 
-    <form action="{{ route('hr.employees.destroy', $employee->id) }}"
-          method="POST">
+                <form action="{{ route('hr.employees.destroy', $employee->id) }}"
+                    method="POST">
 
-        @csrf
-        @method('DELETE')
+                    @csrf
+                    @method('DELETE')
 
-        <button type="submit"
-                class="btn btn-sm btn-danger"
-                onclick="return confirm('Are you sure you want to delete this employee?')">
-                Delete
-            <i class="bi bi-trash"></i>
+                    <button type="submit"
+                            class="btn btn-sm btn-danger"
+                            onclick="return confirm('Are you sure you want to delete this employee?')">
+                            Delete
+                        <i class="bi bi-trash"></i>
 
-        </button>
+                    </button>
 
-    </form>
+                </form>
 
-</div>
+            </div>
                             </td>
                         </tr>
                     @empty

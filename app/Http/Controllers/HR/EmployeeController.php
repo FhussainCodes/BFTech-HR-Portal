@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\Register;
 use App\Http\Requests\Hr\UpdateEmployeeRequest;
 use App\Http\Requests\Hr\StoreEmployeeRequest;
+use App\Http\Requests\Hr\SearchEmployeeRequest;
 
 class EmployeeController extends Controller
 {
@@ -15,7 +16,7 @@ class EmployeeController extends Controller
     //     $employees = Register::where('role','employee')->paginate(5);
     //     return view('hr.employees.index', compact('employees'));
     // }
-public function index(Request $request)
+public function index(SearchEmployeeRequest $request)
 {
     $employees = Register::query()->where('role', 'employee')
         ->when($request->search, function ($query) use ($request) {

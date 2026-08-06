@@ -17,7 +17,7 @@
                            name="employee_name"
                            value="{{ request('employee_name') }}"
                            class="form-control @error('employee_name') is-invalid @enderror"
-                           placeholder="Search Employee by Name, Id, Designation">
+                           placeholder="Search Employee">
                     @error('employee_name')
                         <div class="text-danger mt-1">{{ $message }}</div>
                     @enderror
@@ -65,7 +65,7 @@
             <table class="table table-bordered table-hover align-middle">
                 <thead class="table-light">
                     <tr>
-                        <th>#</th>
+                        <th>id</th>
                         <th>Employee</th>
                         <th>Date</th>
                         <th>Check In</th>
