@@ -121,7 +121,7 @@ Route::prefix('hr')->middleware('hr.auth')->group(function(){
     Route::put('/employees/{id}',[EmployeeController::class,'update'])->name('hr.employees.update');
     Route::delete('/employees/{id}',[EmployeeController::class,'destroy'])->name('hr.employees.destroy');
 
-    // For Hr Personal Profile 
+    // For Hr Personal Details 
     Route::get('/profile/index',[HrProfileController::class,'index'] )->name('hr.profile.index');
     Route::get('/profile/editpersonal',[HrProfileController::class,'editPersonal'] )->name('hr.profile.editPersonal');
     Route::put('/profile/updatepersonal',[HrProfileController::class,'updatePersonal' ])->name('hr.profile.updatePersonal');
@@ -142,6 +142,10 @@ Route::prefix('hr')->middleware('hr.auth')->group(function(){
     Route::put('/attendance/{id}',[HrAttendanceController::class,'update'])->name('hr.attendance.update');
     Route::delete('/attendance/{id}',[HrAttendanceController::class,'destroy'])->name('hr.attendance.destroy');
     Route::get('/attendance/search', [HrAttendanceController::class, 'search'])->name('hr.attendance.search');
+
+    // For Leave
+    
+
 });
 
 
