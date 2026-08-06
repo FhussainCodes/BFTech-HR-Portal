@@ -135,7 +135,7 @@
 
     <td>
 
-        <a href="#" class="btn btn-info btn-sm">
+        <a href="{{route('hr.leave.show', $leave->id)}}" class="btn btn-info btn-sm">
 
             <i class="bi bi-eye"></i>
 

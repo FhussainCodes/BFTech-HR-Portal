@@ -45,7 +45,8 @@
            data-bs-toggle="collapse"
            href="#employeeMenu"
            role="button"
-           aria-expanded="true">
+           aria-expanded="employeeMenu"
+           aria-controls="leaveMenu">
 
             <span>
                 <i class="bi bi-people"></i>
@@ -117,28 +118,28 @@
             <ul class="nav flex-column submenu">
 
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{route('hr.leave.index')}}" class="nav-link">
                         <i class="bi bi-list-ul me-2"></i>
                         Total Leaves
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{route('hr.leave.pending')}}" class="nav-link">
                         <i class="bi bi-hourglass-split me-2"></i>
                         Pending Leaves
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{route('hr.leave.approved')}}" class="nav-link">
                         <i class="bi bi-check-circle me-2"></i>
                         Approved Leaves
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{route('hr.leave.rejected')}}" class="nav-link">
                         <i class="bi bi-x-circle me-2"></i>
                         Rejected Leaves
                     </a>

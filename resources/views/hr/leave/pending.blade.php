@@ -13,7 +13,7 @@
 
         <div class="card-body">
 
-            <form action="{{ route('hr.leave.pending.search') }}" method="GET">
+            <form action="#" method="GET">
 
                 <div class="row g-3">
 
@@ -123,21 +123,21 @@
 
                         <td class="action-column">
 
-                            <a href="{{ route('hr.leave.show',$leave->id) }}"
+                            <a href="{{route('hr.leave.show',$leave->id)}}"
                                class="btn btn-info btn-sm">
 
                                 <i class="bi bi-eye"></i>
 
                             </a>
 
-                            <a href="{{ route('hr.leave.approve',$leave->id) }}"
+                            <a href="#"
                                class="btn btn-success btn-sm">
 
                                 <i class="bi bi-check-lg"></i>
 
                             </a>
 
-                            <a href="{{ route('hr.leave.reject',$leave->id) }}"
+                            <a href="#"
                                class="btn btn-danger btn-sm">
 
                                 <i class="bi bi-x-lg"></i>

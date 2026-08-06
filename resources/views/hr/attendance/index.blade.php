@@ -1,7 +1,7 @@
 @extends('layouts.hr')
 
 @section('content')
-<di class="container-fluid">
+<div class="container-fluid">
     <h3 class="dashboard-title mb-4">
         Employee Attendance
     </h3>
@@ -110,5 +110,5 @@
             {{ $attendance->links() }}
         </div>
     </div>
-</di
+</div>
 @endsection

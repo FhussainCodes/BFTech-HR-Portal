@@ -11,7 +11,8 @@ use App\Http\Controllers\LeaveController;
 use App\Http\Controllers\HR\DashboardController;
 use App\Http\Controllers\HR\EmployeeController;
 use App\Http\Controllers\HR\HrProfileController;
-use App\Http\Controllers\HR\AttendanceController as HrAttendanceController;;
+use App\Http\Controllers\HR\AttendanceController as HrAttendanceController;
+use App\Http\Controllers\HR\LeaveController as HrLeaveController;
 
 
 Route::get('/', function () {
@@ -144,8 +145,13 @@ Route::prefix('hr')->middleware('hr.auth')->group(function(){
     Route::get('/attendance/search', [HrAttendanceController::class, 'search'])->name('hr.attendance.search');
 
     // For Leave
-    
-
+    Route::get('/leave/index',[HrLeaveController::class,'index'])->name('hr.leave.index');
+    Route::get('/leave/pending',[HrLeaveController::class,'pending'])->name('hr.leave.pending');
+    Route::get('/leave/approved',[HrLeaveController::class,'approved'])->name('hr.leave.approved');
+    Route::get('/leave/rejected',[HrLeaveController::class,'rejected'])->name('hr.leave.rejected');
+    Route::get('/leave/show/{id}', [HrLeaveController::class, 'show'])->name('hr.leave.show');
+    Route::post('/leave/{id}/approve', [HrLeaveController::class, 'approve'])->name('hr.leave.approve');
+    Route::post('/leave/{id}/reject', [HrLeaveController::class, 'reject'])->name('hr.leave.reject');
 });
 
 

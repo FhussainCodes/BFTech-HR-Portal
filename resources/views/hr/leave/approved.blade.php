@@ -13,7 +13,7 @@
 
         <div class="card-body">
 
-            <form action="{{ route('hr.leave.approved.search') }}" method="GET">
+            <form action="#" method="GET">
 
                 <div class="row g-3">
 

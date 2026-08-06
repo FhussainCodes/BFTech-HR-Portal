@@ -24,5 +24,4 @@ class Register extends Model
         'role', 
     ];
 
-
 }
