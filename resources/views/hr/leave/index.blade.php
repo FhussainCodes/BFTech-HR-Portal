@@ -93,11 +93,73 @@
 
                 </thead>
 
-                <tbody>
+                                    <tbody>
 
-                    {{-- Data Here --}}
+@forelse($leaves as $leave)
 
-                </tbody>
+<tr>
+
+    <td>{{ $leave->id }}</td>
+
+    <td>{{ $leave->employee->first_name }}</td>
+
+    <td>{{ $leave->leave_type }}</td>
+
+    <td>{{ $leave->from_date }}</td>
+
+    <td>{{ $leave->to_date }}</td>
+
+    <td>
+
+        @if($leave->status == 'Pending')
+
+            <span class="badge bg-warning">
+                Pending
+            </span>
+
+        @elseif($leave->status == 'Approved')
+
+            <span class="badge bg-success">
+                Approved
+            </span>
+
+        @else
+
+            <span class="badge bg-danger">
+                Rejected
+            </span>
+
+        @endif
+
+    </td>
+
+    <td>
+
+        <a href="#" class="btn btn-info btn-sm">
+
+            <i class="bi bi-eye"></i>
+
+        </a>
+
+    </td>
+
+</tr>
+
+@empty
+
+<tr>
+
+    <td colspan="7" class="text-center">
+
+        No Leave Requests Found
+
+    </td>
+
+</tr>
+
+@endforelse
+
+</tbody>
 
             </table>
 
