@@ -15,31 +15,7 @@ class EmployeeController extends Controller
         $employees = Register::where('role','employee')->paginate(5);
         return view('hr.employees.index', compact('employees'));
     }
-//     public function index(Request $request)
-// {
-//     $search = $request->search;
 
-//     if ($search) {
-
-//         $employees = Register::where('role', 'employee')
-//                     ->where(function ($query) use ($search) {
-
-//                         $query->where('first_name', 'LIKE', "%{$search}%")
-//                               ->orWhere('id', 'LIKE', "%{$search}%")
-//                               ->orWhere('designation', 'LIKE', "%{$search}%");
-//                     })
-//                     ->paginate(5)
-//                     ->withQueryString();
-
-//     } else {
-
-//         $employees = Register::where('role', 'employee')
-//                     ->paginate(5);
-
-//     }
-
-//     return view('hr.employees.index', compact('employees'));
-// }
 
     public function create(){
         return view('hr.employees.create');

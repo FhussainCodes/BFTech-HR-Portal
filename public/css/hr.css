@@ -132,6 +132,10 @@ body {
     font-size: 16px;
 }
 
+.action-column{
+    width:80px;
+    text-align:center;
+}
 /* Arrow Animation */
 .employee-arrow {
     transition: transform 0.3s ease;

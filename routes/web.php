@@ -138,6 +138,10 @@ Route::prefix('hr')->middleware('hr.auth')->group(function(){
     
     // For Attendance Details
     Route::get('/attendance/index',[HrAttendanceController::class,'index'])->name('hr.attendance.index');
+    Route::get('/attendance/{id}/edit',[HrAttendanceController::class,'edit'])->name('hr.attendance.edit');
+    Route::put('/attendance/{id}',[HrAttendanceController::class,'update'])->name('hr.attendance.update');
+    Route::delete('/attendance/{id}',[HrAttendanceController::class,'destroy'])->name('hr.attendance.destroy');
+    Route::get('/attendance/search', [HrAttendanceController::class, 'search'])->name('hr.attendance.search');
 });
 
 
