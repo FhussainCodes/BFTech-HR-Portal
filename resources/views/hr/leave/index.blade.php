@@ -12,54 +12,119 @@
 
         <div class="card-body">
 
-            <form method="GET">
+            <form action="{{ route('hr.leave.index') }}" method="GET">
 
                 <div class="row g-3">
 
+                    {{-- Employee --}}
                     <div class="col-md-3">
-                        <label class="form-label">Employee</label>
+
+                        <label class="form-label">
+                            Employee
+                        </label>
+
                         <input type="text"
-                               class="form-control"
+                               name="employee"
+                               value="{{ request('employee') }}"
+                               class="form-control @error('employee') is-invalid @enderror"
                                placeholder="Search Employee">
+
+                        @error('employee')
+                            <small class="text-danger">
+                                {{ $message }}
+                            </small>
+                        @enderror
+
                     </div>
 
+                    {{-- Leave Type --}}
                     <div class="col-md-3">
-                        <label class="form-label">Leave Type</label>
 
-                        <select class="form-select">
+                        <label class="form-label">
+                            Leave Type
+                        </label>
+
+                        <select name="leave_type" class="form-select">
 
                             <option value="">All</option>
-                            <option>Annual</option>
-                            <option>Medical</option>
-                            <option>Casual</option>
+
+                            <option value="Annual"
+                                {{ request('leave_type') == 'Annual' ? 'selected' : '' }}>
+                                Annual
+                            </option>
+
+                            <option value="Medical"
+                                {{ request('leave_type') == 'Medical' ? 'selected' : '' }}>
+                                Medical
+                            </option>
+
+                            <option value="Casual"
+                                {{ request('leave_type') == 'Casual' ? 'selected' : '' }}>
+                                Casual
+                            </option>
 
                         </select>
 
+                        @error('leave_type')
+                            <small class="text-danger">
+                                {{ $message }}
+                            </small>
+                        @enderror
+
                     </div>
 
+                    {{-- Status --}}
                     <div class="col-md-3">
-                        <label class="form-label">Status</label>
 
-                        <select class="form-select">
+                        <label class="form-label">
+                            Status
+                        </label>
+
+                        <select name="status" class="form-select">
 
                             <option value="">All</option>
-                            <option>Pending</option>
-                            <option>Approved</option>
-                            <option>Rejected</option>
+
+                            <option value="Pending"
+                                {{ request('status') == 'Pending' ? 'selected' : '' }}>
+                                Pending
+                            </option>
+
+                            <option value="Approved"
+                                {{ request('status') == 'Approved' ? 'selected' : '' }}>
+                                Approved
+                            </option>
+
+                            <option value="Rejected"
+                                {{ request('status') == 'Rejected' ? 'selected' : '' }}>
+                                Rejected
+                            </option>
 
                         </select>
 
+                        @error('status')
+                            <small class="text-danger">
+                                {{ $message }}
+                            </small>
+                        @enderror
+
                     </div>
 
+                    {{-- Buttons --}}
                     <div class="col-md-3 d-flex align-items-end">
 
-                        <button class="btn btn-primary me-2">
-                            <i class="bi bi-search"></i> Search
+                        <button type="submit" class="btn btn-primary me-2">
+
+                            <i class="bi bi-search"></i>
+                            Search
+
                         </button>
 
-                        <button class="btn btn-secondary">
+                        <a href="{{ route('hr.leave.index') }}"
+                           class="btn btn-secondary">
+
                             Reset
-                        </button>
+
+                        </a>
 
                     </div>
 
@@ -93,73 +158,74 @@
 
                 </thead>
 
-                                    <tbody>
+                <tbody>
 
-@forelse($leaves as $leave)
+                @forelse($leaves as $leave)
 
-<tr>
+                    <tr>
 
-    <td>{{ $leave->id }}</td>
+                        <td>{{ $leave->id }}</td>
 
-    <td>{{ $leave->employee->first_name }}</td>
+                        <td>{{ $leave->employee->first_name }} {{ $leave->employee->last_name }}</td>
 
-    <td>{{ $leave->leave_type }}</td>
+                        <td>{{ $leave->leave_type }}</td>
 
-    <td>{{ $leave->from_date }}</td>
+                        <td>{{ $leave->from_date }}</td>
 
-    <td>{{ $leave->to_date }}</td>
+                        <td>{{ $leave->to_date }}</td>
 
-    <td>
+                        <td>
 
-        @if($leave->status == 'Pending')
+                            @if($leave->status == 'Pending')
 
-            <span class="badge bg-warning">
-                Pending
-            </span>
+                                <span class="badge bg-warning">
+                                    Pending
+                                </span>
 
-        @elseif($leave->status == 'Approved')
+                            @elseif($leave->status == 'Approved')
 
-            <span class="badge bg-success">
-                Approved
-            </span>
+                                <span class="badge bg-success">
+                                    Approved
+                                </span>
 
-        @else
+                            @else
 
-            <span class="badge bg-danger">
-                Rejected
-            </span>
+                                <span class="badge bg-danger">
+                                    Rejected
+                                </span>
 
-        @endif
+                            @endif
 
-    </td>
+                        </td>
 
-    <td>
+                        <td>
 
-        <a href="{{route('hr.leave.show', $leave->id)}}" class="btn btn-info btn-sm">
+                            <a href="{{ route('hr.leave.show', $leave->id) }}"
+                               class="btn btn-info btn-sm">
 
-            <i class="bi bi-eye"></i>
+                                <i class="bi bi-eye"></i>
 
-        </a>
+                            </a>
 
-    </td>
+                        </td>
 
-</tr>
+                    </tr>
 
-@empty
+                @empty
 
-<tr>
+                    <tr>
 
-    <td colspan="7" class="text-center">
+                        <td colspan="7" class="text-center">
 
-        No Leave Requests Found
+                            No Leave Requests Found
 
-    </td>
+                        </td>
 
-</tr>
+                    </tr>
 
-@endforelse
+                @endforelse
 
-</tbody>
+                </tbody>
 
             </table>
 

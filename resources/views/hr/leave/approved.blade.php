@@ -13,19 +13,19 @@
 
         <div class="card-body">
 
-            <form action="#" method="GET">
+            <form action="{{ route('hr.leave.approved') }}" method="GET">
 
                 <div class="row g-3">
 
                     <div class="col-md-3">
                         <label class="form-label">Employee</label>
                         <input type="text"
-                               name="employee_name"
-                               class="form-control"
-                               value="{{ request('employee_name') }}"
+                               name="employee"
+                               class="form-control @error('employee') is-invalid @enderror"
+                               value="{{ request('employee') }}"
                                placeholder="Search Employee">
 
-                        @error('employee_name')
+                        @error('employee')
                             <small class="text-danger">{{ $message }}</small>
                         @enderror
                     </div>
@@ -33,8 +33,8 @@
                     <div class="col-md-3">
                         <label class="form-label">From Date</label>
                         <input type="date"
-                               name="from_date"
-                               class="form-control"
+                               name="from_date "
+                               class="form-control @error('from_date') is-invalid @enderror"
                                value="{{ request('from_date') }}">
 
                         @error('from_date')
@@ -46,7 +46,7 @@
                         <label class="form-label">To Date</label>
                         <input type="date"
                                name="to_date"
-                               class="form-control"
+                               class="form-control @error('to_date') is-invalid @enderror"
                                value="{{ request('to_date') }}">
 
                         @error('to_date')
@@ -94,7 +94,7 @@
 
                     <tr>
 
-                        <th>#</th>
+                        <th>Id</th>
                         <th>Employee</th>
                         <th>Leave Type</th>
                         <th>From Date</th>

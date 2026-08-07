@@ -12,7 +12,7 @@ class LeaveStatusRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -20,10 +20,27 @@ class LeaveStatusRequest extends FormRequest
      *
      * @return array<string, ValidationRule|array<mixed>|string>
      */
-    public function rules(): array
+
+     public function rules(): array
     {
         return [
-            //
+
+            'status' => 'required|in:Pending,Approved,Rejected',
+
+        ];
+    }
+
+    /**
+     * Validation Messages
+     */
+    public function messages(): array
+    {
+        return [
+
+            'status.required' => 'Leave status is required.',
+
+            'status.in' => 'Invalid leave status selected.',
+
         ];
     }
 }

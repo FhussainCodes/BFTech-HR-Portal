@@ -66,20 +66,16 @@ public function update(Request $request, $id)
 {
     $query = Attendance::query();
 
-    $query->when($request->employee_name, function ($q) use ($request) {
-        $q->where('user_name', 'like', '%' . $request->employee_name . '%');
+    $query->when($request->employee, function ($q) use ($request) {
+        $q->where('user_name', 'like', '%' . $request->employee . '%');
     });
 
-    $query->when($request->start_date, function ($q) use ($request) {
-        $q->whereDate('date', '>=', $request->start_date);
+    $query->when($request->from_date, function ($q) use ($request) {
+        $q->whereDate('date', '>=', $request->from_date);
     });
 
-    $query->when($request->end_date, function ($q) use ($request) {
-        $q->whereDate('date', '<=', $request->end_date);
-    });
-
-    $query->when($request->month, function ($q) use ($request) {
-        $q->whereMonth('date', $request->month);
+    $query->when($request->to_date, function ($q) use ($request) {
+        $q->whereDate('date', '<=', $request->to_date);
     });
 
     $attendance = $query->latest()->paginate(10)->withQueryString();

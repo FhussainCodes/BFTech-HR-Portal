@@ -152,6 +152,8 @@ Route::prefix('hr')->middleware('hr.auth')->group(function(){
     Route::get('/leave/show/{id}', [HrLeaveController::class, 'show'])->name('hr.leave.show');
     Route::post('/leave/{id}/approve', [HrLeaveController::class, 'approve'])->name('hr.leave.approve');
     Route::post('/leave/{id}/reject', [HrLeaveController::class, 'reject'])->name('hr.leave.reject');
+    // Route::get('/leave/search', [HrLeaveController::class, 'filterLeaves'])->name('hr.leave.search');
+    
 });
 
 

@@ -26,7 +26,6 @@ class SearchAttendanceRequest extends FormRequest
         'employee_name' => 'nullable|string|min:2|max:40|regex:/^[A-Za-z\s]+$/',
         'start_date'    => 'nullable|date',
         'end_date'      => 'nullable|date|after_or_equal:start_date',
-        'month'         => 'nullable|integer|between:1,12',
         ];
     }
 
@@ -43,8 +42,6 @@ class SearchAttendanceRequest extends FormRequest
         'end_date.date' => 'Please select a valid end date.',
         'end_date.after_or_equal' => 'End date must be after or equal to start date.',
 
-        'month.integer' => 'Please select a valid month.',
-        'month.between' => 'Month must be between January and December.',
     ];
 }
 }

@@ -13,7 +13,7 @@
 
         <div class="card-body">
 
-            <form action="#" method="GET">
+            <form action="{{ route('hr.leave.pending') }}" method="GET">
 
                 <div class="row g-3">
 
@@ -85,7 +85,7 @@
 
                     <tr>
 
-                        <th>#</th>
+                        <th>Id</th>
                         <th>Employee</th>
                         <th>Leave Type</th>
                         <th>From Date</th>
@@ -130,19 +130,34 @@
 
                             </a>
 
-                            <a href="#"
-                               class="btn btn-success btn-sm">
+    <form action="{{ route('hr.leave.approve', $leave->id) }}"
+          method="POST">
 
-                                <i class="bi bi-check-lg"></i>
+        @csrf
 
-                            </a>
+        <button type="submit"
+                class="btn btn-success btn-sm">
 
-                            <a href="#"
-                               class="btn btn-danger btn-sm">
+            <i class="bi bi-check-lg"></i>
 
-                                <i class="bi bi-x-lg"></i>
+        </button>
 
-                            </a>
+    </form>
+
+    {{-- Reject --}}
+    <form action="{{ route('hr.leave.reject', $leave->id) }}"
+          method="POST">
+
+        @csrf
+
+        <button type="submit"
+                class="btn btn-danger btn-sm">
+
+            <i class="bi bi-x-lg"></i>
+
+        </button>
+
+    </form>
 
                         </td>
 
