@@ -30,4 +30,20 @@ class EmployeesImport implements ToModel, WithHeadingRow
             'role'              => $row['role']
         ]);
     }
+
+        public function rules(): array
+    {
+        return [
+            'first_name'   => 'required|string|max:255',
+            'last_name'    => 'required|string|max:255',
+            'email'        => 'required|email|unique:register,email',
+            'age'          => 'required',
+            'designation'  => 'required|string|max:255',
+            'phone_number' => 'required|string|max:20',
+            'city'         => 'required|string|max:255',
+            'country'      => 'required|string|max:255',
+            'password'     => 'required|string|min:8',
+            'role'         => 'required|in:employee,hr',
+        ];
+    }
 }
