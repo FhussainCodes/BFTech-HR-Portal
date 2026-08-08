@@ -13,4 +13,15 @@ return [
     'checked_in' => 'Checked In',
     'checked_out' => 'Checked Out',
     'not_checked_in' => 'Not Checked In',
+
+    // For HR Side
+    'title' => 'HR Dashboard',
+    'total_employees' => 'Total Employees',
+    'active_employees' => 'Active Employees',
+    'on_leave' => 'On Leave',
+    'attendance_today' => 'Attendance Today',
+    'recent_employees' => 'Recent Employees',
+    'name' => 'Name',
+    'department' => 'Department',
+    'joining_date' => 'Joining Date',
 ];

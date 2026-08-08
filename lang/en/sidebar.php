@@ -9,6 +9,7 @@ return [
     'leave' => 'Leave',
     'logout' => 'Logout',
 
+    // For HR Side
     'dashboard' => 'Dashboard',
     'employees' => 'Employees',
     'employee_list' => 'Employee List',

@@ -9,6 +9,7 @@ return [
     'leave' => 'رخصت',
     'logout' => 'لاگ آؤٹ',
 
+    // For HR Side
     'dashboard' => 'ڈیش بورڈ',
     'employees' => 'ملازمین',
     'employee_list' => 'ملازمین کی فہرست',

@@ -13,5 +13,17 @@ return [
     'checked_in' => 'چیک ان ہیں',
     'checked_out' => 'چیک آؤٹ ہیں',
     'not_checked_in' => 'چیک ان نہیں ہیں',
+
+    // For HR Side
+    'title' => 'ایچ آر ڈیش بورڈ',
+    'total_employees' => 'کل ملازمین',
+    'active_employees' => 'فعال ملازمین',
+    'on_leave' => 'رخصت پر',
+    'attendance_today' => 'آج کی حاضری',
+    'recent_employees' => 'حالیہ ملازمین',
+    'name' => 'نام',
+    'department' => 'شعبہ',
+    'joining_date' => 'شمولیت کی تاریخ',
+
 ];
 
