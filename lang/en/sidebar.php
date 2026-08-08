@@ -8,4 +8,17 @@ return [
     'attendance_history' => 'Attendance History',
     'leave' => 'Leave',
     'logout' => 'Logout',
+
+    'dashboard' => 'Dashboard',
+    'employees' => 'Employees',
+    'employee_list' => 'Employee List',
+    'add_employee' => 'Add Employee',
+    'import_employees' => 'Import Employees',
+    'attendance' => 'Attendance',
+    'leave_management' => 'Leave Management',
+    'total_leaves' => 'Total Leaves',
+    'pending_leaves' => 'Pending Leaves',
+    'approved_leaves' => 'Approved Leaves',
+    'rejected_leaves' => 'Rejected Leaves',
+    'logout' => 'Logout',
 ];
