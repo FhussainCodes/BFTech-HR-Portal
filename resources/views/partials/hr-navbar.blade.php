@@ -1,5 +1,13 @@
 <nav class="navbar navbar-expand-lg bg-white shadow-sm hr-navbar">
+@php
 
+    $hr = \App\Models\Register::where('role', 'hr')->first();
+
+    $unreadNotifications = $hr
+        ? $hr->unreadNotifications()->latest()->get()
+        : collect();
+
+@endphp
     <div class="container-fluid">
 
         <h3 class="fw-bold text-primary mb-0">
@@ -28,21 +36,84 @@
 
             </li>
 
-            <li class="nav-item me-3">
+<div class="dropdown">
 
-                <a href="#" class="nav-link position-relative">
+    <button class="btn position-relative"
+            type="button"
+            data-bs-toggle="dropdown">
 
-                    <i class="bi bi-bell fs-5"></i>
+        <i class="bi bi-bell fs-5"></i>
 
-                    <span class="badge bg-danger rounded-pill position-absolute top-0 start-100 translate-middle">
+        @if($unreadNotifications->count() > 0)
 
-                        3
+            <span class="position-absolute top-0 start-100
+                         translate-middle badge rounded-pill bg-danger">
 
-                    </span>
+                {{ $unreadNotifications->count() }}
+
+            </span>
+
+        @endif
+
+    </button>
+
+
+    <ul class="dropdown-menu dropdown-menu-end">
+
+        <li>
+            <h6 class="dropdown-header">
+                Notifications
+            </h6>
+        </li>
+
+        @forelse($unreadNotifications->take(5) as $notification)
+
+            <li>
+
+                <a class="dropdown-item"
+                   href="{{ route('hr.notifications.read', $notification->id) }}">
+
+                    {{ $notification->data['message'] }}
+
+                    <small class="text-muted d-block">
+
+                        {{ $notification->created_at->diffForHumans() }}
+
+                    </small>
 
                 </a>
 
             </li>
+
+        @empty
+
+            <li>
+                <span class="dropdown-item text-muted">
+                    No new notifications
+                </span>
+            </li>
+
+        @endforelse
+
+
+        <li>
+            <hr class="dropdown-divider">
+        </li>
+
+        <li>
+
+            <a class="dropdown-item text-center"
+               href="{{ route('hr.notifications.index') }}">
+
+                View All Notifications
+
+            </a>
+
+        </li>
+
+    </ul>
+
+</div>
 
             <li class="nav-item dropdown">
 
