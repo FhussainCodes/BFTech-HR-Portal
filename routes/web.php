@@ -158,6 +158,7 @@ Route::prefix('hr')->middleware('hr.auth')->group(function(){
     Route::get('/employee/import', [EmployeeController::class, 'importPage'])->name('hr.employee.importPage');
     Route::post('/employee/import', [EmployeeController::class, 'importEmployees'])->name('hr.employee.import');
     
+    // For notifications
 });
 
 
