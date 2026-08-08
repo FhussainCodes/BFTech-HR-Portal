@@ -159,7 +159,7 @@ Route::prefix('hr')->middleware('hr.auth')->group(function(){
     Route::get('/employee/import', [EmployeeController::class, 'importPage'])->name('hr.employee.importPage');
     Route::post('/employee/import', [EmployeeController::class, 'importEmployees'])->name('hr.employee.import');
     
-    // For notifications
+    // For Notifications
     Route::get('/notifications', [NotificationController::class, 'index'])->name('hr.notifications.index');
     Route::get('/notifications/{id}/read', [NotificationController::class, 'read'])->name('hr.notifications.read');
     Route::post('/notifications/readall', [NotificationController::class, 'markAllAsRead'])->name('hr.notifications.readAll');
