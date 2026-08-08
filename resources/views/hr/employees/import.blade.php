@@ -70,92 +70,35 @@
 
                     </div>
 
+                    <form action="{{ route('hr.employee.import') }}"
+      method="POST"
+      enctype="multipart/form-data">
 
-                    <form action="{{ route('hr.employees.import') }}"
-                          method="POST"
-                          enctype="multipart/form-data">
+    @csrf
 
-                        @csrf
+    <div class="mb-3">
+        <label class="form-label">
+            Import Employees Excel File
+        </label>
 
+        <input type="file"
+               name="file"
+               class="form-control"
+               accept=".xlsx,.xls">
 
-                        <div class="mb-3">
+        @error('file')
+            <small class="text-danger">
+                {{ $message }}
+            </small>
+        @enderror
+    </div>
 
-                            <label for="excel_file" class="form-label">
+    <button type="submit" class="btn btn-primary">
+        <i class="bi bi-upload"></i>
+        Import Employees
+    </button>
 
-                                Excel File
-
-                            </label>
-
-                            <input type="file"
-                                   name="excel_file"
-                                   id="excel_file"
-                                   class="form-control @error('excel_file') is-invalid @enderror"
-                                   accept=".xlsx,.xls,.csv"
-                                   required>
-
-                            @error('excel_file')
-
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-
-                            @enderror
-
-                        </div>
-
-
-                        <div class="alert alert-info">
-
-                            <div class="d-flex">
-
-                                <i class="bi bi-info-circle me-2"></i>
-
-                                <div>
-
-                                    <strong>Excel file format:</strong>
-
-                                    <p class="mb-1 mt-2">
-                                        Your Excel file should contain the following columns:
-                                    </p>
-
-                                    <code>
-                                        first_name, last_name, email, age,
-                                        designation, phone_number, city,
-                                        country, role
-                                    </code>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="d-flex justify-content-between">
-
-                            <a href="{{ route('hr.employees.index') }}"
-                               class="btn btn-secondary">
-
-                                <i class="bi bi-arrow-left me-1"></i>
-
-                                Back
-
-                            </a>
-
-
-                            <button type="submit"
-                                    class="btn btn-success">
-
-                                <i class="bi bi-upload me-1"></i>
-
-                                Import Employees
-
-                            </button>
-
-                        </div>
-
-
-                    </form>
+</form>
 
                 </div>
 

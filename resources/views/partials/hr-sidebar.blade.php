@@ -76,7 +76,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('hr.employee.importPage') }}" class="nav-link">
                         <i class="bi bi-file-earmark-arrow-up me-2"></i>
                         Import Employees
                     </a>

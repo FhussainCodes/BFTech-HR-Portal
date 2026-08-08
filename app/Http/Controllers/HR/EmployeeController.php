@@ -4,6 +4,8 @@ namespace App\Http\Controllers\HR;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Imports\EmployeesImport;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Register;
 use App\Http\Requests\Hr\UpdateEmployeeRequest;
@@ -86,5 +88,24 @@ public function index(SearchEmployeeRequest $request)
             $employee = Register::findOrFail($id);
             $employee->delete();
             return redirect()->route('hr.employees.index')->with('success','Employee deleted successfully');
+    }
+
+    public function importPage()
+{
+    return view('hr.employees.import');
+}
+
+    public function importEmployees(Request $request){
+        $request->validate([
+            'file' => 'required|file|mimes:xlsx,xls|max:2048'
+        ]);
+
+        Excel::import(
+            new EmployeesImport,
+            $request->file('file')
+        );
+
+        return redirect()->back()->with('success','File import successfully');
+
     }
 }

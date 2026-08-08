@@ -15,7 +15,9 @@
                 <div class="d-flex justify-content-between align-items-center">
                     <div>
                         <h6 class="card-subtitle text-muted fw-semibold">Total Employees</h6>
-                        <h3 class="card-value fw-bold mb-0">120</h3>
+                        <h3 class="card-value fw-bold mb-0">
+                            {{ $totalEmployees }}
+                        </h3>
                     </div>
 
                     <div class="dashboard-icon bg-primary">
@@ -33,7 +35,9 @@
                 <div class="d-flex justify-content-between align-items-center">
                     <div>
                         <h6 class="card-subtitle text-muted fw-semibold">Active Employees</h6>
-                        <h3 class="card-value fw-bold mb-0">108</h3>
+                        <h3 class="card-value fw-bold mb-0">
+                            {{ $activeEmployees }}
+                        </h3>                    
                     </div>
 
                     <div class="dashboard-icon bg-success">
@@ -51,8 +55,10 @@
                 <div class="d-flex justify-content-between align-items-center">
                     <div>
                         <h6 class="card-subtitle text-muted fw-semibold">On Leave</h6>
-                        <h3 class="card-value fw-bold mb-0">08</h3>
-                    </div>
+                        <h3 class="card-value fw-bold mb-0">
+                            {{ $onLeave }}
+                        </h3>                   
+                     </div>
 
                     <div class="dashboard-icon bg-warning">
                         <i class="bi bi-calendar-check-fill"></i>
@@ -69,8 +75,10 @@
                 <div class="d-flex justify-content-between align-items-center">
                     <div>
                         <h6 class="card-subtitle text-muted fw-semibold">Attendance Today</h6>
-                        <h3 class="card-value fw-bold mb-0">95%</h3>
-                    </div>
+                    <h3 class="card-value fw-bold mb-0">
+                        {{ $attendancePercentage }}%
+                    </h3>                  
+  </div>
 
                     <div class="dashboard-icon bg-danger">
                         <i class="bi bi-clock-history"></i>
@@ -101,23 +109,38 @@
                                 <th>Joining Date</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>Ali Raza</td>
-                                <td>IT</td>
-                                <td>01 Aug 2026</td>
-                            </tr>
-                            <tr>
-                                <td>Ahmed Khan</td>
-                                <td>HR</td>
-                                <td>29 Jul 2026</td>
-                            </tr>
-                            <tr>
-                                <td>Sara Malik</td>
-                                <td>Accounts</td>
-                                <td>28 Jul 2026</td>
-                            </tr>
-                        </tbody>
+<tbody>
+
+@forelse($recentEmployees as $employee)
+
+    <tr>
+
+        <td>
+            {{ $employee->first_name }}
+            {{ $employee->last_name }}
+        </td>
+
+        <td>
+            {{ $employee->designation }}
+        </td>
+
+        <td>
+            {{ $employee->created_at->format('d M Y') }}
+        </td>
+
+    </tr>
+
+@empty
+
+    <tr>
+        <td colspan="3" class="text-center">
+            No employees found.
+        </td>
+    </tr>
+
+@endforelse
+
+</tbody>
                     </table>
                 </div>
             </div>
@@ -125,21 +148,26 @@
     </div>
 
     <!-- Pending Leave -->
-    <div class="col-lg-4">
-        <div class="card shadow-sm border-0">
-            <div class="card-header bg-white">
-                <h6 class="mb-0 fw-bold">Pending Leave</h6>
-            </div>
+<ul class="list-group list-group-flush custom-list">
 
-            <div class="card-body p-0">
-                <ul class="list-group list-group-flush custom-list">
-                    <li class="list-group-item">Ali Raza</li>
-                    <li class="list-group-item">Ahmed Khan</li>
-                    <li class="list-group-item">Sara Malik</li>
-                </ul>
-            </div>
-        </div>
-    </div>
+@forelse($pendingLeaves as $leave)
+
+    <li class="list-group-item">
+
+        {{ $leave->employee->first_name }}
+        {{ $leave->employee->last_name }}
+
+    </li>
+
+@empty
+
+    <li class="list-group-item text-center">
+        No Pending Leaves
+    </li>
+
+@endforelse
+
+</ul>
 
 </div>
 

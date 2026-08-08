@@ -6,8 +6,11 @@ use App\Models\Register;
 use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Maatwebsite\Excel\Concerns\WithValidation;
+use Maatwebsite\Excel\Concerns\SkipsEmptyRows;
 
-class EmployeesImport implements ToModel, WithHeadingRow
+
+class EmployeesImport implements ToModel, WithHeadingRow, WithValidation, SkipsEmptyRows
 {
     /**
     * @param array $row
@@ -37,9 +40,9 @@ class EmployeesImport implements ToModel, WithHeadingRow
             'first_name'   => 'required|string|max:255',
             'last_name'    => 'required|string|max:255',
             'email'        => 'required|email|unique:register,email',
-            'age'          => 'required',
+            'age'          => 'required|integer|min:18|max:60',
             'designation'  => 'required|string|max:255',
-            'phone_number' => 'required|string|max:20',
+            'phone_number' => 'required|max:20',
             'city'         => 'required|string|max:255',
             'country'      => 'required|string|max:255',
             'password'     => 'required|string|min:8',

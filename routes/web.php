@@ -154,6 +154,10 @@ Route::prefix('hr')->middleware('hr.auth')->group(function(){
     Route::post('/leave/{id}/reject', [HrLeaveController::class, 'reject'])->name('hr.leave.reject');
     // Route::get('/leave/search', [HrLeaveController::class, 'filterLeaves'])->name('hr.leave.search');
     
+    // For Import Employee
+    Route::get('/employee/import', [EmployeeController::class, 'importPage'])->name('hr.employee.importPage');
+    Route::post('/employee/import', [EmployeeController::class, 'importEmployees'])->name('hr.employee.import');
+    
 });
 
 
