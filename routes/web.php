@@ -13,6 +13,7 @@ use App\Http\Controllers\HR\EmployeeController;
 use App\Http\Controllers\HR\HrProfileController;
 use App\Http\Controllers\HR\AttendanceController as HrAttendanceController;
 use App\Http\Controllers\HR\LeaveController as HrLeaveController;
+use App\Http\Controllers\HR\NotificationController;
 
 
 Route::get('/', function () {
@@ -159,6 +160,10 @@ Route::prefix('hr')->middleware('hr.auth')->group(function(){
     Route::post('/employee/import', [EmployeeController::class, 'importEmployees'])->name('hr.employee.import');
     
     // For notifications
+    Route::get('/notifications', [NotificationController::class, 'index'])->name('hr.notifications.index');
+    Route::get('/notifications/{id}/read', [NotificationController::class, 'read'])->name('hr.notifications.read');
+    Route::post('/notifications/readall', [NotificationController::class, 'markAllAsRead'])->name('hr.notifications.readAll');
+
 });
 
 
