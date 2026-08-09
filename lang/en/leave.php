@@ -68,4 +68,15 @@ return [
 'no_pending_records' => 'No Pending Leave Requests Found',
 'rejected_leaves' => 'Rejected Leaves',
 'no_rejected_records' => 'No Rejected Leave Requests Found',
+'employee_string'         => 'Employee name must be a valid string.',
+    'employee_max'            => 'Employee name cannot exceed 255 characters.',
+
+    'from_date_invalid'       => 'Please enter a valid Start Date.',
+    'from_date_required_with' => 'Start Date is required when End Date is selected.',
+
+    'to_date_invalid'         => 'Please enter a valid End Date.',
+    'to_date_required_with'   => 'End Date is required when Start Date is selected.',
+    'to_date_after_or_equal'  => 'End Date must be greater than or equal to Start Date.',
+    'status_required' => 'Leave status is required.',
+    'status_invalid'  => 'Invalid leave status selected.',
 ];

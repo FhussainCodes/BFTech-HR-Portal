@@ -30,10 +30,10 @@ class SearchEmployeeRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'search.string' => 'Search value must be a valid text.',
-            'search.min' => 'Search must contain at least 2 characters.',
-            'search.max' => 'Search cannot exceed 40 characters.',
-            'search.regex' => 'Only letters, numbers and spaces are allowed.'
+'search.string' => __('employee.search_string'),
+            'search.min'    => __('employee.search_min'),
+            'search.max'    => __('employee.search_max'),
+            'search.regex'  => __('employee.search_regex'),
         ];
     }
 }

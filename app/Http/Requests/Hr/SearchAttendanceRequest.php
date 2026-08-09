@@ -32,15 +32,17 @@ class SearchAttendanceRequest extends FormRequest
     public function messages(): array
 {
     return [
-        'employee_name.string' => 'Employee name must be a valid string.',
-        'employee_name.min' => 'Employee name must contain at least 2 characters.',
-        'employee_name.max' => 'Employee name may not be greater than 40 characters.',
-        'employee_name.regex' => 'Employee name may only contain letters and spaces.',
+'employee_name.string'    => __('attendance.employee_name_string'),
+            'employee_name.min'       => __('attendance.employee_name_min'),
+            'employee_name.max'       => __('attendance.employee_name_max'),
+            'employee_name.regex'     => __('attendance.employee_name_regex'),
 
-        'start_date.date' => 'Please select a valid start date.',
+            // Start Date
+            'start_date.date'         => __('attendance.start_date_invalid'),
 
-        'end_date.date' => 'Please select a valid end date.',
-        'end_date.after_or_equal' => 'End date must be after or equal to start date.',
+            // End Date
+            'end_date.date'           => __('attendance.end_date_invalid'),
+            'end_date.after_or_equal' => __('attendance.end_date_after_or_equal'),
 
     ];
 }

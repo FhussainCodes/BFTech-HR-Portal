@@ -31,17 +31,18 @@ class UpdateOtherInfoRequest extends FormRequest
     public function messages(): array
 {
     return [
-        'city.required' => 'City is required.',
-        'city.string' => 'City must be a string.',
-        'city.min' => 'City must be at least 3 characters.',
-        'city.max' => 'City may not be greater than 20 characters.',
-        'city.regex' => 'City may only contain letters and spaces.',
+'city.required' => __('employee.city_required'),
+            'city.string'   => __('employee.city_string'),
+            'city.min'      => __('employee.city_min'),
+            'city.max'      => __('employee.city_max'),
+            'city.regex'    => __('employee.city_regex'),
 
-        'country.required' => 'Country is required.',
-        'country.string' => 'Country must be a string.',
-        'country.min' => 'Country must be at least 2 characters.',
-        'country.max' => 'Country may not be greater than 25 characters.',
-        'country.regex' => 'Country may only contain letters and spaces.',
+            // Country
+            'country.required' => __('employee.country_required'),
+            'country.string'   => __('employee.country_string'),
+            'country.min'      => __('employee.country_min'),
+            'country.max'      => __('employee.country_max'),
+            'country.regex'    => __('employee.country_regex'),
     ];
 }
 }

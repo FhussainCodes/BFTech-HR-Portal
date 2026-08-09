@@ -30,10 +30,10 @@ class UpdateProfileImageRequest extends FormRequest
     public function messages(): array
 {
     return [
-        'profile_image.required' => 'Profile image is required.',
-        'profile_image.image' => 'Please upload a valid image.',
-        'profile_image.mimes' => 'Image must be a JPG, JPEG or PNG file.',
-        'profile_image.max' => 'Image size may not be greater than 2 MB.',
+            'profile_image.required' => __('profile.profile_image_required'),
+            'profile_image.image'    => __('profile.profile_image_invalid'),
+            'profile_image.mimes'    => __('profile.profile_image_mimes'),
+            'profile_image.max'      => __('profile.profile_image_max'),
     ];
 }
 }

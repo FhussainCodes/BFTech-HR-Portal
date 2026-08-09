@@ -30,11 +30,11 @@ class UpdateDesignationRequest extends FormRequest
     public function messages(): array
 {
     return [
-        'designation.required' => 'Designation is required.',
-        'designation.string' => 'Designation must be a string.',
-        'designation.min' => 'Designation must be at least 2 characters.',
-        'designation.max' => 'Designation may not be greater than 30 characters.',
-        'designation.regex' => 'Designation may only contain letters and spaces.',
+'designation.required' => __('employee.designation_required'),
+            'designation.string'   => __('employee.designation_string'),
+            'designation.min'      => __('employee.designation_min'),
+            'designation.max'      => __('employee.designation_max'),
+            'designation.regex'    => __('employee.designation_regex'),
     ];
 }        
 }

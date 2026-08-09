@@ -37,16 +37,17 @@ class SearchLeaveRequest extends FormRequest
     {
         return [
 
-            'employee.string' => 'Employee name must be a valid string.',
-            'employee.max' => 'Employee name cannot exceed 255 characters.',
-           
+'employee.string'         => __('leave.employee_string'),
+            'employee.max'            => __('leave.employee_max'),
 
-            'from_date.date' => 'Please enter a valid Start Date.',
-            'from_date.required_with' => 'Start Date is required when End Date is selected.',
+            // From Date
+            'from_date.date'          => __('leave.from_date_invalid'),
+            'from_date.required_with' => __('leave.from_date_required_with'),
 
-            'to_date.date' => 'Please enter a valid End Date.',
-            'to_date.required_with' => 'End Date is required when Start Date is selected.',
-            'to_date.after_or_equal' => 'End Date must be greater than or equal to Start Date.',
+            // To Date
+            'to_date.date'            => __('leave.to_date_invalid'),
+            'to_date.required_with'   => __('leave.to_date_required_with'),
+            'to_date.after_or_equal'  => __('leave.to_date_after_or_equal'),
 
         ];
     }

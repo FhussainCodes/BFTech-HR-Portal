@@ -32,12 +32,14 @@ class UpdateContactInfoRequest extends FormRequest
 {
     return [
 
-        'email.required' => 'Email is required.',
-        'email.email' => 'Please enter a valid email address.',
-        'email.ends_with' => 'Only Gmail addresses are allowed.',
-        'email.unique' => 'This email already exists.',
-        'phone_number.required' => 'Phone number is required.',
-        'phone_number.regex' => 'Please enter a valid Pakistani phone number.',
+'email.required'        => __('employee.email_required'),
+            'email.email'           => __('employee.email_invalid'),
+            'email.ends_with'       => __('employee.email_ends_with'),
+            'email.unique'          => __('employee.email_unique'),
+
+            // Phone Number
+            'phone_number.required' => __('employee.phone_required'),
+            'phone_number.regex'    => __('employee.phone_regex'),
 
     ];
 }

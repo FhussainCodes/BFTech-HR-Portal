@@ -51,35 +51,47 @@ public function rules(): array
     {
         return [
 
-            'first_name.required' => 'First name is required.',
-            'first_name.min' => 'First name must be at least 3 characters.',
+           // First Name
+            'first_name.required'       => __('employee.first_name_required'),
+            'first_name.min'            => __('employee.first_name_min'),
+            'first_name.max'            => __('employee.first_name_max'),
 
-            'last_name.required' => 'Last name is required.',
-            'last_name.min' => 'Last name must be at least 3 characters.',
+            // Last Name
+            'last_name.required'        => __('employee.last_name_required'),
+            'last_name.min'             => __('employee.last_name_min'),
+            'last_name.max'             => __('employee.last_name_max'),
 
-            'email.required' => 'Email is required.',
-            'email.email' => 'Enter a valid email address.',
-            'email.regex' => 'Only Gmail addresses are allowed.',
-            'email.unique' => 'Email already exists.',
+            // Email
+            'email.required'            => __('employee.email_required'),
+            'email.email'               => __('employee.email_invalid'),
+            'email.unique'              => __('employee.email_unique'),
 
-            'age.required' => 'Age is required.',
-            'age.min' => 'Employee must be at least 18 years old.',
-            'age.max' => 'Maximum age is 60.',
+            // Age
+            'age.required'              => __('employee.age_required'),
+            'age.integer'               => __('employee.age_integer'),
+            'age.min'                   => __('employee.age_min'),
+            'age.max'                   => __('employee.age_max'),
 
-            'designation.required' => 'Designation is required.',
+            // Designation
+            'designation.required'      => __('employee.designation_required'),
+            'designation.max'           => __('employee.designation_max'),
 
-            'phone_number.required' => 'Phone number is required.',
-            'phone_number.regex' => 'Phone number must start with 03 and contain 11 digits.',
-            'phone_number.unique' => 'Phone number already exists.',
+            // Phone Number
+            'phone_number.required'     => __('employee.phone_required'),
+            'phone_number.regex'        => __('employee.phone_regex'),
+            'phone_number.unique'       => __('employee.phone_unique'),
 
-            'city.required' => 'City is required.',
+            // City & Country
+            'city.required'             => __('employee.city_required'),
+            'city.max'                  => __('employee.city_max'),
+            'country.required'          => __('employee.country_required'),
+            'country.max'               => __('employee.country_max'),
 
-            'country.required' => 'Country is required.',
-
-            'password.min' => 'Password must be at least 8 characters.',
-            'password.regex' => 'Password must contain uppercase, lowercase, number and special character.',
-
-            'confirm_password.same' => 'Confirm password does not match.',
+            // Password & Confirm Password
+            'password.min'              => __('employee.password_min'),
+            'password.max'              => __('employee.password_max'),
+            'password.regex'            => __('employee.password_regex'),
+            'confirm_password.same'     => __('employee.confirm_password_same'),
 
         ];
     }

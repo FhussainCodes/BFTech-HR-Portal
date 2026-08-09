@@ -53,4 +53,123 @@ return [
     'confirm_delete' => 'Are you sure you want to delete this employee?',
     'no_records' => 'No Employees Found',
     'showing_entries' => 'Showing :first to :last of :total entries',
+    'first_name_required' => 'First name is required.',
+    'first_name_min'      => 'First name must be at least 2 characters.',
+    'first_name_max'      => 'First name may not be greater than 20 characters.',
+    'first_name_regex'    => 'First name should only contain letters.',
+
+    'last_name_required'  => 'Last name is required.',
+    'last_name_min'       => 'Last name must be at least 3 characters.',
+    'last_name_max'       => 'Last name may not be greater than 20 characters.',
+    'last_name_regex'     => 'Last name should only contain letters.',
+
+    'age_required'        => 'Age is required.',
+    'age_integer'         => 'Age must be a number.',
+    'age_min'             => 'Minimum age is 18.',
+    'age_max'             => 'Maximum age is 60.',
+
+    'city_required'    => 'City is required.',
+    'city_string'      => 'City must be a text.',
+    'city_min'         => 'City must be at least 3 characters.',
+    'city_max'         => 'City may not be greater than 20 characters.',
+    'city_regex'       => 'City may only contain letters and spaces.',
+
+    'country_required' => 'Country is required.',
+    'country_string'   => 'Country must be a text.',
+    'country_min'      => 'Country must be at least 2 characters.',
+    'country_max'      => 'Country may not be greater than 25 characters.',
+    'country_regex'    => 'Country may only contain letters and spaces.',
+
+    'first_name_required'   => 'First name is required.',
+    'first_name_min'        => 'First name must be at least 3 characters.',
+    'first_name_max'        => 'First name may not be greater than 20 characters.',
+
+    'last_name_required'    => 'Last name is required.',
+    'last_name_min'         => 'Last name must be at least 3 characters.',
+    'last_name_max'         => 'Last name may not be greater than 35 characters.',
+
+    'email_required'        => 'Email address is required.',
+    'email_invalid'         => 'Enter a valid email address.',
+    'email_unique'          => 'Email address already exists.',
+
+    'age_required'          => 'Age is required.',
+    'age_integer'           => 'Age must be a number.',
+    'age_min'               => 'Employee must be at least 18 years old.',
+    'age_max'               => 'Maximum age is 60.',
+
+    'designation_required'  => 'Designation is required.',
+    'designation_max'       => 'Designation may not be greater than 100 characters.',
+
+    'phone_required'        => 'Phone number is required.',
+    'phone_regex'           => 'Phone number must start with 03 and contain 11 digits.',
+    'phone_unique'          => 'Phone number already exists.',
+
+    'city_required'         => 'City is required.',
+    'city_max'              => 'City may not be greater than 100 characters.',
+
+    'country_required'      => 'Country is required.',
+    'country_max'           => 'Country may not be greater than 100 characters.',
+
+    'password_min'          => 'Password must be at least 8 characters.',
+    'password_max'          => 'Password may not be greater than 20 characters.',
+    'password_regex'        => 'Password must contain uppercase, lowercase, number and special character.',
+    'confirm_password_same' => 'Confirm password does not match.',
+
+    'designation_required' => 'Designation is required.',
+    'designation_string'   => 'Designation must be a text.',
+    'designation_min'      => 'Designation must be at least 2 characters.',
+    'designation_max'      => 'Designation may not be greater than 30 characters.',
+    'designation_regex'    => 'Designation may only contain letters and spaces.',
+
+    'email_required'   => 'Email address is required.',
+    'email_invalid'    => 'Please enter a valid email address.',
+    'email_ends_with'  => 'Only Gmail addresses are allowed.',
+    'email_unique'     => 'This email address already exists.',
+
+    'phone_required'   => 'Phone number is required.',
+    'phone_regex'      => 'Please enter a valid Pakistani phone number.',
+
+    'first_name_required'       => 'First name is required.',
+    'first_name_min'            => 'First name must be at least 3 characters.',
+    'first_name_max'            => 'First name cannot exceed 20 characters.',
+
+    'last_name_required'        => 'Last name is required.',
+    'last_name_min'             => 'Last name must be at least 3 characters.',
+    'last_name_max'             => 'Last name cannot exceed 20 characters.',
+
+    'email_required'            => 'Email is required.',
+    'email_invalid'             => 'Please enter a valid email address.',
+    'email_unique'              => 'This email already exists.',
+
+    'age_required'              => 'Age is required.',
+    'age_integer'               => 'Age must be a number.',
+    'age_min'                   => 'Age must be at least 18 years.',
+    'age_max'                   => 'Age cannot be greater than 60 years.',
+
+    'designation_required'      => 'Designation is required.',
+
+    'phone_required'            => 'Phone number is required.',
+    'phone_digits'              => 'Phone number must contain exactly 11 digits.',
+
+    'city_required'             => 'City is required.',
+    'country_required'          => 'Country is required.',
+
+    'password_required'         => 'Password is required.',
+    'password_min'              => 'Password must be at least 8 characters.',
+    'password_max'              => 'Password cannot exceed 20 characters.',
+
+    'confirm_password_required' => 'Confirm password is required.',
+    'confirm_password_same'     => 'Confirm password does not match.',
+
+    'profile_image_invalid'     => 'Please upload a valid image.',
+    'profile_image_mimes'       => 'Only JPG, JPEG and PNG images are allowed.',
+    'profile_image_max'         => 'Image size cannot exceed 2MB.',
+
+    'role_required'             => 'Role is required.',
+    'role_invalid'              => 'Invalid role selected.',
+
+    'search_string' => 'Search value must be a valid text.',
+    'search_min'    => 'Search must contain at least 2 characters.',
+    'search_max'    => 'Search cannot exceed 40 characters.',
+    'search_regex'  => 'Only letters, numbers and spaces are allowed.',
 ];

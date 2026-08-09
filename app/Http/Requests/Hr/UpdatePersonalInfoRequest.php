@@ -37,18 +37,23 @@ class UpdatePersonalInfoRequest extends FormRequest
     {
         return [
 
-            'first_name.required' => 'First name is required.',
-            'first_name.min' => 'First name must be at least 2 characters.',
-            'first_name.max' => 'First name may not be greater than 20 characters.',
+// First Name
+            'first_name.required' => __('employee.first_name_required'),
+            'first_name.min'      => __('employee.first_name_min'),
+            'first_name.max'      => __('employee.first_name_max'),
+            'first_name.regex'    => __('employee.first_name_regex'),
 
-            'last_name.required' => 'Last name is required.',
-            'last_name.min' => 'Last name must be at least 3 characters.',
-            'last_name.max' => 'Last name may not be greater than 20 characters.',
+            // Last Name
+            'last_name.required'  => __('employee.last_name_required'),
+            'last_name.min'       => __('employee.last_name_min'),
+            'last_name.max'       => __('employee.last_name_max'),
+            'last_name.regex'     => __('employee.last_name_regex'),
 
-            'age.required' => 'Age is required.',
-            'age.integer' => 'Age must be a number.',
-            'age.min' => 'Minimum age is 18.',
-            'age.max' => 'Maximum age is 60.',
+            // Age
+            'age.required'        => __('employee.age_required'),
+            'age.integer'         => __('employee.age_integer'),
+            'age.min'             => __('employee.age_min'),
+            'age.max'             => __('employee.age_max'),
 
         ];
     }

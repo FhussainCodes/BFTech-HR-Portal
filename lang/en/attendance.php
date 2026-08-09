@@ -37,5 +37,13 @@ return [
     'duration' => 'Duration',
     'action' => 'Action',
     'no_records' => 'No Attendance Found',
-    
+    'employee_name_string'    => 'Employee name must be a valid text.',
+    'employee_name_min'       => 'Employee name must contain at least 2 characters.',
+    'employee_name_max'       => 'Employee name may not be greater than 40 characters.',
+    'employee_name_regex'     => 'Employee name may only contain letters and spaces.',
+
+    'start_date_invalid'      => 'Please select a valid start date.',
+
+    'end_date_invalid'        => 'Please select a valid end date.',
+    'end_date_after_or_equal' => 'End date must be after or equal to start date.',
 ];

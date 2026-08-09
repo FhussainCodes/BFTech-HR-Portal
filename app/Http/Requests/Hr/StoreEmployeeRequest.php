@@ -56,45 +56,54 @@ public function rules(): array
     {
         return [
 
-            'first_name.required' => 'First name is required.',
-            'first_name.min' => 'First name must be at least 3 characters.',
-            'first_name.max' => 'First name cannot exceed 20 characters.',
+            'first_name.required'       => __('employee.first_name_required'),
+            'first_name.min'            => __('employee.first_name_min'),
+            'first_name.max'            => __('employee.first_name_max'),
 
-            'last_name.required' => 'Last name is required.',
-            'last_name.min' => 'Last name must be at least 3 characters.',
-            'last_name.max' => 'Last name cannot exceed 20 characters.',
+            // Last Name
+            'last_name.required'        => __('employee.last_name_required'),
+            'last_name.min'             => __('employee.last_name_min'),
+            'last_name.max'             => __('employee.last_name_max'),
 
-            'email.required' => 'Email is required.',
-            'email.email' => 'Please enter a valid email address.',
-            'email.unique' => 'This email already exists.',
+            // Email
+            'email.required'            => __('employee.email_required'),
+            'email.email'               => __('employee.email_invalid'),
+            'email.unique'              => __('employee.email_unique'),
 
-            'age.required' => 'Age is required.',
-            'age.integer' => 'Age must be a number.',
-            'age.min' => 'Age must be at least 18 years.',
-            'age.max' => 'Age cannot be greater than 60 years.',
+            // Age
+            'age.required'              => __('employee.age_required'),
+            'age.integer'               => __('employee.age_integer'),
+            'age.min'                   => __('employee.age_min'),
+            'age.max'                   => __('employee.age_max'),
 
-            'designation.required' => 'Designation is required.',
+            // Designation
+            'designation.required'      => __('employee.designation_required'),
 
-            'phone_number.required' => 'Phone number is required.',
-            'phone_number.digits' => 'Phone number must contain exactly 11 digits.',
+            // Phone Number
+            'phone_number.required'     => __('employee.phone_required'),
+            'phone_number.digits'       => __('employee.phone_digits'),
 
-            'city.required' => 'City is required.',
+            // Location
+            'city.required'             => __('employee.city_required'),
+            'country.required'          => __('employee.country_required'),
 
-            'country.required' => 'Country is required.',
+            // Password
+            'password.required'         => __('employee.password_required'),
+            'password.min'              => __('employee.password_min'),
+            'password.max'              => __('employee.password_max'),
 
-            'password.required' => 'Password is required.',
-            'password.min' => 'Password must be at least 8 characters.',
-            'password.max' => 'Password cannot exceed 20 characters.',
+            // Confirm Password
+            'confirm_password.required' => __('employee.confirm_password_required'),
+            'confirm_password.same'     => __('employee.confirm_password_same'),
 
-            'confirm_password.required' => 'Confirm password is required.',
-            'confirm_password.same' => 'Confirm password does not match.',
+            // Profile Image
+            'profile_image.image'       => __('employee.profile_image_invalid'),
+            'profile_image.mimes'       => __('employee.profile_image_mimes'),
+            'profile_image.max'         => __('employee.profile_image_max'),
 
-            'profile_image.image' => 'Please upload a valid image.',
-            'profile_image.mimes' => 'Only JPG, JPEG and PNG images are allowed.',
-            'profile_image.max' => 'Image size cannot exceed 2MB.',
-
-            'role.required' => 'Role is required.',
-            'role.in' => 'Invalid role selected.',
+            // Role
+            'role.required'             => __('employee.role_required'),
+            'role.in'                   => __('employee.role_invalid'),
 
         ];
     }

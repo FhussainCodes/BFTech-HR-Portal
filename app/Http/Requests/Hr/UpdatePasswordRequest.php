@@ -31,12 +31,14 @@ class UpdatePasswordRequest extends FormRequest
     public function messages(): array
 {
     return [
-        'password.required' => 'Password is required.',
-        'password.min' => 'Password must be at least 6 characters.',
-        'password.max' => 'Password may not be greater than 64 characters.',
-        'password.regex' => 'Password must contain at least one uppercase letter (A-Z), one lowercase letter (a-z), one number (0-9) and one special character (@$!%*?&).',
-        'confirm_password.required' => 'Confirm password is required.',
-        'confirm_password.same' => 'Confirm password does not match the password.',
+'password.required'         => __('profile.password_required'),
+            'password.min'              => __('profile.password_min'),
+            'password.max'              => __('profile.password_max'),
+            'password.regex'            => __('profile.password_regex'),
+
+            // Confirm Password
+            'confirm_password.required' => __('profile.confirm_password_required'),
+            'confirm_password.same'     => __('profile.confirm_password_same'),
     ];
 }
 }
