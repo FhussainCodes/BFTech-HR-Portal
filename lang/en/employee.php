@@ -31,4 +31,10 @@ return [
     'password_help' => 'Leave the password fields empty if you don\'t want to change the employee\'s password.',
     'btn_add' => 'Add Employee',
     'btn_update' => 'Update Employee',
+    'import_employees' => 'Import Employees',
+    'import_from_excel' => 'Import Employees from Excel',
+    'import_instruction' => 'Upload an Excel file containing employee information.',
+    'excel_file_label' => 'Import Employees Excel File',
+    'validation_error_title' => 'Please fix the following errors:',
+    'btn_import' => 'Import Employees',
 ];
