@@ -69,4 +69,7 @@ return [
     'enter_email'            => 'براہ کرم ای میل درج کریں',
     'enter_phone'            => 'براہ کرم فون نمبر درج کریں',
     'update_contact_button'  => 'رابطے کی معلومات اپ ڈیٹ کریں',
+    'edit_designation_title'     => 'عہدہ میں ترمیم کریں',
+    'enter_designation'          => 'براہ کرم عہدہ درج کریں',
+    'update_designation_button'  => 'عہدہ اپ ڈیٹ کریں',
 ];

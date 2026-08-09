@@ -69,4 +69,7 @@ return [
     'enter_email'            => 'Please enter email',
     'enter_phone'            => 'Please enter phone number',
     'update_contact_button'  => 'Update Contact Information',
+    'edit_designation_title'     => 'Edit Designation',
+    'enter_designation'          => 'Please enter designation',
+    'update_designation_button'  => 'Update Designation',
 ];
