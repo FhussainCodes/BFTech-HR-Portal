@@ -82,4 +82,9 @@ return [
     'enter_new_password'       => 'Enter new password',
     'enter_confirm_password'   => 'Confirm password',
     'update_password_button'   => 'Update Password',
+    'edit_personal_title'     => 'Edit Personal Information',
+    'enter_first_name'        => 'Enter first name',
+    'enter_last_name'         => 'Enter last name',
+    'enter_age'               => 'Enter age',
+    'update_personal_button'  => 'Update Information',
 ];

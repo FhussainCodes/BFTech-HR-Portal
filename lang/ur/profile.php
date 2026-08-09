@@ -82,4 +82,9 @@ return [
     'enter_new_password'       => 'نیا پاس ورڈ درج کریں',
     'enter_confirm_password'   => 'پاس ورڈ کی تصدیق کے لیے دوبارہ درج کریں',
     'update_password_button'   => 'پاس ورڈ اپ ڈیٹ کریں',
+    'edit_personal_title'     => 'ذاتی معلومات میں ترمیم کریں',
+    'enter_first_name'        => 'پہلا نام درج کریں',
+    'enter_last_name'         => 'آخری نام درج کریں',
+    'enter_age'               => 'عمر درج کریں',
+    'update_personal_button'  => 'معلومات اپ ڈیٹ کریں',
 ];
