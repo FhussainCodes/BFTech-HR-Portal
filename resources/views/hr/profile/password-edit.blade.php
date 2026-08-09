@@ -4,12 +4,12 @@
 
 <div class="d-flex justify-content-between align-items-center mb-4">
     <h2 class="dashboard-title mb-0">
-        Change Password
+        {{ __('profile.change_password_title') }}
     </h2>
 
     <a href="{{ route('hr.profile.index') }}" class="btn btn-secondary">
         <i class="bi bi-arrow-left me-2"></i>
-        Back
+        {{ __('profile.back') }}
     </a>
 </div>
 
@@ -22,15 +22,16 @@
 
             <div class="row">
 
+                {{-- New Password --}}
                 <div class="col-md-6 mb-3">
                     <label class="form-label">
-                        New Password
+                        {{ __('profile.new_password') }}
                     </label>
 
                     <input type="password"
                            name="password"
                            class="form-control @error('password') is-invalid @enderror"
-                           placeholder="Enter new password">
+                           placeholder="{{ __('profile.enter_new_password') }}">
 
                     @error('password')
                     <div class="invalid-feedback">
@@ -39,15 +40,16 @@
                     @enderror
                 </div>
 
+                {{-- Confirm Password --}}
                 <div class="col-md-6 mb-3">
                     <label class="form-label">
-                        Confirm Password
+                        {{ __('profile.confirm_password') }}
                     </label>
 
                     <input type="password"
                            name="confirm_password"
                            class="form-control @error('confirm_password') is-invalid @enderror"
-                           placeholder="Confirm password">
+                           placeholder="{{ __('profile.enter_confirm_password') }}">
 
                     @error('confirm_password')
                     <div class="invalid-feedback">
@@ -60,7 +62,7 @@
 
             <button type="submit" class="btn btn-primary">
                 <i class="bi bi-check-circle me-2"></i>
-                Update Password
+                {{ __('profile.update_password_button') }}
             </button>
 
         </form>

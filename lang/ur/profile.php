@@ -76,4 +76,10 @@ return [
     'enter_city'           => 'براہ کرم شہر کا نام درج کریں',
     'enter_country'        => 'براہ کرم ملک کا نام درج کریں',
     'update_other_button'  => 'دیگر معلومات اپ ڈیٹ کریں',
+    'change_password_title'    => 'پاس ورڈ تبدیل کریں',
+    'new_password'             => 'نیا پاس ورڈ',
+    'confirm_password'         => 'پاس ورڈ کی تصدیق کریں',
+    'enter_new_password'       => 'نیا پاس ورڈ درج کریں',
+    'enter_confirm_password'   => 'پاس ورڈ کی تصدیق کے لیے دوبارہ درج کریں',
+    'update_password_button'   => 'پاس ورڈ اپ ڈیٹ کریں',
 ];

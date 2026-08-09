@@ -76,4 +76,10 @@ return [
     'enter_city'           => 'Please enter city',
     'enter_country'        => 'Please enter country',
     'update_other_button'  => 'Update Other Information',
+    'change_password_title'    => 'Change Password',
+    'new_password'             => 'New Password',
+    'confirm_password'         => 'Confirm Password',
+    'enter_new_password'       => 'Enter new password',
+    'enter_confirm_password'   => 'Confirm password',
+    'update_password_button'   => 'Update Password',
 ];
