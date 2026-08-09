@@ -64,5 +64,7 @@ return [
 'back' => 'Back',
 'approved_leaves' => 'Approved Leaves',
 'no_approved_records' => 'No Approved Leave Requests Found',
+'pending_leaves' => 'Pending Leaves',
+'no_pending_records' => 'No Pending Leave Requests Found',
 
 ];

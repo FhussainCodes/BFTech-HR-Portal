@@ -60,4 +60,6 @@ return [
 'back' => 'واپس',
 'approved_leaves' => 'منظور شدہ رخصتیں',
 'no_approved_records' => 'کوئی منظور شدہ درخواست نہیں ملی',
+'pending_leaves' => 'زیر التوا رخصتیں',
+'no_pending_records' => 'کوئی زیر التوا درخواست نہیں ملی',
 ];
