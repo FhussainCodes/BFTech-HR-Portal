@@ -9,7 +9,7 @@ return [
 
 // For HR side
 'hr_dashboard' => 'ایچ آر ڈیش بورڈ',
-    'notifications' => 'اطلاعات',
+    // 'notifications' => 'اطلاعات',
     'no_new_notifications' => 'کوئی نئی اطلاع نہیں ہے',
     'view_all_notifications' => 'تمام اطلاعات دیکھیں',
     'profile' => 'پروفائل',

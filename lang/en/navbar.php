@@ -9,7 +9,7 @@ return [
 
 // For HR side
 'hr_dashboard' => 'HR Dashboard',
-    'notifications' => 'Notifications',
+    // 'notifications' => 'Notifications',
     'no_new_notifications' => 'No new notifications',
     'view_all_notifications' => 'View All Notifications',
     'profile' => 'Profile',
