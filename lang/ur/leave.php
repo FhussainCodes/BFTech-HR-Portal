@@ -62,4 +62,6 @@ return [
 'no_approved_records' => 'کوئی منظور شدہ درخواست نہیں ملی',
 'pending_leaves' => 'زیر التوا رخصتیں',
 'no_pending_records' => 'کوئی زیر التوا درخواست نہیں ملی',
+'rejected_leaves' => 'مسترد شدہ رخصتیں',
+'no_rejected_records' => 'کوئی مسترد شدہ درخواست نہیں ملی',
 ];

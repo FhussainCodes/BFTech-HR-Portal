@@ -66,5 +66,6 @@ return [
 'no_approved_records' => 'No Approved Leave Requests Found',
 'pending_leaves' => 'Pending Leaves',
 'no_pending_records' => 'No Pending Leave Requests Found',
-
+'rejected_leaves' => 'Rejected Leaves',
+'no_rejected_records' => 'No Rejected Leave Requests Found',
 ];
