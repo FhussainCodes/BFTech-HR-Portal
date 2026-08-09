@@ -62,5 +62,7 @@ return [
 'approve' => 'Approve',
 'reject' => 'Reject',
 'back' => 'Back',
+'approved_leaves' => 'Approved Leaves',
+'no_approved_records' => 'No Approved Leave Requests Found',
 
 ];

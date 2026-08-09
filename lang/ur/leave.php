@@ -58,4 +58,6 @@ return [
 'approve' => 'منظور کریں',
 'reject' => 'مسترد کریں',
 'back' => 'واپس',
+'approved_leaves' => 'منظور شدہ رخصتیں',
+'no_approved_records' => 'کوئی منظور شدہ درخواست نہیں ملی',
 ];
