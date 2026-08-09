@@ -47,34 +47,36 @@ body {
 .hr-sidebar .overflow-auto::-webkit-scrollbar-thumb:hover{
     background:#6b7280;
 }
+
 .hr-sidebar .overflow-auto{
     scrollbar-width:thin;
     scrollbar-color:#4b5563 #1f2b3d;
 }
+
 /* Right Wrapper (Navbar + Content + Footer) */
 .app-right-wrapper {
-    margin-left:240px;
-    width:calc(100% - 240px);
+    margin-left: 240px;
+    width: calc(100% - 240px);
     display: flex;
     flex-direction: column;
-     min-height:100vh;
+    min-height: 100vh;
 }
 
 /* Navbar Styling (Slimmer Header) */
 .hr-navbar {
     height: 60px; 
     background: #fff;
-    width:calc(100% - 240px);
+    width: calc(100% - 240px);
     box-shadow: 0 2px 5px rgba(0, 0, 0, .05);
     position: fixed;
     top: 0;
     left: 240px;
-    z-index:999;
-    border-bottom:1px solid #e5e7eb;
+    z-index: 999;
+    border-bottom: 1px solid #e5e7eb;
 }
 
 .hr-navbar h3 {
-    font-size: 20px !important; /* Scaled down navbar heading */
+    font-size: 20px !important;
 }
 
 /* Main Content Area */
@@ -82,17 +84,39 @@ body {
     flex: 1; 
     padding: 24px; 
     background: #f4f6f9;
-    margin-top:60px;
+    margin-top: 60px;
 }
 
-.dashboard-title {
-    font-size: 24px; 
-    font-weight: 600;
-    margin-bottom: 20px;
+/* ==========================================
+   RTL MODE OVERRIDES (AUTOMATIC FOR URDU)
+   ========================================== */
+[dir="rtl"] .hr-sidebar {
+    left: auto !important;
+    right: 0 !important;
 }
 
-/* Footer Styling */
-.hr-footer {
+[dir="rtl"] .app-right-wrapper {
+    margin-left: 0 !important;
+    margin-right: 240px !important;
+}
+
+[dir="rtl"] .hr-navbar {
+    left: auto !important;
+    right: 240px !important;
+}
+
+[dir="rtl"] .hr-sidebar i {
+    margin-right: 0 !important;
+    margin-left: 8px !important;
+}
+
+[dir="rtl"] .submenu .nav-link {
+    padding-left: 12px !important;
+    padding-right: 38px !important;
+}
+
+/* General Styles */
+.footer {
     padding: 14px;
     text-align: center;
     font-size: 13px;
@@ -101,7 +125,6 @@ body {
     background: #fff;
 }
 
-/* Profile Section Elements */
 .profile-image {
     width: 65px; 
     height: 65px;
@@ -126,7 +149,6 @@ body {
     border-color: rgba(255, 255, 255, 0.15);
 }
 
-/* Sidebar Navigation Links */
 .hr-sidebar .nav-link {
     color: #d1d5db;
     font-size: 14px; 
@@ -152,11 +174,11 @@ body {
     font-size: 16px;
 }
 
-.action-column{
-    width:80px;
-    text-align:center;
+.action-column {
+    width: 80px;
+    text-align: center;
 }
-/* Arrow Animation */
+
 .employee-arrow {
     transition: transform 0.3s ease;
     font-size: 13px !important;
@@ -171,7 +193,6 @@ body {
     transform: rotate(0deg);
 }
 
-/* Submenu Styling */
 .submenu {
     padding-left: 0;
     margin-top: 2px;
@@ -187,14 +208,14 @@ body {
     color: #fff;
     background: rgba(255, 255, 255, 0.08);
 }
-/* Dashboard Title */
+
 .dashboard-title {
-    font-size: 22px;
+    font-size: 24px;
     font-weight: 600;
     color: #111827;
+    margin-bottom: 20px;
 }
 
-/* Dashboard Cards */
 .dashboard-card {
     border-radius: 10px;
 }
@@ -224,9 +245,8 @@ body {
     flex-shrink: 0;
 }
 
-/* Main Content Cards */
 .card {
-    border-radius: 10px;
+    border-radius: 12px;
 }
 
 .card-header {
@@ -239,7 +259,6 @@ body {
     color: #1f2937;
 }
 
-/* Tables & Lists */
 .custom-table th {
     font-size: 13px;
     font-weight: 600;
@@ -261,40 +280,50 @@ body {
     padding: 12px 16px;
 }
 
-/* for emmployee list */
 .table td,
-.table th{
+.table th {
     vertical-align: middle;
 }
 
-.table tbody tr:hover{
-    background:#f8fafc;
+.table tbody tr:hover {
+    background: #f8fafc;
 }
 
-.card{
-    border-radius:12px;
+.btn-sm {
+    padding: 6px 10px;
 }
 
-.btn-sm{
-    padding:6px 10px;
+.form-label {
+    font-weight: 600;
+    font-size: 14px;
 }
 
-.dashboard-title{
-    font-size:30px;
-    font-weight:600;
+.form-control {
+    height: 45px;
 }
 
-/* For Edit  Page*/
-.form-label{
-    font-weight:600;
-    font-size:14px;
+/* Fix Dropdown Screen Cut Issue */
+.hr-navbar .dropdown-menu {
+    margin-top: 10px !important;
 }
 
-.card{
-    border-radius:12px;
+/* English Mode Fixes */
+body:not([dir="rtl"]) .hr-navbar .dropdown-menu-end {
+    right: 0 !important;
+    left: auto !important;
 }
 
-.form-control{
-    height:45px;
+/* Urdu (RTL) Mode Fixes */
+[dir="rtl"] .hr-navbar .dropdown-menu-start {
+    left: 0 !important;
+    right: auto !important;
 }
 
+/* Footer Alignment Fix */
+.footer {
+    width: 100% !important;
+    text-align: center !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}

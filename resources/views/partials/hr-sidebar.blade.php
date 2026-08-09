@@ -11,9 +11,7 @@
                  class="rounded-circle profile-image"
                  alt="Profile">
         @else
-            <img src="{{ asset('images/default-profile.png') }}"
-                 class="rounded-circle profile-image"
-                 alt="Profile">
+<i class="bi bi-person-circle text-primary" style="font-size: 3.2rem; line-height: 1;"></i>
         @endif
 
         <h5 class="text-white mt-3 profile-name">
@@ -155,4 +153,4 @@
         </form>
     </div>
 
-</aside>s
+</aside>

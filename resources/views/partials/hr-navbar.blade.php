@@ -4,18 +4,20 @@
     $unreadNotifications = $hr
         ? $hr->unreadNotifications()->latest()->get()
         : collect();
+    $isUrdu = app()->getLocale() == 'ur';
+    $dropdownAlign = $isUrdu ? 'dropdown-menu-start' : 'dropdown-menu-end';
 @endphp
-    <div class="container-fluid d-flex align-items-center justify-content-between {{ app()->getLocale() == 'ur' ? 'flex-row-reverse' : '' }}">
+    <div class="container-fluid d-flex align-items-center justify-content-between">
 
         <!-- Title -->
-        <div>
-            <h3 class="fw-bold text-primary mb-0">
+        <div class="navbar-brand-wrapper">
+            <h3 class="fw-bold text-primary mb-0 fs-5">
                 {{ Lang::has('navbar.hr_dashboard') ? __('navbar.hr_dashboard') : 'HR Dashboard' }}
             </h3>
         </div>
 
-        <!-- Controls (Language Switcher, Notifications, Profile Dropdown) -->
-        <ul class="navbar-nav ms-auto align-items-center d-flex flex-row gap-2 gap-md-3 mb-0 {{ app()->getLocale() == 'ur' ? 'flex-row-reverse' : '' }}">
+        <!-- Controls -->
+        <ul class="navbar-nav {{ $isUrdu ? 'me-auto' : 'ms-auto' }} align-items-center d-flex flex-row gap-3 mb-0">
 
             <!-- Language Switcher Dropdown -->
             <li class="nav-item dropdown">
@@ -25,10 +27,10 @@
                         aria-expanded="false">
                     <i class="bi bi-globe fs-6"></i>
                     <span class="small fw-semibold">
-                        {{ app()->getLocale() == 'ur' ? 'اردو' : 'English' }}
+                        {{ $isUrdu ? 'اردو' : 'English' }}
                     </span>
                 </button>
-                <ul class="dropdown-menu {{ app()->getLocale() == 'ur' ? 'dropdown-menu-start' : 'dropdown-menu-end' }} shadow-sm">
+                <ul class="dropdown-menu {{ $dropdownAlign }} shadow-sm">
                     <li>
                         <a class="dropdown-item small d-flex align-items-center justify-content-between {{ app()->getLocale() == 'en' ? 'active fw-bold' : '' }}" 
                            href="{{ route('change.lang', 'en') }}">
@@ -37,10 +39,10 @@
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item small d-flex align-items-center justify-content-between {{ app()->getLocale() == 'ur' ? 'active fw-bold' : '' }}" 
+                        <a class="dropdown-item small d-flex align-items-center justify-content-between {{ $isUrdu ? 'active fw-bold' : '' }}" 
                            href="{{ route('change.lang', 'ur') }}">
                             <span>🇵🇰 اردو</span>
-                            @if(app()->getLocale() == 'ur') <i class="bi bi-check2"></i> @endif
+                            @if($isUrdu) <i class="bi bi-check2"></i> @endif
                         </a>
                     </li>
                 </ul>
@@ -48,18 +50,16 @@
 
             <!-- Notifications Dropdown -->
             <li class="nav-item dropdown">
-                <button class="btn position-relative p-1"
+                <button class="btn btn-light btn-sm rounded-circle position-relative p-2 d-flex align-items-center justify-content-center"
                         type="button"
-                        data-bs-toggle="dropdown">
-                    <i class="bi bi-bell fs-5"></i>
+                        data-bs-toggle="dropdown" style="width: 35px; height: 35px;">
+                    <i class="bi bi-bell fs-6"></i>
                     @if($unreadNotifications->count() > 0)
-                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                            {{ $unreadNotifications->count() }}
-                        </span>
+                        <span class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle"></span>
                     @endif
                 </button>
 
-                <ul class="dropdown-menu {{ app()->getLocale() == 'ur' ? 'dropdown-menu-start' : 'dropdown-menu-end' }} shadow-sm">
+                <ul class="dropdown-menu {{ $dropdownAlign }} shadow-sm" style="width: 260px;">
                     <li>
                         <h6 class="dropdown-header">
                             {{ Lang::has('navbar.notifications') ? __('navbar.notifications') : 'Notifications' }}
@@ -68,28 +68,26 @@
 
                     @forelse($unreadNotifications->take(5) as $notification)
                         <li>
-                            <a class="dropdown-item"
+                            <a class="dropdown-item small text-wrap"
                                href="{{ route('hr.notifications.read', $notification->id) }}">
                                 {{ $notification->data['message'] }}
-                                <small class="text-muted d-block">
+                                <small class="text-muted d-block mt-1">
                                     {{ $notification->created_at->diffForHumans() }}
                                 </small>
                             </a>
                         </li>
                     @empty
                         <li>
-                            <span class="dropdown-item text-muted">
+                            <span class="dropdown-item text-muted small">
                                 {{ Lang::has('navbar.no_new_notifications') ? __('navbar.no_new_notifications') : 'No new notifications' }}
                             </span>
                         </li>
                     @endforelse
 
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
+                    <li><hr class="dropdown-divider"></li>
 
                     <li>
-                        <a class="dropdown-item text-center"
+                        <a class="dropdown-item text-center small text-primary fw-semibold"
                            href="{{ route('hr.notifications.index') }}">
                             {{ Lang::has('navbar.view_all_notifications') ? __('navbar.view_all_notifications') : 'View All Notifications' }}
                         </a>
@@ -100,29 +98,27 @@
             <!-- Profile Dropdown -->
             <li class="nav-item dropdown">
                 @php
-                    $user = \App\Models\Register::find(session('user')['id']);
+                    $user = \App\Models\Register::find(session('user')['id'] ?? null);
                 @endphp
 
-                <a class="nav-link dropdown-toggle d-flex align-items-center p-0"
+                <a class="nav-link dropdown-toggle d-flex align-items-center p-0 gap-2"
                    href="#"
-                   data-bs-toggle="dropdown">
+                   data-bs-toggle="dropdown"
+                   aria-expanded="false">
                     @if($user && $user->profile_image)
                         <img src="{{ asset('storage/'.$user->profile_image) }}"
-                             width="35"
-                             height="35"
-                             class="rounded-circle me-2"
+                             width="32"
+                             height="32"
+                             class="rounded-circle border"
                              style="object-fit:cover;">
                     @else
-                        <img src="{{ asset('images/default-profile.png') }}"
-                             width="35"
-                             height="35"
-                             class="rounded-circle me-2">
+                        <i class="bi bi-person-circle text-primary fs-4"></i>
                     @endif
 
-                    <span>{{ $user->first_name }}</span>
+                    <span class="fw-semibold text-dark small">{{ $user->first_name ?? 'HR' }}</span>
                 </a>
 
-                <ul class="dropdown-menu {{ app()->getLocale() == 'ur' ? 'dropdown-menu-start' : 'dropdown-menu-end' }} shadow-sm">
+                <ul class="dropdown-menu {{ $dropdownAlign }} shadow-sm">
                     <li>
                         <a class="dropdown-item small" href="{{ route('hr.profile.index') }}">
                             <i class="bi bi-person me-2"></i> {{ Lang::has('navbar.profile') ? __('navbar.profile') : 'Profile' }}
