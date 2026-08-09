@@ -37,4 +37,5 @@ return [
     'duration' => 'Duration',
     'action' => 'Action',
     'no_records' => 'No Attendance Found',
+    
 ];
