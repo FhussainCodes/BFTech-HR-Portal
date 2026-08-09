@@ -4,12 +4,12 @@
 
 <div class="d-flex justify-content-between align-items-center mb-4">
     <h2 class="dashboard-title mb-0">
-        Edit Contact Information
+        {{ __('profile.edit_contact_title') }}
     </h2>
 
     <a href="{{ route('hr.profile.index') }}" class="btn btn-secondary">
         <i class="bi bi-arrow-left me-2"></i>
-        Back
+        {{ __('profile.back') }}
     </a>
 </div>
 
@@ -25,13 +25,13 @@
                 {{-- Email --}}
                 <div class="col-md-6 mb-3">
                     <label class="form-label">
-                        Email
+                        {{ __('profile.email') }}
                     </label>
 
                     <input type="email"
                            name="email"
                            class="form-control @error('email') is-invalid @enderror"
-                           placeholder="Please enter email"
+                           placeholder="{{ __('profile.enter_email') }}"
                            value="{{ old('email', $user->email) }}">
 
                     @error('email')
@@ -44,13 +44,13 @@
                 {{-- Phone Number --}}
                 <div class="col-md-6 mb-3">
                     <label class="form-label">
-                        Phone Number
+                        {{ __('profile.phone') }}
                     </label>
 
                     <input type="text"
                            name="phone_number"
                            class="form-control @error('phone_number') is-invalid @enderror"
-                           placeholder="Please enter phone number"
+                           placeholder="{{ __('profile.enter_phone') }}"
                            value="{{ old('phone_number', $user->phone_number) }}">
 
                     @error('phone_number')
@@ -64,7 +64,7 @@
 
             <button type="submit" class="btn btn-primary">
                 <i class="bi bi-check-circle me-2"></i>
-                Update Contact Information
+                {{ __('profile.update_contact_button') }}
             </button>
 
         </form>

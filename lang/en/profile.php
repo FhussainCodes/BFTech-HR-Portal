@@ -64,4 +64,9 @@ return [
     'city'                   => 'City',
     'country'                => 'Country',
     'password_hidden_notice' => 'For security reasons, your password is hidden.',
+    'edit_contact_title'     => 'Edit Contact Information',
+    'back'                   => 'Back',
+    'enter_email'            => 'Please enter email',
+    'enter_phone'            => 'Please enter phone number',
+    'update_contact_button'  => 'Update Contact Information',
 ];
