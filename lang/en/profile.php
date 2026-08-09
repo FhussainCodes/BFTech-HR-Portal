@@ -72,4 +72,8 @@ return [
     'edit_designation_title'     => 'Edit Designation',
     'enter_designation'          => 'Please enter designation',
     'update_designation_button'  => 'Update Designation',
+    'edit_other_title'     => 'Edit Other Information',
+    'enter_city'           => 'Please enter city',
+    'enter_country'        => 'Please enter country',
+    'update_other_button'  => 'Update Other Information',
 ];

@@ -4,12 +4,12 @@
 
 <div class="d-flex justify-content-between align-items-center mb-4">
     <h2 class="dashboard-title mb-0">
-        Edit Other Information
+        {{ __('profile.edit_other_title') }}
     </h2>
 
     <a href="{{ route('hr.profile.index') }}" class="btn btn-secondary">
         <i class="bi bi-arrow-left me-2"></i>
-        Back
+        {{ __('profile.back') }}
     </a>
 </div>
 
@@ -25,13 +25,13 @@
                 {{-- City --}}
                 <div class="col-md-6 mb-3">
                     <label class="form-label">
-                        City
+                        {{ __('profile.city') }}
                     </label>
 
                     <input type="text"
                            name="city"
                            class="form-control @error('city') is-invalid @enderror"
-                           placeholder="Please enter city"
+                           placeholder="{{ __('profile.enter_city') }}"
                            value="{{ old('city', $user->city) }}">
 
                     @error('city')
@@ -44,13 +44,13 @@
                 {{-- Country --}}
                 <div class="col-md-6 mb-3">
                     <label class="form-label">
-                        Country
+                        {{ __('profile.country') }}
                     </label>
 
                     <input type="text"
                            name="country"
                            class="form-control @error('country') is-invalid @enderror"
-                           placeholder="Please enter country"
+                           placeholder="{{ __('profile.enter_country') }}"
                            value="{{ old('country', $user->country) }}">
 
                     @error('country')
@@ -64,7 +64,7 @@
 
             <button type="submit" class="btn btn-primary">
                 <i class="bi bi-check-circle me-2"></i>
-                Update Other Information
+                {{ __('profile.update_other_button') }}
             </button>
 
         </form>

@@ -72,4 +72,8 @@ return [
     'edit_designation_title'     => 'عہدہ میں ترمیم کریں',
     'enter_designation'          => 'براہ کرم عہدہ درج کریں',
     'update_designation_button'  => 'عہدہ اپ ڈیٹ کریں',
+    'edit_other_title'     => 'دیگر معلومات میں ترمیم کریں',
+    'enter_city'           => 'براہ کرم شہر کا نام درج کریں',
+    'enter_country'        => 'براہ کرم ملک کا نام درج کریں',
+    'update_other_button'  => 'دیگر معلومات اپ ڈیٹ کریں',
 ];
