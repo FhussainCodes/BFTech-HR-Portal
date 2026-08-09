@@ -2,6 +2,7 @@
 
 return [
     'add_employee' => 'Add Employee',
+    'edit_employee' => 'Edit Employee',
     'back' => 'Back',
     'first_name' => 'First Name',
     'last_name' => 'Last Name',
@@ -25,5 +26,9 @@ return [
     'placeholder_country' => 'Please enter country',
     'placeholder_password' => 'Please enter password',
     'placeholder_confirm_password' => 'Please confirm password',
+    'placeholder_edit_password' => 'Leave blank to keep current password',
+    'placeholder_edit_confirm_password' => 'Re-enter new password',
+    'password_help' => 'Leave the password fields empty if you don\'t want to change the employee\'s password.',
     'btn_add' => 'Add Employee',
+    'btn_update' => 'Update Employee',
 ];

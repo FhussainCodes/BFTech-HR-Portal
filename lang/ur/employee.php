@@ -2,6 +2,7 @@
 
 return [
     'add_employee' => 'ملازم شامل کریں',
+    'edit_employee' => 'ملازم کی معلومات میں ترمیم کریں',
     'back' => 'واپس',
     'first_name' => 'پہلا نام',
     'last_name' => 'آخری نام',
@@ -25,5 +26,9 @@ return [
     'placeholder_country' => 'برائے مہربانی ملک درج کریں',
     'placeholder_password' => 'برائے مہربانی پاس ورڈ درج کریں',
     'placeholder_confirm_password' => 'برائے مہربانی پاس ورڈ کی تصدیق کریں',
+    'placeholder_edit_password' => 'موجودہ پاس ورڈ برقرار رکھنے کے لیے خالی چھوڑ دیں',
+    'placeholder_edit_confirm_password' => 'نیا پاس ورڈ دوبارہ درج کریں',
+    'password_help' => 'اگر آپ ملازم کا پاس ورڈ تبدیل نہیں کرنا چاہتے تو پاس ورڈ کے خانے خالی چھوڑ دیں۔',
     'btn_add' => 'ملازم شامل کریں',
+    'btn_update' => 'معلومات اپ ڈیٹ کریں',
 ];
