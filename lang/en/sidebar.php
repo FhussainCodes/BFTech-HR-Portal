@@ -10,7 +10,7 @@ return [
     'logout' => 'Logout',
 
     // For HR Side
-    'dashboard' => 'Dashboard',
+'dashboard' => 'Dashboard',
     'employees' => 'Employees',
     'employee_list' => 'Employee List',
     'add_employee' => 'Add Employee',

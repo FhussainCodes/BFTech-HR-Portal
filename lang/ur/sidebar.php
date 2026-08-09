@@ -10,7 +10,7 @@ return [
     'logout' => 'لاگ آؤٹ',
 
     // For HR Side
-    'dashboard' => 'ڈیش بورڈ',
+'dashboard' => 'ڈیش بورڈ',
     'employees' => 'ملازمین',
     'employee_list' => 'ملازمین کی فہرست',
     'add_employee' => 'نیا ملازم شامل کریں',
