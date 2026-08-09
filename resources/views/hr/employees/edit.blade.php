@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="d-flex justify-content-between align-items-center mb-4 {{ app()->getLocale() == 'ur' ? 'flex-row-reverse' : '' }}">
+<div class="d-flex justify-content-between align-items-center mb-4" dir="{{ app()->getLocale() == 'ur' ? 'rtl' : 'ltr' }}">
 
     <h2 class="dashboard-title mb-0">
         {{ Lang::has('employee.edit_employee') ? __('employee.edit_employee') : 'Edit Employee' }}

@@ -6,7 +6,8 @@
 
     <div class="card shadow-sm border-0">
 
-        <div class="card-header d-flex justify-content-between align-items-center {{ app()->getLocale() == 'ur' ? 'flex-row-reverse' : '' }}">
+        {{-- Card Header: Standard flex alignment naturally adjusts with dir="rtl" --}}
+        <div class="card-header d-flex justify-content-between align-items-center">
             <h4 class="mb-0">
                 {{ Lang::has('attendance.edit_attendance') ? __('attendance.edit_attendance') : 'Edit Attendance' }}
             </h4>
@@ -25,7 +26,7 @@
                 @method('PUT')
 
                 {{-- Employee Name --}}
-                <div class="mb-3 text-start">
+                <div class="mb-3 {{ app()->getLocale() == 'ur' ? 'text-end' : 'text-start' }}">
                     <label class="form-label">
                         {{ Lang::has('attendance.employee_name') ? __('attendance.employee_name') : 'Employee Name' }}
                     </label>
@@ -37,7 +38,7 @@
                 </div>
 
                 {{-- Attendance Date --}}
-                <div class="mb-3 text-start">
+                <div class="mb-3 {{ app()->getLocale() == 'ur' ? 'text-end' : 'text-start' }}">
                     <label class="form-label">
                         {{ Lang::has('attendance.attendance_date') ? __('attendance.attendance_date') : 'Attendance Date' }}
                     </label>
@@ -49,7 +50,7 @@
                 </div>
 
                 {{-- Check In --}}
-                <div class="mb-3 text-start">
+                <div class="mb-3 {{ app()->getLocale() == 'ur' ? 'text-end' : 'text-start' }}">
                     <label class="form-label">
                         {{ Lang::has('attendance.check_in') ? __('attendance.check_in') : 'Check In' }}
                     </label>
@@ -65,7 +66,7 @@
                 </div>
 
                 {{-- Check Out --}}
-                <div class="mb-4 text-start">
+                <div class="mb-4 {{ app()->getLocale() == 'ur' ? 'text-end' : 'text-start' }}">
                     <label class="form-label">
                         {{ Lang::has('attendance.check_out') ? __('attendance.check_out') : 'Check Out' }}
                     </label>

@@ -3,7 +3,8 @@
 @section('content')
 <div class="container-fluid" dir="{{ app()->getLocale() == 'ur' ? 'rtl' : 'ltr' }}">
     
-    <h3 class="dashboard-title mb-4 text-start">
+    {{-- Heading shifted to Right in Urdu (text-end when RTL) --}}
+    <h3 class="dashboard-title mb-4 {{ app()->getLocale() == 'ur' ? 'text-end' : 'text-start' }}">
         {{ Lang::has('attendance.title') ? __('attendance.title') : 'Employee Attendance' }}
     </h3>
 
@@ -13,7 +14,7 @@
             <form action="{{ route('hr.attendance.search') }}" method="GET">
                 <div class="row g-3">
 
-                    <div class="col-md-4 text-start">
+                    <div class="col-md-4 {{ app()->getLocale() == 'ur' ? 'text-end' : 'text-start' }}">
                         <label class="form-label">
                             {{ Lang::has('attendance.employee') ? __('attendance.employee') : 'Employee' }}
                         </label>
@@ -27,7 +28,7 @@
                         @enderror
                     </div>
 
-                    <div class="col-md-3 text-start">
+                    <div class="col-md-3 {{ app()->getLocale() == 'ur' ? 'text-end' : 'text-start' }}">
                         <label class="form-label">
                             {{ Lang::has('attendance.start_date') ? __('attendance.start_date') : 'Start Date' }}
                         </label>
@@ -40,7 +41,7 @@
                         @enderror
                     </div>
 
-                    <div class="col-md-3 text-start">
+                    <div class="col-md-3 {{ app()->getLocale() == 'ur' ? 'text-end' : 'text-start' }}">
                         <label class="form-label">
                             {{ Lang::has('attendance.end_date') ? __('attendance.end_date') : 'End Date' }}
                         </label>
@@ -74,7 +75,7 @@
     <div class="card shadow-sm border-0">
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered table-hover align-middle text-start">
+                <table class="table table-bordered table-hover align-middle {{ app()->getLocale() == 'ur' ? 'text-end' : 'text-start' }}">
                     <thead class="table-light">
                         <tr>
                             <th>{{ Lang::has('attendance.id') ? __('attendance.id') : 'ID' }}</th>
