@@ -67,5 +67,4 @@ class LeaveAppliedNotification extends Notification
         ];
     }
 
-    
 }

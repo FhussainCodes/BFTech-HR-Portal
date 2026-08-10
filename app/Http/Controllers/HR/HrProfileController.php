@@ -32,7 +32,7 @@ class HrProfileController extends Controller
         session([
             'user' => $user
         ]);
-        return redirect()->route('hr.profile.index')->with('success','Personal information updated successfully');
+        return redirect()->route('hr.profile.index')->with('success','Password updated successfully');
     }
 
     public function editContact(){
