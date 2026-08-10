@@ -180,15 +180,16 @@ Implemented features:
 
 # Screenshots
 
-## Login Page
-
-![Login Page](screenshots/login-page.png)
-
----
-
 ## Register Page
 
 ![Register Page](screenshots/register-page.png)
+
+---
+
+
+## Login Page
+
+![Login Page](screenshots/login-page.png)
 
 ---
 
