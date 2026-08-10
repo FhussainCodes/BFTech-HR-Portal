@@ -40,7 +40,7 @@ return [
     'employee_list' => 'ملازمین کی فہرست',
     'search_placeholder' => 'نام، آئی ڈی، یا عہدے سے تلاش کریں',
     'th_id' => 'آئی ڈی',
-    'th_profile' => 'پروفائل',
+    'th_profile' => 'پروفائل کی تصویر',
     'th_name' => 'نام',
     'th_email' => 'ای میل',
     'th_age' => 'عمر',

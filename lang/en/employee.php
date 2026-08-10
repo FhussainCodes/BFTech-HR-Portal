@@ -40,7 +40,7 @@ return [
     'employee_list' => 'Employee List',
     'search_placeholder' => 'Search employee by Name, Id, Designation',
     'th_id' => 'ID',
-    'th_profile' => 'Profile',
+    'th_profile' => 'Profile Image',
     'th_name' => 'Name',
     'th_email' => 'Email',
     'th_age' => 'Age',

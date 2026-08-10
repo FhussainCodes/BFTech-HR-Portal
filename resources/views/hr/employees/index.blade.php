@@ -38,7 +38,7 @@
                 <thead class="table-light">
                     <tr>
                         <th>{{ Lang::has('employee.th_id') ? __('employee.th_id') : 'ID' }}</th>
-                        <th>{{ Lang::has('employee.th_profile') ? __('employee.th_profile') : 'Profile' }}</th>
+                        <th>{{ Lang::has('employee.th_profile') ? __('employee.th_profile') : 'Profile Image' }}</th>
                         <th>{{ Lang::has('employee.th_name') ? __('employee.th_name') : 'Name' }}</th>
                         <th>{{ Lang::has('employee.th_email') ? __('employee.th_email') : 'Email' }}</th>
                         <th>{{ Lang::has('employee.th_age') ? __('employee.th_age') : 'Age' }}</th>
@@ -51,13 +51,21 @@
                     @forelse($employees as $employee)
                         <tr>
                             <td>{{ $employee->id }}</td>
-                            <td>
-                                <img src="{{ $employee->profile_image ? asset('storage/'.$employee->profile_image) : asset('images/default-profile.png') }}" 
-                                     width="45" 
-                                     height="45" 
-                                     class="rounded-circle" 
-                                     alt="Profile">
-                            </td>
+<td>
+    @if($employee->profile_image)
+        <img src="{{ asset('storage/'.$employee->profile_image) }}" 
+             width="40" 
+             height="40" 
+             class="rounded-circle border" 
+             style="object-fit: cover;"
+             alt="Profile">
+    @else
+        <div class="rounded-circle bg-light border d-inline-flex align-items-center justify-content-center text-primary" 
+             style="width: 40px; height: 40px;">
+            <i class="bi bi-person-fill fs-5"></i>
+        </div>
+    @endif
+</td>
                             <td>{{ $employee->first_name }} {{ $employee->last_name }}</td>
                             <td>{{ $employee->email }}</td>
                             <td>{{ $employee->age }}</td>

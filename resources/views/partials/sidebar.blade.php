@@ -3,18 +3,32 @@
     <!-- Top Section -->
     <div>
 
-        <!-- User Profile -->
-        <div class="text-center py-3 px-2">
-            <i class="bi bi-person-circle fs-1 text-primary"></i>
+      <!-- User Profile -->
+<div class="text-center py-3 px-2">
+    @php
+        // Database se current logged-in employee ka latest record fetch karein taake image update mile
+        $loggedUser = \App\Models\Register::find(session('user')['id'] ?? null);
+    @endphp
 
-            <h6 class="mt-2 mb-0 fw-bold text-truncate">
-                {{ session('user')['first_name'] ?? __('sidebar.guest') }}
-            </h6>
+    @if($loggedUser && $loggedUser->profile_image)
+        <img src="{{ asset('storage/'.$loggedUser->profile_image) }}" 
+             width="55" 
+             height="55" 
+             class="rounded-circle border shadow-sm" 
+             style="object-fit: cover;" 
+             alt="Profile">
+    @else
+        <i class="bi bi-person-circle fs-1 text-primary"></i>
+    @endif
 
-            <small class="text-muted" style="font-size: 0.75rem;">
-                {{ session('user')['designation'] ?? __('sidebar.employee') }}
-            </small>
-        </div>
+    <h6 class="mt-2 mb-0 fw-bold text-truncate">
+        {{ session('user')['first_name'] ?? __('sidebar.guest') }}
+    </h6>
+
+    <small class="text-muted" style="font-size: 0.75rem;">
+        {{ session('user')['designation'] ?? __('sidebar.employee') }}
+    </small>
+</div>
 
         <hr class="my-2 text-secondary opacity-25">
 
