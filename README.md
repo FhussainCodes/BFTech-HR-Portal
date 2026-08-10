@@ -182,13 +182,13 @@ Implemented features:
 
 ## Login Page
 
-![Login Page](screenshots/login.png)
+![Login Page](screenshots/login-page.png)
 
 ---
 
 ## Register Page
 
-![Register Page](screenshots/register.png)
+![Register Page](screenshots/register-page.png)
 
 ---
 

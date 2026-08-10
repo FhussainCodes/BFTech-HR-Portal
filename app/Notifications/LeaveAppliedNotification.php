@@ -57,7 +57,7 @@ class LeaveAppliedNotification extends Notification
                 $this->leave->employee->first_name . ' ' .
                 $this->leave->employee->last_name,
 
-            'leave_type' => $this->leave->leave_type,
+            'leave_type' => $this->leave->leave_type, 
 
             'from_date' => $this->leave->from_date,
 
