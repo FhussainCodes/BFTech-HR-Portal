@@ -199,15 +199,16 @@ Implemented features:
 
 ---
 
-## Employee List
-
-![Employee List](screenshots/employee-list.png)
-
----
-
 ## HR Dashboard
 
 ![HR Dashboard](screenshots/hr-dashboard.png)
+
+
+---
+
+## Employee List
+
+![Employee List](screenshots/employee-list.png)
 
 ---
 
