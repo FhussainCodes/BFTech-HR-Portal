@@ -210,7 +210,7 @@ Implemented features:
 
 ---
 
-## Leave Management
+<!-- ## Leave Management
 
 ![Leave Management](screenshots/leave-management.png)
 
@@ -218,7 +218,7 @@ Implemented features:
 
 ## Attendance Management
 
-![Attendance Management](screenshots/attendance-management.png)
+![Attendance Management](screenshots/attendance-management.png) -->
 
 # Technologies Used
 
