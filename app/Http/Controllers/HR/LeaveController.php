@@ -85,7 +85,7 @@ class LeaveController extends Controller
                     return response()->json([
                     'success' => true,
                     'message' => 'Leave Approved Successfully.',
-                    'status' => 'Approved'
+                    'status' => 'Rejected'
                 ]);
         }
 

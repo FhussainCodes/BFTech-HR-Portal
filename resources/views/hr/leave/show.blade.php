@@ -72,7 +72,7 @@
                     <label class="fw-bold text-muted">
                         {{ Lang::has('leave.status') ? __('leave.status') : 'Status' }}
                     </label>
-                    <p class="mb-0">
+                    <p class="mb-0" id="leaveStatus">
                         @if($leave->status == 'Pending')
                             <span class="badge bg-warning text-dark">
                                 {{ Lang::has('leave.status_pending') ? __('leave.status_pending') : 'Pending' }}
@@ -147,7 +147,7 @@
                 <hr>
 
                 <div class="d-flex gap-2">
-                    <form action="{{ route('hr.leave.approve', $leave->id) }}" method="POST">
+                    <form id="approveForm" action="{{ route('hr.leave.approve', $leave->id) }}" method="POST">
                         @csrf
                         <button class="btn btn-success d-inline-flex align-items-center">
                             <i class="bi bi-check-lg {{ app()->getLocale() == 'ur' ? 'ms-1' : 'me-1' }}"></i>
@@ -155,7 +155,7 @@
                         </button>
                     </form>
 
-                    <form action="{{ route('hr.leave.reject', $leave->id) }}" method="POST">
+                    <form id="rejectForm" action="{{ route('hr.leave.reject', $leave->id) }}" method="POST">
                         @csrf
                         <button class="btn btn-danger d-inline-flex align-items-center">
                             <i class="bi bi-x-lg {{ app()->getLocale() == 'ur' ? 'ms-1' : 'me-1' }}"></i>
