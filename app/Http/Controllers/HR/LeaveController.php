@@ -4,7 +4,7 @@ namespace App\Http\Controllers\HR;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Leave;
+use App\Models\Leave; 
 use App\Http\Requests\Hr\SearchLeaveRequest;
 
 class LeaveController extends Controller
@@ -65,12 +65,7 @@ class LeaveController extends Controller
 
             $leave->save();
 
-            // return redirect()->route('hr.leave.pending')->with('success', 'Leave Approved Successfully.');
-                return response()->json([
-                    'success' => true,
-                    'message' => 'Leave Approved Successfully.',
-                    'status' => 'Approved'
-                ]);
+            return redirect()->route('hr.leave.approved')->with('success', 'Leave Approved Successfully.');
         }
 
             public function reject($id)
@@ -81,12 +76,7 @@ class LeaveController extends Controller
 
             $leave->save();
 
-            // return redirect()->route('hr.leave.pending')->with('success', 'Leave Rejected Successfully.');
-                    return response()->json([
-                    'success' => true,
-                    'message' => 'Leave Approved Successfully.',
-                    'status' => 'Rejected'
-                ]);
+            return redirect()->route('hr.leave.rejected')->with('success', 'Leave Rejected Successfully.');
         }
 
  private function filterLeaves(SearchLeaveRequest $request, $status = null)

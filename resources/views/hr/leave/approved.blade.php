@@ -33,7 +33,6 @@
                         <label class="form-label">
                             {{ Lang::has('leave.from_date') ? __('leave.from_date') : 'From Date' }}
                         </label>
-                        {{-- Fixed extra space in name attribute --}}
                         <input type="date"
                                name="from_date"
                                class="form-control @error('from_date') is-invalid @enderror"
@@ -131,9 +130,17 @@
                 </table>
             </div>
 
-            @if(method_exists($leaves, 'links'))
-                <div class="mt-3">
-                    {{ $leaves->links() }}
+            {{-- Pagination Links with Query String preservation for search filters --}}
+                      @if(method_exists($leaves, 'links'))
+                <div class="d-flex justify-content-between align-items-center mt-3 flex-wrap">
+                    <small class="text-muted">
+                        Showing {{ $leaves->firstItem() ?? 0 }} to {{ $leaves->lastItem() ?? 0 }} of {{ $leaves->total() }} entries
+                    </small>
+                    <nav>
+                        <div class="d-flex justify-content-end mt-2">
+                            {{ $leaves->links('pagination::bootstrap-5') }}
+                        </div>
+                    </nav>
                 </div>
             @endif
 

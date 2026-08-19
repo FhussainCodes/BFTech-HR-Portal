@@ -158,10 +158,17 @@
                 </table>
             </div>
 
-            {{-- Pagination Links --}}
+            {{-- Pagination Links & Entry Info (Fixed Alignment) --}}
             @if(method_exists($leaves, 'links'))
-                <div class="mt-3">
-                    {{ $leaves->links() }}
+                <div class="d-flex justify-content-between align-items-center mt-3 flex-wrap">
+                    <small class="text-muted">
+                        Showing {{ $leaves->firstItem() ?? 0 }} to {{ $leaves->lastItem() ?? 0 }} of {{ $leaves->total() }} entries
+                    </small>
+                    <nav>
+                        <div class="d-flex justify-content-end mt-2">
+                            {{ $leaves->links('pagination::bootstrap-5') }}
+                        </div>
+                    </nav>
                 </div>
             @endif
 
@@ -170,4 +177,4 @@
 
 </div>
 
-@endsection             
+@endsection
