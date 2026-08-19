@@ -65,7 +65,12 @@ class LeaveController extends Controller
 
             $leave->save();
 
-            return redirect()->route('hr.leave.pending')->with('success', 'Leave Approved Successfully.');
+            // return redirect()->route('hr.leave.pending')->with('success', 'Leave Approved Successfully.');
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Leave Approved Successfully.',
+                    'status' => 'Approved'
+                ]);
         }
 
             public function reject($id)
@@ -76,7 +81,12 @@ class LeaveController extends Controller
 
             $leave->save();
 
-            return redirect()->route('hr.leave.pending')->with('success', 'Leave Rejected Successfully.');
+            // return redirect()->route('hr.leave.pending')->with('success', 'Leave Rejected Successfully.');
+                    return response()->json([
+                    'success' => true,
+                    'message' => 'Leave Approved Successfully.',
+                    'status' => 'Approved'
+                ]);
         }
 
  private function filterLeaves(SearchLeaveRequest $request, $status = null)
