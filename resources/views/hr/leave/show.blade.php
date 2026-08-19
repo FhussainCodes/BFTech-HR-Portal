@@ -143,7 +143,7 @@
             </div>
 
             {{-- Action Buttons for Pending Requests --}}
-            @if($leave->status == 'Pending')
+           
                 <hr>
 
                 <div class="d-flex gap-2">
@@ -163,8 +163,7 @@
                         </button>
                     </form>
                 </div>
-            @endif
-
+           
         </div>
 
     </div>
@@ -213,8 +212,8 @@ $(document).ready(function () {
 
                     }
 
-                    $('#approveForm').remove();
-                    $('#rejectForm').remove();
+                    // $('#approveForm').remove();
+                    // $('#rejectForm').remove();
 
                     alert(data.message);
                 }

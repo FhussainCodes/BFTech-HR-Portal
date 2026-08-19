@@ -67,7 +67,8 @@ class LeaveController extends Controller
                 return response()->json([
         'success' => true,
         'message' => 'Leave Approved Successfully.',
-        'status' => 'Approved'
+        'status' => 'Approved',
+        'id' => $leave->id
     ]);
 
             // return redirect()->route('hr.leave.approved')->with('success', 'Leave Approved Successfully.');
@@ -83,7 +84,8 @@ class LeaveController extends Controller
                 return response()->json([
         'success' => true,
         'message' => 'Leave Rejected Successfully.',
-        'status' => 'Rejected'
+        'status' => 'Rejected',
+        'id' => $leave->id
     ]);
 
             // return redirect()->route('hr.leave.rejected')->with('success', 'Leave Rejected Successfully.');

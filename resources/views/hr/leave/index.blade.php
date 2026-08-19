@@ -141,11 +141,25 @@
                                         </span>
                                     @endif
                                 </td>
-                                <td class="text-center">
+                                <td id="leave-status-{{ $leave->id }}" class="text-center">
                                     <a href="{{ route('hr.leave.show', $leave->id) }}" class="btn btn-info btn-sm text-white" title="View">
                                         <i class="bi bi-eye"></i>
                                     </a>
-                                </td>
+                                     <form action="{{ route('hr.leave.approve', $leave->id) }}" method="POST" class="d-inline">
+                                            @csrf
+                                            <button type="submit" class="btn btn-success btn-sm" title="Approve">
+                                                <i class="bi bi-check-lg"></i>
+                                            </button>
+                                        </form>
+
+                                        {{-- Reject --}}
+                                        <form action="{{ route('hr.leave.reject', $leave->id) }}" method="POST" class="d-inline">
+                                            @csrf
+                                            <button type="submit" class="btn btn-danger btn-sm" title="Reject">
+                                                <i class="bi bi-x-lg"></i>
+                                            </button>
+                                        </form>
+                                </id=>
                             </tr>
                         @empty
                             <tr>
