@@ -126,7 +126,7 @@
                                 </td>
                                 <td>{{ $leave->from_date }}</td>
                                 <td>{{ $leave->to_date }}</td>
-                                <td>
+                                <td id="leave-status-{{ $leave->id }}">
                                     @if($leave->status == 'Pending')
                                         <span class="badge bg-warning text-dark">
                                             {{ Lang::has('leave.status_pending') ? __('leave.status_pending') : 'Pending' }}
@@ -141,11 +141,11 @@
                                         </span>
                                     @endif
                                 </td>
-                                <td id="leave-status-{{ $leave->id }}" class="text-center">
+                                <td class="text-center">
                                     <a href="{{ route('hr.leave.show', $leave->id) }}" class="btn btn-info btn-sm text-white" title="View">
                                         <i class="bi bi-eye"></i>
                                     </a>
-                                     <form action="{{ route('hr.leave.approve', $leave->id) }}" method="POST" class="d-inline">
+                                     <form action="{{ route('hr.leave.approve', $leave->id) }}" method="POST" class="d-inline leave-action-form">
                                             @csrf
                                             <button type="submit" class="btn btn-success btn-sm" title="Approve">
                                                 <i class="bi bi-check-lg"></i>
@@ -153,7 +153,7 @@
                                         </form>
 
                                         {{-- Reject --}}
-                                        <form action="{{ route('hr.leave.reject', $leave->id) }}" method="POST" class="d-inline">
+                                        <form action="{{ route('hr.leave.reject', $leave->id) }}" method="POST" class="d-inline leave-action-form">
                                             @csrf
                                             <button type="submit" class="btn btn-danger btn-sm" title="Reject">
                                                 <i class="bi bi-x-lg"></i>
@@ -190,5 +190,66 @@
     </div>
 
 </div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<script>
+$(document).ready(function () {
+
+    $('.leave-action-form').on('submit', function (e) {
+
+        e.preventDefault();
+
+        const form = this;
+
+        $.ajax({
+            url: form.action,
+            type: 'POST',
+
+            headers: {
+                'X-CSRF-TOKEN': $(form).find('input[name="_token"]').val(),
+                'Accept': 'application/json'
+            },
+
+            success: function (data) {
+
+                console.log(data);
+
+                if (data.success) {
+
+                    if (data.status === 'Approved') {
+
+                        $('#leave-status-' + data.id).html(`
+                            <span class="badge bg-success">
+                                Approved
+                            </span>
+                        `);
+
+                    } else if (data.status === 'Rejected') {
+
+                        $('#leave-status-' + data.id).html(`
+                            <span class="badge bg-danger">
+                                Rejected
+                            </span>
+                        `);
+
+                    }
+
+                    // alert(data.message);
+                }
+            },
+
+            error: function (xhr) {
+
+                console.error(xhr.responseText);
+
+                alert('Something went wrong.');
+            }
+        });
+
+    });
+
+});
+</script>
 
 @endsection
