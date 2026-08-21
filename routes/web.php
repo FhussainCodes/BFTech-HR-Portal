@@ -165,11 +165,11 @@ Route::prefix('hr')->middleware('hr.auth')->group(function(){
     Route::post('/notifications/readall', [NotificationController::class, 'markAllAsRead'])->name('hr.notifications.readAll');
 
     // For Search Data From Youtube
+    Route::get('/youtube', [YouTubeController::class, 'index'])->name('hr.youtube.index');
+    Route::get('/youtube/search', [YouTubeController::class, 'search'])->name('hr.youtube.search');
+    Route::get('/youtube/comments', [YouTubeController::class, 'comments'])->name('hr.youtube.comments');
     
-
-});
-
+    });
+    
 // Route::get('/youtube-test', [YouTubeController::class, 'youtubeData']);
-Route::get('/youtube-test', [YouTubeController::class, 'search'])->name('youtube');
-
 

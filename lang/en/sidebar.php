@@ -22,4 +22,6 @@ return [
     'approved_leaves' => 'Approved Leaves',
     'rejected_leaves' => 'Rejected Leaves',
     'logout' => 'Logout',
+
+    'youtube' => 'Youtube'
 ];

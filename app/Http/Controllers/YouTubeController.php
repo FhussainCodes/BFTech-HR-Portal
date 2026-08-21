@@ -7,7 +7,32 @@ use Illuminate\Support\Facades\Http;
 
 class YouTubeController extends Controller
 {
-    // public function youtubeData(){
+    public function index(){
+    $videos = [];
+        
+    return view('hr.youtube.index',compact('videos',));
+}
+
+
+    public function search(Request $request){
+    $videos = [];
+
+    if ($request->filled('q')) {
+
+        $response = Http::get('https://www.googleapis.com/youtube/v3/search', [
+            'key' => env('YOUTUBE_API_KEY'),
+            'part' => 'snippet',
+            'q' => $request->q,
+            'type' => 'video',
+            'maxResults' => 40,
+        ]);
+
+        $videos = $response->json()['items'] ?? [];
+    }
+    return view('hr.youtube.index', compact('videos'));
+}
+
+       // public function youtubeData(){
     //     $response = Http::get('https://www.googleapis.com/youtube/v3/search', [
     //     'key' => env('YOUTUBE_API_KEY'),
     //     'part' => 'snippet',
@@ -15,24 +40,21 @@ class YouTubeController extends Controller
     //     'type' => 'video'
     // ]);
     // return $response->json();
-    // }
+    // } 
 
-    public function search(Request $request){
-        $query = $request->input('q');
-        
-        $response = Http::get('https://www.googleapis.com/youtube/v3/search', [
+    public function comments(Request $request)
+{
+    $videoId = $request->videoId;
+
+    $response = Http::get('https://www.googleapis.com/youtube/v3/commentThreads', [
         'key' => env('YOUTUBE_API_KEY'),
         'part' => 'snippet',
-        'q' => $query,
-        'type' => 'video',
-        'maxResults' => 10
+        'videoId' => $videoId,
+        'maxResults' => 10,
+        'textFormat' => 'plainText',
     ]);
 
-    return $response->json();
-    }
-
-    public function index(){
-        return view('hr.youtube.index');
-    }
-    
+        $comments = $response->json()['items'] ?? [];
+        return view('hr.youtube.index', compact('comments'));
+}
 }

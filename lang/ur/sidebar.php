@@ -22,5 +22,6 @@ return [
     'approved_leaves' => 'منظور شدہ رخصت',
     'rejected_leaves' => 'مسترد شدہ رخصت',
     'logout' => 'لاگ آؤٹ',
+    'youtube' => 'یوٹیوب'
     
 ];
