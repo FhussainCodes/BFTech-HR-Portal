@@ -168,6 +168,7 @@ Route::prefix('hr')->middleware('hr.auth')->group(function(){
     Route::get('/youtube', [YouTubeController::class, 'index'])->name('hr.youtube.index');
     Route::get('/youtube/search', [YouTubeController::class, 'search'])->name('hr.youtube.search');
     Route::get('/youtube/comments', [YouTubeController::class, 'comments'])->name('hr.youtube.comments');
+    Route::get('/youtube/watch/{videoId}', [YouTubeController::class, 'watch'])->name('hr.youtube.watch');
     
     });
     

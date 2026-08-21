@@ -42,19 +42,53 @@ class YouTubeController extends Controller
     // return $response->json();
     // } 
 
-    public function comments(Request $request)
+ public function comments(Request $request)
+    {
+        $request->validate([
+            'videoId' => 'required|string',
+        ]);
+
+        $response = Http::get(
+            'https://www.googleapis.com/youtube/v3/commentThreads',
+            [
+                'key' => env('YOUTUBE_API_KEY'),
+                'part' => 'snippet',
+                'videoId' => $request->videoId,
+                'maxResults' => 10,
+                'textFormat' => 'plainText',
+            ]
+        );
+
+        if ($response->failed()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Unable to load comments.',
+            ], 500);
+        }
+
+        $items = $response->json()['items'] ?? [];
+
+        $comments = [];
+
+        foreach ($items as $item) {
+
+            $comment = $item['snippet']['topLevelComment']['snippet'];
+
+            $comments[] = [
+                'author' => $comment['authorDisplayName'] ?? 'Unknown User',
+                'text' => $comment['textDisplay'] ?? '',
+            ];
+        }
+
+        return response()->json([
+            'success' => true,
+            'comments' => $comments,
+        ]);
+    }
+
+    public function watch($videoId)
 {
-    $videoId = $request->videoId;
-
-    $response = Http::get('https://www.googleapis.com/youtube/v3/commentThreads', [
-        'key' => env('YOUTUBE_API_KEY'),
-        'part' => 'snippet',
-        'videoId' => $videoId,
-        'maxResults' => 10,
-        'textFormat' => 'plainText',
-    ]);
-
-        $comments = $response->json()['items'] ?? [];
-        return view('hr.youtube.index', compact('comments'));
+    return view('hr.youtube.watch', compact('videoId'));
 }
+
 }
