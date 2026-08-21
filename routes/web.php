@@ -14,7 +14,7 @@ use App\Http\Controllers\HR\HrProfileController;
 use App\Http\Controllers\HR\AttendanceController as HrAttendanceController;
 use App\Http\Controllers\HR\LeaveController as HrLeaveController;
 use App\Http\Controllers\HR\NotificationController;
-
+use App\Http\Controllers\YouTubeController;
 
 Route::get('/', function () {
     return view('auth.loginUser');
@@ -164,7 +164,12 @@ Route::prefix('hr')->middleware('hr.auth')->group(function(){
     Route::get('/notifications/{id}/read', [NotificationController::class, 'read'])->name('hr.notifications.read');
     Route::post('/notifications/readall', [NotificationController::class, 'markAllAsRead'])->name('hr.notifications.readAll');
 
+    // For Search Data From Youtube
+    
+
 });
 
+// Route::get('/youtube-test', [YouTubeController::class, 'youtubeData']);
+Route::get('/youtube-test', [YouTubeController::class, 'search'])->name('youtube');
 
 
