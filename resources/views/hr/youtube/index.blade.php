@@ -11,6 +11,9 @@
             <button type="submit" class="btn btn-primary">Search</button>
         </div>
     </form>
+    <!-- <a href="{{ route('facebook.login') }}" class="btn btn-primary">
+    Login with Facebook
+</a> -->
 
     {{-- Search Results --}}
     @foreach($videos as $video)

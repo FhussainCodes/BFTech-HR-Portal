@@ -15,6 +15,8 @@ use App\Http\Controllers\HR\AttendanceController as HrAttendanceController;
 use App\Http\Controllers\HR\LeaveController as HrLeaveController;
 use App\Http\Controllers\HR\NotificationController;
 use App\Http\Controllers\YouTubeController;
+use App\Http\Controllers\FacebookController;
+
 
 Route::get('/', function () {
     return view('auth.loginUser');
@@ -169,8 +171,12 @@ Route::prefix('hr')->middleware('hr.auth')->group(function(){
     Route::get('/youtube/search', [YouTubeController::class, 'search'])->name('hr.youtube.search');
     Route::get('/youtube/comments', [YouTubeController::class, 'comments'])->name('hr.youtube.comments');
     Route::get('/youtube/watch/{videoId}', [YouTubeController::class, 'watch'])->name('hr.youtube.watch');
-    
+
+    // For Share post on Facebook
     });
+    // Route::get('/facebook/callback', [FacebookController::class, 'callback'])->name('facebook.callback');
     
 // Route::get('/youtube-test', [YouTubeController::class, 'youtubeData']);
 
+// Route::get('/facebook/login', [FacebookController::class, 'login'])
+//     ->name('facebook.login');
