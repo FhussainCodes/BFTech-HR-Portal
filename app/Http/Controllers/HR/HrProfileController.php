@@ -118,7 +118,8 @@ class HrProfileController extends Controller
             
             return back()->with('success','profile image deleted successfully');
         }
-
     }
+
+
 
 }

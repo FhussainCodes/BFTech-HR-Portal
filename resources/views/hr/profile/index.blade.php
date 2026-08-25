@@ -6,59 +6,76 @@
 
     <h3 class="mb-4">{{ __('profile.my_profile') }}</h3>
 
-    {{-- Profile Card --}}
-    <div class="card shadow-sm mb-3">
-        <div class="card-body text-center">
+{{-- Profile Card --}}
+<div class="card shadow-sm mb-3">
+    <div class="card-body text-center">
 
-            @if($user->profile_image)
-                <img src="{{ asset('storage/'.$user->profile_image) }}"
-                     class="rounded-circle mb-3"
-                     width="150"
-                     height="150"
-                     style="object-fit:cover;">
-            @else
-                <img src="{{ asset('images/default-profile.png') }}"
-                     class="rounded-circle mb-3"
-                     width="150"
-                     height="150"
-                     style="object-fit:cover;">
-            @endif
+        {{-- Profile Image --}}
+        @if($user->profile_image)
 
-            <h4 class="mb-1">
-                {{ $user->first_name }} {{ $user->last_name }}
-            </h4>
+            <img src="{{ asset('storage/'.$user->profile_image) }}"
+                 class="rounded-circle mb-3"
+                 width="150"
+                 height="150"
+                 style="object-fit:cover;">
 
-            <p class="text-muted mb-3">
-                {{ $user->role }}
-            </p>
+        @else
 
-            <form action="{{ route('hr.profile.uploadImage') }}"
-                  method="POST"
-                  enctype="multipart/form-data">
+            <img src="{{ asset('images/default-profile.png') }}"
+                 class="rounded-circle mb-3"
+                 width="150"
+                 height="150"
+                 style="object-fit:cover;">
 
-                @csrf
+        @endif
 
-                <div class="mb-3">
-                    <input type="file"
-                           name="profile_image"
-                           class="form-control @error('profile_image') is-invalid @enderror">
+
+        {{-- Name --}}
+        <h4 class="mb-1">
+            {{ $user->first_name }} {{ $user->last_name }}
+        </h4>
+
+
+        {{-- Role --}}
+        <p class="text-muted mb-3">
+            {{ $user->role }}
+        </p>
+
+
+        {{-- Upload Image --}}
+        <form action="{{ route('hr.profile.uploadImage') }}"
+              method="POST"
+              enctype="multipart/form-data">
+
+            @csrf
+
+            <div class="mb-3">
+                <input type="file"
+                       name="profile_image"
+                       class="form-control @error('profile_image') is-invalid @enderror">
+            </div>
+
+            @error('profile_image')
+                <div class="text-danger mb-3">
+                    {{ $message }}
                 </div>
+            @enderror
 
-                @error('profile_image')
-                    <div class="text-danger mb-3">
-                        {{ $message }}
-                    </div>
-                @enderror
+            <button type="submit" class="btn btn-primary">
+                {{ __('profile.upload_image') }}
+            </button>
 
-                <button type="submit" class="btn btn-primary">
-                    {{ __('profile.upload_image') }}
-                </button>
-            </form>
+        </form>
 
-            @if($user->profile_image)
-                <form action="{{route('hr.profile.deleteImage')}}"
-                      method="POST"
-                      class="mt-2">
+
+        {{-- Actions only when image exists --}}
+        @if($user->profile_image)
+
+            <div class="mt-2 d-flex justify-content-center gap-2">
+
+                {{-- Delete Image --}}
+                <form action="{{ route('hr.profile.deleteImage') }}"
+                      method="POST">
 
                     @csrf
                     @method('DELETE')
@@ -66,14 +83,29 @@
                     <button type="submit"
                             class="btn btn-danger"
                             onclick="return confirm('{{ __('profile.delete_confirm') }}')">
+
                         {{ __('profile.delete_image') }}
+
                     </button>
 
                 </form>
-            @endif
 
-        </div>
+
+                {{-- Share on Facebook --}}
+                <button type="button"
+                        id="facebookShareBtn"
+                        class="btn btn-primary">
+
+                    Share on Facebook
+
+                </button>
+
+            </div>
+
+        @endif
+
     </div>
+</div>
 
     {{-- Personal Information --}}
     <div class="card shadow-sm mb-3">
@@ -200,4 +232,28 @@
 
 </div>
 
+@if($user->profile_image)
+
+<script>
+
+document.getElementById('facebookShareBtn').addEventListener('click', function () {
+
+    const shareUrl =
+        "https://fragrance-legroom-bannister.ngrok-free.dev/profile/{{ $user->id }}";
+
+    const facebookShareUrl =
+        "https://www.facebook.com/sharer/sharer.php?u=" +
+        encodeURIComponent(shareUrl);
+
+    window.open(
+        facebookShareUrl,
+        'facebook-share-dialog',
+        'width=800,height=600'
+    );
+
+});
+
+</script>
+
+@endif
 @endsection

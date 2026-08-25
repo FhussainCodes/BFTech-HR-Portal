@@ -139,6 +139,7 @@ Route::prefix('hr')->middleware('hr.auth')->group(function(){
     Route::put('/profile/updatepassword',[HrProfileController::class,'updatePassword' ])->name('hr.profile.updatePassword');
     Route::post('/profile/uploadimage',[HrProfileController::class,'uploadImage' ])->name('hr.profile.uploadImage');
     Route::delete('/profile/deleteimage',[HrProfileController::class,'deleteImage' ])->name('hr.profile.deleteImage');
+
     
     // For Attendance Details
     Route::get('/attendance/index',[HrAttendanceController::class,'index'])->name('hr.attendance.index');
@@ -180,3 +181,4 @@ Route::prefix('hr')->middleware('hr.auth')->group(function(){
 
 // Route::get('/facebook/login', [FacebookController::class, 'login'])
 //     ->name('facebook.login');
+
