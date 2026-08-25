@@ -182,3 +182,5 @@ Route::prefix('hr')->middleware('hr.auth')->group(function(){
 // Route::get('/facebook/login', [FacebookController::class, 'login'])
 //     ->name('facebook.login');
 
+    Route::get('/profile/index', [HrProfileController::class,'index'])->name('hr.profile.index');
+    Route::get('/profile/{id}', [HrProfileController::class, 'publicProfile'])->name('profile.public');
