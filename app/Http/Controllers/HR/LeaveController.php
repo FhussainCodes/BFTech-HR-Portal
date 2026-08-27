@@ -65,11 +65,11 @@ class LeaveController extends Controller
 
             $leave->save();
                 return response()->json([
-        'success' => true,
-        'message' => 'Leave Approved Successfully.',
-        'status' => 'Approved',
-        'id' => $leave->id
-    ]);
+                'success' => true,
+                'message' => 'Leave Approved Successfully.',
+                'status' => 'Approved',
+                'id' => $leave->id
+            ]);
 
             // return redirect()->route('hr.leave.approved')->with('success', 'Leave Approved Successfully.');
         }
