@@ -1,15 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-
 <div class="container-fluid">
-
     <h3 class="mb-4">{{ __('profile.my_profile') }}</h3>
 
     <!-- Profile Image Card -->
     <div class="card shadow-sm mb-3">
         <div class="card-body text-center">
-
             @if($user->profile_image)
                 <img
                     src="{{ asset('storage/'.$user->profile_image) }}"
@@ -51,14 +48,13 @@
                 </div>
 
                 @error('profile_image')
-                <div class="text-danger mb-2">{{ $message }}</div>
+                    <div class="text-danger mb-2">{{ $message }}</div>
                 @enderror
 
                 <button class="btn btn-primary">
                     {{ __('profile.upload_image') }}
                 </button>
             </form>
-
         </div>
     </div>
 
@@ -109,7 +105,5 @@
             <p class="mb-0"><strong>{{ __('profile.country') }}:</strong> {{ $user->country }}</p>
         </div>
     </div>
-
 </div>
-
 @endsection
