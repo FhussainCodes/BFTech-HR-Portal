@@ -3,22 +3,17 @@
 @section('title', __('auth.login'))
 
 @section('content')
-
 <div class="container d-flex justify-content-center align-items-center min-vh-100 py-4">
-
     <div class="card shadow-sm border-0 rounded-3 p-4 w-100" style="max-width:400px;">
-
         <h4 class="text-center fw-bold mb-4">
             {{ __('auth.login_heading') }}
         </h4>
 
         <form action="{{ route('loginUser') }}" method="POST">
-
             @csrf
 
             {{-- Email --}}
             <div class="mb-3">
-
                 <label class="form-label fw-semibold small d-block">
                     {{ __('auth.email') }}
                     <span class="text-danger">*</span>
@@ -38,12 +33,10 @@
                         {{ $message }}
                     </div>
                 @enderror
-
             </div>
 
             {{-- Password --}}
             <div class="mb-3">
-
                 <label class="form-label fw-semibold small d-block">
                     {{ __('auth.password') }}
                     <span class="text-danger">*</span>
@@ -62,7 +55,6 @@
                         {{ $message }}
                     </div>
                 @enderror
-
             </div>
 
             <button type="submit" class="btn btn-primary btn-sm w-100 fw-semibold py-2 mt-2">
@@ -70,33 +62,21 @@
             </button>
 
             <div class="text-center mt-3">
-
                 <p class="text-muted small mb-1">
-
                     {{ __('auth.forgot_password') }}
-
                     <a href="{{ route('forgotPage') }}" class="text-decoration-none fw-semibold">
                         {{ __('auth.click_here') }}
                     </a>
-
                 </p>
 
                 <p class="text-muted small mb-0">
-
                     {{ __('auth.dont_have_account') }}
-
                     <a href="{{ route('registerUser') }}" class="text-decoration-none fw-semibold">
                         {{ __('auth.register') }}
                     </a>
-
                 </p>
-
             </div>
-
         </form>
-
     </div>
-
 </div>
-
 @endsection

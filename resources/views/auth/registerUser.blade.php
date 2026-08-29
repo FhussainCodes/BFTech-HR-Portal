@@ -3,7 +3,6 @@
 @section('title', __('auth.register'))
 
 @section('content')
-
 <style>
     /* Input aur placeholders ko Urdu me Right align karne ke liye */
     body.rtl-mode input.form-control {
@@ -16,7 +15,6 @@
 
 <div class="container d-flex justify-content-center align-items-center min-vh-100 py-4">
     <div class="card shadow-sm border-0 rounded-3 p-4 w-100" style="max-width: 650px;">
-        
         <h4 class="text-center fw-bold mb-4">
             {{ __('auth.register_heading') }}
         </h4>
@@ -25,7 +23,6 @@
             @csrf
 
             <div class="row g-2">
-
                 <!-- First Name -->
                 <div class="col-md-6 mb-2">
                     <label class="form-label fw-semibold small mb-1 d-block">
@@ -213,7 +210,6 @@
                         <div class="invalid-feedback small">{{ $message }}</div>
                     @enderror
                 </div>
-
             </div>
 
             <!-- Submit Button -->
@@ -230,10 +226,7 @@
                     </a>
                 </p>
             </div>
-
         </form>
-
     </div>
 </div>
-
 @endsection
