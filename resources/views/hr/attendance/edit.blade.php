@@ -1,11 +1,8 @@
 @extends('layouts.hr')
 
 @section('content')
-
 <div class="container-fluid" dir="{{ app()->getLocale() == 'ur' ? 'rtl' : 'ltr' }}">
-
     <div class="card shadow-sm border-0">
-
         {{-- Card Header: Standard flex alignment naturally adjusts with dir="rtl" --}}
         <div class="card-header d-flex justify-content-between align-items-center">
             <h4 class="mb-0">
@@ -19,9 +16,7 @@
         </div>
 
         <div class="card-body">
-
             <form action="{{ route('hr.attendance.update', $attendance->id) }}" method="POST">
-
                 @csrf
                 @method('PUT')
 
@@ -92,13 +87,8 @@
                         {{ Lang::has('attendance.btn_cancel') ? __('attendance.btn_cancel') : 'Cancel' }}
                     </a>
                 </div>
-
             </form>
-
         </div>
-
     </div>
-
 </div>
-
 @endsection

@@ -2,7 +2,6 @@
 
 @section('content')
 <div class="container-fluid" dir="{{ app()->getLocale() == 'ur' ? 'rtl' : 'ltr' }}">
-    
     {{-- Heading shifted to Right in Urdu (text-end when RTL) --}}
     <h3 class="dashboard-title mb-4 {{ app()->getLocale() == 'ur' ? 'text-end' : 'text-start' }}">
         {{ Lang::has('attendance.title') ? __('attendance.title') : 'Employee Attendance' }}
@@ -13,7 +12,6 @@
         <div class="card-body">
             <form action="{{ route('hr.attendance.search') }}" method="GET">
                 <div class="row g-3">
-
                     <div class="col-md-4 {{ app()->getLocale() == 'ur' ? 'text-end' : 'text-start' }}">
                         <label class="form-label">
                             {{ Lang::has('attendance.employee') ? __('attendance.employee') : 'Employee' }}
@@ -65,7 +63,6 @@
                             {{ Lang::has('attendance.btn_reset') ? __('attendance.btn_reset') : 'Reset' }}
                         </a>
                     </div>
-
                 </div>
             </form>
         </div>
@@ -97,9 +94,7 @@
                                 {{ \Carbon\Carbon::parse($row->check_in)->format('h:i A') }}
                             </td>
                             <td>
-                                {{ $row->check_out
-                                    ? \Carbon\Carbon::parse($row->check_out)->format('h:i A')
-                                    : '-' }}
+                                {{ $row->check_out ? \Carbon\Carbon::parse($row->check_out)->format('h:i A') : '-' }}
                             </td>
                             <td>
                                 {{ $row->duration ?? '-' }}
@@ -126,6 +121,5 @@
             </div>
         </div>
     </div>
-
 </div>
 @endsection
