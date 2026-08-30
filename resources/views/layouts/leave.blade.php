@@ -3,35 +3,27 @@
 @section('content')
 
 <div class="container-fluid">
-
     <div class="card shadow-sm border-0">
-
         <div class="card-header bg-white py-3">
             <h4 class="mb-0 fw-bold">{{ __('leave.leave_management') }}</h4>
         </div>
 
         <div class="card-body">
-
             <div class="d-flex gap-2 mb-4 {{ app()->getLocale() == 'ur' ? 'flex-row-reverse justify-content-start' : '' }}">
-
                 <a href="{{ route('leave.index.show') }}"
                    class="btn leave-btn {{ request()->routeIs('leave.index.show') ? 'btn-primary' : 'btn-outline-primary' }}">
-                    {{__('leave.show_leaves')}}
+                    {{ __('leave.show_leaves') }}
                 </a>
 
                 <a href="{{ route('leave.apply.create') }}"
                    class="btn leave-btn {{ request()->routeIs('leave.apply.create') ? 'btn-primary' : 'btn-outline-primary' }}">
                     {{ __('leave.apply_leave') }}
                 </a>
-
             </div>
 
             @yield('leave-content')
-
         </div>
-
     </div>
-
 </div>
 
 <style>
