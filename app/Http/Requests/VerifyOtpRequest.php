@@ -27,13 +27,13 @@ class VerifyOtpRequest extends FormRequest
         ];
     }
 
-public function messages(): array
-{
-    return [
+    public function messages(): array
+    {
+        return [
 
-        'otp.required' => __('validation.custom.otp.required'),
-        'otp.digits'   => __('validation.custom.otp.digits'),
+            'otp.required' => __('validation.custom.otp.required'),
+            'otp.digits'   => __('validation.custom.otp.digits'),
 
-    ];
-}
+        ];
+    }
 }

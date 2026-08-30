@@ -30,20 +30,20 @@ class LeaveRequest extends FormRequest
         ];
     }
 
-public function messages(): array
-{
-    return [
+    public function messages(): array
+    {
+        return [
 
-        'leave_type.required' => __('validation.custom.leave_type.required'),
+            'leave_type.required' => __('validation.custom.leave_type.required'),
 
-        'from_date.required' => __('validation.custom.from_date.required'),
-        'from_date.date' => __('validation.custom.from_date.date'),
-        'from_date.after_or_equal' => __('validation.custom.from_date.after_or_equal'),
+            'from_date.required' => __('validation.custom.from_date.required'),
+            'from_date.date' => __('validation.custom.from_date.date'),
+            'from_date.after_or_equal' => __('validation.custom.from_date.after_or_equal'),
 
-        'to_date.required' => __('validation.custom.to_date.required'),
-        'to_date.date' => __('validation.custom.to_date.date'),
-        'to_date.after_or_equal' => __('validation.custom.to_date.after_or_equal'),
+            'to_date.required' => __('validation.custom.to_date.required'),
+            'to_date.date' => __('validation.custom.to_date.date'),
+            'to_date.after_or_equal' => __('validation.custom.to_date.after_or_equal'),
 
-    ];
-}
+        ];
+    }
 }

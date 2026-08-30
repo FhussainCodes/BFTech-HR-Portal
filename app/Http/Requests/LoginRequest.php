@@ -28,17 +28,17 @@ class LoginRequest extends FormRequest
         ];
     }
 
-public function messages(): array
-{
-    return [
+    public function messages(): array
+    {
+        return [
 
-        'email.required' => __('validation.custom.email.required'),
-        'email.email'    => __('validation.custom.email.email'),
+            'email.required' => __('validation.custom.email.required'),
+            'email.email'    => __('validation.custom.email.email'),
 
-        'password.required' => __('validation.custom.password.required'),
-        'password.min'      => __('validation.custom.password.min'),
-        'password.max'      => __('validation.custom.password.max'),
+            'password.required' => __('validation.custom.password.required'),
+            'password.min'      => __('validation.custom.password.min'),
+            'password.max'      => __('validation.custom.password.max'),
 
-    ];
-}
+        ];
+    }
 }

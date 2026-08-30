@@ -29,17 +29,17 @@ class ContactInfoRequest extends FormRequest
         ];
     }
 
-public function messages(): array
-{
-    return [
+    public function messages(): array
+    {
+        return [
 
-        'email.required' => __('validation.custom.email.required'),
-        'email.email'    => __('validation.custom.email.email'),
-        'email.unique'   => __('validation.custom.email.unique'),
+            'email.required' => __('validation.custom.email.required'),
+            'email.email'    => __('validation.custom.email.email'),
+            'email.unique'   => __('validation.custom.email.unique'),
 
-        'phone_number.required' => __('validation.custom.phone_number.required'),
-        'phone_number.regex'    => __('validation.custom.phone_number.regex'),
+            'phone_number.required' => __('validation.custom.phone_number.required'),
+            'phone_number.regex'    => __('validation.custom.phone_number.regex'),
 
-    ];
-}
+        ];
+    }
 }

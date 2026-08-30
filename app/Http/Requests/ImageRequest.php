@@ -27,15 +27,15 @@ class ImageRequest extends FormRequest
         ];
     }
 
-public function messages(): array
-{
-    return [
+    public function messages(): array
+    {
+        return [
 
-        'profile_image.required' => __('validation.custom.profile_image.required'),
-        'profile_image.image'    => __('validation.custom.profile_image.image'),
-        'profile_image.mimes'    => __('validation.custom.profile_image.mimes'),
-        'profile_image.max'      => __('validation.custom.profile_image.max'),
+            'profile_image.required' => __('validation.custom.profile_image.required'),
+            'profile_image.image'    => __('validation.custom.profile_image.image'),
+            'profile_image.mimes'    => __('validation.custom.profile_image.mimes'),
+            'profile_image.max'      => __('validation.custom.profile_image.max'),
 
-    ];
-}
+        ];
+    }
 }

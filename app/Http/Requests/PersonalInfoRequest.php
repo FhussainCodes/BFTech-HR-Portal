@@ -29,27 +29,27 @@ class PersonalInfoRequest extends FormRequest
         ];
     }
 
-public function messages(): array
-{
-    return [
+    public function messages(): array
+    {
+        return [
 
-        // First Name
-        'first_name.required' => __('validation.custom.first_name.required'),
-        'first_name.min'      => __('validation.custom.first_name.min'),
-        'first_name.max'      => __('validation.custom.first_name.max'),
-        'first_name.regex'    => __('validation.custom.first_name.regex'),
+            // First Name
+            'first_name.required' => __('validation.custom.first_name.required'),
+            'first_name.min'      => __('validation.custom.first_name.min'),
+            'first_name.max'      => __('validation.custom.first_name.max'),
+            'first_name.regex'    => __('validation.custom.first_name.regex'),
 
-        // Last Name
-        'last_name.required'  => __('validation.custom.last_name.required'),
-        'last_name.min'       => __('validation.custom.last_name.min'),
-        'last_name.max'       => __('validation.custom.last_name.max'),
-        'last_name.regex'     => __('validation.custom.last_name.regex'),
+            // Last Name
+            'last_name.required'  => __('validation.custom.last_name.required'),
+            'last_name.min'       => __('validation.custom.last_name.min'),
+            'last_name.max'       => __('validation.custom.last_name.max'),
+            'last_name.regex'     => __('validation.custom.last_name.regex'),
 
-        // Age
-        'age.required'        => __('validation.custom.age.required'),
-        'age.integer'         => __('validation.custom.age.integer'),
-        'age.between'         => __('validation.custom.age.between'),
+            // Age
+            'age.required'        => __('validation.custom.age.required'),
+            'age.integer'         => __('validation.custom.age.integer'),
+            'age.between'         => __('validation.custom.age.between'),
 
-    ];
-}
+        ];
+    }
 }

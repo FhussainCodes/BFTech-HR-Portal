@@ -28,15 +28,15 @@ class DesignationInfoRequest extends FormRequest
     ];
 }
 
-public function messages(): array
-{
-    return [
+    public function messages(): array
+    {
+        return [
 
-        'designation.required' => __('validation.custom.designation.required'),
-        'designation.min'      => __('validation.custom.designation.min'),
-        'designation.max'      => __('validation.custom.designation.max'),
-        'designation.regex'    => __('validation.custom.designation.regex'),
+            'designation.required' => __('validation.custom.designation.required'),
+            'designation.min'      => __('validation.custom.designation.min'),
+            'designation.max'      => __('validation.custom.designation.max'),
+            'designation.regex'    => __('validation.custom.designation.regex'),
 
-    ];
-}
+        ];
+    }
 }

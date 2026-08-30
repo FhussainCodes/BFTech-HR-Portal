@@ -29,13 +29,13 @@ class ForgotPasswordRequest extends FormRequest
         ];
     }
 
-public function messages(): array
-{
-    return [
+    public function messages(): array
+    {
+        return [
 
-'email.required' => __('validation.custom.forgot_password.email.required'),
-'email.email'    => __('validation.custom.forgot_password.email.email'),
+    'email.required' => __('validation.custom.forgot_password.email.required'),
+    'email.email'    => __('validation.custom.forgot_password.email.email'),
 
-    ];
-}
+        ];
+    }
 }
