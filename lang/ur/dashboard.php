@@ -15,7 +15,7 @@ return [
     'not_checked_in' => 'چیک ان نہیں ہیں',
 
     // For HR Side
-'title' => 'ایچ آر ڈیش بورڈ',
+    'title' => 'ایچ آر ڈیش بورڈ',
     'total_employees' => 'کل ملازمین',
     'active_employees' => 'فعال ملازمین',
     'on_leave' => 'رخصت پر',

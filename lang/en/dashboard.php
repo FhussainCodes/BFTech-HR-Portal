@@ -15,7 +15,7 @@ return [
     'not_checked_in' => 'Not Checked In',
 
     // For HR Side
-'title' => 'HR Dashboard',
+    'title' => 'HR Dashboard',
     'total_employees' => 'Total Employees',
     'active_employees' => 'Active Employees',
     'on_leave' => 'On Leave',
