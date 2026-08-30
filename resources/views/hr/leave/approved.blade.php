@@ -1,9 +1,7 @@
 @extends('layouts.hr')
 
 @section('content')
-
 <div class="container-fluid" dir="{{ app()->getLocale() == 'ur' ? 'rtl' : 'ltr' }}">
-
     <h3 class="dashboard-title mb-4 {{ app()->getLocale() == 'ur' ? 'text-end' : 'text-start' }}">
         {{ Lang::has('leave.approved_leaves') ? __('leave.approved_leaves') : 'Approved Leaves' }}
     </h3>
@@ -13,7 +11,6 @@
         <div class="card-body">
             <form action="{{ route('hr.leave.approved') }}" method="GET">
                 <div class="row g-3">
-
                     <div class="col-md-3 {{ app()->getLocale() == 'ur' ? 'text-end' : 'text-start' }}">
                         <label class="form-label">
                             {{ Lang::has('leave.employee') ? __('leave.employee') : 'Employee' }}
@@ -23,7 +20,6 @@
                                class="form-control @error('employee') is-invalid @enderror"
                                value="{{ request('employee') }}"
                                placeholder="{{ Lang::has('leave.search_employee') ? __('leave.search_employee') : 'Search Employee' }}">
-
                         @error('employee')
                             <small class="text-danger mt-1 d-block">{{ $message }}</small>
                         @enderror
@@ -37,7 +33,6 @@
                                name="from_date"
                                class="form-control @error('from_date') is-invalid @enderror"
                                value="{{ request('from_date') }}">
-
                         @error('from_date')
                             <small class="text-danger mt-1 d-block">{{ $message }}</small>
                         @enderror
@@ -51,7 +46,6 @@
                                name="to_date"
                                class="form-control @error('to_date') is-invalid @enderror"
                                value="{{ request('to_date') }}">
-
                         @error('to_date')
                             <small class="text-danger mt-1 d-block">{{ $message }}</small>
                         @enderror
@@ -68,7 +62,6 @@
                             {{ Lang::has('leave.btn_reset') ? __('leave.btn_reset') : 'Reset' }}
                         </a>
                     </div>
-
                 </div>
             </form>
         </div>
@@ -130,8 +123,8 @@
                 </table>
             </div>
 
-            {{-- Pagination Links with Query String preservation for search filters --}}
-                      @if(method_exists($leaves, 'links'))
+            {{-- Pagination Links --}}
+            @if(method_exists($leaves, 'links'))
                 <div class="d-flex justify-content-between align-items-center mt-3 flex-wrap">
                     <small class="text-muted">
                         Showing {{ $leaves->firstItem() ?? 0 }} to {{ $leaves->lastItem() ?? 0 }} of {{ $leaves->total() }} entries
@@ -143,10 +136,7 @@
                     </nav>
                 </div>
             @endif
-
         </div>
     </div>
-
 </div>
-
 @endsection
