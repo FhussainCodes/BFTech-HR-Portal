@@ -32,7 +32,7 @@ class UpdateContactInfoRequest extends FormRequest
 {
     return [
 
-'email.required'        => __('employee.email_required'),
+            'email.required'        => __('employee.email_required'),
             'email.email'           => __('employee.email_invalid'),
             'email.ends_with'       => __('employee.email_ends_with'),
             'email.unique'          => __('employee.email_unique'),

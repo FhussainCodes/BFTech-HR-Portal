@@ -37,7 +37,7 @@ class LeaveStatusRequest extends FormRequest
     {
         return [
 
-'status.required' => __('leave.status_required'),
+            'status.required' => __('leave.status_required'),
             'status.in'       => __('leave.status_invalid'),
 
         ];

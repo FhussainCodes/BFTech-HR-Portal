@@ -30,7 +30,7 @@ class UpdateDesignationRequest extends FormRequest
     public function messages(): array
 {
     return [
-'designation.required' => __('employee.designation_required'),
+            'designation.required' => __('employee.designation_required'),
             'designation.string'   => __('employee.designation_string'),
             'designation.min'      => __('employee.designation_min'),
             'designation.max'      => __('employee.designation_max'),

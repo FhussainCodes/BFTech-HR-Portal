@@ -30,7 +30,7 @@ class SearchEmployeeRequest extends FormRequest
     public function messages(): array
     {
         return [
-'search.string' => __('employee.search_string'),
+            'search.string' => __('employee.search_string'),
             'search.min'    => __('employee.search_min'),
             'search.max'    => __('employee.search_max'),
             'search.regex'  => __('employee.search_regex'),

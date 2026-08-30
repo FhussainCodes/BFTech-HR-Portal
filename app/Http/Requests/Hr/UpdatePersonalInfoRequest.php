@@ -20,7 +20,7 @@ class UpdatePersonalInfoRequest extends FormRequest
      *
      * @return array<string, ValidationRule|array<mixed>|string>
      */
- public function rules(): array
+    public function rules(): array
     {
         return [
 
@@ -37,7 +37,7 @@ class UpdatePersonalInfoRequest extends FormRequest
     {
         return [
 
-// First Name
+            // First Name
             'first_name.required' => __('employee.first_name_required'),
             'first_name.min'      => __('employee.first_name_min'),
             'first_name.max'      => __('employee.first_name_max'),

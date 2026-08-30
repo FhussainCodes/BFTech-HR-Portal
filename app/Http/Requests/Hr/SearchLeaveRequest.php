@@ -37,7 +37,7 @@ class SearchLeaveRequest extends FormRequest
     {
         return [
 
-'employee.string'         => __('leave.employee_string'),
+            'employee.string'         => __('leave.employee_string'),
             'employee.max'            => __('leave.employee_max'),
 
             // From Date

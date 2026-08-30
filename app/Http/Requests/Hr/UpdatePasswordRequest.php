@@ -31,7 +31,7 @@ class UpdatePasswordRequest extends FormRequest
     public function messages(): array
 {
     return [
-'password.required'         => __('profile.password_required'),
+            'password.required'         => __('profile.password_required'),
             'password.min'              => __('profile.password_min'),
             'password.max'              => __('profile.password_max'),
             'password.regex'            => __('profile.password_regex'),

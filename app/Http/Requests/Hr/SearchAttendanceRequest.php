@@ -32,7 +32,7 @@ class SearchAttendanceRequest extends FormRequest
     public function messages(): array
 {
     return [
-'employee_name.string'    => __('attendance.employee_name_string'),
+            'employee_name.string'    => __('attendance.employee_name_string'),
             'employee_name.min'       => __('attendance.employee_name_min'),
             'employee_name.max'       => __('attendance.employee_name_max'),
             'employee_name.regex'     => __('attendance.employee_name_regex'),

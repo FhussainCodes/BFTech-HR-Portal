@@ -31,7 +31,7 @@ class UpdateOtherInfoRequest extends FormRequest
     public function messages(): array
 {
     return [
-'city.required' => __('employee.city_required'),
+            'city.required' => __('employee.city_required'),
             'city.string'   => __('employee.city_string'),
             'city.min'      => __('employee.city_min'),
             'city.max'      => __('employee.city_max'),
