@@ -1,9 +1,7 @@
 @extends('layouts.hr')
 
 @section('content')
-
 <div class="container-fluid" dir="{{ app()->getLocale() == 'ur' ? 'rtl' : 'ltr' }}">
-
     {{-- Title --}}
     <h3 class="dashboard-title mb-4 {{ app()->getLocale() == 'ur' ? 'text-end' : 'text-start' }}">
         {{ Lang::has('leave.total_leaves') ? __('leave.total_leaves') : 'Total Leaves' }}
@@ -14,7 +12,6 @@
         <div class="card-body">
             <form action="{{ route('hr.leave.index') }}" method="GET">
                 <div class="row g-3">
-
                     {{-- Employee Search --}}
                     <div class="col-md-3 {{ app()->getLocale() == 'ur' ? 'text-end' : 'text-start' }}">
                         <label class="form-label">
@@ -86,7 +83,6 @@
                             {{ Lang::has('leave.btn_reset') ? __('leave.btn_reset') : 'Reset' }}
                         </a>
                     </div>
-
                 </div>
             </form>
         </div>
@@ -145,21 +141,23 @@
                                     <a href="{{ route('hr.leave.show', $leave->id) }}" class="btn btn-info btn-sm text-white" title="View">
                                         <i class="bi bi-eye"></i>
                                     </a>
-                                     <form action="{{ route('hr.leave.approve', $leave->id) }}" method="POST" class="d-inline leave-action-form">
-                                            @csrf
-                                            <button type="submit" class="btn btn-success btn-sm" title="Approve">
-                                                <i class="bi bi-check-lg"></i>
-                                            </button>
-                                        </form>
+                                    
+                                    {{-- Approve --}}
+                                    <form action="{{ route('hr.leave.approve', $leave->id) }}" method="POST" class="d-inline leave-action-form">
+                                        @csrf
+                                        <button type="submit" class="btn btn-success btn-sm" title="Approve">
+                                            <i class="bi bi-check-lg"></i>
+                                        </button>
+                                    </form>
 
-                                        {{-- Reject --}}
-                                        <form action="{{ route('hr.leave.reject', $leave->id) }}" method="POST" class="d-inline leave-action-form">
-                                            @csrf
-                                            <button type="submit" class="btn btn-danger btn-sm" title="Reject">
-                                                <i class="bi bi-x-lg"></i>
-                                            </button>
-                                        </form>
-                                </id=>
+                                    {{-- Reject --}}
+                                    <form action="{{ route('hr.leave.reject', $leave->id) }}" method="POST" class="d-inline leave-action-form">
+                                        @csrf
+                                        <button type="submit" class="btn btn-danger btn-sm" title="Reject">
+                                            <i class="bi bi-x-lg"></i>
+                                        </button>
+                                    </form>
+                                </td>
                             </tr>
                         @empty
                             <tr>
@@ -172,7 +170,7 @@
                 </table>
             </div>
 
-            {{-- Pagination Links & Entry Info (Fixed Alignment) --}}
+            {{-- Pagination Links & Entry Info --}}
             @if(method_exists($leaves, 'links'))
                 <div class="d-flex justify-content-between align-items-center mt-3 flex-wrap">
                     <small class="text-muted">
@@ -185,71 +183,43 @@
                     </nav>
                 </div>
             @endif
-
         </div>
     </div>
-
 </div>
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-
 <script>
 $(document).ready(function () {
-
     $('.leave-action-form').on('submit', function (e) {
-
         e.preventDefault();
-
         const form = this;
 
         $.ajax({
             url: form.action,
             type: 'POST',
-
             headers: {
                 'X-CSRF-TOKEN': $(form).find('input[name="_token"]').val(),
                 'Accept': 'application/json'
             },
-
             success: function (data) {
-
-                console.log(data);
-
                 if (data.success) {
-
                     if (data.status === 'Approved') {
-
                         $('#leave-status-' + data.id).html(`
-                            <span class="badge bg-success">
-                                Approved
-                            </span>
+                            <span class="badge bg-success">Approved</span>
                         `);
-
                     } else if (data.status === 'Rejected') {
-
                         $('#leave-status-' + data.id).html(`
-                            <span class="badge bg-danger">
-                                Rejected
-                            </span>
+                            <span class="badge bg-danger">Rejected</span>
                         `);
-
                     }
-
-                    // alert(data.message);
                 }
             },
-
             error: function (xhr) {
-
                 console.error(xhr.responseText);
-
                 alert('Something went wrong.');
             }
         });
-
     });
-
 });
 </script>
-
 @endsection
