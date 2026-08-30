@@ -108,6 +108,23 @@ The application was developed using Laravel's MVC architecture and makes use of 
 
 ---
 
+## Media & Social Integrations
+
+### YouTube Content Search & Player
+
+- Embedded Search Interface within the portal
+- Real-time video search without page refresh using AJAX and jQuery
+- Video playback directly on the page using the YouTube iframe Player API
+- Retrieval and display of video comment threads using YouTube Data API v3
+- Single-page application experience for media consumption
+
+### Facebook Media Sharing *(In Progress)*
+
+- Integration with Facebook Graph API
+- Upload images/announcements from the portal directly to a Facebook Page or Profile
+- Automated cross-platform posting for HR announcements and updates
+---
+
 ## HR Portal
 
 - HR Dashboard
@@ -240,6 +257,12 @@ Implemented features:
 - Bootstrap 5
 - JavaScript
 - Blade Templates
+
+## Integrations & APIs
+
+- **YouTube Data API v3** (Video search and comments fetching)
+- **YouTube iframe Player API** (In-app video playback)
+- **Facebook Graph API** (Media and image posting - *In Progress*)
 
 ## Tools
 
@@ -489,6 +512,13 @@ Laravel Form Requests are used to keep validation rules organized and separate f
 * Implemented Leave Search and Filtering.
 * Implemented Employee Leave Notifications.
 
+## Media & API Integrations
+
+* Integrated YouTube Data API v3 for video search and dynamic comment retrieval.
+* Integrated YouTube iframe Player API for seamless inline video streaming.
+* Built AJAX/jQuery powered UI to eliminate page reloads during media search and playback.
+* Initiated Facebook Graph API integration to share portal uploads directly to Facebook feeds.
+
 ## Localization
 
 * Implemented English Localization.
@@ -566,6 +596,8 @@ During the development of this project, I gained practical experience in:
 | Localization          | ✅ Completed |
 | Route Protection      | ✅ Completed |
 | Search & Filtering    | ✅ Completed |
+| YouTube Integration   | ✅ Completed |
+| Facebook Integration  | 🔄 In Progress |
 
 ---
 
@@ -590,4 +622,3 @@ BFTech HR Portal
 # Project Status
 
 The BFTech HR Portal has been successfully completed as part of my Laravel Development Internship. The project provided practical experience in developing a complete Laravel-based HR management system with separate Employee and HR panels.
-
