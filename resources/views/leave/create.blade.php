@@ -4,7 +4,6 @@
 
 <div class="card shadow-sm border-0">
     <div class="card-body p-4">
-
         <h5 class="mb-4 fw-bold">
             {{ __('leave.apply_leave_heading') }}
         </h5>
@@ -18,10 +17,8 @@
                     {{ __('leave.leave_type') }} <span class="text-danger">*</span>
                 </label>
 
-                <select
-                    name="leave_type"
-                    class="form-select form-select-sm @error('leave_type') is-invalid @enderror"
-                >
+                <select name="leave_type"
+                        class="form-select form-select-sm @error('leave_type') is-invalid @enderror">
                     <option value="">{{ __('leave.select_type') }}</option>
 
                     <option value="Annual" {{ old('leave_type') == 'Annual' ? 'selected' : '' }}>
@@ -48,12 +45,10 @@
                     {{ __('leave.from_date') }} <span class="text-danger">*</span>
                 </label>
 
-                <input
-                    type="date"
-                    name="from_date"
-                    value="{{ old('from_date') }}"
-                    class="form-control form-control-sm @error('from_date') is-invalid @enderror"
-                >
+                <input type="date"
+                       name="from_date"
+                       value="{{ old('from_date') }}"
+                       class="form-control form-control-sm @error('from_date') is-invalid @enderror">
 
                 @error('from_date')
                     <div class="invalid-feedback small">{{ $message }}</div>
@@ -66,12 +61,10 @@
                     {{ __('leave.to_date') }} <span class="text-danger">*</span>
                 </label>
 
-                <input
-                    type="date"
-                    name="to_date"
-                    value="{{ old('to_date') }}"
-                    class="form-control form-control-sm @error('to_date') is-invalid @enderror"
-                >
+                <input type="date"
+                       name="to_date"
+                       value="{{ old('to_date') }}"
+                       class="form-control form-control-sm @error('to_date') is-invalid @enderror">
 
                 @error('to_date')
                     <div class="invalid-feedback small">{{ $message }}</div>
@@ -84,12 +77,10 @@
                     {{ __('leave.reason') }} <small class="text-muted">({{ __('leave.optional') }})</small>
                 </label>
 
-                <textarea
-                    name="reason"
-                    rows="4"
-                    placeholder="{{ __('leave.reason_placeholder') }}"
-                    class="form-control form-control-sm @error('reason') is-invalid @enderror"
-                >{{ old('reason') }}</textarea>
+                <textarea name="reason"
+                          rows="4"
+                          placeholder="{{ __('leave.reason_placeholder') }}"
+                          class="form-control form-control-sm @error('reason') is-invalid @enderror">{{ old('reason') }}</textarea>
 
                 @error('reason')
                     <div class="invalid-feedback small">{{ $message }}</div>
@@ -102,9 +93,7 @@
                     {{ __('leave.submit_button') }}
                 </button>
             </div>
-
         </form>
-
     </div>
 </div>
 
