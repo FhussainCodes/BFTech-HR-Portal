@@ -1,9 +1,7 @@
 @extends('layouts.hr')
 
 @section('content')
-
 <div class="container-fluid" dir="{{ app()->getLocale() == 'ur' ? 'rtl' : 'ltr' }}">
-
     <h3 class="dashboard-title mb-4 {{ app()->getLocale() == 'ur' ? 'text-end' : 'text-start' }}">
         {{ Lang::has('leave.pending_leaves') ? __('leave.pending_leaves') : 'Pending Leaves' }}
     </h3>
@@ -13,7 +11,6 @@
         <div class="card-body">
             <form action="{{ route('hr.leave.pending') }}" method="GET">
                 <div class="row g-3">
-
                     <div class="col-md-3 {{ app()->getLocale() == 'ur' ? 'text-end' : 'text-start' }}">
                         <label class="form-label">
                             {{ Lang::has('leave.employee') ? __('leave.employee') : 'Employee' }}
@@ -23,7 +20,6 @@
                                class="form-control @error('employee_name') is-invalid @enderror"
                                value="{{ request('employee_name') }}"
                                placeholder="{{ Lang::has('leave.search_employee') ? __('leave.search_employee') : 'Search Employee' }}">
-
                         @error('employee_name')
                             <small class="text-danger mt-1 d-block">{{ $message }}</small>
                         @enderror
@@ -37,7 +33,6 @@
                                name="from_date"
                                class="form-control @error('from_date') is-invalid @enderror"
                                value="{{ request('from_date') }}">
-
                         @error('from_date')
                             <small class="text-danger mt-1 d-block">{{ $message }}</small>
                         @enderror
@@ -51,7 +46,6 @@
                                name="to_date"
                                class="form-control @error('to_date') is-invalid @enderror"
                                value="{{ request('to_date') }}">
-
                         @error('to_date')
                             <small class="text-danger mt-1 d-block">{{ $message }}</small>
                         @enderror
@@ -68,7 +62,6 @@
                             {{ Lang::has('leave.btn_reset') ? __('leave.btn_reset') : 'Reset' }}
                         </a>
                     </div>
-
                 </div>
             </form>
         </div>
@@ -154,10 +147,7 @@
                     {{ $leaves->links() }}
                 </div>
             @endif
-
         </div>
     </div>
-
 </div>
-
 @endsection
