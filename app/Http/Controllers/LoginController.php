@@ -26,9 +26,7 @@ class LoginController extends Controller
                 ->withInput();
         }
 
-
-
-         if (!Hash::check($request['password'], $user->password)) {
+        if (!Hash::check($request['password'], $user->password)) {
             return back()
                 ->withErrors(['password' => 'Incorrect password.'])
                 ->withInput();
@@ -51,8 +49,7 @@ class LoginController extends Controller
 
         $request->session()->flush();
         $request->session()->regenerateToken();
-        return redirect()->route('loginPage');
-         
+        return redirect()->route('loginPage');   
     }
 }
 

@@ -7,23 +7,24 @@ use App\Http\Requests\LeaveRequest;
 use App\Models\Leave;
 use App\Models\Register;
 use App\Notifications\LeaveAppliedNotification;
+
 class LeaveController extends Controller
 {
-    public function index(){
+    public function index()
+    {
+        $currUserId = session('user')['id'];
+        $leaves = Leave::where('employee_id', $currUserId)->latest()->get();
 
-    $currUserId = session('user')['id'];
-
-    $leaves = Leave::where('employee_id',$currUserId)->latest()->get();
-
-    return view('leave.index',compact('leaves'));    
+        return view('leave.index', compact('leaves'));
     }
 
-    public function create(){
+    public function create()
+    {
         return view('leave.create');
     }
 
-    public function store(LeaveRequest $request){
-
+    public function store(LeaveRequest $request)
+    {
         $validatedData = $request->validated();
         $validatedData['employee_id'] = session('user')['id'];
 

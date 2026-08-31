@@ -12,7 +12,6 @@ class AttendanceController extends Controller
 public function index()
 {
     $user = session('user');
-
     $todayAttendance = Attendance::where('user_id', $user['id'])
                         ->whereDate('date', Carbon::today())
                         ->first();
@@ -30,7 +29,6 @@ public function index()
 public function checkIn()
 {
     $user = session('user');
-
     $attendance = Attendance::where('user_id', $user['id'])
                     ->whereDate('date', Carbon::today())
                     ->first();
@@ -52,7 +50,6 @@ public function checkIn()
 public function checkOut()
 {
     $user = session('user');
-
     $attendance = Attendance::where('user_id', $user['id'])
                     ->whereDate('date', Carbon::today())
                     ->first();
@@ -66,7 +63,6 @@ public function checkOut()
     }
 
     $attendance->check_out = Carbon::now();
-
     $attendance->duration = Carbon::parse($attendance->check_in)
                         ->diff(Carbon::now())
                         ->format('%h Hours %i Minutes %s Seconds');
@@ -79,7 +75,6 @@ public function checkOut()
 public function attendance()
 {
     $user = session('user');
-
     $todayAttendance = Attendance::where('user_id', $user['id'])
                         ->whereDate('date', Carbon::today())
                         ->first();
@@ -90,7 +85,6 @@ public function attendance()
 public function history()
 {
     $user = session('user');
-
     $attendanceLogs = Attendance::where('user_id', $user['id'])
                         ->latest()
                         ->get();

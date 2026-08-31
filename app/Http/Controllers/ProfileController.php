@@ -35,7 +35,6 @@ class ProfileController extends Controller
     }    
 
     public function editPersonal(){
-
         $user = Register::find(session('user')['id']);
         return view('employee.profile.editPersonal', compact('user'));
     }

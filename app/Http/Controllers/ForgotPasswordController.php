@@ -1,13 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\Request;
+
 use App\Mail\OtpMail;
 
-use Illuminate\Http\Request;
 use App\Models\Register;
 use App\Models\PasswordResetOtp;
+
 use App\Http\Requests\ForgotPasswordRequest;
 use App\Http\Requests\ResetPasswordRequest;
 use App\Http\Requests\VerifyOtpRequest;
@@ -16,7 +19,6 @@ use App\Http\Requests\VerifyOtpRequest;
 class ForgotPasswordController extends Controller
 {
     public function create(){
-        
         return view('auth.forgotPassword');
     }
 
@@ -70,11 +72,9 @@ class ForgotPasswordController extends Controller
         if(!$passwordReset){
             return redirect()->route('forgotPasswordPage')->withErrors(['email' => 'Please request a new OTP.']);
         }
-
         if($request->otp != $passwordReset->otp ){
             return back()->withErrors(['otp' => 'The OTP you entered is incorrect.']);
         }
-
         if(now()->isAfter($passwordReset->expires_at)){
             return back()->withErrors(['otp' => 'The OTP you entered is expired.']);
         }
