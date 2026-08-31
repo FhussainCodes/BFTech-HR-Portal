@@ -13,14 +13,12 @@ class AttendanceController extends Controller
     public function index()
     {
         $attendance = Attendance::latest()->paginate(10);
-
         return view('hr.attendance.index', compact('attendance'));
     }
 
     public function edit($id)
     {
         $attendance = Attendance::findOrFail($id);
-
         return view('hr.attendance.edit', compact('attendance'));
     }
 
@@ -69,17 +67,14 @@ class AttendanceController extends Controller
         $query->when($request->employee, function ($q) use ($request) {
             $q->where('user_name', 'like', '%' . $request->employee . '%');
         });
-
         $query->when($request->from_date, function ($q) use ($request) {
             $q->whereDate('date', '>=', $request->from_date);
         });
-
         $query->when($request->to_date, function ($q) use ($request) {
             $q->whereDate('date', '<=', $request->to_date);
         });
 
         $attendance = $query->latest()->paginate(10)->withQueryString();
-
         return view('hr.attendance.index', compact('attendance'));
     }
 }
