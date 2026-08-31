@@ -123,7 +123,6 @@ class HrProfileController extends Controller
     public function publicProfile($id)
 {
     $user = Register::findOrFail($id);
-
     return view('hr.profile.public', compact('user'));
 }
 

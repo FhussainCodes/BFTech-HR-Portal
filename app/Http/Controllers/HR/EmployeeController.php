@@ -18,84 +18,83 @@ class EmployeeController extends Controller
     //     $employees = Register::where('role','employee')->paginate(5);
     //     return view('hr.employees.index', compact('employees'));
     // }
-public function index(SearchEmployeeRequest $request)
-{
-    $employees = Register::query()->where('role', 'employee')
-        ->when($request->search, function ($query) use ($request) {
-            $query->where(function ($q) use ($request) {
-                $q->where('first_name', 'LIKE', "%{$request->search}%")
-                  ->orWhere('id', 'LIKE', "%{$request->search}%")
-                  ->orWhere('designation', 'LIKE', "%{$request->search}%");
-            });
-        })
-        ->paginate(5)
-        ->withQueryString();
 
-    return view('hr.employees.index', compact('employees'));
-}
+    public function index(SearchEmployeeRequest $request)
+    {
+        $employees = Register::query()->where('role', 'employee')
+            ->when($request->search, function ($query) use ($request) {
+                $query->where(function ($q) use ($request) {
+                    $q->where('first_name', 'LIKE', "%{$request->search}%")
+                      ->orWhere('id', 'LIKE', "%{$request->search}%")
+                      ->orWhere('designation', 'LIKE', "%{$request->search}%");
+                });
+            })
+            ->paginate(5)
+            ->withQueryString();
 
-    public function create(){
+        return view('hr.employees.index', compact('employees'));
+    }
+
+    public function create()
+    {
         return view('hr.employees.create');
     }
 
     public function store(StoreEmployeeRequest $request)
-{
-    $validatedData = $request->validated();
+    {
+        $validatedData = $request->validated();
+        $validatedData['password'] = Hash::make($validatedData['password']);
+        $validatedData['confirm_password'] = $validatedData['password'];
+        $validatedData['role'] = 'employee';
+        $validatedData['profile_image'] = null;
 
-    $validatedData['password'] = Hash::make($validatedData['password']);
+        Register::create($validatedData);
 
-    $validatedData['confirm_password'] = $validatedData['password'];
-
-    $validatedData['role'] = 'employee';
-
-    $validatedData['profile_image'] = null;
-
-    Register::create($validatedData);
-
-    return redirect()
+        return redirect()
             ->route('hr.employees.index')
             ->with('success', 'Employee added successfully.');
-}
+    }
 
-    public function edit($id){
+    public function edit($id)
+    {
         $employee = Register::findOrFail($id);
-        return view('hr.employees.edit',compact('employee'));
+
+        return view('hr.employees.edit', compact('employee'));
     }
 
     public function update(UpdateEmployeeRequest $request, $id)
-{
-    $employee = Register::findOrFail($id);
+    {
+        $employee = Register::findOrFail($id);
+        $validatedData = $request->validated();
 
-    $validatedData = $request->validated();
-
-    if (!empty($validatedData['password'])) {
-
-        $validatedData['password'] = Hash::make($validatedData['password']);
-
-        $validatedData['confirm_password'] = $validatedData['password'];
-
-    }else{
+        if (!empty($validatedData['password'])) {
+            $validatedData['password'] = Hash::make($validatedData['password']);
+            $validatedData['confirm_password'] = $validatedData['password'];
+        } else {
             unset($validatedData['password']);
             unset($validatedData['confirm_password']);
+        }
+
+        $employee->update($validatedData);
+
+        return redirect()->route('hr.employees.index')->with('success', 'Employee updated successfully.');
     }
 
-    $employee->update($validatedData);
+    public function destroy($id)
+    {
+        $employee = Register::findOrFail($id);
+        $employee->delete();
 
-    return redirect()->route('hr.employees.index')->with('success', 'Employee updated successfully.');
-}
-
-    public function destroy($id){
-            $employee = Register::findOrFail($id);
-            $employee->delete();
-            return redirect()->route('hr.employees.index')->with('success','Employee deleted successfully');
+        return redirect()->route('hr.employees.index')->with('success', 'Employee deleted successfully');
     }
 
     public function importPage()
-{
-    return view('hr.employees.import');
-}
+    {
+        return view('hr.employees.import');
+    }
 
-    public function importEmployees(Request $request){
+    public function importEmployees(Request $request)
+    {
         $request->validate([
             'file' => 'required|file|mimes:xlsx,xls|max:2048'
         ]);
@@ -105,7 +104,6 @@ public function index(SearchEmployeeRequest $request)
             $request->file('file')
         );
 
-        return redirect()->back()->with('success','File import successfully');
-
+        return redirect()->back()->with('success', 'File import successfully');
     }
 }

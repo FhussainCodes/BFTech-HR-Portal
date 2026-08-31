@@ -9,146 +9,116 @@ use App\Http\Requests\Hr\SearchLeaveRequest;
 
 class LeaveController extends Controller
 {
-        public function index(SearchLeaveRequest $request)
-        {
+    public function index(SearchLeaveRequest $request)
+    {
+        $leaves = $this->filterLeaves($request);
 
+        return view('hr.leave.index', compact('leaves'));
+    }
 
-            $leaves = $this->filterLeaves($request);
+    public function pending(SearchLeaveRequest $request)
+    {
+        // $leaves = Leave::with('employee')
+        //             ->where('status', 'Pending')
+        //             ->latest()
+        //             ->paginate(10);
+        $leaves = $this->filterLeaves($request, 'Pending');
 
-            return view('hr.leave.index', compact('leaves'));
-        }
+        return view('hr.leave.pending', compact('leaves'));
+    }
 
-        public function pending(SearchLeaveRequest $request)
-        {
-            
-            // $leaves = Leave::with('employee')
-            //             ->where('status', 'Pending')
-            //             ->latest()
-            //             ->paginate(10);
-            $leaves = $this->filterLeaves($request,'Pending');
-            
-            return view('hr.leave.pending', compact('leaves'));
-        }
+    public function approved(SearchLeaveRequest $request)
+    {
+        // $leaves = Leave::with('employee')
+        //             ->where('status', 'Approved')
+        //             ->latest()
+        //             ->paginate(10);
+        $leaves = $this->filterLeaves($request, 'Approved');
 
-        public function approved(SearchLeaveRequest $request)
-        {
-            // $leaves = Leave::with('employee')
-            //             ->where('status', 'Approved')
-            //             ->latest()
-            //             ->paginate(10);
-            $leaves = $this->filterLeaves($request,'Approved');
+        return view('hr.leave.approved', compact('leaves'));
+    }
 
-            return view('hr.leave.approved', compact('leaves'));
-        }
+    public function rejected(SearchLeaveRequest $request)
+    {
+        // $leaves = Leave::with('employee')
+        //             ->where('status', 'Rejected')
+        //             ->latest()
+        //             ->paginate(10);
+        $leaves = $this->filterLeaves($request, 'Rejected');
 
-        public function rejected(SearchLeaveRequest $request)
-        {
-            // $leaves = Leave::with('employee')
-            //             ->where('status', 'Rejected')
-            //             ->latest()
-            //             ->paginate(10);
-            $leaves = $this->filterLeaves($request,'Rejected');
+        return view('hr.leave.rejected', compact('leaves'));
+    }
 
-            return view('hr.leave.rejected', compact('leaves'));
-        }
+    public function show($id)
+    {
+        $leave = Leave::with('employee')->findOrFail($id);
 
-            public function show($id){
-                $leave = Leave::with('employee')->findOrFail($id);
-                return view('hr.leave.show',compact('leave'));
-            }
+        return view('hr.leave.show', compact('leave'));
+    }
 
-            public function approve($id)
-        {
-            $leave = Leave::findOrFail($id);
+    public function approve($id)
+    {
+        $leave = Leave::findOrFail($id);
+        $leave->status = 'Approved';
+        $leave->save();
 
-            $leave->status = 'Approved';
+        return response()->json([
+            'success' => true,
+            'message' => 'Leave Approved Successfully.',
+            'status' => 'Approved',
+            'id' => $leave->id
+        ]);
 
-            $leave->save();
-                return response()->json([
-                'success' => true,
-                'message' => 'Leave Approved Successfully.',
-                'status' => 'Approved',
-                'id' => $leave->id
-            ]);
+        // return redirect()->route('hr.leave.approved')->with('success', 'Leave Approved Successfully.');
+    }
 
-            // return redirect()->route('hr.leave.approved')->with('success', 'Leave Approved Successfully.');
-        }
+    public function reject($id)
+    {
+        $leave = Leave::findOrFail($id);
+        $leave->status = 'Rejected';
+        $leave->save();
 
-            public function reject($id)
-        {
-            $leave = Leave::findOrFail($id);
+        return response()->json([
+            'success' => true,
+            'message' => 'Leave Rejected Successfully.',
+            'status' => 'Rejected',
+            'id' => $leave->id
+        ]);
 
-            $leave->status = 'Rejected';
+        // return redirect()->route('hr.leave.rejected')->with('success', 'Leave Rejected Successfully.');
+    }
 
-            $leave->save();
-                return response()->json([
-        'success' => true,
-        'message' => 'Leave Rejected Successfully.',
-        'status' => 'Rejected',
-        'id' => $leave->id
-    ]);
-
-            // return redirect()->route('hr.leave.rejected')->with('success', 'Leave Rejected Successfully.');
-        }
-
- private function filterLeaves(SearchLeaveRequest $request, $status = null)
-{
-    return Leave::query()
-
-        ->with('employee')
-
-        ->when($status, function ($query) use ($status) {
-
-            $query->where('status', $status);
-
-        })
-
-        ->when(!$status && $request->status, function ($query) use ($request) {
-
-            $query->where('status', $request->status);
-
-        })
-
-        ->when($request->employee, function ($query) use ($request) {
-
-            $query->whereHas('employee', function ($q) use ($request) {
-
-                $q->where('first_name', 'LIKE', "%{$request->employee}%")
-                  ->orWhere('last_name', 'LIKE', "%{$request->employee}%");
-
-            });
-
-        })
-
-        ->when($request->leave_type, function ($query) use ($request) {
-
-            $query->where('leave_type', $request->leave_type);
-
-        })
-
-        ->when($request->from_date, function ($query) use ($request) {
-
-            $query->whereDate('from_date', '>=', $request->from_date);
-
-        })
-
-        ->when($request->to_date, function ($query) use ($request) {
-
-            $query->whereDate('to_date', '<=', $request->to_date);
-
-        })
-
-        ->when($request->from_date && $request->to_date, function ($query) use ($request) {
+    private function filterLeaves(SearchLeaveRequest $request, $status = null)
+    {
+        return Leave::query()
+            ->with('employee')
+            ->when($status, function ($query) use ($status) {
+                $query->where('status', $status);
+            })
+            ->when(!$status && $request->status, function ($query) use ($request) {
+                $query->where('status', $request->status);
+            })
+            ->when($request->employee, function ($query) use ($request) {
+                $query->whereHas('employee', function ($q) use ($request) {
+                    $q->where('first_name', 'LIKE', "%{$request->employee}%")
+                      ->orWhere('last_name', 'LIKE', "%{$request->employee}%");
+                });
+            })
+            ->when($request->leave_type, function ($query) use ($request) {
+                $query->where('leave_type', $request->leave_type);
+            })
+            ->when($request->from_date, function ($query) use ($request) {
+                $query->whereDate('from_date', '>=', $request->from_date);
+            })
+            ->when($request->to_date, function ($query) use ($request) {
+                $query->whereDate('to_date', '<=', $request->to_date);
+            })
+            ->when($request->from_date && $request->to_date, function ($query) use ($request) {
                 $query->whereDate('from_date', '<=', $request->to_date)
-              ->whereDate('to_date', '>=', $request->from_date);
-
-    })
-
-        ->latest()
-
-        ->paginate(5)
-
-        ->withQueryString();
-}
-
+                      ->whereDate('to_date', '>=', $request->from_date);
+            })
+            ->latest()
+            ->paginate(5)
+            ->withQueryString();
+    }
 }
