@@ -79,9 +79,7 @@
                     <span>{{ __('sidebar.leave') }}</span>
                 </a>
             </li>
-
         </ul>
-
     </div>
 
     <!-- Bottom Section -->
@@ -93,7 +91,6 @@
                 <i class="bi bi-box-arrow-right me-2"></i>
                 <span>{{ __('sidebar.logout') }}</span>
             </button>
-
         </form>
     </div>
 
