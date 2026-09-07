@@ -2,7 +2,6 @@
 
 @section('content')
 <div class="container-fluid px-3">
-    <!-- Welcome Card -->
     <div class="card shadow-sm border-0 mb-3">
         <div class="card-body py-3 px-4">
             <h5 class="fw-bold mb-1">
@@ -16,9 +15,7 @@
         </div>
     </div>
 
-    <!-- Stats Cards Row (Reversed for Urdu RTL) -->
     <div class="row g-3 mb-4 {{ app()->getLocale() == 'ur' ? 'flex-row-reverse' : '' }}">
-        <!-- Status Card -->
         <div class="col-md-4">
             <div class="card shadow-sm border-0 h-100">
                 <div class="card-body">
@@ -43,7 +40,6 @@
             </div>
         </div>
 
-        <!-- Time Card -->
         <div class="col-md-4">
             <div class="card shadow-sm border-0 h-100">
                 <div class="card-body">
@@ -70,7 +66,6 @@
             </div>
         </div>
 
-        <!-- Attendance Action Card -->
         <div class="col-md-4">
             <div class="card shadow-sm border-0 h-100">
                 <div class="card-body">
