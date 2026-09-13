@@ -23,7 +23,6 @@ class ForgotPasswordController extends Controller
     }
 
     public function sendOtp(ForgotPasswordRequest $request){
-
         $email = $request->email;
         $user = Register::where('email',$email)->first();
         if(!$user){
@@ -85,11 +84,9 @@ class ForgotPasswordController extends Controller
         ]);
 
         return redirect()->route('ResetPasswordPage');
-
     }
 
     public function showResetPassword(){
-
         if(!session('reset_email') || !session('otp_verified') ){
             return redirect()->route('forgotPage')->withErrors(['email' => 'please enter your otp first']);
             }
@@ -118,6 +115,5 @@ class ForgotPasswordController extends Controller
         ]);
 
         return redirect()->route('loginPage')->with('success','Password reset successfully. Please login.');
-
     }
 }
