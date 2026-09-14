@@ -10,26 +10,22 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 
     <style>
-        /* 1. Global Horizontal Overflow Block */
         html, body {
             max-width: 100%;
             overflow-x: hidden !important;
         }
 
-        /* 2. Flex Containers Fix (Min-width 0 fixes flex child overflow issue) */
         .d-flex, 
         .flex-grow-1 {
             min-width: 0;
         }
 
-        /* 3. Sidebar Container Fix */
         .sidebar-container {
             width: 220px;
             min-height: 100vh;
             flex-shrink: 0;
         }
 
-        /* 4. Base Urdu Text Alignment */
         body.rtl-mode {
             text-align: right;
         }
