@@ -139,7 +139,6 @@ Route::prefix('hr')->middleware('hr.auth')->group(function(){
     Route::post('/profile/uploadimage',[HrProfileController::class,'uploadImage' ])->name('hr.profile.uploadImage');
     Route::delete('/profile/deleteimage',[HrProfileController::class,'deleteImage' ])->name('hr.profile.deleteImage');
 
-    
     // For Attendance Details
     Route::get('/attendance/index',[HrAttendanceController::class,'index'])->name('hr.attendance.index');
     Route::get('/attendance/{id}/edit',[HrAttendanceController::class,'edit'])->name('hr.attendance.edit');
