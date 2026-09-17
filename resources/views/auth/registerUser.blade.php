@@ -1,10 +1,8 @@
 @extends('layouts.auth')
-
 @section('title', __('auth.register'))
-
 @section('content')
+
 <style>
-    /* Input aur placeholders ko Urdu me Right align karne ke liye */
     body.rtl-mode input.form-control {
         text-align: right;
     }
