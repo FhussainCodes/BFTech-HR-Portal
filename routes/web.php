@@ -17,7 +17,6 @@ use App\Http\Controllers\HR\NotificationController;
 use App\Http\Controllers\YouTubeController;
 use App\Http\Controllers\FacebookController;
 
-
 Route::get('/', function () {
     return view('auth.loginUser');
 });
