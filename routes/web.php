@@ -96,7 +96,6 @@ Route::put('/other/update',[ProfileController::class,'updateOther'])->name('prof
 });
 
 // -------------------------------------- For Employee Leave -------------------------------------- //
-
 Route::prefix('leave')->group(function(){
     // For Employee Profile Leave Index Page
 Route::get('/index/show',[LeaveController::class,'index'])->name('leave.index.show');
