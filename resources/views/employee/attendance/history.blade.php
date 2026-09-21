@@ -1,6 +1,6 @@
 @extends('layouts.app')
-
 @section('content')
+
 <div class="container-fluid p-0 leave-content-scroll">
     <div class="card shadow-sm border-0">
         <div class="card-header bg-white py-3">
