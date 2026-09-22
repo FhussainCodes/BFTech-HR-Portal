@@ -15,14 +15,12 @@
             </a>
         </div>
 
-        <!-- Card Body -->
         <div class="card-body {{ app()->getLocale() == 'ur' ? 'text-end' : '' }}" {{ app()->getLocale() == 'ur' ? 'dir=rtl' : '' }}>
             <form action="{{ route('profile.other.update') }}" method="POST">
                 @csrf
                 @method('PUT')
 
                 <div class="row">
-                    <!-- City -->
                     <div class="col-md-6 mb-3">
                         <label class="form-label fw-semibold">
                             {{ __('profile.city') }}
@@ -43,7 +41,6 @@
                         @enderror
                     </div>
 
-                    <!-- Country -->
                     <div class="col-md-6 mb-3">
                         <label class="form-label fw-semibold">
                             {{ __('profile.country') }}
