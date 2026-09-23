@@ -11,7 +11,6 @@
         <form action="{{ route('leave.apply.store') }}" method="POST">
             @csrf
 
-            <!-- Leave Type -->
             <div class="mb-3">
                 <label class="form-label fw-semibold small d-block">
                     {{ __('leave.leave_type') }} <span class="text-danger">*</span>
@@ -39,7 +38,6 @@
                 @enderror
             </div>
 
-            <!-- From Date -->
             <div class="mb-3">
                 <label class="form-label fw-semibold small d-block">
                     {{ __('leave.from_date') }} <span class="text-danger">*</span>
@@ -55,7 +53,6 @@
                 @enderror
             </div>
 
-            <!-- To Date -->
             <div class="mb-3">
                 <label class="form-label fw-semibold small d-block">
                     {{ __('leave.to_date') }} <span class="text-danger">*</span>
@@ -71,7 +68,6 @@
                 @enderror
             </div>
 
-            <!-- Reason -->
             <div class="mb-4">
                 <label class="form-label fw-semibold small d-block">
                     {{ __('leave.reason') }} <small class="text-muted">({{ __('leave.optional') }})</small>
@@ -87,7 +83,6 @@
                 @enderror
             </div>
 
-            <!-- Submit Button -->
             <div>
                 <button type="submit" class="btn btn-primary btn-sm px-4 fw-semibold">
                     {{ __('leave.submit_button') }}
