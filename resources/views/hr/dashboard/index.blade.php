@@ -8,7 +8,6 @@
 
 <div class="row g-3">
 
-    <!-- Total Employees -->
     <div class="col-lg-3 col-md-6">
         <div class="card shadow-sm border-0 dashboard-card">
             <div class="card-body">
