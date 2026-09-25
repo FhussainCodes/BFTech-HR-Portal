@@ -3,7 +3,6 @@
 @section('content')
 <div class="container mt-4">
     <div class="card shadow-sm">
-        <!-- Card Header -->
         <div class="card-header d-flex {{ app()->getLocale() == 'ur' ? 'flex-row-reverse' : '' }} justify-content-between align-items-center">
             <h4 class="mb-0">
                 <i class="bi bi-person-lines-fill me-2"></i>
