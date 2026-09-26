@@ -3,8 +3,6 @@
 @section('content')
 <div class="container-fluid">
     <h3 class="mb-4">{{ __('profile.my_profile') }}</h3>
-
-    <!-- Profile Image Card -->
     <div class="card shadow-sm mb-3">
         <div class="card-body text-center">
             @if($user->profile_image)
