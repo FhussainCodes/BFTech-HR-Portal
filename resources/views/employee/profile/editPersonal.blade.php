@@ -15,7 +15,6 @@
             </a>
         </div>
 
-        <!-- Card Body -->
         <div class="card-body {{ app()->getLocale() == 'ur' ? 'text-end' : '' }}" {{ app()->getLocale() == 'ur' ? 'dir=rtl' : '' }}>
             <form action="{{ route('profile.personal.update') }}" method="POST">
                 @csrf
