@@ -9,7 +9,6 @@
 @endphp
     <div class="container-fluid d-flex align-items-center justify-content-between">
 
-        <!-- Title -->
         <div class="navbar-brand-wrapper">
             <h3 class="fw-bold text-primary mb-0 fs-5">
                 {{ Lang::has('navbar.hr_dashboard') ? __('navbar.hr_dashboard') : 'HR Dashboard' }}
