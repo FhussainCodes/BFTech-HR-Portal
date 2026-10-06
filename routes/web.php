@@ -94,7 +94,6 @@ Route::put('/designation/update',[ProfileController::class,'updateDesignation'])
 Route::get('/other/edit',[ProfileController::class,'editOther'])->name('profile.other.edit');
 Route::put('/other/update',[ProfileController::class,'updateOther'])->name('profile.other.update')->middleware('city.check');
 });
-
 // -------------------------------------- For Employee Leave -------------------------------------- //
 Route::prefix('leave')->group(function(){
     // For Employee Profile Leave Index Page
