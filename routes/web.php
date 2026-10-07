@@ -106,7 +106,6 @@ Route::post('/apply/store',[LeaveController::class,'store'])->name('leave.apply.
 
 }); // End of Employee Middleware for check that login or not
 // -------------------------------------- For HR -------------------------------------- //
-
 Route::prefix('hr')->middleware('hr.auth')->group(function(){
     // For HR Dashboard Page
     Route::get('/dashboard/index',[DashboardController::class,'index'])->name('hr.dashboard.index');
