@@ -109,7 +109,6 @@ Route::post('/apply/store',[LeaveController::class,'store'])->name('leave.apply.
 // -------------------------------------- For HR -------------------------------------- //
 
 Route::prefix('hr')->middleware('hr.auth')->group(function(){
-
     // For HR Dashboard Page
     Route::get('/dashboard/index',[DashboardController::class,'index'])->name('hr.dashboard.index');
 
