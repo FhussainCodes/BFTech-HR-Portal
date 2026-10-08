@@ -8,7 +8,6 @@
                 {{ __('dashboard.welcome') }},
                 {{ session('user')['first_name'] }} 👋
             </h5>
-
             <p class="text-muted mb-0 small">
                 {{ now()->format('l, d F Y') }}
             </p>
