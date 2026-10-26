@@ -6,7 +6,6 @@
         <div class="card-header bg-white py-3">
             <h5 class="mb-0 fw-bold">{{ __('attendance.history_title') }}</h5>
         </div>
-
         <div class="card-body p-0">
             <div class="table-responsive">
                 <table class="table table-hover align-middle mb-0">
