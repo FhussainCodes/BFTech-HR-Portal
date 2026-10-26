@@ -35,7 +35,6 @@
                         <strong>{{ __('attendance.check_in_time') }}:</strong>
                         <span>{{ \Carbon\Carbon::parse($todayAttendance->check_in)->format('h:i:s A') }}</span>
                     </p>
-
                     <p class="mb-2">
                         <strong>{{ __('attendance.check_out_time') }}:</strong>
                         <span class="text-warning fw-bold">{{ __('attendance.pending') }}</span>
