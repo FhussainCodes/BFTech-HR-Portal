@@ -1,6 +1,6 @@
 @extends('layouts.app')
-
 @section('content')
+
 <div class="container mt-4">
     <div class="card shadow-sm">
         <!-- Card Header -->
