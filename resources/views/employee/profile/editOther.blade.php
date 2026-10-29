@@ -61,7 +61,6 @@
                         @enderror
                     </div>
                 </div>
-
                 <div class="{{ app()->getLocale() == 'ur' ? 'text-start' : 'text-end' }}">
                     <button type="submit" class="btn btn-primary">
                         <i class="bi bi-check-circle me-1"></i>
