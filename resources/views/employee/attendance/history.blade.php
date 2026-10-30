@@ -26,7 +26,6 @@
                             @endif
                         </tr>
                     </thead>
-
                     <tbody class="small">
                         @forelse($attendanceLogs as $log)
                         <tr>
