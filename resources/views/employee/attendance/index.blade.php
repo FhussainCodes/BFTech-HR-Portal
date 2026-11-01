@@ -39,7 +39,6 @@
                         <strong>{{ __('attendance.check_out_time') }}:</strong>
                         <span class="text-warning fw-bold">{{ __('attendance.pending') }}</span>
                     </p>
-
                     <p class="mb-2">
                         <strong>{{ __('attendance.duration') }}:</strong>
                         <span class="text-info fw-bold">{{ __('attendance.in_progress') }}</span>
