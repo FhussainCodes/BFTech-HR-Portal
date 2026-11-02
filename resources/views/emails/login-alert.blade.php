@@ -6,7 +6,6 @@
     <p>Hello <strong>{{ $user->first_name }}</strong>,</p>
 
     <p>Your account has been logged in successfully.</p>
-
     <p><strong>Login Details</strong></p>
 
     <ul>
