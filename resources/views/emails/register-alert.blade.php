@@ -15,7 +15,6 @@
 <h3>Account Details</h3>
 
 <p><strong>Name:</strong> {{ $user->first_name }} {{ $user->last_name }}</p>
-
 <p><strong>Email:</strong> {{ $user->email }}</p>
 
 <p><strong>Designation:</strong> {{ $user->designation }}</p>
