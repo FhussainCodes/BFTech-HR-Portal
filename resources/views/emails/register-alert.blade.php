@@ -11,7 +11,6 @@
 <p>
     <a href="{{ route('loginPage') }}">Login to BFTech HR Portal</a>
 </p>
-
 <h3>Account Details</h3>
 <p><strong>Name:</strong> {{ $user->first_name }} {{ $user->last_name }}</p>
 <p><strong>Email:</strong> {{ $user->email }}</p>
