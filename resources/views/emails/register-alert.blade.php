@@ -17,13 +17,11 @@
 <p><strong>Email:</strong> {{ $user->email }}</p>
 
 <p><strong>Designation:</strong> {{ $user->designation }}</p>
-
 <p><strong>City:</strong> {{ $user->city }}</p>
 
 <p>If you did not create this account, please contact the HR Administrator.</p>
 
 <br>
-
 <p>Thank you.</p>
 
 <p>BFTech HR Portal Team</p>
