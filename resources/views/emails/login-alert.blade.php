@@ -12,7 +12,6 @@
         <li>Email: {{ $user->email }}</li>
         <li>Login Time: {{ now() }}</li>
     </ul>
-
     <p>If this wasn't you, please contact the HR Administrator immediately.</p>
 
     <p>Thank you.</p>
