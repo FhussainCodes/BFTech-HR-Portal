@@ -21,7 +21,6 @@
 
 <br>
 <p>Thank you.</p>
-
 <p>BFTech HR Portal Team</p>
 
 @endsection
