@@ -4,7 +4,6 @@
 <h2>Welcome to BFTech HR Portal</h2>
 
 <p>Hello {{ $user->first_name }} {{ $user->last_name }},</p>
-
 <p>Your account has been created successfully.</p>
 <p>You can now log in to the BFTech HR Portal.</p>
 <p>
