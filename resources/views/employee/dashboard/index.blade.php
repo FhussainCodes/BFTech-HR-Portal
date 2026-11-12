@@ -71,7 +71,6 @@
                     <small class="text-muted d-block mb-2">
                         {{ __('dashboard.attendance_action') }}
                     </small>
-
                     @if(!$todayAttendance)
                         <form action="{{ route('checkInPage') }}" method="POST">
                             @csrf
