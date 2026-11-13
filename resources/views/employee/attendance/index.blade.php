@@ -44,7 +44,6 @@
                         <span class="text-info fw-bold">{{ __('attendance.in_progress') }}</span>
                     </p>
                 </div>
-
                 <form action="{{ route('checkOutPage') }}" method="POST">
                     @csrf
                     <button class="btn btn-danger">
