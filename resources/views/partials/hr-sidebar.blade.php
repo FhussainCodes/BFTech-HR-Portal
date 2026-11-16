@@ -151,7 +151,6 @@
         </ul>
     </div>
 
-    {{-- Logout --}}
     <div class="p-3">
         <form action="{{ route('logoutPage') }}" method="POST">
             @csrf
