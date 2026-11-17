@@ -141,7 +141,7 @@
             <!-- Youtube Content Search -->
             <li class="nav-item">
                 <a href="{{ route('hr.youtube.index') }}" class="nav-link d-flex align-items-center gap-2 {{ app()->getLocale() == 'ur' ? 'flex-row-reverse' : '' }}">
-                    <!-- <i class="bi bi-calendar-check"></i> -->
+                
                      <i class="bi bi-youtube"></i>
                     <span>{{ Lang::has('sidebar.youtube') ? __('sidebar.youtube') : 'Youtube' }}</span>
                     
