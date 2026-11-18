@@ -138,7 +138,6 @@
                 </div>
             </li>
 
-            <!-- Youtube Content Search -->
             <li class="nav-item">
                 <a href="{{ route('hr.youtube.index') }}" class="nav-link d-flex align-items-center gap-2 {{ app()->getLocale() == 'ur' ? 'flex-row-reverse' : '' }}">
                 
